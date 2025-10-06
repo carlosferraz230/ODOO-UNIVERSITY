@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_employee_file">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.internal_layout">
+                    <style type="text/css">
+                        * {padding-bottom: 0 !important;
+                        padding-top: 0 !important;
+                        margin-bottom: 0 !important;margin-top:0 !important; }
+                    </style>
+                    <div class="page" style="font-family:Calibri; font-size: 13px;">
+                        <div class="col-xs-12">
+                            <h3 class="text-center">
+                                <b>Ficha do Funcionário</b>
+                                <br/>
+                            </h3>
+                            <div class="col-xs-6">
+                            </div>
+                            <div class="text-right col-xs-4">
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <table class="table table-borderless">
+                                    <tr>
+                                        <td class="text-right">
+                                            <b>Nº do Funcionário:</b>
+                                            <t t-esc="o.employee_number"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-right">
+                                            <b>Posição:</b>
+                                            <span t-field="o.job_id"/>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                            <div class="col-xs-2">
+                                <img t-if="o.image" class="rounded-2"
+                                     t-att-src="'data:image/png;base64,%s' % to_text(o.image)"
+                                     style="max-height: 140px;max-width:135"/>
+                                <br/>
+                            </div>
+                            <br/>
+                            <br/>
+                        </div>
+                        <div class="col-xs-12 row">
+                            <h4 class="text-primary">
+                                <b>Dados Pessoais</b>
+                            </h4>
+                            <br/>
+                        </div>
+                        <table class="table" border="0">
+                            <tr>
+                                <td colspan="3">
+                                    <b>Nome completo:</b>
+                                    <span class="text-primary" t-field="o.name"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Data de Nascimento:</b>
+                                    <span t-field="o.birthday"/>
+                                </td>
+                                <td>
+                                    <b>Local de nascimento:</b>
+                                    <span t-field="o.place_of_birth"/>
+                                </td>
+                                <td>
+                                    <b>Nacionalidade:</b>
+                                    <span t-field="o.country_id"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Género:</b>
+                                    <span t-field="o.gender"/>
+                                </td>
+                                <td>
+                                    <b>Estado Civil:</b>
+                                    <span t-field="o.marital"/>
+                                </td>
+
+                                <td>
+                                    <b>Nº de Filhos:</b>
+                                    <span t-field="o.children"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Nº do BI:</b>
+                                    <span t-field="o.identification_id"/>
+                                </td>
+                                <td>
+                                    <b>NIF:</b>
+                                    <span t-field="o.fiscal_number"/>
+                                </td>
+
+                                <td>
+                                    <b>Nº Segurança Social:</b>
+                                    <span t-field="o.social_security"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <div class="col-xs-12 row">
+                            <h4 class="text-primary">
+                                <b>Filiação</b>
+                            </h4>
+                            <br/>
+                        </div>
+                        <table class="table" border="0">
+                            <tr>
+                                <td>
+                                    <b>Filho de:</b>
+                                    <span t-field="o.father"/>
+                                </td>
+                                <td>
+                                    <b>E de:</b>
+                                    <span t-field="o.father"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <div class="col-xs-12 row">
+                            <h4 class="text-primary">
+                                <b>Endereços</b>
+                            </h4>
+                            <br/>
+                        </div>
+                        <table class="table" border="0">
+                            <tr>
+                                <td>
+                                    <b>País</b>
+                                    <span t-field="o.address_province.country_id"/>
+                                </td>
+                                <td>
+                                    <b>Província/Cidade</b>
+                                    <span t-field="o.address_province"/>
+                                </td>
+                                <td>
+                                    <b>Rua:</b>
+                                    <span t-field="o.address_address"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Telemóvel</b>
+                                    <span t-field="o.personal_mobile_1"/>
+                                </td>
+                                <td>
+                                    <b>Telemóvel Alternativo</b>
+                                    <span t-field="o.personal_mobile_2"/>
+                                </td>
+                                <td>
+                                    <b>Email pessoal:</b>
+                                    <span t-field="o.personal_email"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <div class="col-xs-12 row">
+                            <h4 class="text-primary">
+                                <b>Contacto de emergência</b>
+                            </h4>
+                            <br/>
+                        </div>
+                        <table class="table" border="0">
+                            <tr>
+                                <td>
+                                    <b>Nome:</b>
+                                    <span t-field="o.emergence_contact"/>
+                                </td>
+                                <td>
+                                    <b>Telemóvel</b>
+                                    <span t-field="o.emergence_contact.phone"/>
+                                </td>
+                                <td>
+                                    <b>Telemóvel alternativo</b>
+                                    <span t-field="o.emergence_contact.mobile"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Morada:</b>
+                                    <span t-field="o.emergence_contact.street"/>
+                                </td>
+                                <td>
+                                    <b>Cidade</b>
+                                    <span t-field="o.emergence_contact.state_id"/>
+                                </td>
+                                <td>
+                                    <b>Email</b>
+                                    <span t-field="o.emergence_contact.email"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <div class="col-xs-12 row">
+                            <h4 class="text-primary">
+                                <b>Informação do Contracto</b>
+                            </h4>
+                            <br/>
+                        </div>
+                        <table class="table" border="0">
+                            <tr>
+                                <td>
+                                    <b>Departamento:</b>
+                                    <span t-field="o.department_id"/>
+                                </td>
+                                <td>
+                                    <b>Data de admissão</b>
+                                    <span t-field="o.admission_date"/>
+                                </td>
+                                <td>
+                                    <b>Gestor</b>
+                                    <span t-field="o.manager"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Horas de trabalho:</b>
+                                    <span t-field="o.resource_calendar_id"/>
+                                </td>
+                                <td>
+                                    <b>Local de trabalho</b>
+                                    <span t-field="o.work_location"/>
+                                </td>
+                                <td>
+                                    <b>Contacto de trabalho</b>
+                                    <span t-field="o.work_phone"/>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>
+                                    <b>Data do último exame medico: </b>
+                                    <span t-field="o.medic_exam"/>
+                                </td>
+                                <td>
+                                    <b>Veículo Atribuído: </b>
+                                    <span t-field="o.vehicle"/>
+                                </td>
+                                <td>
+                                    <b>Distância do trabalho (Km): </b>
+                                    <span t-field="o.vehicle_distance"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

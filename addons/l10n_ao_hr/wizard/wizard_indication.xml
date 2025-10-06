@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_wizard_indication_view" model="ir.ui.view">
+            <field name="name">wizard.indication.form</field>
+            <field name="model">wizard.indication</field>
+            <field name="arch" type="xml">
+                <form string="indication_employee">
+                    <sheet>
+                        <h1>Indicadores de RH</h1>
+                        <group>
+                            <group>
+                                <field name="start_date" required="1" string="Data Inicial"/>
+                                <field name="end_date" required="1" string="Data Final"/>
+                            </group>
+                            <group>
+                                  <field name="option" widget="radio"/>
+                            </group>
+                        </group>
+                        <footer>
+                            <button name="print_report" string="Imprimir"
+                                    type="object" class="oe_highlight"/>
+                             OU
+                            <button string="Cancelar" special="cancel" class="oe_link"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_wizard_indication_view" model="ir.actions.act_window">
+            <field name="name">Indicadores</field>
+            <field name="res_model">wizard.indication</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_wizard_indication_view"/>
+            <field name="target">new</field>
+        </record>
+         <menuitem
+                id="menu_indicaton_hr_employee_menu"
+                parent="l10n_ao_hr.ao_menu_hr_root"
+                name="Indicadores de RH"
+                sequence="22"/>
+
+        <menuitem id="view_wizard_indication_menu"
+                  name="RELATÓRIO MENSAL DE RECURSOS HUMANOS" sequence="3"
+                  parent="menu_indicaton_hr_employee_menu"
+                  action="action_view_wizard_indication_view"/>
+    </data>
+</odoo>

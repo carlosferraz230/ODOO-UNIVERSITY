@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_hr_inss_view" model="ir.ui.view">
+            <field name="name">wizard.inss.form</field>
+            <field name="model">wizard.inss</field>
+            <field name="arch" type="xml">
+                <form>
+                    <h3>Selecionar a folha de recibo de vencimento para imprimir o mapa de INSS , ou
+                        data do recibo de vencimento para definir o intervalo de datas e imprimir o mapa.
+                    </h3>
+                    <br/>
+                    <group>
+                        <field name="slip_filter_by"/>
+                    </group>
+                    <group attrs="{'invisible':[('slip_filter_by', '!=', 'payslip_batch')]}">
+                        <field name="hr_payslip_run_id" options="{'no_quick_create': True, 'no_create_edit': True}"
+                               attrs="{'required':[('slip_filter_by', '=', 'payslip_batch')]}"/>
+                    </group>
+                    <group attrs="{'invisible':[('slip_filter_by', '!=', 'payslip_date')]}">
+                        <field name="start_date"
+                               attrs="{'required':[('slip_filter_by', '=', 'payslip_date')]}"/>
+                        <field name="end_date"
+                               attrs="{'required':[('slip_filter_by', '=', 'payslip_date')]}"/>
+                    </group>
+                    <group>
+                        <field name="report_type" widget="radio" options="{'horizontal': true}"/>
+                    </group>
+                    <footer>
+                        <button name="print_report_excel" string="IMPRIMIR MAPA INSS"
+                                type="object" class="oe_highlight" attrs="{'invisible':[('report_type', '=', 'pdf')]}"/>
+                        <button name="print_report" string="IMPRIMIR MAPA INSS"
+                                type="object" class="oe_highlight"
+                                attrs="{'invisible':[('report_type', '=', 'excel')]}"/>
+                        or
+                        <button string="Cancelar" special="cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_hr_inss" model="ir.actions.act_window">
+            <field name="name">Assistente do Mapa de Segurança Social</field>
+            <field name="res_model">wizard.inss</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_hr_inss_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="INSS Map" parent="hr_payroll.menu_hr_payroll_report" sequence="7"
+                  action="l10n_ao_hr.action_hr_inss" id="menu_hr_reporting_inss"/>
+
+    </data>
+</odoo>

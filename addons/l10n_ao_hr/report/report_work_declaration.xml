@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_work_declaration">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <style type="text/css">
+                        * {padding-bottom: 0 !important;
+                        padding-top: 0 !important;
+                        margin-bottom: 0 !important;margin-top:0 !important; }
+                    </style>
+                    <div class="page">
+                        <div class="text-center">
+                            <h4>
+                                <b>DECLARAÇÃO DE TRABALHO</b>
+                            </h4>
+                        </div>
+                        <div class="text-justify">
+                            <br/>
+                            <br/>
+                            <br/>
+                            <b>
+                                <span t-field="res_company.name"/>
+                            </b>
+                            , com sede em
+                            <span
+                                    t-field="res_company.state_id"/>
+                            ,
+                            <span t-field="res_company.street"/>
+                            ,
+                            resgistada na Conservatória do Registo Comercial em Luanda so o nº
+                            <span
+                                    t-field="res_company.company_registry"/>
+                            , titular do número
+                            de identificação fiscal nº<span t-field="res_company.vat"/>.
+                            <br/>
+                            <br/>
+                            Declara que o funcionário
+                            <b>
+                                <span t-field="o.employee_id"/>
+                            </b>
+                            , natural de
+                            <span
+                                    t-field="o.employee_id.place_of_birth"/>
+                            nascido aos
+                            <span
+                                    t-esc="o.employee_id.birthday.strftime('%d de %B de %Y')"/>
+                            , titular do B.I nº
+                            <span t-field="o.employee_id.identification_id"/>
+                            residente em<span
+                                t-field="o.employee_id.address_home_id"/>, é trabalhador desta empresa com um contracto
+                            activo do tipo
+                            <span t-field="o.contract_type_id"/>
+                            , tendo uma remuneração mensal de
+                            <span
+                                    t-field="o.wage"/>
+                            conforme o contracto estabelecido.
+                            <br/>
+                            <br/>
+                            <br/>
+                            <span t-field="res_company.state_id.name"/>,
+                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d de %B de %Y')"/>
+                        </div>
+                        <div class="text-center">
+                            <br/>
+                            <br/>
+                            A Direcção
+                            <br/>
+                            <br/>
+                            _______________________________________________
+
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="text-right" style="font-size:10px">
+                            <b>© TICBLAC</b>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

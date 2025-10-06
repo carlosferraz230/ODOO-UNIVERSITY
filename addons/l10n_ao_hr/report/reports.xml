@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record id="ag_paper_format_portrait" model="report.paperformat">
+            <field name="name">TICBLAC - Paper Format Portrait</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">20</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">10</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="employee_paper_format_portrait" model="report.paperformat">
+            <field name="name">TICBLAC - Employee Paper Format Portrait</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">50</field>
+            <field name="margin_bottom">20</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">40</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="es_paper_format_landscape" model="report.paperformat">
+            <field name="name">TICBLAC - Paper Format Landscape</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">20</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">10</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="payment_receipt_paper_format_landscape" model="report.paperformat">
+            <field name="name">TICBLAC payment receipt - Paper Format Landscape</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">3</field>
+            <field name="margin_bottom">3</field>
+            <field name="margin_left">1</field>
+            <field name="margin_right">1</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">10</field>
+            <field name="dpi">90</field>
+        </record>
+        <report
+                id="action_report_employee_list_colaboradores"
+                model="hr.employee"
+                string="Lista de colaboradores"
+                report_type="qweb-pdf"
+                name="l10n_ao_hr.report_employee_lista_colaboradores_pdf"
+                file="l10n_ao_hr.report_employee_lista_colaboradores_pdf"
+        />
+
+         <report
+                 id="action_report_employee_list_colaboradores_department"
+                 model="hr.department"
+                 string="Lista de colaboradores por departamento"
+                 report_type="qweb-pdf"
+                 name="l10n_ao_hr.report_employee_lista_colaboradores_department_pdf"
+                 file="l10n_ao_hr.report_employee_lista_colaboradores_department_pdf"
+         />
+
+
+        <record id="action_report_simple_payslip" model="ir.actions.report">
+            <field name="name">Recibo de Vencimento Simples</field>
+            <field name="model">hr.payslip</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">l10n_ao_hr.report_simple_payslip</field>
+            <field name="report_file">l10n_ao_hr.report_simple_payslip</field>
+            <field name="binding_type">report</field>
+            <field name="binding_model_id" ref="model_hr_payslip"/>
+            <field name="paperformat_id" ref="l10n_ao_hr.payment_receipt_paper_format_landscape"/>
+        </record>
+
+        <record id="hr_payroll.action_report_payslip" model="ir.actions.report">
+            <field name="name">PaySlip</field>
+            <field name="model">hr.payslip</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">l10n_ao_hr.report_payslip</field>
+            <field name="report_file">l10n_ao_hr.report_payslip</field>
+            <field name="print_report_name">('Recibo - %s' % (object.employee_id.name))</field>
+            <field name="binding_model_id" ref="model_hr_payslip"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_salary" model="ir.actions.report">
+            <field name="name">MAPA SALARIO</field>
+            <field name="model">wizard.salary</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">l10n_ao_hr.report_salary</field>
+            <field name="report_file">l10n_ao_hr.report_salary</field>
+            <field name="binding_type">report</field>
+            <field name="print_report_name">'MAPA SALARIO %s' % (object.hr_payslip_run_id.name.upper())</field>
+            <field name="paperformat_id" ref="l10n_ao_hr.es_paper_format_landscape"/>
+        </record>
+
+        <record id="action_report_inss" model="ir.actions.report">
+            <field name="name">MAPA INSS</field>
+            <field name="print_report_name">'MAPA INSS %s' % (object.hr_payslip_run_id.name.upper())</field>
+            <field name="model">wizard.inss</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">l10n_ao_hr.report_inss</field>
+            <field name="report_file">l10n_ao_hr.report_inss</field>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="l10n_ao_hr.es_paper_format_landscape"/>
+        </record>
+
+        <!--  <report
+                  id="action_report_irt"
+                  model="hr.payslip"
+                  string="IRT Report"
+                  report_type="qweb-pdf"
+                  menu="False"
+                  paperformat="es_paper_format_landscape"
+                  name="l10n_ao_hr.report_irt"
+                  file="l10n_ao_hr.report_irt"
+          />-->
+
+        <record id="action_report_bank" model="ir.actions.report">
+            <field name="name">MAPA BANCO</field>
+            <field name="model">hr.payslip</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">l10n_ao_hr.report_bank</field>
+            <field name="report_file">l10n_ao_hr.report_bank</field>
+            <field name="binding_type">report</field>
+            <field name="print_report_name">'MAPA BANCO %s' % (object.hr_payslip_run_id.name.upper())</field>
+            <field name="paperformat_id" ref="l10n_ao_hr.es_paper_format_landscape"/>
+        </record>
+
+        <!--<report id="action_report_job_evaluation_and_interview"
+                model="hr.employee"
+                string="Job Evaluation Form and Interview"
+                report_type="qweb-pdf"
+                paperformat="employee_paper_format_portrait"
+                name="l10n_ao_hr.report_job_evaluation_and_interview"
+                file="l10n_ao_hr.report_job_evaluation_and_interview"
+        />
+-->
+          <record id="action_report_work_declaration" model="ir.actions.report">
+            <field name="name">Declaração de Trabalho</field>
+            <field name="model">hr.contract</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">l10n_ao_hr.report_work_declaration</field>
+            <field name="report_file">l10n_ao_hr.report_work_declaration</field>
+            <field name="binding_type">report</field>
+        </record>
+
+        <!--<report id="action_report_contract_determinado"
+                model="hr.contract"
+                string="Contracto tempo determinado"
+                report_type="qweb-pdf"
+                paperformat="employee_paper_format_portrait"
+                name="l10n_ao_hr.report_contract_determinado_pdf"
+                file="l10n_ao_hr.report_contract_determinado_pdf"
+        />-->
+
+        <record id="action_report_irt_group_a" model="ir.actions.report">
+            <field name="name">IRT Report Group A</field>
+            <field name="model">wizard.irt</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">l10n_ao_hr.report_irt</field>
+            <field name="report_file">l10n_ao_hr.report_irt</field>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="l10n_ao_hr.es_paper_format_landscape"/>
+        </record>
+
+        <record id="action_report_irt_group_bc" model="ir.actions.report">
+            <field name="name">IRT Report Group B - C</field>
+            <field name="model">wizard.irt</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">l10n_ao_hr.report_irt_group_bc</field>
+            <field name="report_file">l10n_ao_hr.report_irt_group_bc</field>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="l10n_ao_hr.es_paper_format_landscape"/>
+        </record>
+
+        <!-- <report
+                 id="action_training_request"
+                 model="hr.training.request"
+                 string="Pedido de Formação"
+                 name="l10n_ao_hr.report_training_request"
+                 file="l10n_ao_hr.report_training_request"
+                 report_type="qweb-pdf"/> -->
+    </data>
+</odoo>

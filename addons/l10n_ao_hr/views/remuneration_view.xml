@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_hr_remuneration_codes" model="ir.actions.act_window">
+        <field name="name">List of Remuneration Codes</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.remuneration.code</field>
+       <!-- <field name="view_type">form</field>-->
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem name="Remuneration Codes" parent="hr.menu_human_resources_configuration" sequence="4"
+              action="action_hr_remuneration_codes" id="menu_human_resources_configuration_remuneration_codes"/>
+
+    <record id="ao_hr_remuneration_code_tree_view" model="ir.ui.view">
+        <field name="name">hr.remuneration.code.form</field>
+        <field name="model">hr.remuneration.code</field>
+        <field name="arch" type="xml">
+            <tree string="Remuneration Codes" decoration-danger="type == 'deduction'"
+                  decoration-success="type == 'remuneration'" editable="top">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="type"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

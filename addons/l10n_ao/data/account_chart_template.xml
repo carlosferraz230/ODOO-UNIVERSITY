@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="account_reports_ao_statements_menu" name="Angola Legal Reports"
+              parent="account.menu_finance_reports"
+              sequence="0" groups="account.group_account_user"/>
+
+    <data>
+        <!-- Chart template -->
+        <!-- True,account_chart_4811,account.data_account_type_current_assets,l10n_ao.ao_chart_template,4811,Banco-Contas Transitoria -->
+        <record id="ao_chart_template" model="account.chart.template">
+            <field name="property_account_receivable_id" ref="account_chart_311211"/>
+            <field name="property_account_payable_id" ref="account_chart_32121"/>
+            <field name="property_account_income_categ_id" ref="account_chart_6211"/>
+            <field name="property_account_expense_categ_id" ref="account_chart_752391"/>
+            <field name="property_account_income_id" ref="account_chart_6211"/>
+            <field name="property_account_expense_id" ref="account_chart_752391"/>
+            <field name="property_account_income_credit_id" ref="account_chart_3194"/>
+            <field name="property_account_expense_credit_id" ref="account_chart_68124"/>
+            <field name="property_stock_account_input_categ_id" ref="account_chart_2121"/>
+            <field name="property_stock_account_output_categ_id" ref="account_chart_7131"/>
+            <field name="property_stock_valuation_account_id" ref="account_chart_2631"/>
+            <field name="tax_cash_basis_account_id" ref="account_chart_3422"/>
+            <field name="income_currency_exchange_account_id" ref="account_chart_6621"/> <!-- ganho de cambio -->
+            <field name="expense_currency_exchange_account_id" ref="account_chart_7621"/> <!-- perda de cambio -->
+        </record>
+    </data>
+</odoo>

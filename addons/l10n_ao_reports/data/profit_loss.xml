@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="account_financial_report_l10n_ao_ddr" model="account.financial.html.report">
+        <field name="name">Demonstração de Resultados</field>
+        <field name="unfold_all_filter" eval="True"/>
+        <field name="parent_id" ref="l10n_ao.account_reports_ao_statements_menu"/>
+        <field name="country_id" ref="base.ao"/>
+        <field name="show_journal_filter" eval="True"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_ddr_vendas" model="account.financial.html.report.line">
+        <field name="name">Vendas</field>
+        <field name="code">VENDAS</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="1"/>
+        <field name="financial_report_id" ref="account_financial_report_l10n_ao_ddr"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="[('account_id.code', '=like', '61%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_ddr_prestacao_servicos" model="account.financial.html.report.line">
+        <field name="name">Prestações de serviços</field>
+        <field name="code">PS</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="2"/>
+        <field name="financial_report_id" ref="account_financial_report_l10n_ao_ddr"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="[('account_id.code', '=like', '62%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_ddr_outros_proveitos_operacionais"
+            model="account.financial.html.report.line">
+        <field name="name">Outros proveitos operacionais</field>
+        <field name="code">OPO</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="3"/>
+        <field name="financial_report_id" ref="account_financial_report_l10n_ao_ddr"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="[('account_id.code', '=like', '63%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_ddr_variac_prod_acab_prod_vias_fabrico"
+            model="account.financial.html.report.line">
+        <field name="name">Variação nos produtos acabados e produtos em vias de fabrico</field>
+        <field name="code">VPAPVF</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="4"/>
+        <field name="financial_report_id" ref="account_financial_report_l10n_ao_ddr"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="[('account_id.code', '=like', '64%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_ddr_trabalhos_propria_empresa"
+            model="account.financial.html.report.line">
+        <field name="name">Trabalhos para a própria empresa</field>
+        <field name="code">TPE</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="5"/>
+        <field name="financial_report_id" ref="account_financial_report_l10n_ao_ddr"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="[('account_id.code', '=like', '65%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_ddr_custos_mercadorias_vendidas_materias_primas_subs_cons"
+            model="account.financial.html.report.line">
+        <field name="name">Custo das mercadorias vendidas e das matérias-primas e subsidiárias consumidas</field>
+        <field name="code">CMVMCSC</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="6"/>
+        <field name="financial_report_id" ref="account_financial_report_l10n_ao_ddr"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="[('account_id.code', '=like', '71%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_ddr_custos_pessoal" model="account.financial.html.report.line">
+        <field name="name">Custos com o pessoal</field>
+        <field name="code">CCP</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="7"/>
+        <field name="financial_report_id" ref="account_financial_report_l10n_ao_ddr"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="[('account_id.code', '=like', '72%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_ddr_amortizacoes" model="account.financial.html.report.line">
+        <field name="name">Amortizações</field>
+        <field name="code">AMORTIZACOES</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="8"/>
+        <field name="financial_report_id" ref="account_financial_report_l10n_ao_ddr"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="[('account_id.code', '=like', '73%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_ddr_outros_custos_perdas_operacionais"
+            model="account.financial.html.report.line">
+        <field name="name">Outros custos e perdas operacionais</field>
+        <field name="code">OCPO</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="9"/>
+        <field name="financial_report_id" ref="account_financial_report_l10n_ao_ddr"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="[('account_id.code', '=like', '75%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_ddr_resultados_operacionais"
+            model="account.financial.html.report.line">
+        <field name="name">Resultados operacionais:</field>
+        <field name="code">RO</field>
+        <field name="level" eval="2"/>
+        <field name="sequence" eval="10"/>
+        <field name="financial_report_id" ref="account_financial_report_l10n_ao_ddr"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_ddr_resultados_financeiros" model="account.financial.html.report.line">
+        <field name="name">Resultados financeiros</field>
+        <field name="code">RF</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="10"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_ddr_resultados_operacionais"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="['|', ('account_id.code', '=like', '66%'), ('account_id.code', '=like', '76%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_ddr_resultados_filiais_associados"
+            model="account.financial.html.report.line">
+        <field name="name">Resultados de filiais e associados</field>
+        <field name="code">RFA</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="11"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_ddr_resultados_operacionais"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="['|', ('account_id.code', '=like', '67%'), ('account_id.code', '=like', '77%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_ddr_resultados_nao_operacionais"
+            model="account.financial.html.report.line">
+        <field name="name">Resultados não operacionais</field>
+        <field name="code">RNO</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="12"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_ddr_resultados_operacionais"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="['|', ('account_id.code', '=like', '68%'), ('account_id.code', '=like', '78%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_ddr_resultados_antes_impostos"
+            model="account.financial.html.report.line">
+        <field name="name">Resultados antes de impostos:</field>
+        <field name="code">RAI</field>
+        <field name="level" eval="2"/>
+        <field name="sequence" eval="11"/>
+        <field name="financial_report_id" ref="account_financial_report_l10n_ao_ddr"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="['|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|', '|',
+            ('account_id.code', '=like', '61%'),
+            ('account_id.code', '=like', '62%'),
+            ('account_id.code', '=like', '63%'),
+            ('account_id.code', '=like', '64%'),
+            ('account_id.code', '=like', '65%'),
+            ('account_id.code', '=like', '66%'),
+            ('account_id.code', '=like', '67%'),
+            ('account_id.code', '=like', '68%'),
+            ('account_id.code', '=like', '71%'),
+            ('account_id.code', '=like', '72%'),
+            ('account_id.code', '=like', '73%'),
+            ('account_id.code', '=like', '75%'),
+            ('account_id.code', '=like', '76%'),
+            ('account_id.code', '=like', '77%'),
+            ('account_id.code', '=like', '78%')
+            ]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_ddr_impostos_sobre_rendimento"
+            model="account.financial.html.report.line">
+        <field name="name">Impostos sobre o rendimento</field>
+        <field name="code">ISR</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="13"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_ddr_resultados_antes_impostos"/>
+        <field name="formulas">(RAI if RAI > 0 else 0) * 0.25</field>
+    </record>
+
+    <record id="account_financial_report_line_ao_ddr_resultados_liquidos_actividades_correntes"
+            model="account.financial.html.report.line">
+        <field name="name">Resultados líquidos das actividades correntes:</field>
+        <field name="code">RLAC</field>
+        <field name="level" eval="2"/>
+        <field name="sequence" eval="12"/>
+        <field name="financial_report_id" ref="account_financial_report_l10n_ao_ddr"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_ddr_resultados_extraordinarios"
+            model="account.financial.html.report.line">
+        <field name="name">Resultados extraordinários</field>
+        <field name="code">REX</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="14"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_ddr_resultados_liquidos_actividades_correntes"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="['|',
+            ('account_id.code', '=like', '69%'),
+            ('account_id.code', '=like', '79%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_ddr_imposto_sobre_rendimento2"
+            model="account.financial.html.report.line">
+        <field name="name">Imposto sobre o rendimento</field>
+        <field name="code">ISR2</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="15"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_ddr_resultados_liquidos_actividades_correntes"/>
+        <field name="formulas">((RAI + REX) * 0.25 if REX > 0 else 0)</field>
+    </record>
+
+    <record id="account_financial_report_line_ao_ddr_resultados_liquidos_exercicio"
+            model="account.financial.html.report.line">
+        <field name="name">Resultados líquidos do exercício:</field>
+        <field name="code">RLAE</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="16"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_ddr_resultados_liquidos_actividades_correntes"/>
+        <field name="formulas">RAI - ISR2</field>
+    </record>
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_res_company_inherit_form" model="ir.ui.view">
+            <field name="name">res.company.inherit.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page name="agt" string="AGT">
+                        <group>
+                            <group>
+                                <field name="agt_cert_number" placeholder="0000/AGT/2024" invisible="1"/>
+                                <field name="agt_product_name" placeholder="Nome da Solução(Software)..." invisible="1" />
+                                <field name="agt_product_version" placeholder="Versão do Software..." invisible="1"/>
+                                <field name="product_company_name" placeholder="Versão do Software..." invisible="1"/>
+                                <field name="product_company_website" placeholder="Versão do Software..." invisible="1"/>
+                                <field name="product_company_tax_id" placeholder="Versão do Software..." invisible="1"/>
+                            </group>
+                            <group>
+
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

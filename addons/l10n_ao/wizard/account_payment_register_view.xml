@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="account_payment_register" model="ir.ui.view">
+            <field name="name">account.payment.register.inherit.form</field>
+            <field name="model">account.payment.register</field>
+            <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//div[@name='amount_div']" position="after">
+                    <field name="amount_tax" string="Total Imposto"
+                           attrs="{'invisible': ['|',('amount_tax','=',0), ('group_payment', '=', False)]}"/>
+                    <field name="deductible_wth"
+                           attrs="{'invisible': ['|',('deductible_wth','=',0), ('group_payment', '=', False)]}"/>
+                    <field name="amount_total_wth" invisible="1" string="RFII"
+                           attrs="{'invisible': ['|',('deductible_wth','=',0), ('group_payment', '=', False)]}"/>
+                    <field name="deductible_vat" string="IVA Deduzido"
+                           attrs="{'invisible': ['|',('deductible_vat','=',0), ('group_payment', '=', False)]}"/>
+                    <field name="amount_total_vat" invisible="1" string="Total IVA"
+                           attrs="{'invisible': ['|',('deductible_vat','=',0), ('group_payment', '=', False)]}"/>
+                    <field name="amount_total" string="Pagamento Total"
+                              attrs="{'invisible': ['|','|', ('partner_deductible_vat','=','none'), ('amount_tax', '=', 0), ('group_payment', '=', False)]}"/>
+                </xpath>
+
+                <xpath expr="//field[@name='journal_id']" position="before">
+                    <field name="partner_deductible_vat" widget="radio" string="IVA Dedutível"
+                           attrs="{'invisible': ['|', ('amount_tax', '=', 0), ('group_payment', '=', False)]}"/>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

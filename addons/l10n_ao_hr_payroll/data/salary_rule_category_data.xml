@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Salary Rule Categories -->
+    <data noupdate="1">
+        <record id="hr_salary_rule_category_base" model="hr.salary.rule.category">
+            <field name="code">BAS</field>
+            <field name="name">Base</field>
+        </record>
+
+        <record id="hr_salary_rule_category_horas_extras" model="hr.salary.rule.category">
+            <field name="code">HEXTRA</field>
+            <field name="name">Horas Extras</field>
+        </record>
+
+        <record id="hr_salary_rule_category_faltas" model="hr.salary.rule.category">
+            <field name="code">FALTA</field>
+            <field name="name">Faltas</field>
+        </record>
+
+        <record id="hr_salary_rule_category_abonos" model="hr.salary.rule.category">
+            <field name="code">ABO</field>
+            <field name="name">Abonos</field>
+        </record>
+
+        <record id="hr_salary_rule_category_grat" model="hr.salary.rule.category">
+            <field name="code">GRAT</field>
+            <field name="name">Gratificações</field>
+        </record>
+
+        <record id="hr_salary_rule_category_deducoes" model="hr.salary.rule.category">
+            <field name="code">DED</field>
+            <field name="name">Deduções</field>
+        </record>
+
+        <record id="hr_salary_rule_category_inss" model="hr.salary.rule.category">
+            <field name="code">INSS</field>
+            <field name="name">Segurança Social</field>
+        </record>
+
+         <record id="hr_salary_rule_category_inss_collect" model="hr.salary.rule.category">
+            <field name="code">INSSCOLLECT</field>
+            <field name="name">Materia coletável Segurança Social</field>
+        </record>
+
+        <record id="hr_salary_rule_category_soc" model="hr.salary.rule.category">
+            <field name="code">SOC</field>
+            <field name="name">SOCIEDADE</field>
+        </record>
+
+        <record id="hr_salary_rule_category_irt" model="hr.salary.rule.category">
+            <field name="code">IRT</field>
+            <field name="name">Imposto do Rendimento de Trabalho</field>
+        </record>
+
+        <record id="hr_salary_rule_category_iliquid" model="hr.salary.rule.category">
+            <field name="code">GROSS</field>
+            <field name="name">Ilíquido</field>
+        </record>
+
+        <record id="hr_salary_rule_category_liquid" model="hr.salary.rule.category">
+            <field name="code">NET</field>
+            <field name="name">Líquido</field>
+        </record>
+    </data>
+</odoo>

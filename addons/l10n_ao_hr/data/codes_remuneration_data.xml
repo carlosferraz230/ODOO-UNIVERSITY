@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="hr_remuneration_code_abonodefamlia" model="hr.remuneration.code">
+            <field name="code">sub_fam</field>
+            <field name="name">Abono de Família</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_another_allowance" model="hr.remuneration.code">
+            <field name="code">sub_allowance</field>
+            <field name="name">Outros Benefícios</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_subholiday" model="hr.remuneration.code">
+            <field name="code">sub_fer</field>
+            <field name="name">Subsídio de Férias</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_decterceiro" model="hr.remuneration.code">
+            <field name="code">sub_dec_terceiro</field>
+            <field name="name">Decimo Terceiro</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_subsdionatal" model="hr.remuneration.code">
+            <field name="code">sub_nat</field>
+            <field name="name">Subsídio de Natal</field>
+            <field name="type">remuneration</field>
+        </record>
+
+
+        <record id="hr_remuneration_code_comissao" model="hr.remuneration.code">
+            <field name="code">comissao</field>
+            <field name="name">Comissões</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_licencamaternidade" model="hr.remuneration.code">
+            <field name="code">sub_lm</field>
+            <field name="name">Licença de Maternidade</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_retroativos" model="hr.remuneration.code">
+            <field name="code">sub_retro</field>
+            <field name="name">Retroativos</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_renda" model="hr.remuneration.code">
+            <field name="code">sub_renda</field>
+            <field name="name">Subsídio de Renda</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_subsdiodealeitamento" model="hr.remuneration.code">
+            <field name="code">sub_aleit</field>
+            <field name="name">Subsídio de Aleitamento</field>
+            <field name="type">remuneration</field>
+        </record>
+        <record id="hr_remuneration_code_holiday_do_not_use" model="hr.remuneration.code">
+            <field name="code">sub_holiday_not_use</field>
+            <field name="name">Férias Não Gozadas</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_subsdiodeprodutividade" model="hr.remuneration.code">
+            <field name="code">sub_prod</field>
+            <field name="name">Abono de Produtividade</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_subsdiodealimentao" model="hr.remuneration.code">
+            <field name="code">sub_ali</field>
+            <field name="name">Subsídio de Alimentação</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_subsdiodechefia" model="hr.remuneration.code">
+            <field name="code">sub_chef</field>
+            <field name="name">Subsídio de Chefia</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_subsdiodecombustvel" model="hr.remuneration.code">
+            <field name="code">sub_comb</field>
+            <field name="name">Subsídio de Combustível</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_subsdiodecomunicao" model="hr.remuneration.code">
+            <field name="code">sub_com</field>
+            <field name="name">Subsídio de Comunicação</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_subsdiodefalhas" model="hr.remuneration.code">
+            <field name="code">sub_fal</field>
+            <field name="name">Subsídio de Falhas</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_subsdioderisco" model="hr.remuneration.code">
+            <field name="code">sub_ris</field>
+            <field name="name">Subsídio de Risco</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_subsdiodesupervisao" model="hr.remuneration.code">
+            <field name="code">sub_sup</field>
+            <field name="name">Subsídio de Supervisão</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_subsdiodetransporte" model="hr.remuneration.code">
+            <field name="code">sub_trans</field>
+            <field name="name">Subsídio de Transporte</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_subsidionoturno" model="hr.remuneration.code">
+            <field name="code">sub_not</field>
+            <field name="name">Subsídio Noturno</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_atavio" model="hr.remuneration.code">
+            <field name="code">sub_atav</field>
+            <field name="name">Subsídio Atavio</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_renda_casa" model="hr.remuneration.code">
+            <field name="code">sub_ren_casa</field>
+            <field name="name">Subsídio de Renda de Casa</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_sub_represent" model="hr.remuneration.code">
+            <field name="code">sub_represent</field>
+            <field name="name">Subsídio de Representação</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_premio" model="hr.remuneration.code">
+            <field name="code">premio</field>
+            <field name="name">Premios</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_recisao" model="hr.remuneration.code">
+            <field name="code">recisao</field>
+            <field name="name">Compensação Por Rescisão</field>
+            <field name="type">remuneration</field>
+        </record>
+
+        <record id="hr_remuneration_code_remb_despesa" model="hr.remuneration.code">
+            <field name="code">remb_despesa</field>
+            <field name="name">Reembolso de Despesas</field>
+            <field name="type">remuneration</field>
+        </record>
+
+    </data>
+</odoo>

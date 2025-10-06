@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Remuneratio Codes -->
+    <data noupdate="1">
+        <record id="hr_remuneration_code_descontopordanos" model="hr.remuneration.code">
+            <field name="code">des_danos</field>
+            <field name="name">Desconto por Danos</field>
+            <field name="type">deduction</field>
+        </record>
+        <record id="hr_remuneration_code_descontobaixamedica" model="hr.remuneration.code">
+            <field name="code">des_baixa_medica</field>
+            <field name="name">Desconto por Baixa médica</field>
+            <field name="type">deduction</field>
+        </record>
+
+        <record id="hr_remuneration_code_desloan" model="hr.remuneration.code">
+            <field name="code">des_loan</field>
+            <field name="name">Outros Adiantamentos</field>
+            <field name="type">deduction</field>
+        </record>
+        <record id="hr_remuneration_code_desother" model="hr.remuneration.code">
+            <field name="code">des_other</field>
+            <field name="name">Outros Descontos</field>
+            <field name="type">deduction</field>
+        </record>
+
+        <record id="hr_remuneration_code_descontoextraviomaterial" model="hr.remuneration.code">
+            <field name="code">des_extravio_material</field>
+            <field name="name">Desconto por extravio de material</field>
+            <field name="type">deduction</field>
+        </record>
+
+        <record id="hr_remuneration_code_descontoadiantamentosalarial" model="hr.remuneration.code">
+            <field name="code">des_adiantamento_salarial</field>
+            <field name="name">Desconto Adiantamento Salarial</field>
+            <field name="type">deduction</field>
+        </record>
+
+        <record id="hr_remuneration_code_descontoalimentacao" model="hr.remuneration.code">
+            <field name="code">des_ali</field>
+            <field name="name">Desconto de Alimentação</field>
+            <field name="type">deduction</field>
+        </record>
+
+    </data>
+</odoo>

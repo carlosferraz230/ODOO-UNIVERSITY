@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_saft_report_purchase" model="ir.actions.report">
+        <field name="name">saft_purchase</field>
+        <field name="model">saft.ao.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">l10n_ao_saft.saft_report_purchase</field>
+        <field name="report_file">l10n_ao_saft.saft_report_purchase</field>
+    </record>
+
+     <!--   COMPANY ADDRESS TEMPLATE     -->
+
+    <template id="l10n_ao_saft.saft_report_purchase_address">
+        <CompanyAddress>
+            <BuildingNumber>N/A</BuildingNumber>
+            <StreetName t-if="partner_address.street" t-esc="partner_address.street[:70]"/>
+            <AddressDetail t-if="partner_address.street" t-esc="partner_address.street[:70]"/>
+            <City t-esc="partner_address.city"/>
+            <PostalCode t-esc="partner_address.zip"/>
+            <Province t-esc="partner_address.city"/>
+            <Country t-if="partner_address.country_id" t-esc="partner_address.country_id.code"/>
+        </CompanyAddress>
+    </template>
+
+    <!--   COMPANY ADDRESS TEMPLATE     -->
+
+    <template id="l10n_ao_saft.saft_report_purchase_address">
+        <CompanyAddress>
+            <BuildingNumber>N/A</BuildingNumber>
+            <StreetName t-if="res_company.street" t-esc="res_company.street[:70]"/>
+            <AddressDetail t-if="res_company.street" t-esc="res_company.street[:70]"/>
+            <City t-esc="res_company.city"/>
+            <PostalCode t-esc="res_company.zip"/>
+            <Province t-esc="res_company.city"/>
+            <t t-if="res_company.country_id"  t-esc="res_company.country_id"/>
+            <Country t-if="res_company.country_id" t-esc="res_company.country_id.code"/>
+        </CompanyAddress>
+    </template>
+
+    <!--   SHIP FROM ADDRESS TEMPLATE      -->
+
+
+    <template id="l10n_ao_saft.saft_report_purchase_Ship_Address">
+        <ShipFromAddress>
+            <BuildingNumber>N/A</BuildingNumber>
+            <StreetName  t-if="res_company.street" t-esc="res_company.street[:70]"/>
+            <AddressDetail t-if="res_company.street" t-esc="res_company.street[:70]"/>
+            <City t-esc="res_company.city"/>
+            <PostalCode t-esc="res_company.zip"/>
+            <Province t-esc="res_company.city"/>
+            <Country t-if="res_company.country_id" t-esc="res_company.country_id.code"/>
+        </ShipFromAddress>
+    </template>
+
+
+    <!-- SUPPLIER INFORMATION TEMPLATE -->
+
+    <template id="l10n_ao_saft.address">
+        <AddressDetail t-if="res_company.street2" t-esc="res_company.street2[:70]"/>
+        <City t-esc="res_company.city"/>
+        <PostalCode t-esc="res_company.zip"/>
+        <Country t-if="res_company.country_id" t-esc="partner_address.country_id"/>
+    </template>
+    <template id="l10n_ao_saft.addresses_contacts">
+        <BillingAddress>
+            <BuildingNumber>N/A</BuildingNumber>
+            <StreetName  t-if="res_company.street2" t-esc="res_company.street2[:70]"/>
+            <AddressDetail t-if="res_company.street" t-esc="res_company.street[:70]"/>
+            <City t-esc="res_company.city"/>
+            <PostalCode t-esc="res_company.zip"/>
+            <Province t-esc="res_company.city"/>
+            <Country t-if="res_company.country_id" t-esc="res_company.country_id.code"/>
+        </BillingAddress>
+    </template>
+
+      <!-- SUPPLIER INFORMATION TEMPLATE -->
+
+    <template id="l10n_ao_saft.saft_report_supplier">
+        <Supplier>
+            <SupplierID>FT</SupplierID>
+            <AccountID>Desconhecido</AccountID>
+            <SupplierTaxID>999999999</SupplierTaxID>
+            <CompanyName  t-if="res_company.name" t-esc="res_company.name"/>
+            <t t-call="l10n_ao_saft.addresses_contacts"/>
+            <t t-call="l10n_ao_saft.saft_report_purchase_Ship_Address"/>
+            <Email>consumidor@email.com</Email>
+            <Website>www.consumidorfinal.co.ao</Website>
+            <SelfBillingIndicator>0</SelfBillingIndicator>
+        </Supplier>
+    </template>
+
+      <!-- ADDRESS CONTACTS TEMPLATE -->
+
+    <template id="l10n_ao_saft.saft_report_addresses_contacts">
+        <ProductCompanyTaxID>
+            <t t-esc="res_company.product_company_tax_id"/>
+        </ProductCompanyTaxID>
+        <SoftwareValidationNumber>
+            <t t-esc="res_company.agt_cert_number"/>
+        </SoftwareValidationNumber>
+        <ProductiD>
+            <t t-esc="res_company.agt_product_name"/>
+        </ProductiD>
+        <ProductVersion>
+            <t t-esc="res_company.agt_product_version"/>
+        </ProductVersion>
+        <HeaderComment>false</HeaderComment>
+        <Telephone>
+            <t t-esc="res_company.phone"/>
+        </Telephone>
+        <Email>
+            <t t-esc="res_company.email"/>
+        </Email>
+        <Website>
+            <t t-esc="res_company.product_company_website"/>
+        </Website>
+    </template><!-- Generic template to fill details about the company.
+        To be called with 'company' set as a res.company record.	company_registry
+        -->
+
+          <!-- HEADER TEMPLATE FOR SAFT-->
+
+
+    <template id="l10n_ao_saft.saft_report_purchase">
+        <AuditFile>
+            <Header>
+                <AuditFileVersion t-esc="res_company.audit_file_version"/>
+                <CompanyID t-esc="res_company.company_registry"/>
+                <TaxRegistrationNumber t-esc="res_company.vat"/>
+                <TaxAccountingBasis>A</TaxAccountingBasis>
+                <CompanyName t-if="res_company.name" t-esc="res_company.name"/>
+                <BusinessName t-esc="res_company.product_company_name"/>
+                <CompanyAddress>
+                    <BuildingNumber>N/A</BuildingNumber>
+                    <StreetName t-if="res_company.street" t-esc="res_company.street[:70]"/>
+                    <AddressDetail t-if="res_company.street2" t-esc="res_company.street2[:70]"/>
+                    <City t-esc="res_company.city"/>
+                    <PostalCode t-esc="res_company.zip"/>
+                    <Province t-esc="res_company.city"/>
+                    <Country t-if="res_company.country_id" t-esc="res_company.country_id.code"/>
+                </CompanyAddress>
+                <FiscalYear t-esc="fiscal_year"/>
+                <StartDate t-esc="date_from"/>
+                <EndDate t-esc="date_to"/>
+                <CurrencyCode t-esc="res_company.currency_id.display_name"/>
+                <DateCreated t-esc="date_to"/>
+                <TaxEntity>Global</TaxEntity>
+                <ProductCompanyTaxID t-esc="res_company.product_company_tax_id"/>
+                <SoftwareValidationNumber t-esc="res_company.agt_cert_number"/>
+                <ProductiD>ODOO - CBS/HS/CENTRAL BUSINESS SOLUTIONS, LDA</ProductiD>
+                <ProductVersion>15.0</ProductVersion>
+                <HeaderComment>false</HeaderComment>
+                <Telephone t-esc="res_company.phone"/>
+                <Email t-esc="res_company.email"/>
+                <Website t-esc="res_company.product_company_website"/>
+            </Header>
+
+            <!-- MASTER FILES  TEMPLATE FOR SAFT-->
+
+            <MasterFiles>
+                <t t-call="l10n_ao_saft.saft_report_supplier"/>
+                <TaxTable t-if="tax_table">
+                    <TaxTableEntry t-foreach="tax_table" t-as="tax_vals">
+                        <TaxType t-esc="tax_vals['tax_type']"/>
+                        <TaxCountryRegion t-esc="tax_vals['tax_country_region']"/>
+                        <TaxCode t-esc="tax_vals['tax_code']"/>
+                        <Description t-esc="tax_vals['description']"/>
+                        <TaxPercentage t-esc="tax_vals['tax_percentage']"/>
+                    </TaxTableEntry>
+                </TaxTable>
+            </MasterFiles>
+            <SourceDocuments>
+                <PurchaseInvoices>
+                    <NumberOfEntries t-esc="purchase_invoices['number_of_entries']"/>
+                    <Invoice t-foreach="purchase_invoices['invoices_p']" t-as="move_vals">
+                        <InvoiceNo t-esc="move_vals['invoice_no']"/>
+                        <Hash t-esc="move_vals['hash']"/>
+                        <SourceID t-esc="move_vals['source_id']"/>
+                        <Period t-esc="move_vals['period']"/>
+                        <InvoiceDate t-esc="move_vals['invoice_date']"/>
+                        <PurchaseType t-esc="move_vals['invoice_type']"/>
+                        <SupplierID>FT</SupplierID>
+                        <DocumentTotals>
+                            <TaxPayable t-esc="move_vals['document_totals']['tax_payable']"/>
+                            <NetTotal t-esc="move_vals['document_totals']['net_total']"/>
+                            <GrossTotal t-esc="move_vals['document_totals']['gross_total']"/>
+                            <!--<Deductible>
+                                <TaxBase>1965771.93</TaxBase>
+                                <DeductibleAmount>1228.07</DeductibleAmount>
+                                <DeductiblePercentage>0</DeductiblePercentage>
+                                <DeductibleTaxType>SERV</DeductibleTaxType>
+                            </Deductible>
+                            <Payment>
+                                <PaymentMechanism t-esc="move_vals['document_totals']['payment_mechanism']"/>
+                                <PaymentAmount t-esc="move_vals['document_totals']['payment_amount']"/>
+                                <PaymentDate t-esc="move_vals['document_totals']['payment_date']"/>
+                            </Payment>-->
+                        </DocumentTotals>
+                        <WithholdingTax t-foreach="move_vals['withholding_tax']" t-as="vals">
+                            <WithholdingTaxType t-esc="vals['withholding_tax_type']"/>
+                            <WithholdingTaxDescription t-esc="vals['withholding_tax_description']"/>
+                            <WithholdingTaxAmount t-esc="vals['withholding_tax_amount']"/>
+                        </WithholdingTax>
+                    </Invoice>
+                </PurchaseInvoices>
+            </SourceDocuments>
+        </AuditFile>
+    </template>
+</odoo>

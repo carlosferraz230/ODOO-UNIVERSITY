@@ -1,0 +1,777 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="m02" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">MO2</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Transmissão de bens e serviços não sujeita</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m04" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">MO4</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">IVA - Regime de não sujeição</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m10" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">M10</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Isento Artigo 12º a) do CIVA</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m11" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">M11</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Isento Artigo 12º b) do CIVA</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m12" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">M12</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Isento Artigo 12º c) do CIVA</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m13" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">M13</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Isento Artigo 12º d) do CIVA</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m14" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">M14</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Isento Artigo 12º e) do CIVA</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m15" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">M15</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Isento Artigo 12º f) do CIVA</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m16" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">M16</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Isento Artigo 12º g) do CIVA</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m17" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">M17</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Isento Artigo 12º h) do CIVA</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m18" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">M18</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Isento Artigo 12º i) do CIVA</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m19" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">M19</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Isento Artigo 12º j) do CIVA</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m20" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">M20</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Isento Artigo 12º k) do CIVA</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m30" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">M30</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Isento Artigo 15º a) do CIVA</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m31" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">M31</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Isento Artigo 15º b) do CIVA</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m32" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">M32</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Isento Artigo 15º c) do CIVA</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m33" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">M33</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Isento Artigo 15º d) do CIVA</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m34" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">M34</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Isento Artigo 15º e) do CIVA</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m35" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">M35</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Isento Artigo 15º f) do CIVA</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m36" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">M36</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Isento Artigo 15º g) do CIVA</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m37" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">M37</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Isento Artigo 15º h) do CIVA</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+        <record id="m38" model="account.tax.template">
+            <field name="chart_template_id" ref="ao_chart_template" />
+            <field name="active">True</field>
+            <field name="name">M38</field>
+            <field name="description">IVA 0</field>
+            <field name="amount">0</field>
+            <field name="tax_type">NS</field>
+            <field name="tax_code">ISE</field>
+            <field name="amount_type">percent</field>
+            <field name="exemption_reason">Isento Artigo 15º i) do CIVA</field>
+            <field name="tax_group_id" ref="tax_group_total" />
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('account_chart_345'),
+            }),
+        ]" />
+        </record>
+
+    </data>
+
+</odoo>

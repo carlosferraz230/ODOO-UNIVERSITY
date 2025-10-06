@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="seq_employee_number" model="ir.sequence">
+            <field name="name">Employee number sequence</field>
+            <field name="code">hr.employee</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record id="seq_automatic_contract" model="ir.sequence">
+            <field name="name">Contract sequence</field>
+            <field name="code">hr.contract</field>
+            <field name="prefix">CD/%(range_year)s/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

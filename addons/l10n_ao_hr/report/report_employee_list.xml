@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+
+        <template id="report_employee_lista_colaboradores_pdf">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+
+                            <style type="text/css">
+                                .container2 {
+                                height: 8cm;
+                                /* Width and count aren't respected, but you
+                                have to give at least some dummy value (??). */
+                                /* This is the strange way to define the number of columns:
+                                50% = 2 columns, 33% = 3 columns 25% = 4 columns */
+                                -webkit-columns: 0 0; width: 25%;
+                                /* Gap and rule do work. */
+                                -webkit-column-gap: 1em;
+                                text-align: justify;
+                                }
+                                .text-center {text-align:center;}
+                                .text-left {text-align:left;}
+                                .text-right {text-align:right;}
+                                .conteudo
+                                {
+                                border-collapse: collapse;
+                                width:100%; font-size:12px;
+                                min-height:900px;
+                                border-bottom:0px !important;
+                                border-top:0px !important;
+                                border:none !important;
+                                }
+
+                                .table-borderless{
+                                border-bottom:0px !important;
+                                border-top:0px !important;
+                                border:none !important;
+                                }
+
+                                .table{
+                                border-bottom:0px !important;
+                                border-top:0px !important;
+                                border:none !important;
+                                }
+
+                                .conteudo > tr > th, td, th { min-width:12px;
+                                line-height: 1;
+                                vertical-align: top;
+                                padding: 4px !important;
+                                margin: 4px !important;
+                                border-bottom:0px !important;
+                                border-top:0px !important;
+                                border:none !important;
+                                }
+
+                                .name{width:250px;}
+                                .borda{
+                                border-bottom: solid 1px #000;
+                                border-collapse: separate;
+                                }
+
+                            </style>
+
+                            <div class="oe_structure" style="font-size:12px;">
+
+                                <b align="center">
+                                    <h3>LISTA DE COLABORADORES</h3>
+                                </b>
+                                <br/>
+                                <div class="col-6">
+                                    <table class="table">
+                                        <tr>
+                                            <td>Data de Impressão:</td>
+                                            <td><span t-esc="time.strftime('%d-%m-%Y %H:%M:%S')"/></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="col-6">
+
+                                </div>
+
+                                <div class="col-12">
+                                    <br/>
+                                    <table class="table table-condensed conteudo border-collapse">
+
+                                            <tr style="font-size: 12px; font-weight:bold; background-color:#337AB7; color:#ffffff;">
+                                                <th>Nº</th>
+                                                <th>Nome</th>
+                                                <th>Departamento</th>
+                                                <th>Cargo</th>
+                                                <th>Telefone</th>
+                                                <th>Email</th>
+                                            </tr>
+
+                                        <t t-foreach="o.get_all_employee_list()" t-as="employee">
+                                            <tr>
+                                                <td>
+                                                    <span t-field="employee.employee_number"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="employee.name"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="employee.department_id"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="employee.job_id"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="employee.work_phone"/>
+                                                </td>
+                                                <td>
+                                                    <span t-field="employee.work_email"/>
+                                                </td>
+                                            </tr>
+
+                                        </t>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

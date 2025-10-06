@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record id="account_financial_report_line_ao_balanco" model="account.financial.html.report">
+        <field name="name">Balanço</field>
+        <field name="unfold_all_filter" eval="True"/>
+        <field name="date_range" eval="False"/>
+        <field name="show_journal_filter" eval="True"/>
+        <field name='parent_id' ref='l10n_ao.account_reports_ao_statements_menu'/>
+        <field name="country_id" ref="base.ao"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_ativo" model="account.financial.html.report.line">
+        <field name="name">ACTIVO</field>
+        <field name="code">ACTIVO</field>
+        <field name="level" eval="1"/>
+        <field name="sequence" eval="1"/>
+        <field name="financial_report_id" ref="account_financial_report_line_ao_balanco"/>
+        <field name="formulas">ANC + AC</field>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_ativo_nao_corrente" model="account.financial.html.report.line">
+        <field name="name">Activo não corrente</field>
+        <field name="code">ANC</field>
+        <field name="level" eval="2"/>
+        <field name="sequence" eval="1"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_balanco_ativo"/>
+        <field name="formulas">IC + II + ISA + OANC</field>
+    </record>
+
+    <record id="account_financial_report_l10n_ao_balanco_imobilizacoes_corporeas" model="account.financial.html.report.line">
+        <field name="name">Imobilizações corpóreas</field>
+        <field name="code">IC</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="1"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_balanco_ativo_nao_corrente"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="[('account_id.code', '=like', '11%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_imobilizacoes_incorporeas" model="account.financial.html.report.line">
+        <field name="name">Imobilizações incorpóreas</field>
+        <field name="code">II</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="2"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_balanco_ativo_nao_corrente"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="[('account_id.code', '=like', '12%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_investimentos_subsidiarias" model="account.financial.html.report.line">
+        <field name="name">Investimentos em subsidiárias e associadas</field>
+        <field name="code">ISA</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="3"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_balanco_ativo_nao_corrente"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="['|',
+            ('account_id.code', '=like', '131%'),
+            ('account_id.code', '=like', '132')]"
+        />
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_outros_ativos_financeiros" model="account.financial.html.report.line">
+        <field name="name">Outros activos financeiros</field>
+        <field name="code">OAF</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="4"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_balanco_ativo_nao_corrente"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="['|',
+            ('account_id.code', '=like', '133%'),
+            '|',
+            ('account_id.code', '=like', '134'),
+            '|',
+            ('account_id.code', '=like', '135'),
+            ('account_id.code', '=like', '139%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_outros_ativos_nao_correntes" model="account.financial.html.report.line">
+        <field name="name">Outros activos não correntes</field>
+        <field name="code">OANC</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="5"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_balanco_ativo_nao_corrente"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="['|',
+            ('account_id.code', '=like', '14%'),
+            ('account_id.code', '=like', '19%')
+        ]"/>
+    </record>
+
+
+    <record id="account_financial_report_line_ao_balanco_ativo_corrente" model="account.financial.html.report.line">
+        <field name="name">Activo corrente</field>
+        <field name="code">AC</field>
+        <field name="level" eval="2"/>
+        <field name="sequence" eval="2"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_balanco_ativo"/>
+        <field name="formulas">EXISTENCIAS + CAR + DISPONIBILIDADES + OAC</field>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_existencias" model="account.financial.html.report.line">
+        <field name="name">Existências</field>
+        <field name="code">EXISTENCIAS</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="1"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_balanco_ativo_corrente"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="[
+            ('account_id.code', '=like', '2%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_contas_receber" model="account.financial.html.report.line">
+        <field name="name">Contas a receber</field>
+        <field name="code">CAR</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="2"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_balanco_ativo_corrente"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="['|','|','|','|','|','|','|','|','|','|','|','|',
+            ('account_id.code', '=like', '31%'),
+            ('account_id.code', '=like', '329%'),
+            ('account_id.code', '=like', '3417%'),
+            ('account_id.code', '=like', '3432%'),
+            ('account_id.code', '=like', '3452%'),
+            ('account_id.code', '=like', '3454%'),
+            ('account_id.code', '=like', '3455%'),
+            ('account_id.code', '=like', '3457%'),
+            ('account_id.code', '=like', '3458%'),
+            ('account_id.code', '=like', '351%'),
+            ('account_id.code', '=like', '363%'),
+            ('account_id.code', '=like', '372%'),
+            ('account_id.code', '=like', '3791%')
+        ]"/>
+    </record>
+
+
+    <record id="account_financial_report_line_ao_balanco_disponibilidades" model="account.financial.html.report.line">
+        <field name="name">Disponibilidades</field>
+        <field name="code">DISPONIBILIDADES</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="3"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_balanco_ativo_corrente"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="[
+            ('account_id.code', '=like', '4%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_outros_ativos_correntes" model="account.financial.html.report.line">
+        <field name="name">Outros activos correntes</field>
+        <field name="code">OAC</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="4"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_balanco_ativo_corrente"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="['|',
+            ('account_id.code', '=like', '373%'),
+            ('account_id.code', '=like', '374%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_capital_proprio_passivo" model="account.financial.html.report.line">
+        <field name="name">CAPITAL PRÓPRIO E PASSIVO</field>
+        <field name="code">CPP</field>
+        <field name="level" eval="1"/>
+        <field name="sequence" eval="2"/>
+        <field name="financial_report_id" ref="account_financial_report_line_ao_balanco"/>
+        <field name="formulas">CP + PNC + PC</field>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_capital_proprio" model="account.financial.html.report.line">
+        <field name="name">Capital Próprio</field>
+        <field name="code">CP</field>
+        <field name="level" eval="2"/>
+        <field name="sequence" eval="1"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_balanco_capital_proprio_passivo"/>
+        <field name="formulas">CAPITAL + RESERVAS + RT + RE</field>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_capital" model="account.financial.html.report.line">
+        <field name="name">Capital</field>
+        <field name="code">CAPITAL</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="1"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_balanco_capital_proprio"/>
+        <field name="formulas">-sum</field>
+         <field name="domain" eval="[
+            '|',
+            ('account_id.code', '=like', '51%'),
+            '|',
+            ('account_id.code', '=like', '52%'),
+            '|',
+            ('account_id.code', '=like', '53%'),
+            ('account_id.code', '=like', '54%')
+        ]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_reservas" model="account.financial.html.report.line">
+        <field name="name">Reservas</field>
+        <field name="code">RESERVAS</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="2"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_balanco_capital_proprio"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="['|',
+            ('account_id.code', '=like', '55%'),
+            '|',
+            ('account_id.code', '=like', '56%'),
+            '|',
+            ('account_id.code', '=like', '57%'),
+            ('account_id.code', '=like', '58%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_resultados_transitados" model="account.financial.html.report.line">
+        <field name="name">Resultados transitados</field>
+        <field name="code">RT</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="3"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_balanco_capital_proprio"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="[('account_id.code', '=like', '81%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_resultados_exercicio" model="account.financial.html.report.line">
+        <field name="name">Resultados do exercício</field>
+        <field name="code">RE</field>
+        <field name="level" eval="3"/>
+        <field name="sequence" eval="4"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_balanco_capital_proprio"/>
+        <field name="formulas">-sum</field>
+        <field name="domain" eval="[('account_id.code', '=like', '61%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_passivo_nao_corrente" model="account.financial.html.report.line">
+        <field name="name">Passivo não corrente</field>
+        <field name="code">PNC</field>
+        <field name="level" eval="2"/>
+        <field name="sequence" eval="2"/>
+        <field name="parent_id" ref="account_financial_report_line_ao_balanco_capital_proprio_passivo"/>
+        <field name="formulas">EMLP + ID + PP + PORE + OPNC</field>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_emprestimos_medio_longo_prazo" model="account.financial.html.report.line">
+            <field name="name">Empréstimos de médio e longo prazos</field>
+            <field name="code">EMLP</field>
+            <field name="level" eval="3"/>
+            <field name="sequence" eval="1"/>
+            <field name="parent_id" ref="account_financial_report_line_ao_balanco_passivo_nao_corrente"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[('account_id.code', '=like', '33%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_impostos_diferidos" model="account.financial.html.report.line">
+            <field name="name">Impostos diferidos</field>
+            <field name="code">ID</field>
+            <field name="level" eval="3"/>
+            <field name="sequence" eval="2"/>
+            <field name="parent_id" ref="account_financial_report_line_ao_balanco_passivo_nao_corrente"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[('account_id.code', '=like', '34%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_provisoes_para_pensoes" model="account.financial.html.report.line">
+            <field name="name">Provisões para pensões</field>
+            <field name="code">PP</field>
+            <field name="level" eval="3"/>
+            <field name="sequence" eval="3"/>
+            <field name="parent_id" ref="account_financial_report_line_ao_balanco_passivo_nao_corrente"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[('account_id.code', '=like', '391%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_provisoes_outros_riscos_encargos" model="account.financial.html.report.line">
+            <field name="name">Provisões para outros riscos e encargos</field>
+            <field name="code">PORE</field>
+            <field name="level" eval="3"/>
+            <field name="sequence" eval="4"/>
+            <field name="parent_id" ref="account_financial_report_line_ao_balanco_passivo_nao_corrente"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[
+            '|',
+            ('account_id.code', '=like', '392%'),
+            '|',
+            ('account_id.code', '=like', '393%'),
+            '|',
+            ('account_id.code', '=like', '394%'),
+            ('account_id.code', '=like', '399%')
+        ]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_outros_passivos_nao_correntes" model="account.financial.html.report.line">
+    <field name="name">Outros passivos não correntes</field>
+    <field name="code">OPNC</field>
+    <field name="level" eval="3"/>
+    <field name="sequence" eval="5"/>
+    <field name="parent_id" ref="account_financial_report_line_ao_balanco_passivo_nao_corrente"/>
+    <field name="formulas">-sum</field>
+    <field name="domain" eval="[
+        '|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|','|',
+        ('account_id.code', '=like', '319%'),
+        ('account_id.code', '=like', '321%'),
+        ('account_id.code', '=like', '322%'),
+        ('account_id.code', '=like', '324%'),
+        ('account_id.code', '=like', '328%'),
+        ('account_id.code', '=like', '3411%'),
+        ('account_id.code', '=like', '3412%'),
+        ('account_id.code', '=like', '3413%'),
+        ('account_id.code', '=like', '3415%'),
+        ('account_id.code', '=like', '3416%'),
+        ('account_id.code', '=like', '3421%'),
+        ('account_id.code', '=like', '3431%'),
+        ('account_id.code', '=like', '3441%'),
+        ('account_id.code', '=like', '3451%'),
+        ('account_id.code', '=like', '3453%'),
+        ('account_id.code', '=like', '3454%'),
+        ('account_id.code', '=like', '3455%'),
+        ('account_id.code', '=like', '3456%'),
+        ('account_id.code', '=like', '3459%'),
+        ('account_id.code', '=like', '352%'),
+        ('account_id.code', '=like', '361%'),
+        ('account_id.code', '=like', '362%'),
+        ('account_id.code', '=like', '369%'),
+        ('account_id.code', '=like', '371%'),
+        ('account_id.code', '=like', '375%'),
+        ('account_id.code', '=like', '376%'),
+        ('account_id.code', '=like', '377%'),
+        ('account_id.code', '=like', '38%'),
+        ('account_id.code', '=like', '39%')
+    ]"/>
+</record>
+
+    <record id="account_financial_report_line_ao_balanco_passivo_corrente" model="account.financial.html.report.line">
+            <field name="name">Passivo corrente</field>
+            <field name="code">PC</field>
+            <field name="level" eval="2"/>
+            <field name="sequence" eval="3"/>
+            <field name="parent_id" ref="account_financial_report_line_ao_balanco_capital_proprio_passivo"/>
+            <field name="formulas">CAP + ECP + PCEMLP +OPC </field>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_contas_pagar" model="account.financial.html.report.line">
+            <field name="name">Contas a pagar</field>
+            <field name="code">CAP</field>
+            <field name="level" eval="3"/>
+            <field name="sequence" eval="1"/>
+            <field name="parent_id" ref="account_financial_report_line_ao_balanco_passivo_corrente"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="['|',
+            ('account_id.code', '=like', '319%'), '|',('account_id.code', '=like', '321%'), '|', ('account_id.code', '=like', '322%'),
+            '|', ('account_id.code', '=like', '324%'), '|', ('account_id.code', '=like', '328%'), '|', ('account_id.code', '=like', '3411%'),
+            '|', ('account_id.code', '=like', '3412%'), '|', ('account_id.code', '=like', '3413%'), '|', ('account_id.code', '=like', '3415%'),
+            '|', ('account_id.code', '=like', '3416%'), '|', ('account_id.code', '=like', '3421%'), '|', ('account_id.code', '=like', '3431%'),
+            '|', ('account_id.code', '=like', '3441%'), '|', ('account_id.code', '=like', '3451%'), '|', ('account_id.code', '=like', '3453%'),
+            '|', ('account_id.code', '=like', '3454%'), '|', ('account_id.code', '=like', '3455%'), '|', ('account_id.code', '=like', '3456%'),
+            '|', ('account_id.code', '=like', '3459%'), '|', ('account_id.code', '=like', '352%'), '|', ('account_id.code', '=like', '361%'),
+            '|', ('account_id.code', '=like', '362%'), '|', ('account_id.code', '=like', '369%'), '|', ('account_id.code', '=like', '371%'),
+            '|', ('account_id.code', '=like', '377%'), ('account_id.code', '=like', '3792%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_emprestimo_curto_prazo" model="account.financial.html.report.line">
+            <field name="name">Empréstimo de curto prazo</field>
+            <field name="code">ECP</field>
+            <field name="level" eval="3"/>
+            <field name="sequence" eval="2"/>
+            <field name="parent_id" ref="account_financial_report_line_ao_balanco_passivo_corrente"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[('account_id.code', '=like', '33%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_part_cor_empr_medio_longo_prazos" model="account.financial.html.report.line">
+            <field name="name">Parte cor. dos empr. a médio e longo prazos</field>
+            <field name="code">PCEMLP</field>
+            <field name="level" eval="3"/>
+            <field name="sequence" eval="3"/>
+            <field name="parent_id" ref="account_financial_report_line_ao_balanco_passivo_corrente"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="[('account_id.code', '=like', '33%')]"/>
+    </record>
+
+    <record id="account_financial_report_line_ao_balanco_outros_passivos_correntes" model="account.financial.html.report.line">
+            <field name="name">Outros passivos correntes</field>
+            <field name="code">OPC</field>
+            <field name="level" eval="3"/>
+            <field name="sequence" eval="4"/>
+            <field name="parent_id" ref="account_financial_report_line_ao_balanco_passivo_corrente"/>
+            <field name="formulas">-sum</field>
+            <field name="domain" eval="['|', ('account_id.code', '=like', '375%'), ('account_id.code', '=like', '376%')]"/>
+    </record>
+
+</odoo>

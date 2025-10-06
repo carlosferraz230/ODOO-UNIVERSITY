@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ao_salary_rule_tree_view" model="ir.ui.view">
+        <field name="name">hr.salary.rule.tree</field>
+        <field name="model">hr.salary.rule</field>
+        <field name="inherit_id" ref="hr_payroll.hr_salary_rule_list"/>
+        <field name="priority" eval="1024"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sequence']" position="after">
+                <field name="sequence_view"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="view_structure_type_tree_form" model="ir.ui.view">
+        <field name="name">hr.payroll.structure.type.form</field>
+        <field name="model">hr.payroll.structure.type</field>
+        <field name="inherit_id" ref="hr_payroll.hr_payroll_structure_type_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='country_id']" position="before">
+                <field name="type" required="1"/>
+            </xpath>
+            <xpath expr="//field[@name='default_struct_id']" position="attributes">
+                <attribute name="required">1</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="ao_payroll_structure_form_inherit" model="ir.ui.view">
+        <field name="name">hr.payroll.structure.inherit</field>
+        <field name="model">hr.payroll.structure</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_employee_grade_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//form/sheet/div[1]" position="replace">
+                <!-- Add your fields or attributes here -->
+                <group>
+                    <group>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only"/>
+                            <h1>
+                                <field name="name" class="oe_inline"/>
+                            </h1>
+                        </div>
+                    </group>
+                    <group>
+                        <div class="oe_title">
+                            <label for="code" class="oe_edit_only"/>
+                            <h1>
+                                <field name="code" class="oe_inline"/>
+                            </h1>
+                        </div>
+                    </group>
+                </group>
+
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

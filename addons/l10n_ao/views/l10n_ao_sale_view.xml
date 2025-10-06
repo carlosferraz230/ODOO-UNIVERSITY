@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_l10n_ao_sale_order_inherit_form" model="ir.ui.view">
+            <field name="name">sale.order.inherit.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="type" required="1"/>
+                </xpath>
+                <xpath expr="//field[@name='validity_date']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='authorized_transaction_ids']" position="after">
+                    <button name="print_quotation_ao" string="Imprimir" class="oe_highlight" type="object"/>
+                </xpath>
+                <xpath expr="//field[@name='tax_totals_json']" position="after">
+                    <field name="amount_total_wth" class="oe_subtotal_footer_separator"
+                           attrs="{'invisible':[('amount_total_wth','=',0)]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_l10n_ao_sale_order_inherit_tree" model="ir.ui.view">
+            <field name="name">sale.order.inherit.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="type"/>
+                </xpath>
+                <xpath expr="//field[@name='amount_total']" position="after">
+                    <field name="amount_total_wth" string="Total Retido"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

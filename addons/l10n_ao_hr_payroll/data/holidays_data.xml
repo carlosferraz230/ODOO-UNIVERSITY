@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Holidays Status -->
+    <data noupdate="1">
+        <record id="hr_leave_type_fjnr" model="hr.leave.type">
+            <field name="name">Falta Justificada Não Remunerada</field>
+            <field name="request_unit">day</field>
+            <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave"/>
+        </record>
+
+        <record id="hr_leave_type_fjr" model="hr.leave.type">
+            <field name="name">Falta Justificada Remunerada</field>
+            <field name="color">2</field>
+            <field name="request_unit">day</field>
+            <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave"/>
+        </record>
+
+        <record id="hr_leave_type_fi" model="hr.leave.type">
+            <field name="name">Falta Injustificada</field>
+            <field name="request_unit">day</field>
+            <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave"/>
+        </record>
+
+        <record id="hr_leave_type_delays" model="hr.leave.type">
+            <field name="name">Atrasos</field>
+            <field name="request_unit">hour</field>
+            <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave"/>
+        </record>
+
+          <record id="hr_leave_type_holiday_allowance" model="hr.leave.type">
+            <field name="name">Férias</field>
+            <field name="request_unit">day</field>
+            <field name="leave_notif_subtype_id" ref="hr_holidays.mt_leave"/>
+        </record>
+    </data>
+
+
+    <!-- Holidays -->
+    <data noupdate="1">
+        <record id="hr_salary_rule_fjr" model="hr.salary.rule">
+            <field name="code">FJR</field>
+            <field eval="130" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_select">python</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Falta Justificada Remunerada</field>
+            <field name="condition_python">
+result = worked_days.FJR and (worked_days.FJR.number_of_days > 0 or worked_days.FJR.number_of_hours > 0)
+            </field>
+            <field name="amount_python_compute">
+                result = 0.0
+            </field>
+            <field name="category_id" ref="l10n_ao_hr_payroll.hr_salary_rule_category_faltas"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>
+         <record id="hr_salary_rule_fjr_class_b" model="hr.salary.rule">
+            <field name="code">FJR</field>
+            <field eval="130" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_select">python</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Falta Justificada Remunerada</field>
+            <field name="condition_python">
+result = worked_days.FJR and (worked_days.FJR.number_of_days > 0 or worked_days.FJR.number_of_hours > 0)
+            </field>
+            <field name="amount_python_compute">
+                result = 0.0
+            </field>
+            <field name="category_id" ref="l10n_ao_hr_payroll.hr_salary_rule_category_faltas"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_class_b"/>
+        </record>
+
+
+        <record id="hr_salary_rule_fjnr" model="hr.salary.rule">
+            <field name="code">FJNR</field>
+            <field eval="131" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_select">python</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Falta Justificada Não Remunerada</field>
+            <field name="condition_python">
+result = worked_days.FJNR and (worked_days.FJNR.number_of_days > 0 or worked_days.FJNR.number_of_hours > 0)
+            </field>
+            <field name="amount_python_compute">
+holiday_hours = worked_days.FJNR.number_of_hours
+wage_hour = contract.wage_hour
+result = wage_hour * holiday_hours * -1.0
+            </field>
+            <field name="category_id" ref="l10n_ao_hr_payroll.hr_salary_rule_category_faltas"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>
+
+               <record id="hr_salary_rule_fjnr_classe_b" model="hr.salary.rule">
+            <field name="code">FJNR</field>
+            <field eval="131" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_select">python</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Falta Justificada Não Remunerada</field>
+            <field name="condition_python">
+result = worked_days.FJNR and (worked_days.FJNR.number_of_days > 0 or worked_days.FJNR.number_of_hours > 0)
+            </field>
+            <field name="amount_python_compute">
+holiday_hours = worked_days.FJNR.number_of_hours
+wage_hour = contract.wage_hour
+result = wage_hour * holiday_hours * -1.0
+            </field>
+            <field name="category_id" ref="l10n_ao_hr_payroll.hr_salary_rule_category_faltas"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_class_b"/>
+        </record>
+
+        <record id="hr_salary_rule_fi" model="hr.salary.rule">
+            <field name="code">FI</field>
+            <field eval="132" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_select">python</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Falta Injustificada</field>
+            <field name="condition_python">
+result = worked_days.FI and (worked_days.FI.number_of_days > 0 or worked_days.FI.number_of_hours > 0)
+            </field>
+            <field name="amount_python_compute">
+holiday_hours = worked_days.FI.number_of_hours
+wage_hour = contract.wage_hour
+result = wage_hour * holiday_hours * -1.0
+            </field>
+            <field name="category_id" ref="l10n_ao_hr_payroll.hr_salary_rule_category_faltas"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>
+
+            <record id="hr_salary_rule_fi_class_b" model="hr.salary.rule">
+            <field name="code">FI</field>
+            <field eval="132" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_select">python</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Falta Injustificada</field>
+            <field name="condition_python">
+result = worked_days.FI and (worked_days.FI.number_of_days > 0 or worked_days.FI.number_of_hours > 0)
+            </field>
+            <field name="amount_python_compute">
+holiday_hours = worked_days.FI.number_of_hours
+wage_hour = contract.wage_hour
+result = wage_hour * holiday_hours * -1.0
+            </field>
+            <field name="category_id" ref="l10n_ao_hr_payroll.hr_salary_rule_category_faltas"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_class_b"/>
+        </record>
+
+        <record id="hr_salary_rule_delays" model="hr.salary.rule">
+            <field name="code">ATRA</field>
+            <field eval="133" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_select">python</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Atrasos</field>
+            <field name="condition_python">
+result = worked_days.ATRA and (worked_days.ATRA.number_of_days > 0 or worked_days.ATRA.number_of_hours > 0)
+            </field>
+            <field name="amount_python_compute">
+holiday_hours = worked_days.ATRA.number_of_hours
+wage_hour = contract.wage_hour
+result = wage_hour * holiday_hours * -1.0
+            </field>
+            <field name="category_id" ref="l10n_ao_hr_payroll.hr_salary_rule_category_faltas"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>
+
+           <record id="hr_salary_rule_delays_class_b" model="hr.salary.rule">
+            <field name="code">ATRA</field>
+            <field eval="133" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_select">python</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Atrasos</field>
+            <field name="condition_python">
+result = worked_days.ATRA and (worked_days.ATRA.number_of_days > 0 or worked_days.ATRA.number_of_hours > 0)
+            </field>
+            <field name="amount_python_compute">
+holiday_hours = worked_days.ATRA.number_of_hours
+wage_hour = contract.wage_hour
+result = wage_hour * holiday_hours * -1.0
+            </field>
+            <field name="category_id" ref="l10n_ao_hr_payroll.hr_salary_rule_category_faltas"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_class_b"/>
+        </record>
+    </data>
+
+</odoo>

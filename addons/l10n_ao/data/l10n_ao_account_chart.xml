@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="ao_chart_template" model="account.chart.template">
+            <field name="name">Angola PGC</field>
+            <field name="bank_account_code_prefix">431</field>
+            <field name="cash_account_code_prefix">451</field>
+            <field name="transfer_account_code_prefix">481</field>
+            <field name="partner_receivable_code_prefix">311211</field>
+            <field name="partner_payable_code_prefix">32121</field>
+            <field name="fpartner_receivable_code_prefix">311221</field>
+            <field name="fpartner_payable_code_prefix">32122</field>
+            <field name="code_digits">0</field>
+            <field name="currency_id" ref="base.AOA"/>
+            <field name="country_id" ref="base.ao"/>
+        </record>
+    </data>
+</odoo>

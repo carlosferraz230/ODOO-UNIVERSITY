@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuditFile xmlns="urn:OECD:StandardAuditFile-Tax:AO_1.01_01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:OECD:StandardAuditFile-Tax:AO_1.01_01 https://raw.githubusercontent.com/assoft-portugal/SAF-T-AO/master/XSD/SAFTAO1.01_01.xsd">
+    <Header>
+        <AuditFileVersion>1.01_01</AuditFileVersion>
+        <CompanyID>5.134-17/170630</CompanyID>
+        <TaxRegistrationNumber>5417576204</TaxRegistrationNumber>
+        <TaxAccountingBasis>F</TaxAccountingBasis>
+        <CompanyName>MINHA EMPRESA, LDA.</CompanyName>
+        <BusinessName>MINHA EMPRESA, LDA.</BusinessName>
+        <CompanyAddress>
+            <BuildingNumber>S/N</BuildingNumber>
+            <StreetName>Rua de exemplo</StreetName>
+            <AddressDetail>S/N Rua de exemplo</AddressDetail>
+            <City>Luanda</City>
+            <Province>Luanda</Province>
+            <Country>AO</Country>
+        </CompanyAddress>
+        <FiscalYear>2020</FiscalYear>
+        <StartDate>2020-11-05</StartDate>
+        <EndDate>2020-11-05</EndDate>
+        <CurrencyCode>AOA</CurrencyCode>
+        <DateCreated>2020-11-05</DateCreated>
+        <TaxEntity>Global</TaxEntity>
+        <ProductCompanyTaxID>5417576204</ProductCompanyTaxID>
+        <SoftwareValidationNumber>190/AGT/2019</SoftwareValidationNumber>
+        <ProductID>ANGODOO/EUROGOLD- COM.DE MAT. INFORMATICO E CONEXOSLDA</ProductID>
+        <ProductVersion>1.FORK.12</ProductVersion>
+        <HeaderComment>ANGODOO - OPENSOURCE #1 | https://www.angodoo.com</HeaderComment>
+        <Telephone>+244923510491</Telephone>
+        <Email>info@yourcompany.com</Email>
+        <Website>https://www.suaempresa.com</Website>
+    </Header>
+    <MasterFiles>
+        <Customer>
+            <CustomerID>8</CustomerID>
+            <AccountID>31121</AccountID>
+            <CustomerTaxID>5417576204</CustomerTaxID>
+            <CompanyName>PAULO MATOS</CompanyName>
+            <BillingAddress>
+                <BuildingNumber>N/A</BuildingNumber>
+                <StreetName>Desconhecido</StreetName>
+                <AddressDetail>N/A Desconhecido</AddressDetail>
+                <City>Desconhecido</City>
+                <PostalCode>Desconhecido</PostalCode>
+                <Country>AO</Country>
+            </BillingAddress>
+            <SelfBillingIndicator>0</SelfBillingIndicator>
+        </Customer>
+        <Product>
+            <ProductType>P</ProductType>
+            <ProductCode>2</ProductCode>
+            <ProductGroup>Todas</ProductGroup>
+            <ProductDescription>[AEE-S80] PRODUTO DE EXEMPLO</ProductDescription>
+            <ProductNumberCode>2</ProductNumberCode>
+        </Product>
+        <Product>
+            <ProductType>S</ProductType>
+            <ProductCode>3</ProductCode>
+            <ProductGroup>Todas</ProductGroup>
+            <ProductDescription>[SERV] OUTRO PRODUTO - SERVIÇO</ProductDescription>
+            <ProductNumberCode>3</ProductNumberCode>
+        </Product>
+        <TaxTable>
+            <TaxTableEntry>
+                <TaxType>IVA</TaxType>
+                <TaxCountryRegion>AO</TaxCountryRegion>
+                <TaxCode>ISE</TaxCode>
+                <Description>Isento de IVA</Description>
+                <TaxPercentage>0.000000</TaxPercentage>
+            </TaxTableEntry>
+            <TaxTableEntry>
+                <TaxType>IVA</TaxType>
+                <TaxCountryRegion>AO</TaxCountryRegion>
+                <TaxCode>RED</TaxCode>
+                <Description>IVA Taxa Reduzida 5%</Description>
+                <TaxPercentage>5.000000</TaxPercentage>
+            </TaxTableEntry>
+            <TaxTableEntry>
+                <TaxType>IVA</TaxType>
+                <TaxCountryRegion>AO</TaxCountryRegion>
+                <TaxCode>NOR</TaxCode>
+                <Description>IVA Taxa Normal 14%</Description>
+                <TaxPercentage>14.000000</TaxPercentage>
+            </TaxTableEntry>
+        </TaxTable>
+    </MasterFiles>
+    <SourceDocuments>
+        <SalesInvoices>
+            <NumberOfEntries>5</NumberOfEntries>
+            <TotalDebit>3000.000000</TotalDebit>
+            <TotalCredit>26400.000000</TotalCredit>
+            <Invoice>
+                <InvoiceNo>FT 2020/1</InvoiceNo>
+                <DocumentStatus>
+                    <InvoiceStatus>N</InvoiceStatus>
+                    <InvoiceStatusDate>2020-11-05T11:50:23</InvoiceStatusDate>
+                    <SourceID>Administrator</SourceID>
+                    <SourceBilling>P</SourceBilling>
+                </DocumentStatus>
+                <Hash>h2PzUWR8lAtU9oqINJQlPEFRkR1TO8Z+z+jrstYZIp1KBfqgW35Gcc3sd9H5iJaASDXvPptXSHVLIT1iDqZSeQoOv5wwfAFjZlCVCZQhquVcqSNuL5u4zyPVQcrWA1qrhzMdWHsD+LNZBPLUD5a/FbTt4B5SJ3nIatZIPx3FsC8=</Hash>
+                <HashControl>1</HashControl>
+                <Period>11</Period>
+                <InvoiceDate>2020-11-05</InvoiceDate>
+                <InvoiceType>FT</InvoiceType>
+                <SpecialRegimes>
+                    <SelfBillingIndicator>0</SelfBillingIndicator>
+                    <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+                    <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+                </SpecialRegimes>
+                <SourceID>Administrator</SourceID>
+                <SystemEntryDate>2020-11-05T11:50:23</SystemEntryDate>
+                <CustomerID>8</CustomerID>
+                <ShipTo>
+                    <DeliveryDate>2020-11-05</DeliveryDate>
+                    <Address>
+                        <BuildingNumber>N/A</BuildingNumber>
+                        <StreetName>Desconhecido</StreetName>
+                        <AddressDetail>N/A Desconhecido</AddressDetail>
+                        <City>Desconhecido</City>
+                        <Country>AO</Country>
+                    </Address>
+                </ShipTo>
+                <ShipFrom>
+                    <DeliveryDate>2020-11-05</DeliveryDate>
+                    <WarehouseID>MINHA EMPRESA, LDA.</WarehouseID>
+                    <LocationID>Stock</LocationID>
+                    <Address>
+                        <BuildingNumber>S/N</BuildingNumber>
+                        <StreetName>Rua de exemplo</StreetName>
+                        <AddressDetail>S/N Rua de exemplo</AddressDetail>
+                        <City>Luanda</City>
+                        <PostalCode>N/A</PostalCode>
+                        <Province>Luanda</Province>
+                        <Country>AO</Country>
+                    </Address>
+                </ShipFrom>
+                <MovementStartTime>2020-11-05T11:50:04</MovementStartTime>
+                <Line>
+                    <LineNumber>1</LineNumber>
+                    <OrderReferences>
+                        <OriginatingON>NE 2020/2</OriginatingON>
+                        <OrderDate>2020-11-05</OrderDate>
+                    </OrderReferences>
+                    <ProductCode>2</ProductCode>
+                    <ProductDescription>[AEE-S80] PRODUTO DE EXEMPLO</ProductDescription>
+                    <Quantity>5.0</Quantity>
+                    <UnitOfMeasure>Unidade(s)</UnitOfMeasure>
+                    <UnitPrice>3000.000000</UnitPrice>
+                    <TaxPointDate>2020-11-05</TaxPointDate>
+                    <Description>[AEE-S80] PRODUTO DE EXEMPLO</Description>
+                    <CreditAmount>15000.000000</CreditAmount>
+                    <Tax>
+                        <TaxType>IVA</TaxType>
+                        <TaxCountryRegion>AO</TaxCountryRegion>
+                        <TaxCode>NOR</TaxCode>
+                        <TaxPercentage>14.0</TaxPercentage>
+                    </Tax>
+                </Line>
+                <DocumentTotals>
+                    <TaxPayable>2100.00</TaxPayable>
+                    <NetTotal>15000.00</NetTotal>
+                    <GrossTotal>17100.00</GrossTotal>
+                </DocumentTotals>
+            </Invoice>
+            <Invoice>
+                <InvoiceNo>FT 2020/2</InvoiceNo>
+                <DocumentStatus>
+                    <InvoiceStatus>N</InvoiceStatus>
+                    <InvoiceStatusDate>2020-11-05T11:50:54</InvoiceStatusDate>
+                    <SourceID>Administrator</SourceID>
+                    <SourceBilling>P</SourceBilling>
+                </DocumentStatus>
+                <Hash>nVIs24j2E9fTfK/4TWXn6ebGZ9Pfq9ht7hgWQ8bNh5F9Zt04bdH3TZySndiaCcvvBttYzPd4GiwlpigpJhYns37u14UHl6HoD6+CV5n/x8hvqzeb4FcRlqI2NLfvCEUbZWxtMKDMqoJp1NTlPAwk6Ce79bPG1foiHFBytKRtqBg=</Hash>
+                <HashControl>1</HashControl>
+                <Period>11</Period>
+                <InvoiceDate>2020-11-05</InvoiceDate>
+                <InvoiceType>FT</InvoiceType>
+                <SpecialRegimes>
+                    <SelfBillingIndicator>0</SelfBillingIndicator>
+                    <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+                    <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+                </SpecialRegimes>
+                <SourceID>Administrator</SourceID>
+                <SystemEntryDate>2020-11-05T11:50:54</SystemEntryDate>
+                <CustomerID>8</CustomerID>
+                <ShipTo>
+                    <DeliveryDate>2020-11-05</DeliveryDate>
+                    <Address>
+                        <BuildingNumber>N/A</BuildingNumber>
+                        <StreetName>Desconhecido</StreetName>
+                        <AddressDetail>N/A Desconhecido</AddressDetail>
+                        <City>Desconhecido</City>
+                        <Country>AO</Country>
+                    </Address>
+                </ShipTo>
+                <ShipFrom>
+                    <DeliveryDate>2020-11-05</DeliveryDate>
+                    <WarehouseID>MINHA EMPRESA, LDA.</WarehouseID>
+                    <LocationID>Stock</LocationID>
+                    <Address>
+                        <BuildingNumber>S/N</BuildingNumber>
+                        <StreetName>Rua de exemplo</StreetName>
+                        <AddressDetail>S/N Rua de exemplo</AddressDetail>
+                        <City>Luanda</City>
+                        <PostalCode>N/A</PostalCode>
+                        <Province>Luanda</Province>
+                        <Country>AO</Country>
+                    </Address>
+                </ShipFrom>
+                <MovementStartTime>2020-11-05T11:49:25</MovementStartTime>
+                <Line>
+                    <LineNumber>1</LineNumber>
+                    <OrderReferences>
+                        <OriginatingON>NE 2020/1</OriginatingON>
+                        <OrderDate>2020-11-05</OrderDate>
+                    </OrderReferences>
+                    <ProductCode>2</ProductCode>
+                    <ProductDescription>[AEE-S80] PRODUTO DE EXEMPLO</ProductDescription>
+                    <Quantity>1.0</Quantity>
+                    <UnitOfMeasure>Unidade(s)</UnitOfMeasure>
+                    <UnitPrice>2700.000000</UnitPrice>
+                    <TaxPointDate>2020-11-05</TaxPointDate>
+                    <Description>[AEE-S80] PRODUTO DE EXEMPLO</Description>
+                    <CreditAmount>2700.000000</CreditAmount>
+                    <Tax>
+                        <TaxType>IVA</TaxType>
+                        <TaxCountryRegion>AO</TaxCountryRegion>
+                        <TaxCode>NOR</TaxCode>
+                        <TaxPercentage>14.0</TaxPercentage>
+                    </Tax>
+                    <SettlementAmount>10.000000</SettlementAmount>
+                </Line>
+                <Line>
+                    <LineNumber>2</LineNumber>
+                    <OrderReferences>
+                        <OriginatingON>NE 2020/1</OriginatingON>
+                        <OrderDate>2020-11-05</OrderDate>
+                    </OrderReferences>
+                    <ProductCode>3</ProductCode>
+                    <ProductDescription>[SERV] OUTRO PRODUTO - SERVIÇO</ProductDescription>
+                    <Quantity>1.0</Quantity>
+                    <UnitOfMeasure>Unidade(s)</UnitOfMeasure>
+                    <UnitPrice>1500.000000</UnitPrice>
+                    <TaxPointDate>2020-11-05</TaxPointDate>
+                    <Description>[SERV] OUTRO PRODUTO - SERVIÇO</Description>
+                    <CreditAmount>1500.000000</CreditAmount>
+                    <Tax>
+                        <TaxType>IVA</TaxType>
+                        <TaxCountryRegion>AO</TaxCountryRegion>
+                        <TaxCode>NOR</TaxCode>
+                        <TaxPercentage>14.0</TaxPercentage>
+                    </Tax>
+                </Line>
+                <DocumentTotals>
+                    <TaxPayable>588.00</TaxPayable>
+                    <NetTotal>4200.00</NetTotal>
+                    <GrossTotal>4788.00</GrossTotal>
+                </DocumentTotals>
+            </Invoice>
+            <Invoice>
+                <InvoiceNo>FT 2020/3</InvoiceNo>
+                <DocumentStatus>
+                    <InvoiceStatus>N</InvoiceStatus>
+                    <InvoiceStatusDate>2020-11-05T11:51:33</InvoiceStatusDate>
+                    <SourceID>Administrator</SourceID>
+                    <SourceBilling>P</SourceBilling>
+                </DocumentStatus>
+                <Hash>terU/PbRIKdg7lVxDscO9OBzqK3ImIN6wgjtjk2ujl9y66AK7i0jKlOEvHw5+Lnd/NRP353MNOKdcXLijbD+KA0S5Vh7fmiqimwy2SI8VfMEo7P2QhkNzR8RxgvXSgz0aBCskeTyu66khuEdiHH8gCzvbH3nYtIT3bvA5F73j64=</Hash>
+                <HashControl>1</HashControl>
+                <Period>11</Period>
+                <InvoiceDate>2020-11-05</InvoiceDate>
+                <InvoiceType>FT</InvoiceType>
+                <SpecialRegimes>
+                    <SelfBillingIndicator>0</SelfBillingIndicator>
+                    <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+                    <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+                </SpecialRegimes>
+                <SourceID>Administrator</SourceID>
+                <SystemEntryDate>2020-11-05T11:51:33</SystemEntryDate>
+                <CustomerID>8</CustomerID>
+                <ShipTo>
+                    <DeliveryDate>2020-11-05</DeliveryDate>
+                    <Address>
+                        <BuildingNumber>N/A</BuildingNumber>
+                        <StreetName>Desconhecido</StreetName>
+                        <AddressDetail>N/A Desconhecido</AddressDetail>
+                        <City>Desconhecido</City>
+                        <Country>AO</Country>
+                    </Address>
+                </ShipTo>
+                <ShipFrom>
+                    <DeliveryDate>2020-11-05</DeliveryDate>
+                    <Address>
+                        <BuildingNumber>S/N</BuildingNumber>
+                        <StreetName>Rua de exemplo</StreetName>
+                        <AddressDetail>S/N Rua de exemplo</AddressDetail>
+                        <City>Luanda</City>
+                        <PostalCode>N/A</PostalCode>
+                        <Province>Luanda</Province>
+                        <Country>AO</Country>
+                    </Address>
+                </ShipFrom>
+                <MovementStartTime>2020-11-05T11:51:33</MovementStartTime>
+                <Line>
+                    <LineNumber>1</LineNumber>
+                    <ProductCode>2</ProductCode>
+                    <ProductDescription>[AEE-S80] PRODUTO DE EXEMPLO</ProductDescription>
+                    <Quantity>1.0</Quantity>
+                    <UnitOfMeasure>Unidade(s)</UnitOfMeasure>
+                    <UnitPrice>2700.000000</UnitPrice>
+                    <TaxPointDate>2020-11-05</TaxPointDate>
+                    <Description>[AEE-S80] PRODUTO DE EXEMPLO</Description>
+                    <CreditAmount>2700.000000</CreditAmount>
+                    <Tax>
+                        <TaxType>IVA</TaxType>
+                        <TaxCountryRegion>AO</TaxCountryRegion>
+                        <TaxCode>NOR</TaxCode>
+                        <TaxPercentage>14.0</TaxPercentage>
+                    </Tax>
+                    <SettlementAmount>10.000000</SettlementAmount>
+                </Line>
+                <Line>
+                    <LineNumber>2</LineNumber>
+                    <ProductCode>3</ProductCode>
+                    <ProductDescription>[SERV] OUTRO PRODUTO - SERVIÇO</ProductDescription>
+                    <Quantity>1.0</Quantity>
+                    <UnitOfMeasure>Unidade(s)</UnitOfMeasure>
+                    <UnitPrice>1500.000000</UnitPrice>
+                    <TaxPointDate>2020-11-05</TaxPointDate>
+                    <Description>[SERV] OUTRO PRODUTO - SERVIÇO</Description>
+                    <CreditAmount>1500.000000</CreditAmount>
+                    <Tax>
+                        <TaxType>IVA</TaxType>
+                        <TaxCountryRegion>AO</TaxCountryRegion>
+                        <TaxCode>ISE</TaxCode>
+                        <TaxPercentage>0.0</TaxPercentage>
+                    </Tax>
+                    <TaxExemptionReason>Transmissão de bens e serviço não sujeita</TaxExemptionReason>
+                    <TaxExemptionCode>M02</TaxExemptionCode>
+                </Line>
+                <DocumentTotals>
+                    <TaxPayable>378.00</TaxPayable>
+                    <NetTotal>4200.00</NetTotal>
+                    <GrossTotal>4578.00</GrossTotal>
+                </DocumentTotals>
+            </Invoice>
+            <Invoice>
+                <InvoiceNo>FT 2020/4</InvoiceNo>
+                <DocumentStatus>
+                    <InvoiceStatus>N</InvoiceStatus>
+                    <InvoiceStatusDate>2020-11-05T11:51:52</InvoiceStatusDate>
+                    <SourceID>Administrator</SourceID>
+                    <SourceBilling>P</SourceBilling>
+                </DocumentStatus>
+                <Hash>Gsvj6+3XD3ly+bxhG1VIZPfD+5IUmXd800vapxdPhTgUrJLUTShvTTAnkU/PouP6eVQY6pe2Hv56lJCoqGSV1rF23vh/ZrbxNfa/byTrVb2tRtH4zbTL8YzbjkUM02cJXkqUHhrt7StD3Q1br/xTm+YxvsQ4unOZ7xxPowjgvaQ=</Hash>
+                <HashControl>1</HashControl>
+                <Period>11</Period>
+                <InvoiceDate>2020-11-05</InvoiceDate>
+                <InvoiceType>FT</InvoiceType>
+                <SpecialRegimes>
+                    <SelfBillingIndicator>0</SelfBillingIndicator>
+                    <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+                    <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+                </SpecialRegimes>
+                <SourceID>Administrator</SourceID>
+                <SystemEntryDate>2020-11-05T11:51:52</SystemEntryDate>
+                <CustomerID>8</CustomerID>
+                <ShipTo>
+                    <DeliveryDate>2020-11-05</DeliveryDate>
+                    <Address>
+                        <BuildingNumber>N/A</BuildingNumber>
+                        <StreetName>Desconhecido</StreetName>
+                        <AddressDetail>N/A Desconhecido</AddressDetail>
+                        <City>Desconhecido</City>
+                        <Country>AO</Country>
+                    </Address>
+                </ShipTo>
+                <ShipFrom>
+                    <DeliveryDate>2020-11-05</DeliveryDate>
+                    <Address>
+                        <BuildingNumber>S/N</BuildingNumber>
+                        <StreetName>Rua de exemplo</StreetName>
+                        <AddressDetail>S/N Rua de exemplo</AddressDetail>
+                        <City>Luanda</City>
+                        <PostalCode>N/A</PostalCode>
+                        <Province>Luanda</Province>
+                        <Country>AO</Country>
+                    </Address>
+                </ShipFrom>
+                <MovementStartTime>2020-11-05T11:51:52</MovementStartTime>
+                <Line>
+                    <LineNumber>1</LineNumber>
+                    <ProductCode>2</ProductCode>
+                    <ProductDescription>[AEE-S80] PRODUTO DE EXEMPLO</ProductDescription>
+                    <Quantity>1.0</Quantity>
+                    <UnitOfMeasure>Unidade(s)</UnitOfMeasure>
+                    <UnitPrice>3000.000000</UnitPrice>
+                    <TaxPointDate>2020-11-05</TaxPointDate>
+                    <Description>[AEE-S80] PRODUTO DE EXEMPLO</Description>
+                    <CreditAmount>3000.000000</CreditAmount>
+                    <Tax>
+                        <TaxType>IVA</TaxType>
+                        <TaxCountryRegion>AO</TaxCountryRegion>
+                        <TaxCode>NOR</TaxCode>
+                        <TaxPercentage>14.0</TaxPercentage>
+                    </Tax>
+                </Line>
+                <DocumentTotals>
+                    <TaxPayable>420.00</TaxPayable>
+                    <NetTotal>3000.00</NetTotal>
+                    <GrossTotal>3420.00</GrossTotal>
+                </DocumentTotals>
+            </Invoice>
+            <Invoice>
+                <InvoiceNo>NC 2020/1</InvoiceNo>
+                <DocumentStatus>
+                    <InvoiceStatus>N</InvoiceStatus>
+                    <InvoiceStatusDate>2020-11-05T11:52:03</InvoiceStatusDate>
+                    <SourceID>Administrator</SourceID>
+                    <SourceBilling>P</SourceBilling>
+                </DocumentStatus>
+                <Hash>TnHzCYf9Mv1ZfPtdJGwpeJgXh8fl9l9eihMirK8oIQjYj6Y0Sb29+TaTM7sg6R4GC05UKcF/nirtFw9p2EkZJpL7fNDY5zFfKYa105jElmJ3b7Z+egWEDBIGQ3OtgDuWAkrl5RvA06CcYY5bhJy2+Po5EzNav+a+Y7LsxtvLy28=</Hash>
+                <HashControl>1</HashControl>
+                <Period>11</Period>
+                <InvoiceDate>2020-11-05</InvoiceDate>
+                <InvoiceType>NC</InvoiceType>
+                <SpecialRegimes>
+                    <SelfBillingIndicator>0</SelfBillingIndicator>
+                    <CashVATSchemeIndicator>0</CashVATSchemeIndicator>
+                    <ThirdPartiesBillingIndicator>0</ThirdPartiesBillingIndicator>
+                </SpecialRegimes>
+                <SourceID>Administrator</SourceID>
+                <SystemEntryDate>2020-11-05T11:52:03</SystemEntryDate>
+                <CustomerID>8</CustomerID>
+                <ShipTo>
+                    <DeliveryDate>2020-11-05</DeliveryDate>
+                    <Address>
+                        <BuildingNumber>N/A</BuildingNumber>
+                        <StreetName>Desconhecido</StreetName>
+                        <AddressDetail>N/A Desconhecido</AddressDetail>
+                        <City>Desconhecido</City>
+                        <Country>AO</Country>
+                    </Address>
+                </ShipTo>
+                <ShipFrom>
+                    <DeliveryDate>2020-11-05</DeliveryDate>
+                    <Address>
+                        <BuildingNumber>S/N</BuildingNumber>
+                        <StreetName>Rua de exemplo</StreetName>
+                        <AddressDetail>S/N Rua de exemplo</AddressDetail>
+                        <City>Luanda</City>
+                        <PostalCode>N/A</PostalCode>
+                        <Province>Luanda</Province>
+                        <Country>AO</Country>
+                    </Address>
+                </ShipFrom>
+                <MovementStartTime>2020-11-05T11:52:03</MovementStartTime>
+                <Line>
+                    <LineNumber>1</LineNumber>
+                    <OrderReferences>
+                        <OriginatingON>FT 2020/4</OriginatingON>
+                        <OrderDate>2020-11-05</OrderDate>
+                    </OrderReferences>
+                    <ProductCode>2</ProductCode>
+                    <ProductDescription>[AEE-S80] PRODUTO DE EXEMPLO</ProductDescription>
+                    <Quantity>1.0</Quantity>
+                    <UnitOfMeasure>Unidade(s)</UnitOfMeasure>
+                    <UnitPrice>3000.000000</UnitPrice>
+                    <TaxPointDate>2020-11-05</TaxPointDate>
+                    <References>
+                        <Reference>FT 2020/4</Reference>
+                    </References>
+                    <Description>[AEE-S80] PRODUTO DE EXEMPLO</Description>
+                    <DebitAmount>3000.000000</DebitAmount>
+                    <Tax>
+                        <TaxType>IVA</TaxType>
+                        <TaxCountryRegion>AO</TaxCountryRegion>
+                        <TaxCode>NOR</TaxCode>
+                        <TaxPercentage>14.0</TaxPercentage>
+                    </Tax>
+                </Line>
+                <DocumentTotals>
+                    <TaxPayable>420.00</TaxPayable>
+                    <NetTotal>3000.00</NetTotal>
+                    <GrossTotal>3420.00</GrossTotal>
+                </DocumentTotals>
+            </Invoice>
+        </SalesInvoices>
+        <MovementOfGoods>
+            <NumberOfMovementLines>2</NumberOfMovementLines>
+            <TotalQuantityIssued>6.0</TotalQuantityIssued>
+            <StockMovement>
+                <DocumentNumber>GR 2020/1</DocumentNumber>
+                <DocumentStatus>
+                    <MovementStatus>N</MovementStatus>
+                    <MovementStatusDate>2020-11-05T11:49:25</MovementStatusDate>
+                    <SourceID>Administrator</SourceID>
+                    <SourceBilling>P</SourceBilling>
+                </DocumentStatus>
+                <Hash>s/XZ0HQegJXD8SpAunoL3Dwhpbi7jkuugCQhgVoglYaEdcMsfW7kjHPS5Sz5DAOPYRle+OQW9BW3N6Rfaehcr6oTaCrbg5hbnIkveeLQY//IX5HseNDoTJLi3/RnqU/pPtNwbYL0GxegudQVemTGVOfayp+9IdroQffw7eXz4QI=</Hash>
+                <HashControl>1</HashControl>
+                <Period>11</Period>
+                <MovementDate>2020-11-05</MovementDate>
+                <MovementType>GR</MovementType>
+                <SystemEntryDate>2020-11-05T11:49:25</SystemEntryDate>
+                <CustomerID>8</CustomerID>
+                <SourceID>Administrator</SourceID>
+                <ShipTo>
+                    <DeliveryDate>2020-11-05</DeliveryDate>
+                    <Address>
+                        <BuildingNumber>N/A</BuildingNumber>
+                        <StreetName>Desconhecido</StreetName>
+                        <AddressDetail>N/A Desconhecido</AddressDetail>
+                        <City>Desconhecido</City>
+                        <Country>AO</Country>
+                    </Address>
+                </ShipTo>
+                <ShipFrom>
+                    <DeliveryDate>2020-11-05</DeliveryDate>
+                    <WarehouseID>MINHA EMPRESA, LDA.</WarehouseID>
+                    <LocationID>Stock</LocationID>
+                    <Address>
+                        <BuildingNumber>S/N</BuildingNumber>
+                        <StreetName>Rua de exemplo</StreetName>
+                        <AddressDetail>S/N Rua de exemplo</AddressDetail>
+                        <City>Luanda</City>
+                        <PostalCode>N/A</PostalCode>
+                        <Province>Luanda</Province>
+                        <Country>AO</Country>
+                    </Address>
+                </ShipFrom>
+                <MovementStartTime>2020-11-05T11:49:25</MovementStartTime>
+                <Line>
+                    <LineNumber>1</LineNumber>
+                    <OrderReferences>
+                        <OriginatingON>NE 2020/1</OriginatingON>
+                        <OrderDate>2020-11-05</OrderDate>
+                    </OrderReferences>
+                    <ProductCode>2</ProductCode>
+                    <ProductDescription>[AEE-S80] PRODUTO DE EXEMPLO</ProductDescription>
+                    <Quantity>1.0</Quantity>
+                    <UnitOfMeasure>Unidade(s)</UnitOfMeasure>
+                    <UnitPrice>0.00</UnitPrice>
+                    <Description>[AEE-S80] PRODUTO DE EXEMPLO</Description>
+                    <CreditAmount>0.00</CreditAmount>
+                </Line>
+                <DocumentTotals>
+                    <TaxPayable>0.00</TaxPayable>
+                    <NetTotal>0.00</NetTotal>
+                    <GrossTotal>0.00</GrossTotal>
+                </DocumentTotals>
+            </StockMovement>
+            <StockMovement>
+                <DocumentNumber>GR 2020/2</DocumentNumber>
+                <DocumentStatus>
+                    <MovementStatus>N</MovementStatus>
+                    <MovementStatusDate>2020-11-05T11:50:04</MovementStatusDate>
+                    <SourceID>Administrator</SourceID>
+                    <SourceBilling>P</SourceBilling>
+                </DocumentStatus>
+                <Hash>Gc4Q/ZBoCUb6kfuDiwDFlIdqtFaqGEEFTWytAfU/EHDsImXSu71lFr13b/qWykRV99x5XqzKDEl38YM9PQ6udz2g2GAUD0/xCGN/MYrt7DpCm8to3AgL44WXvV99avhRH/PpsPnZ8qqKXDSwCp9mZYFy9y9F0xAd/MTos/eO6r8=</Hash>
+                <HashControl>1</HashControl>
+                <Period>11</Period>
+                <MovementDate>2020-11-05</MovementDate>
+                <MovementType>GR</MovementType>
+                <SystemEntryDate>2020-11-05T11:50:04</SystemEntryDate>
+                <CustomerID>8</CustomerID>
+                <SourceID>Administrator</SourceID>
+                <ShipTo>
+                    <DeliveryDate>2020-11-05</DeliveryDate>
+                    <Address>
+                        <BuildingNumber>N/A</BuildingNumber>
+                        <StreetName>Desconhecido</StreetName>
+                        <AddressDetail>N/A Desconhecido</AddressDetail>
+                        <City>Desconhecido</City>
+                        <Country>AO</Country>
+                    </Address>
+                </ShipTo>
+                <ShipFrom>
+                    <DeliveryDate>2020-11-05</DeliveryDate>
+                    <WarehouseID>MINHA EMPRESA, LDA.</WarehouseID>
+                    <LocationID>Stock</LocationID>
+                    <Address>
+                        <BuildingNumber>S/N</BuildingNumber>
+                        <StreetName>Rua de exemplo</StreetName>
+                        <AddressDetail>S/N Rua de exemplo</AddressDetail>
+                        <City>Luanda</City>
+                        <PostalCode>N/A</PostalCode>
+                        <Province>Luanda</Province>
+                        <Country>AO</Country>
+                    </Address>
+                </ShipFrom>
+                <MovementStartTime>2020-11-05T11:50:04</MovementStartTime>
+                <Line>
+                    <LineNumber>1</LineNumber>
+                    <OrderReferences>
+                        <OriginatingON>NE 2020/2</OriginatingON>
+                        <OrderDate>2020-11-05</OrderDate>
+                    </OrderReferences>
+                    <ProductCode>2</ProductCode>
+                    <ProductDescription>[AEE-S80] PRODUTO DE EXEMPLO</ProductDescription>
+                    <Quantity>5.0</Quantity>
+                    <UnitOfMeasure>Unidade(s)</UnitOfMeasure>
+                    <UnitPrice>0.00</UnitPrice>
+                    <Description>[AEE-S80] PRODUTO DE EXEMPLO</Description>
+                    <CreditAmount>0.00</CreditAmount>
+                </Line>
+                <DocumentTotals>
+                    <TaxPayable>0.00</TaxPayable>
+                    <NetTotal>0.00</NetTotal>
+                    <GrossTotal>0.00</GrossTotal>
+                </DocumentTotals>
+            </StockMovement>
+        </MovementOfGoods>
+        <WorkingDocuments>
+            <NumberOfEntries>4</NumberOfEntries>
+            <TotalDebit>0.000000</TotalDebit>
+            <TotalCredit>38400.000000</TotalCredit>
+            <WorkDocument>
+                <DocumentNumber>NE 2020/1</DocumentNumber>
+                <DocumentStatus>
+                    <WorkStatus>N</WorkStatus>
+                    <WorkStatusDate>2020-11-05T11:49:14</WorkStatusDate>
+                    <SourceID>Administrator</SourceID>
+                    <SourceBilling>P</SourceBilling>
+                </DocumentStatus>
+                <Hash>Q5aBy26NxXD3eYloUd0SCCwKR5y+P4IKZ3ALy2ubJxYLQVkGQCnyhVzsjLlMFI8PRsRrV4wjR9SQciLD3RbkgkMLSVxc5kf/tUt43mqBl67YUt8kHbh1w+hx2ZHSFYXngO+Cgb4pgCGLKOfx3fddOxH7MW+icOLH+UQh+JxNFCM=</Hash>
+                <HashControl>1</HashControl>
+                <Period>11</Period>
+                <WorkDate>2020-11-05</WorkDate>
+                <WorkType>NE</WorkType>
+                <SourceID>Administrator</SourceID>
+                <SystemEntryDate>2020-11-05T11:49:14</SystemEntryDate>
+                <CustomerID>8</CustomerID>
+                <Line>
+                    <LineNumber>1</LineNumber>
+                    <OrderReferences>
+                        <OriginatingON>OR 2020/1</OriginatingON>
+                        <OrderDate>2020-11-05</OrderDate>
+                    </OrderReferences>
+                    <ProductCode>2</ProductCode>
+                    <ProductDescription>[AEE-S80] PRODUTO DE EXEMPLO</ProductDescription>
+                    <Quantity>1.0</Quantity>
+                    <UnitOfMeasure>Unidade(s)</UnitOfMeasure>
+                    <UnitPrice>2700.000000</UnitPrice>
+                    <TaxPointDate>2020-11-05</TaxPointDate>
+                    <Description>[AEE-S80] PRODUTO DE EXEMPLO</Description>
+                    <CreditAmount>2700.000000</CreditAmount>
+                    <Tax>
+                        <TaxType>IVA</TaxType>
+                        <TaxCountryRegion>AO</TaxCountryRegion>
+                        <TaxCode>NOR</TaxCode>
+                        <TaxPercentage>14.0</TaxPercentage>
+                    </Tax>
+                    <SettlementAmount>10.000000</SettlementAmount>
+                </Line>
+                <Line>
+                    <LineNumber>2</LineNumber>
+                    <OrderReferences>
+                        <OriginatingON>OR 2020/1</OriginatingON>
+                        <OrderDate>2020-11-05</OrderDate>
+                    </OrderReferences>
+                    <ProductCode>3</ProductCode>
+                    <ProductDescription>[SERV] OUTRO PRODUTO - SERVIÇO</ProductDescription>
+                    <Quantity>1.0</Quantity>
+                    <UnitOfMeasure>Unidade(s)</UnitOfMeasure>
+                    <UnitPrice>1500.000000</UnitPrice>
+                    <TaxPointDate>2020-11-05</TaxPointDate>
+                    <Description>[SERV] OUTRO PRODUTO - SERVIÇO</Description>
+                    <CreditAmount>1500.000000</CreditAmount>
+                    <Tax>
+                        <TaxType>IVA</TaxType>
+                        <TaxCountryRegion>AO</TaxCountryRegion>
+                        <TaxCode>NOR</TaxCode>
+                        <TaxPercentage>14.0</TaxPercentage>
+                    </Tax>
+                </Line>
+                <DocumentTotals>
+                    <TaxPayable>588.00</TaxPayable>
+                    <NetTotal>4200.00</NetTotal>
+                    <GrossTotal>4788.00</GrossTotal>
+                </DocumentTotals>
+            </WorkDocument>
+            <WorkDocument>
+                <DocumentNumber>NE 2020/2</DocumentNumber>
+                <DocumentStatus>
+                    <WorkStatus>N</WorkStatus>
+                    <WorkStatusDate>2020-11-05T11:49:54</WorkStatusDate>
+                    <SourceID>Administrator</SourceID>
+                    <SourceBilling>P</SourceBilling>
+                </DocumentStatus>
+                <Hash>KZ4sDRVNFvERt+44qcjIhhxZeU3uO/nUegX+OkIFUWfbCHmyvt24WG7kiBt0ztDOhTONVmR3Ckjfxx0sH0VbX1HEtneoOc4V+m7qr1QXAl5gu4Nvk4tr4x0xrkuntrr5EEsXwyq1bSi7pK/SO2hyh+pMZcnwr29QFHlOKIejQic=</Hash>
+                <HashControl>1</HashControl>
+                <Period>11</Period>
+                <WorkDate>2020-11-05</WorkDate>
+                <WorkType>NE</WorkType>
+                <SourceID>Administrator</SourceID>
+                <SystemEntryDate>2020-11-05T11:49:54</SystemEntryDate>
+                <CustomerID>8</CustomerID>
+                <Line>
+                    <LineNumber>1</LineNumber>
+                    <OrderReferences>
+                        <OriginatingON>OR 2020/2</OriginatingON>
+                        <OrderDate>2020-11-05</OrderDate>
+                    </OrderReferences>
+                    <ProductCode>2</ProductCode>
+                    <ProductDescription>[AEE-S80] PRODUTO DE EXEMPLO</ProductDescription>
+                    <Quantity>5.0</Quantity>
+                    <UnitOfMeasure>Unidade(s)</UnitOfMeasure>
+                    <UnitPrice>3000.000000</UnitPrice>
+                    <TaxPointDate>2020-11-05</TaxPointDate>
+                    <Description>[AEE-S80] PRODUTO DE EXEMPLO</Description>
+                    <CreditAmount>15000.000000</CreditAmount>
+                    <Tax>
+                        <TaxType>IVA</TaxType>
+                        <TaxCountryRegion>AO</TaxCountryRegion>
+                        <TaxCode>NOR</TaxCode>
+                        <TaxPercentage>14.0</TaxPercentage>
+                    </Tax>
+                </Line>
+                <DocumentTotals>
+                    <TaxPayable>2100.00</TaxPayable>
+                    <NetTotal>15000.00</NetTotal>
+                    <GrossTotal>17100.00</GrossTotal>
+                </DocumentTotals>
+            </WorkDocument>
+            <WorkDocument>
+                <DocumentNumber>OR 2020/1</DocumentNumber>
+                <DocumentStatus>
+                    <WorkStatus>N</WorkStatus>
+                    <WorkStatusDate>2020-11-05T11:49:13</WorkStatusDate>
+                    <SourceID>Administrator</SourceID>
+                    <SourceBilling>P</SourceBilling>
+                </DocumentStatus>
+                <Hash>M/MdKf+chxJysD1ZsFO43g74YZPqI/y8ZGZCjm1KkcXQEAsf/fDk+nstki0SGqRzHCmUECplVUVWntg7DZNp59bQMY61NRJRoh+xxxI7kXMBUPOFrHl1a66WMMe6YR22+J/yZEE+/bHmYJ6j+3F9bG6/Q6zTUwIWaXDC3D/Oayo=</Hash>
+                <HashControl>1</HashControl>
+                <Period>11</Period>
+                <WorkDate>2020-11-05</WorkDate>
+                <WorkType>OR</WorkType>
+                <SourceID>Administrator</SourceID>
+                <SystemEntryDate>2020-11-05T11:49:13</SystemEntryDate>
+                <CustomerID>8</CustomerID>
+                <Line>
+                    <LineNumber>1</LineNumber>
+                    <ProductCode>2</ProductCode>
+                    <ProductDescription>[AEE-S80] PRODUTO DE EXEMPLO</ProductDescription>
+                    <Quantity>1.0</Quantity>
+                    <UnitOfMeasure>Unidade(s)</UnitOfMeasure>
+                    <UnitPrice>2700.000000</UnitPrice>
+                    <TaxPointDate>2020-11-05</TaxPointDate>
+                    <Description>[AEE-S80] PRODUTO DE EXEMPLO</Description>
+                    <CreditAmount>2700.000000</CreditAmount>
+                    <Tax>
+                        <TaxType>IVA</TaxType>
+                        <TaxCountryRegion>AO</TaxCountryRegion>
+                        <TaxCode>NOR</TaxCode>
+                        <TaxPercentage>14.0</TaxPercentage>
+                    </Tax>
+                    <SettlementAmount>10.000000</SettlementAmount>
+                </Line>
+                <Line>
+                    <LineNumber>2</LineNumber>
+                    <ProductCode>3</ProductCode>
+                    <ProductDescription>[SERV] OUTRO PRODUTO - SERVIÇO</ProductDescription>
+                    <Quantity>1.0</Quantity>
+                    <UnitOfMeasure>Unidade(s)</UnitOfMeasure>
+                    <UnitPrice>1500.000000</UnitPrice>
+                    <TaxPointDate>2020-11-05</TaxPointDate>
+                    <Description>[SERV] OUTRO PRODUTO - SERVIÇO</Description>
+                    <CreditAmount>1500.000000</CreditAmount>
+                    <Tax>
+                        <TaxType>IVA</TaxType>
+                        <TaxCountryRegion>AO</TaxCountryRegion>
+                        <TaxCode>NOR</TaxCode>
+                        <TaxPercentage>14.0</TaxPercentage>
+                    </Tax>
+                </Line>
+                <DocumentTotals>
+                    <TaxPayable>588.00</TaxPayable>
+                    <NetTotal>4200.00</NetTotal>
+                    <GrossTotal>4788.00</GrossTotal>
+                </DocumentTotals>
+            </WorkDocument>
+            <WorkDocument>
+                <DocumentNumber>OR 2020/2</DocumentNumber>
+                <DocumentStatus>
+                    <WorkStatus>N</WorkStatus>
+                    <WorkStatusDate>2020-11-05T11:49:54</WorkStatusDate>
+                    <SourceID>Administrator</SourceID>
+                    <SourceBilling>P</SourceBilling>
+                </DocumentStatus>
+                <Hash>jfT6OlWaX0gC3M6JObEN17pmoDoSCL+PGIIz9kCbgF4gW8jKfQA752lCiqAkZsoWFWZMLs0fAXWGkn41J1SMTGBjJ2dJUodwixirYegNq5FSha9T5l7hKnWN+MIrci4aQPmsQYcKpihXX3wbEY1h+jJrIfqBKp0l+upfV7Ya5qs=</Hash>
+                <HashControl>1</HashControl>
+                <Period>11</Period>
+                <WorkDate>2020-11-05</WorkDate>
+                <WorkType>OR</WorkType>
+                <SourceID>Administrator</SourceID>
+                <SystemEntryDate>2020-11-05T11:49:54</SystemEntryDate>
+                <CustomerID>8</CustomerID>
+                <Line>
+                    <LineNumber>1</LineNumber>
+                    <ProductCode>2</ProductCode>
+                    <ProductDescription>[AEE-S80] PRODUTO DE EXEMPLO</ProductDescription>
+                    <Quantity>5.0</Quantity>
+                    <UnitOfMeasure>Unidade(s)</UnitOfMeasure>
+                    <UnitPrice>3000.000000</UnitPrice>
+                    <TaxPointDate>2020-11-05</TaxPointDate>
+                    <Description>[AEE-S80] PRODUTO DE EXEMPLO</Description>
+                    <CreditAmount>15000.000000</CreditAmount>
+                    <Tax>
+                        <TaxType>IVA</TaxType>
+                        <TaxCountryRegion>AO</TaxCountryRegion>
+                        <TaxCode>NOR</TaxCode>
+                        <TaxPercentage>14.0</TaxPercentage>
+                    </Tax>
+                </Line>
+                <DocumentTotals>
+                    <TaxPayable>2100.00</TaxPayable>
+                    <NetTotal>15000.00</NetTotal>
+                    <GrossTotal>17100.00</GrossTotal>
+                </DocumentTotals>
+            </WorkDocument>
+        </WorkingDocuments>
+        <Payments>
+            <NumberOfEntries>0</NumberOfEntries>
+            <TotalDebit>0.000000</TotalDebit>
+            <TotalCredit>0.000000</TotalCredit>
+        </Payments>
+        <PurchaseInvoices>
+            <NumberOfEntries>0</NumberOfEntries>
+        </PurchaseInvoices>
+    </SourceDocuments>
+</AuditFile>

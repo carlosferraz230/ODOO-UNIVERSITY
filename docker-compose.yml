@@ -13,14 +13,19 @@ services:
 
   odoo:
     image: odoo:15
+    #build:
+    #  context: .
+    #  dockerfile: Dockerfile
     depends_on:
       - db
     ports:
       - "8069:8069"
     volumes:
       - odoo_data:/var/lib/odoo
-      - ./config:/etc/odoo
+      - ./etc:/etc/odoo
       - ./addons:/mnt/extra-addons
+      - ./requirements.txt:/tmp/requirements.txt
+    command: sh -c "pip3 install --no-cache-dir -r /tmp/requirements.txt && ./entrypoint.sh odoo"
     restart: unless-stopped
 
 volumes:

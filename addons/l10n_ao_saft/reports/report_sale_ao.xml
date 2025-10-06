@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="report_sale_ao_board_tax" inherit_id="l10n_ao.report_sale_document">
+
+            <xpath expr="//tr[@name='exemption']" position="replace">
+                <tr name="exemption">
+                    <td>
+                        <span t-esc="tax_id.name or tax_id.name"/>
+                    </td>
+                    <td name="exemption_reason" colspan="3">
+                        <span t-esc="tax_id.exemption_reason"/>
+                    </td>
+                </tr>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

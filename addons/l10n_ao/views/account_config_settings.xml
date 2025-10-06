@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_account_settings_form" model="ir.ui.view">
+            <field name="name">res.config.settings.form</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <!-- find field description and add the field
+                     idea_ids after it -->
+                <!--       <xpath expr="//field[@name='default_purchase_tax_id']/" position="after">
+
+                           <div class="col-xs-12 col-md-6 o_setting_box" id="taxwithhold_settings">
+                               <div class="row mt16">
+                                   <label for="tax_withhold_journal_id" class="col-md-3 o_light_label"/>
+                                   <field name="tax_withhold_journal_id" groups="base.group_no_one"/>
+                               </div>
+                               <div class="row mt16">
+                                   <label for="tax_withhold_received_account_id" class="col-md-3 o_light_label"/>
+                                   <field name="tax_withhold_received_account_id" groups="base.group_no_one"/>
+                               </div>
+                               <div class="row mt16">
+                                   <label for="tax_withhold_sent_account_id" class="col-md-3 o_light_label"/>
+                                   <field name="tax_withhold_sent_account_id" groups="base.group_no_one"/>
+                               </div>
+                           </div>
+                       </xpath>
+       -->
+                <xpath expr="//div[@id='invoicing_settings']" position="after">
+                    <h2>Angola Char of Account</h2>
+                    <div class="row mt16 o_settings_container" id="default_user_rights">
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                Code Prefix
+                                <div class="text-muted">
+                                    This prefix will allow to automatically creation
+                                </div>
+                                <div class="row mt16">
+                                    <label string="Receivable"
+                                           for="partner_receivable_code_prefix"
+                                           class="col-md-3 o_light_label"/>
+                                    <field name="partner_receivable_code_prefix"
+                                           readonly="0" attrs="{'required':[('automatic_partner_account','=',True)]}"
+                                           groups="base.group_no_one"/>
+                                </div>
+                                <div class="row">
+                                    <label string="Payable"
+                                           for="partner_payable_code_prefix"
+                                           class="col-md-3 o_light_label"/>
+                                    <field name="partner_payable_code_prefix"
+                                           readonly="0" attrs="{'required':[('automatic_partner_account','=',True)]}"
+                                           groups="base.group_no_one"/>
+                                </div>
+                                <div class="row">
+                                    <label string="F. Receivable"
+                                           for="fpartner_receivable_code_prefix"
+                                           class="col-md-3 o_light_label"/>
+                                    <field name="fpartner_receivable_code_prefix"
+                                           readonly="0" attrs="{'required':[('automatic_partner_account','=',True)]}"
+                                           groups="base.group_no_one"/>
+                                </div>
+
+                                <div class="row">
+                                    <label string="F.Payable "
+                                           for="fpartner_payable_code_prefix"
+                                           class="col-md-3 o_light_label"/>
+
+                                    <field name="fpartner_payable_code_prefix"
+                                           readonly="0" attrs="{'required':[('automatic_partner_account','=',True)]}"
+                                           groups="base.group_no_one"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="automatic_partner_account" readonly="0" groups="base.group_no_one"/>
+                            </div>
+                            <div class="o_setting_right_pane" name="l10n_eu_service_right_pane">
+                                <label for="automatic_partner_account"/>
+                                <div class="text-muted">
+                                    Automatizar as contas plano dos clientes e fornecedores
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Configuração para as vendas   -->
+        <!-- <record id="inherit_view_sale_res_config_settings_form" model="ir.ui.view">
+             <field name="name">res.config.settings.form</field>
+             <field name="model">res.config.settings</field>
+             <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+             <field name="arch" type="xml">
+                 <xpath expr="//div[@data-key='sale_management']">
+                     <h2>Centro de Custo</h2>
+                     <div class="row mt16 o_settings_container">
+                         <div class="col-xs-12 col-md-6 o_setting_box">
+                             <div class="o_setting_left_pane">
+                                 <field name="sale_cost_center" readonly="0"/>
+                             </div>
+                             <div class="o_setting_right_pane">
+                                 <label string="Gerir centro de custo"
+                                        for="sale_cost_center"/>
+                                 <div class="text-muted">
+                                     Faz a gerência dos centros de custos em todas as cotações e ordens de vendas.
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </xpath>
+             </field>
+         </record>-->
+
+        <!-- Configuração para as compras   -->
+        <!-- <record id="inherit_view_purchase_res_config_settings_form" model="ir.ui.view">
+             <field name="name">res.config.settings.form</field>
+             <field name="model">res.config.settings</field>
+             <field name="inherit_id" ref="purchase.res_config_settings_view_form_purchase"/>
+             <field name="arch" type="xml">
+                 <xpath expr="//div[@data-key='purchase']" position="inside">
+                     <h2>Centro de Custo</h2>
+                     <div class="row mt16 o_settings_container">
+                         <div class="col-xs-12 col-md-6 o_setting_box">
+                             <div class="o_setting_left_pane">
+                                 <field name="purchase_cost_center" readonly="0"/>
+                             </div>
+                             <div class="o_setting_right_pane">
+                                 <label string="Gerir centro de custo"
+                                        for="purchase_cost_center"/>
+                                 <div class="text-muted">
+                                     Faz a gerência dos centros de custos em todas as cotações e ordens de compras.
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </xpath>
+             </field>
+         </record>-->
+
+        <!-- Configuração para os inventário   -->
+        <!-- <record id="inherit_view_stock_res_config_settings_form" model="ir.ui.view">
+             <field name="name">res.config.settings.form</field>
+             <field name="model">res.config.settings</field>
+             <field name="inherit_id" ref="stock.res_config_settings_view_form"/>
+             <field name="arch" type="xml">
+                 <xpath expr="//div[@data-key='stock']" position="inside">
+                     <h2>Centro de Custo</h2>
+                     <div class="row mt16 o_settings_container">
+                         <div class="col-xs-12 col-md-6 o_setting_box">
+                             <div class="o_setting_left_pane">
+                                 <field name="stock_cost_center" readonly="0"/>
+                             </div>
+                             <div class="o_setting_right_pane">
+                                 <label string="Gerir centro de custo"
+                                        for="stock_cost_center"/>
+                                 <div class="text-muted">
+                                     Faz a gerência dos centros de custos em stock.
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </xpath>
+             </field>
+         </record>-->
+    </data>
+</odoo>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_wizard_contract_list_view" model="ir.ui.view">
+            <field name="name">wizard.contract.list.form</field>
+            <field name="model">wizard.contract.list</field>
+            <field name="arch" type="xml">
+                <form>
+                    <h3>
+                        Este agente permite obter a lista de contractos do sistema, tirando por estados e departamentos
+                    </h3>
+                    <br/>
+                    <group col="2">
+                        <group string="States">
+                            <field name="state" widget="radio" nolabel="1"/>
+                        </group>
+                        <group string="Departments">
+                            <field name="departments" widget="many2many_checkboxes" nolabel="1"/>
+                        </group>
+                    </group>
+
+                    <footer>
+                        <button name="print_report" string="Print Salary Map"
+                                type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel Wizard" special="cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="wizard_contract_list_act_window" model="ir.actions.act_window">
+            <field name="name">Lista de contractos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wizard.contract.list</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+      <menuitem name="Lista de contractos" id="employee_contract_list_wizard_menu" parent="hr.hr_menu_hr_reports"
+              sequence="30"
+              action="wizard_contract_list_act_window"/>
+
+    </data>
+</odoo>

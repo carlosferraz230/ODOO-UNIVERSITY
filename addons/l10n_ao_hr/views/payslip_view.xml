@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- modify payslip form view -->
+        <record id="ao_payslip_form_view" model="ir.ui.view">
+            <field name="name">hr.payslip.form</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="priority" eval="1024"/>
+            <field name="arch" type="xml">
+                <field name="note" position="replace"/>
+                <xpath expr="//form/header/button[@name='action_payslip_draft']" position="replace">
+                    <button string="Set to Draft" name="action_payslip_draft" type="object" states="cancel,done"/>
+                </xpath>
+                <xpath expr="//notebook" position="after">
+                    <group>
+                        <field name="note" string="Observations" placeholder="Add an observation..."/>
+                    </group>
+                </xpath>
+                <field name="line_ids" position="before">
+                    <group>
+                        <field name="total_remunerations" string="Remunerations"/>
+                        <field name="sub_ali" invisible="1"/>
+                        <field name="sub_trans" invisible="1"/>
+                        <field name="sub_fam" invisible="1"/>
+                        <field name="total_sub_other" invisible="1"/>
+                        <field name="allowance" string="Allowances"/>
+                        <field name="total_deductions" string="Deductions"/>
+                        <field name="total_paid"/>
+                        <field name="amount_base_irt" invisible="1"/>
+                    </group>
+                </field>
+            </field>
+        </record>
+
+        <!-- modify payslip tree view -->
+        <record id="ao_payslip_tree_view" model="ir.ui.view">
+            <field name="name">hr.payslip.tree</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_tree"/>
+            <field name="arch" type="xml">
+                <!--                <xpath expr="//field[@name='name']" position="attributes">-->
+                <!--                    <attribute name="invisible">1</attribute>-->
+                <!--                </xpath>-->
+                <field name="state" position="before">
+                    <field name="remuneration" sum="Wage"/>
+                    <field name="allowance" sum="Allowance"/>
+                    <field name="extra_deductions" invisible="1"/>
+                    <field name="overtimes"/>
+                    <field name="misses"/>
+                    <field name="amount_ded" invisible="1"/>
+                    <field name="remuneration_inss_base" sum="Base ss"/>
+                    <field name="amount_base_irt" sum="Base Irt"/>
+                    <field name="amount_inss" string="SS" sum="INSS Amount"/>
+                    <field name="amount_irt" string="IRT" sum="IRT Amount"/>
+                    <field name="total_paid" sum="Total Payable"/>
+                    <field name="period_working_days"/>
+                </field>
+            </field>
+        </record>
+
+
+        <record id="view_payroll_run_inherit_view_form" model="ir.ui.view">
+            <field name="name">ao.hr.payroll.run.inherit.form</field>
+            <field name="model">hr.payslip.run</field>
+            <field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='%(hr_payroll.action_hr_payslip_by_employees)d']" position="attributes">
+                    <attribute name="context">{'default_structure_type_id': structure_type_id}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='state']" position="before">
+                    <button name="recalculate_sheet" type="object" states="draft,verify" string="Actualizar Folha"/>
+                </xpath>
+                <xpath expr="//field[@name='credit_note']" position="before">
+                    <field name="structure_type_id" string="Payroll Type" required="1"
+                           options="{'no_create': True, 'no_open': True}"/>
+                    <field name="salary_map_xls" attrs="{'invisible':[('salary_map_xls','=',False)]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_hr_payslip_run_tree" model="ir.ui.view">
+            <field name="name">hr.payslip.run.tree</field>
+            <field name="model">hr.payslip.run</field>
+            <field name="inherit_id" ref="hr_payroll.hr_payslip_run_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="structure_type_id"/>
+                </field>
+                <field name="credit_note" position="after">
+                    <field name="irt_amount_total" string="IRT" sum="IRT"/>
+                    <field name="ss_amount_total" string="SS" sum="SS"/>
+                    <field name="budget" sum="Budget"/>
+
+
+                    <!-- <field name="company_id"/>-->
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

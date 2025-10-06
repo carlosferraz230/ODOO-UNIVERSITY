@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="pos_ticker_paper_portrait" model="report.paperformat">
+            <field name="name">POS Session Ticket</field>
+            <field name="default" eval="True"/>
+            <field name="format">custom</field>
+            <field name="page_height">200</field>
+            <field name="page_width">72</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">2</field>
+            <field name="margin_bottom">2</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">2</field>
+            <field name="dpi">90</field>
+        </record>
+        <report id="report_pos_session_close" model="pos.session" string="Fecho de Sessao"
+                name="l10n_ao_pos.report_session_close_view" file="l10n_ao_pos.report_session_close"
+                paperformat="l10n_ao_pos.pos_ticker_paper_portrait" menu="False" report_type="qweb-pdf"/>
+        <template id="report_session_close_view">
+            <t t-if="not o and doc">
+                <t t-set="o" t-value="doc"/>
+            </t>
+            <t t-if="o and &apos;company_id&apos; in o">
+                <t t-set="company" t-value="o.company_id.sudo()"/>
+            </t>
+            <t t-if="not o or not &apos;company_id&apos; in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.basic_layout">
+                        <div class="pos-sale-ticket">
+                            <div class="text-center">
+                                <img t-if="company.logo"
+                                     t-att-src="&apos;data:image/png;base64,%s&apos; % to_text(company.logo)"
+                                     style="max-height: 45px;"/>
+                                <br/>
+                            </div>
+                            <div class="text-center">
+                                <t t-out="company.name"/>
+                                <br/>
+                                NIF:
+                                <t t-out="company.vat"/>
+                                <br/>
+                                Telefone:
+                                <t t-out="company.phone"/>
+                                <br/>
+                                Endereço:
+                                <div>
+                                    <t t-out="company.street"/>
+                                </div>
+                            </div>
+                            <hr/>
+                            <h4 class="text-center">Relatório de sessão:
+                                <span t-field="o.name"/>
+                            </h4>
+                            <div class="row mw-100 mb-3">
+                                <strong>Responsavél</strong>:
+                                <span class="pull-right" t-field="o.user_id"/>
+                            </div>
+                            <div class="row mw-100 mb-3">
+                                <strong>Ponto de Venda</strong>:
+                                <span class="pull-right" t-field="o.config_id.name"/>
+                            </div>
+                            <div class="row mw-100 mb-3">
+                                <strong>Data de abertura</strong>:
+                                <span class="pull-right" t-field="o.start_at"/>
+                            </div>
+                            <div class="row mw-100 mb-3">
+                                <strong>Data de Fecho</strong>:
+                                <span class="pull-right" t-field="o.stop_at"/>
+                            </div>
+                            <br/>
+                            <table class="table table-condensed" style="font-size:14px;">
+                                <thead>
+                                    <tr>
+                                        <th colspan="3" class="text-center">
+                                            Detalhes
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="o.get_total_per_payments()" t-as="statement">
+                                        <td>
+                                            <span t-out="statement['name']"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-out="statement['amount']"
+                                                  t-out-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;statement.currency_id&quot;}"/>
+                                            <span t-out="statement['currency']"/>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <hr style="border-top: 1px solid black;"/>
+                            <div>
+                                <strong>Total</strong>
+                                <strong class="pull-right">
+                                    <span t-out="o.total_payments_amount"/>
+                                    <span t-out="o.currency_id.symbol"/>
+
+                                </strong>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

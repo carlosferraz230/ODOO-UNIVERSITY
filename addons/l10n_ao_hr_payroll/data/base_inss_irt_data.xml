@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Salary Rules - Base, INSS and IRT classes -->
+    <data noupdate="1">
+        <record id="hr_salary_rule_wage_base" model="hr.salary.rule">
+            <field name="code">BASE</field>
+            <field eval="100" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="note">Ordenado base definido com valor igual ao estipulado no contrato</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <!--<field name="register_id" ref="l10n_ao_hr_payroll.hr_contribution_register_base"/>-->
+            <field name="amount_percentage_base">contract.wage</field>
+            <field name="quantity">((inputs.work_rate and inputs.work_rate.amount != 0 and inputs.work_rate.amount) or
+                1)
+            </field>
+           <field name="amount_python_compute">
+res = contract.wage
+if contract.first_work_day and contract.date_start[0:7] == contract.payslip_date[0:7]:
+    res = contract.wage_day * contract.first_work_day
+result = res</field>
+            <field name="amount_percentage" eval="100"/>
+            <field eval="1" name="active"/>
+            <field name="name">Vencimento</field>
+            <field name="category_id" ref="l10n_ao_hr_payroll.hr_salary_rule_category_base"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>
+
+        <record id="hr_salary_rule_wage_base_worker" model="hr.salary.rule">
+            <field name="code">BASE</field>
+            <field eval="100" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="note">Ordenado base definido com valor igual ao estipulado no contrato</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <!--<field name="register_id" ref="l10n_ao_hr_payroll.hr_contribution_register_base"/>-->
+            <field name="amount_percentage_base">contract.wage</field>
+            <field name="quantity">((inputs.work_rate and inputs.work_rate.amount != 0 and inputs.work_rate.amount) or
+                1)
+            </field>
+           <field name="amount_python_compute">
+res = contract.wage
+if contract.first_work_day and contract.date_start[0:7] == contract.payslip_date[0:7]:
+    res = contract.wage_day * contract.first_work_day
+result = res</field>
+            <field name="amount_percentage" eval="100"/>
+            <field eval="1" name="active"/>
+            <field name="name">Vencimento</field>
+            <field name="category_id" ref="l10n_ao_hr_payroll.hr_salary_rule_category_base"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_class_b"/>
+        </record>
+
+        <record id="hr_salary_rule_sal_gross" model="hr.salary.rule">
+            <field name="code">GROSS</field>
+            <field eval="199" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="note">Salario Iliquido</field>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+           <field name="amount_python_compute"><![CDATA[
+base_calculo = categories.BAS + categories.HEXTRA + categories.ABO + categories.SOC + categories.GRAT + contract.gross_allowance()
+result = base_calculo
+]]>
+            </field>
+            <field name="amount_percentage" eval="100"/>
+            <field eval="1" name="active"/>
+            <field name="name">Salario Iliquido</field>
+            <field name="category_id" ref="l10n_ao_hr_payroll.hr_salary_rule_category_iliquid"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>
+
+        <record id="hr_salary_rule_sal_net" model="hr.salary.rule">
+            <field name="code">NET</field>
+            <field eval="200" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="note">Salario liquido</field>
+            <field name="condition_select">python</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Salario liquido</field>
+            <field name="condition_python">
+result = contract.exempt_ss
+            </field>
+            <field name="amount_python_compute"><![CDATA[
+base_calculo = categories.BAS + categories.HEXTRA +  categories.FALTA + categories.ABO + categories.INSS + categories.IRT
+result = base_calculo
+]]>
+            </field>
+            <field name="category_id" ref="l10n_ao_hr_payroll.hr_salary_rule_category_liquid"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>
+
+       <!-- <record id="hr_salary_rule_ss_collect" model="hr.salary.rule">
+            <field name="code">ss_collect</field>
+            <field eval="150" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="note">Materia coletável Segurança Social</field>
+            <field name="condition_select">python</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Materia coletável Segurança Social</field>
+            <field name="condition_python">
+result = contract.exempt_ss
+            </field>
+            <field name="amount_python_compute"><![CDATA[
+base_calculo = categories.BAS + categories.HEXTRA +  categories.FALTA + contract.all_allowance()
+result = (base_calculo * 0.03) * -1.0
+]]>
+            </field>
+            <field name="category_id" ref="l10n_ao_hr_payroll.hr_salary_rule_category_inss_collect"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>-->
+
+        <record id="hr_salary_rule_ss" model="hr.salary.rule">
+            <field name="code">INSS</field>
+            <field eval="149" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="note">Contribuição para Segurança Social</field>
+            <field name="condition_select">python</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">Segurança Social</field>
+            <field name="condition_python">
+result = contract.exempt_ss
+            </field>
+            <field name="amount_python_compute"><![CDATA[
+base_calculo = categories.BAS + categories.HEXTRA +  categories.FALTA + categories.ABO
+result = (base_calculo * 0.03) * -1.0
+]]>
+            </field>
+            <field name="category_id" ref="l10n_ao_hr_payroll.hr_salary_rule_category_inss"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>
+
+        <record id="hr_salary_rule_irt_10" model="hr.salary.rule">
+            <field name="code">IRT</field>
+            <field eval="151" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range"><![CDATA[
+round((categories.BAS + categories.HEXTRA  +  categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS ), 2)
+]]>
+            </field>
+            <field name="note">Imposto de rendimento sobre o trabalho - 10%</field>
+            <field eval="70001.0" name="condition_range_min"/>
+            <field name="condition_select">range</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field eval="100000.0" name="condition_range_max"/>
+            <field name="name">IRT 10%</field>
+            <field name="amount_python_compute"><![CDATA[
+result = 0.0
+if contract.exempt_irt:
+    base_calc = categories.BAS + categories.HEXTRA  +  categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS
+    result = ((base_calc - 70000) * 0.1) + 3000
+result = -result
+]]>
+            </field>
+            <field name="category_id" ref="hr_salary_rule_category_irt"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>
+
+        <record id="hr_salary_rule_irt_13" model="hr.salary.rule">
+            <field name="code">IRT13</field>
+            <field eval="152" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range"><![CDATA[
+round((categories.BAS + categories.HEXTRA  + categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS), 2)
+]]>
+            </field>
+            <field name="note">Imposto de rendimento sobre o trabalho - 13%</field>
+            <field eval="100001.0" name="condition_range_min"/>
+            <field name="condition_select">range</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field eval="150000.0" name="condition_range_max"/>
+            <field name="name">IRT 13%</field>
+            <field name="amount_python_compute"><![CDATA[
+result = 0.0
+if contract.exempt_irt:
+    base_calc = categories.BAS + categories.HEXTRA  +  categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS
+    result = ((base_calc - 100000) * 0.13) + 6000
+result = -result
+]]>
+            </field>
+            <field name="category_id" ref="hr_salary_rule_category_irt"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>
+
+        <record id="hr_salary_rule_irt_16" model="hr.salary.rule">
+            <field name="code">IRT16</field>
+            <field eval="153" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range"><![CDATA[
+round((categories.BAS + categories.HEXTRA  +  categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS), 2)
+]]>
+            </field>
+            <field name="note">Imposto de rendimento sobre o trabalho - 16%</field>
+            <field eval="150001.0" name="condition_range_min"/>
+            <field name="condition_select">range</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field eval="200000.0" name="condition_range_max"/>
+            <field name="name">IRT 16%</field>
+            <field name="amount_python_compute"><![CDATA[
+result = 0.0
+if contract.exempt_irt:
+    base_calc = categories.BAS + categories.HEXTRA  + categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS
+    result = ((base_calc - 150000) * 0.16) + 12500
+result = -result
+]]>
+            </field>
+            <field name="category_id" ref="hr_salary_rule_category_irt"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>
+
+        <record id="hr_salary_rule_irt_18" model="hr.salary.rule">
+            <field name="code">IRT18</field>
+            <field eval="154" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range"><![CDATA[
+round((categories.BAS + categories.HEXTRA  + categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS), 2)
+]]>
+            </field>
+            <field name="note">Imposto de rendimento sobre o trabalho - 18%</field>
+            <field eval="200001.0" name="condition_range_min"/>
+            <field name="condition_select">range</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field eval="300000.0" name="condition_range_max"/>
+            <field name="name">IRT 18% </field>
+            <field name="amount_python_compute"><![CDATA[
+result = 0.0
+if contract.exempt_irt:
+    base_calc = categories.BAS + categories.HEXTRA  + categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS
+    result = ((base_calc - 200000) * 0.18) + 31250
+result = -result
+]]>
+            </field>
+            <field name="category_id" ref="hr_salary_rule_category_irt"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>
+
+        <record id="hr_salary_rule_irt_19" model="hr.salary.rule">
+            <field name="code">IRT19</field>
+            <field eval="155" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range"><![CDATA[
+round((categories.BAS + categories.HEXTRA  + categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS), 2)
+]]>
+            </field>
+            <field name="note">Imposto de rendimento sobre o trabalho - 19%</field>
+            <field eval="300001.0" name="condition_range_min"/>
+            <field name="condition_select">range</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field eval="500000.0" name="condition_range_max"/>
+            <field name="name">IRT 19%</field>
+            <field name="amount_python_compute"><![CDATA[
+result = 0.0
+if contract.exempt_irt:
+    base_calc = categories.BAS + categories.HEXTRA  + categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS
+    result = ((base_calc - 300000) * 0.19) + 49250
+result = -result
+]]>
+            </field>
+            <field name="category_id" ref="hr_salary_rule_category_irt"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>
+
+        <record id="hr_salary_rule_irt_20" model="hr.salary.rule">
+            <field name="code">IRT20</field>
+            <field eval="156" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range"><![CDATA[
+round((categories.BAS + categories.HEXTRA  + categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS), 2)
+]]>
+            </field>
+            <field name="note">Imposto de rendimento sobre o trabalho - 20%</field>
+            <field eval="500001.0" name="condition_range_min"/>
+            <field name="condition_select">range</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field eval="1000000.0" name="condition_range_max"/>
+            <field name="name">IRT 20%</field>
+            <field name="amount_python_compute"><![CDATA[
+result = 0.0
+if contract.exempt_irt:
+    base_calc = categories.BAS + categories.HEXTRA  + categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS
+    result = ((base_calc - 500000) * 0.2) + 87250
+result = -result
+]]>
+            </field>
+            <field name="category_id" ref="hr_salary_rule_category_irt"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>
+
+        <record id="hr_salary_rule_irt_21" model="hr.salary.rule">
+            <field name="code">IRT21</field>
+            <field eval="157" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range"><![CDATA[
+round((categories.BAS + categories.HEXTRA  + categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS), 2)
+]]>
+            </field>
+            <field name="note">Imposto de rendimento sobre o trabalho - 21%</field>
+            <field eval="1000001.0" name="condition_range_min"/>
+            <field name="condition_select">range</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field eval="1500000.0" name="condition_range_max"/>
+            <field name="name">IRT 21%</field>
+            <field name="amount_python_compute"><![CDATA[
+result = 0.0
+if contract.exempt_irt:
+    base_calc = categories.BAS + categories.HEXTRA  + categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS
+    result = ((base_calc - 1000000) * 0.21) + 187250
+result = -result
+]]>
+            </field>
+            <field name="category_id" ref="hr_salary_rule_category_irt"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>
+
+        <record id="hr_salary_rule_irt_22" model="hr.salary.rule">
+            <field name="code">IRT22</field>
+            <field eval="158" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range"><![CDATA[
+round((categories.BAS + categories.HEXTRA  + categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS), 2)
+]]>
+            </field>
+            <field name="note">Imposto de rendimento sobre o trabalho - 22%</field>
+            <field eval="1500001.0" name="condition_range_min"/>
+            <field name="condition_select">range</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field eval="2000000.0" name="condition_range_max"/>
+            <field name="name">IRT 22%</field>
+            <field name="amount_python_compute"><![CDATA[
+result = 0.0
+if contract.exempt_irt:
+    base_calc = categories.BAS + categories.HEXTRA  + categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS
+    result = ((base_calc - 1500000) * 0.22) + 292000
+result = -result
+]]>
+            </field>
+            <field name="category_id" ref="hr_salary_rule_category_irt"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>
+
+        <record id="hr_salary_rule_irt_23" model="hr.salary.rule">
+            <field name="code">IRT23</field>
+            <field eval="159" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range"><![CDATA[
+round((categories.BAS + categories.HEXTRA  + categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS), 2)
+]]>
+            </field>
+            <field name="note">Imposto de rendimento sobre o trabalho - 23%</field>
+            <field eval="2000001.0" name="condition_range_min"/>
+            <field name="condition_select">range</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field eval="2500000" name="condition_range_max"/>
+            <field name="name">IRT 23%</field>
+            <field name="amount_python_compute"><![CDATA[
+result = 0.0
+if contract.exempt_irt:
+    base_calc = categories.BAS + categories.HEXTRA  + categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS
+    result = ((base_calc - 2000000) * 0.23) + 402250
+result = -result
+]]>
+            </field>
+            <field name="category_id" ref="hr_salary_rule_category_irt"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>
+
+        <record id="hr_salary_rule_irt_24" model="hr.salary.rule">
+            <field name="code">IRT24</field>
+            <field eval="160" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range"><![CDATA[
+round((categories.BAS + categories.HEXTRA  + categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS), 2)
+]]>
+            </field>
+            <field name="note">Imposto de rendimento sobre o trabalho - 24%</field>
+            <field eval="2500001.0" name="condition_range_min"/>
+            <field name="condition_select">range</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field eval="5000000" name="condition_range_max"/>
+            <field name="name">IRT 24%</field>
+            <field name="amount_python_compute"><![CDATA[
+result = 0.0
+if contract.exempt_irt:
+    base_calc = categories.BAS + categories.HEXTRA  + categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS
+    result = ((base_calc - 2500000) * 0.24) + 517250
+result = - result
+]]>
+            </field>
+            <field name="category_id" ref="hr_salary_rule_category_irt"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>
+
+        <record id="hr_salary_rule_irt_24_5" model="hr.salary.rule">
+            <field name="code">IRT24_5</field>
+            <field eval="161" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range"><![CDATA[
+round((categories.BAS + categories.HEXTRA  + categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS), 2)
+]]>
+            </field>
+            <field name="note">Imposto de rendimento sobre o trabalho - 24,5%</field>
+            <field eval="5000001.0" name="condition_range_min"/>
+            <field name="condition_select">range</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field eval="10000000.0" name="condition_range_max"/>
+            <field name="name">IRT 24,5%</field>
+            <field name="amount_python_compute"><![CDATA[
+result = 0.0
+if contract.exempt_irt:
+    base_calc = categories.BAS + categories.HEXTRA  + categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS
+    result = ((base_calc - 5000000) * 0.245) + 1117250
+result = -result
+]]>
+            </field>
+            <field name="category_id" ref="hr_salary_rule_category_irt"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>
+
+        <record id="hr_salary_rule_irt_25" model="hr.salary.rule">
+            <field name="code">IRT25</field>
+            <field eval="162" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="note">Imposto de rendimento sobre o trabalho - 25%</field>
+            <field name="condition_select">python</field>
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">IRT 25%</field>
+            <field name="condition_python"><![CDATA[
+base_calc = round((categories.BAS + categories.HEXTRA  + categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS), 2)
+result = base_calc >= 10000000.01
+]]>
+            </field>
+            <field name="amount_python_compute"><![CDATA[
+result = 0.0
+if contract.exempt_irt:
+    base_calc = categories.BAS + categories.HEXTRA  + categories.FALTA + categories.GRAT  + contract.all_allowance() + categories.INSS
+    result = ((base_calc - 10000000) * 0.25) + 2342250
+result = -result
+]]>
+            </field>
+            <field name="category_id" ref="hr_salary_rule_category_irt"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base"/>
+        </record>
+
+        <record id="hr_salary_rule_irt_class_b" model="hr.salary.rule">
+            <field name="code">IRTCLASSB</field>
+            <field eval="162" name="sequence"/>
+            <field eval="1" name="appears_on_payslip"/>
+            <field name="condition_range">contract.wage</field>
+            <field name="note">Desconto de imposto de rendimento sobre o trabalho - 6,5%</field>
+            <field name="condition_select">python</field>
+
+            <field name="amount_select">code</field>
+            <field eval="1" name="active"/>
+            <field name="name">IRT 6,5%</field>
+            <field name="condition_python"><![CDATA[
+base_calc = round((categories.BAS + contract.all_allowance()), 2)
+result = base_calc >= 20000.01
+]]>
+            </field>
+            <field name="amount_python_compute"><![CDATA[
+result = 0.0
+if contract.exempt_irt:
+    base_calc = categories.BAS + contract.all_allowance()
+    result = base_calc * 0.065
+result = -result
+]]>
+            </field>
+            <field name="category_id" ref="hr_salary_rule_category_irt"/>
+            <field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_class_b"/>
+        </record>
+
+        <!-- <record id="hr_rule_input_wage_base" model="hr.rule.input">
+            <field name="code">work_rate</field>
+            <field name="name">Coeficiente Laboral</field>
+            <field name="input_id" ref="hr_salary_rule_wage_base"/>
+        </record>-->
+    </data>
+</odoo>

@@ -1,0 +1,50 @@
+<odoo>
+
+    <data>
+        <record id="saft_ao_wizard_view" model="ir.ui.view">
+            <field name="name">saft.ao.export.wizard.form</field>
+            <field name="model">saft.ao.export.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <separator string="Gerar Ficheiro XML"/>
+                    <group>
+                        <group>
+                            <field name="company_id" string="Empresa"
+                                   options="{'no_create': True, 'no_open': True}"
+                                   readonly="1" invisible="1"/>
+                            <field name="type" required="1" string="Tipo do Documento"/>
+                            <field name="date_from" string="Data de inicio" placeholder="Data de inicio..."
+                                   required="1"/>
+                            <field name="date_to" string="Data de fim" placeholder="Data de fim..." required="1"/>
+                        </group>
+                        <group string="Comentário">
+                            <field name="comments"
+                                   placeholder="Comentário do cabeçalho para a versão Angola do arquivo de auditoria padrão"
+                                   nolabel="1"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <span groups="base.group_user">
+                            <button name="get_saft_xml" type="object" icon="fa-download"
+                                    string="EXPORTAR" class="oe_highlight"/>
+                            <button string="CANCELAR" special="cancel"/>
+                        </span>
+                    </footer>
+
+                </form>
+            </field>
+        </record>
+        <record id="saft_ao_wizard_action" model="ir.actions.act_window">
+            <field name="name">Ficheiro XML SAF-T AO</field>
+            <field name="res_model">saft.ao.export.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <menuitem
+                id="menu_saft_ao_wizard"
+                name="Exportar Ficheiro"
+                action="saft_ao_wizard_action"
+                parent="l10n_ao_saft.menu_saft_ao"
+                sequence="20"/>
+    </data>
+</odoo>

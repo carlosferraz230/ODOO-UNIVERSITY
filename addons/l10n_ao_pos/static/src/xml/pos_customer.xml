@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+
+    <t t-name="ActionpadWidget" t-inherit="point_of_sale.ActionpadWidget" t-inherit-mode="extension" owl="1">
+        <xpath expr="//button[@class=&apos;button set-customer&apos;]" position="replace">
+            <button class="button set-customer" t-att-class="{&apos;decentered&apos;: isLongName}"
+                    t-on-click="trigger(&apos;click-customer&apos;)">
+                <t t-if="!env.isMobile">
+                    <i class="fa fa-user" role="img" aria-label="Customer" title="Customer"/>
+                </t>
+                <t t-if="client">
+                    <t t-esc="client.name"/>
+                </t>
+                <t t-else="">
+                    Consumidor Final
+                </t>
+            </button>
+        </xpath>
+    </t>
+    <t t-name="PaymentScreen" t-inherit="point_of_sale.PaymentScreen" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[@class=&apos;customer-button&apos;]" position="replace">
+            <div class="customer-button">
+                <div class="button highlight" t-on-click="selectClient">
+                    <i class="fa fa-user" role="img" aria-label="Customer" title="Customer"/>
+                    <span class="js_customer_name">
+                        <t t-if="env.pos.get_client()">
+                            <t t-esc="env.pos.get_client().name"/>
+                        </t>
+                        <t t-if="!env.pos.get_client()">
+                            Consumidor Final
+                        </t>
+                    </span>
+                </div>
+            </div>
+        </xpath>
+    </t>
+</template>

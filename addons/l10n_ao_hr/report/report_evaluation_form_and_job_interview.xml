@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_job_evaluation_and_interview">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <style type="text/css">
+                        * {padding-bottom: 0 !important;
+                        padding-top: 0 !important;
+                        margin-bottom: 0 !important;margin-top:0 !important; }
+
+                        #table tr td{
+                        border: 1px solid #ccc;
+                        }
+                    </style>
+                    <div class="page">
+                        <div class="oe_structure" style="font-family:Calibri; font-size: 12px;">
+                            <h2 class="text-center">Job Evaluation and Interview Form</h2>
+
+                            <table id="table" class="table table-bordered">
+                                <tr>
+                                    <td colspan="4" style="font-weight:bold; background-color:#337AB7; color:#ffffff;">
+                                        DETALHES DA
+                                        ENTREVISTA
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Nomde do Candidato:</td>
+                                    <td></td>
+                                    <td>Data da Entrevista:</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Posição aplicada para:</td>
+                                    <td></td>
+                                    <td>Hora da Entrevista:</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Entrevistador:</td>
+                                    <td></td>
+                                    <td>Tipo de Entrevista:</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            <b style="font-size:8px">Dentro de cada secção, um espaço extra é fornecido para se escrever
+                                comentário específicos sobre o trabalho
+                            </b>
+                            <table id="table" class="table table-bordered">
+                                <tr>
+                                    <td colspan="5" style="font-weight:bold; background-color:#337AB7; color:#ffffff;">
+                                        PREPARAÇÃO DA
+                                        ENTREVISTA DO CANDIDATO( gestão de tempo, pesquisa / familiarização com a
+                                        empresa)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" style="font-size:8px;">O candidato demonstrou boas habilidades de
+                                        preparação para entrevista
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>Extremamente preparado</td>
+                                    <td>Bem preparado</td>
+                                    <td>Pouca preparação</td>
+                                    <td>Sem preparação</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">Comentarios:
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" style="font-weight:bold; background-color:#337AB7; color:#ffffff;">
+                                        EXPERIÊNCIA DE TRABALHO
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" style="font-size:8px">O candidato tem experiência de trabalho prévia
+                                        relacionada à posição
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <td>Experiência extensiva</td>
+                                    <td>Atende aos requisitos</td>
+                                    <td>Habilidades transfériveis</td>
+                                    <td>Nenhuma experiência</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">Comentarios:
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td colspan="5" style="font-weight:bold; background-color:#337AB7; color:#ffffff;">
+                                        EMPREGO PASSADO (história do trabalho, por favor, detalhe a razão pela qual está
+                                        a
+                                        procura de emprego alternativo)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" style="font-size:8px">O histórico de emprego do candidato está
+                                        relacionado a posição
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Ideal</td>
+                                    <td>Antede aos requisitos</td>
+                                    <td>Padrão de emprego errático</td>
+                                    <td>Não antede aos requisitos</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">Comentarios:
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="5" style="font-weight:bold; background-color:#337AB7; color:#ffffff;">
+                                        TÉCNICO
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" style="font-size:8px">O candidato demonstrou para sua satifação que
+                                        ele(a) tem habilidades técnicas necessárias para realizar o trabalho com sucesso
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Excede os requisitos</td>
+                                    <td>Antede aos requisitos</td>
+                                    <td>Precisa de mais treinamento</td>
+                                    <td>Não antede aos requisitos</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">Comentarios:
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="5" style="font-weight:bold; background-color:#337AB7; color:#ffffff;">
+                                        ATITUDE DE SEGURANÇA
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" style="font-size:8px">O candidato demonstrou para sua satifação que
+                                        tem
+                                        a experiência de segurança e compromisso necessário
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Excede os requisitos</td>
+                                    <td>Antede aos requisitos</td>
+                                    <td>Precisa de mais treinamento</td>
+                                    <td>Não antede aos requisitos</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">Comentarios:
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="5" style="font-weight:bold; background-color:#337AB7; color:#ffffff;">
+                                        SUPERVISÃO E LIDERANÇA (inclui capacidade de coaching/mentorign)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" style="font-size:8px">O candidato demonstrou para sua satifação que
+                                        ele(a) tem
+                                        habilidades necessáris de supervisão / liderança para executar o trabalho com
+                                        sucesso
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Excede os requisitos</td>
+                                    <td>Antede aos requisitos</td>
+                                    <td>Precisa de mais treinamento</td>
+                                    <td>Não antede aos requisitos</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">Comentarios:
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="5" style="font-weight:bold; background-color:#337AB7; color:#ffffff;">
+                                        TRABALHO EM EQUIPA
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" style="font-size:8px">O candidato demonstrou a capacidade de
+                                        trabalhar
+                                        bem em uma equipa e com superiores, colegas e funcionários que lhe reportam
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Excede os requisitos</td>
+                                    <td>Antede aos requisitos</td>
+                                    <td>Precisa de mais treinamento</td>
+                                    <td>Não antede aos requisitos</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">Comentarios:
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="5" style="font-weight:bold; background-color:#337AB7; color:#ffffff;">
+                                        INICIATIVA
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" style="font-size:8px">O candidato demonstrou a capacidade de ser
+                                        proativo e visionário (forward thinking)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Excede os requisitos</td>
+                                    <td>Antede aos requisitos</td>
+                                    <td>Precisa de mais treinamento</td>
+                                    <td>Não antede aos requisitos</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">Comentarios:
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="5" style="font-weight:bold; background-color:#337AB7; color:#ffffff;">
+                                        COMUNICAÇÃO (inclui várias tipos de comunicação - oral, visual, escuta e
+                                        escrita, se
+                                        aplicavél...)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" style="font-size:8px">O candidato demonstrou para sua satifação que
+                                        ele(a) tem
+                                        as habilidades de comunicação necessárias para realizar o trabalho com sucesso
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Excede os requisitos</td>
+                                    <td>Antede aos requisitos</td>
+                                    <td>Precisa de mais treinamento</td>
+                                    <td>Não antede aos requisitos</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">Comentarios:
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td colspan="5" style="font-weight:bold; background-color:#337AB7; color:#ffffff;">
+                                        ASPIRAÇÃO DE CARREIRA E POTENCIAL FUTURO
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" style="font-size:8px">O candidato demonstrou desejo/potencial para
+                                        maior
+                                        desenvolvimento na carreira
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">Sim</td>
+                                    <td colspan="2">Não</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">Comentarios:
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td colspan="5" style="font-weight:bold; background-color:#337AB7; color:#ffffff;">
+                                        TREINAMENTO E COMPETÊNCIA (são requisitos mínimos e obrigatórios atendidos? Por
+                                        favor detalhar quaisquer requisitos de escassez, se aplicável)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" style="font-size:8px">O candidato tem educação, formação e/ou
+                                        competências necessárias
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Excede os requisitos</td>
+                                    <td>Antede aos requisitos</td>
+                                    <td>Precisa de mais treinamento</td>
+                                    <td>Não antede aos requisitos</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">Comentarios:
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <br/>
+                            <br/>
+                            <table id="table" class="table table-bordered">
+                                <tr>
+                                    <td colspan="5" style="font-weight:bold; background-color:#337AB7; color:#ffffff;">
+                                        COMO FOI CONTACTADO O CANDIDATO( se o emprego actual é a empresa ou outro, por
+                                        favor
+                                        detalhe)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Site da Empresa</td>
+                                    <td>Agência</td>
+                                    <td>Recomendação</td>
+                                    <td>Actual funcionário da empresa</td>
+                                    <td>Outros</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">Comentarios:
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">o candidadto está relacionado a qualquer pessoas que trabalha dentro
+                                        desta empresas?
+                                        <br/>
+                                        SIM/NÃO (se sim, por favor detalhe) Nome: Relacionamento: Localização:
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" style="font-weight:bold; background-color:#337AB7; color:#ffffff;">
+                                        GERAL( remuneração actual e benefícios, expectativas salariais, período de aviso
+                                        prévio..)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">Comentarios:
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" style="font-weight:bold; background-color:#337AB7; color:#ffffff;">
+                                        RECOMENDAÇÃO GERAL (por favor detalhe)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Altamente Recomendado</td>
+                                    <td>Recomendado</td>
+                                    <td>Adequado para uma posição alternativa</td>
+                                    <td>Não recomendo</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">Comentarios:
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="5" style="font-weight:bold; background-color:#337AB7; color:#ffffff;">
+                                        ASSINATURAS
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="5" style="font-weight:bold;">
+                                        <div style="width:50%; float: left;">
+                                            Nome do entrevistador:
+                                            <br/>
+                                            <br/>
+                                            <hr/>
+                                            <br/>
+                                            Assinatura do entrevistado: __________________________
+                                        </div>
+                                        <div style="width:50%; float: right;">
+                                            Entrevistador(s) título do trabalho:
+                                            <br/>
+                                            <br/>
+                                            <hr/>
+                                            <br/>
+                                            Data:
+                                        </div>
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="5" style="font-weight:bold;">
+                                        <div style="width:50%; float: left;">
+                                            Nome do entrevistador:
+                                            <br/>
+                                            <br/>
+                                            <hr/>
+                                            <br/>
+                                            Assinatura do entrevistado: __________________________
+                                        </div>
+                                        <div style="width:50%; float: right;">
+                                            Entrevistador(s) título do trabalho:
+                                            <br/>
+                                            <br/>
+                                            <hr/>
+                                            <br/>
+                                            Data:
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

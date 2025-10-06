@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_note,account_note,model_account_note,account.group_account_user,1,1,1,1
+access_account_fiscal_year,account_fiscal_year,model_account_fiscal_year,account.group_account_user,1,1,1,1
+access_account_fiscal_period,account_fiscal_period,model_account_fiscal_period,account.group_account_user,1,1,1,1
+access_ao_res_country_state_county_user,res.country.state.county.user,model_res_country_state_county,base.group_user,1,1,1,0
+access_ao_res_country_state_county_district_user,es.country.state.county.district.user,model_res_country_state_county_district,base.group_user,1,1,1,0

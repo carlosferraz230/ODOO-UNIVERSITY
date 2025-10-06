@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+            id="ao_menu_hr_root"
+            name="RH"
+            groups="hr.group_hr_manager,hr.group_hr_user,base.group_user"
+            web_icon="hr,static/description/icon.png"
+            sequence="75"/>
+    <menuitem id="hr_work_entry_contract_enterprise.hr_menu_contract" active="False"/>
+    <!--    <delete id="hr_contract.hr_menu_contract_history" model="ir.ui.menu"/>-->
+
+    <!--    <delete id="hr_payroll.hr_menu_salary_attachments" model="ir.ui.menu"/>-->
+
+    <menuitem id="hr_payroll.hr_menu_salary_attachments" active="False"/>
+    <menuitem id="hr_payroll.menu_hr_payroll_attachment_salary_report" active="False"/>
+    <menuitem id="hr_payroll.menu_hr_payroll_employee_payslips_to_pay" active="False"/>
+    <menuitem id="hr_payroll.menu_hr_salary_configuration" active="False"/>
+    <menuitem id="hr_payroll.menu_hr_work_entry_report" active="False"/>
+    <menuitem
+            id="hr_contract.hr_menu_contract_history"
+            action="hr_contract.hr_contract_history_view_list_action"
+            parent="hr.menu_hr_employee_payroll"
+            name="Histórico"
+            sequence="3"
+            groups="hr_contract.group_hr_contract_manager"/>
+
+    <menuitem
+            id="hr_payroll.menu_hr_payroll_payslips"
+            name="Payslips"
+            parent="hr_work_entry_contract_enterprise.menu_hr_payroll_root"
+            sequence="40"
+            groups="hr_payroll.group_hr_payroll_user"/>
+
+    <menuitem
+            id="hr_payroll.menu_hr_payslip_run"
+            action="hr_payroll.action_hr_payslip_run_tree"
+            name="Lotes de Recibos de Vencimento"
+            sequence="60"
+            parent="hr_payroll.menu_hr_payroll_payslips"/>
+    <menuitem
+            id="hr_payroll.menu_hr_payroll_employee_payslips"
+            name="Recibos de Vencimento do Funcionário"
+            parent="hr_payroll.menu_hr_payroll_payslips"
+            sequence="80"
+            action="hr_payroll.action_view_hr_payslip_month_form"
+            groups="hr_payroll.group_hr_payroll_user"/>
+    <menuitem
+            id="menu_action_hr_salary_rule_form"
+            action="hr_payroll.action_salary_rule_form"
+            name="Regras de Salários"
+            parent="hr_work_entry_contract_enterprise.menu_hr_payroll_configuration"
+            sequence="30"/>
+    <menuitem
+            id="hr_payroll.menu_hr_work_entry_report"
+            name="Work Entry Analysis"
+            action="hr_payroll.hr_work_entry_report_action"
+            sequence="75"
+            parent="hr_work_entry_contract_enterprise.menu_hr_payroll_configuration"/>
+
+    <menuitem
+            id="hr_payroll.menu_action_hr_salary_rule_parameter"
+            action="hr_payroll.hr_rule_parameter_action"
+            name="Parâmetros da regra salarial"
+            parent="hr_work_entry_contract_enterprise.menu_hr_payroll_configuration"
+            sequence="35"/>
+
+    <menuitem
+            id="hr_payroll.menu_hr_salary_rule_category"
+            action="hr_payroll.action_hr_salary_rule_category"
+            name="Regra categorias salariais"
+            parent="hr_work_entry_contract_enterprise.menu_hr_payroll_configuration"
+            sequence="35"
+    />
+    <menuitem
+            id="hr_payroll.menu_hr_payroll_structure_view"
+            action="hr_payroll.action_view_hr_payroll_structure_list_form"
+            name="Estrutura salarial"
+            parent="hr_work_entry_contract_enterprise.menu_hr_payroll_configuration"
+            sequence="20"
+    />
+    <menuitem
+            id="hr_payroll.menu_hr_payroll_structure_type"
+            name="Structure Types"
+            action="hr_payroll.action_hr_payroll_structure_type"
+            parent="hr_work_entry_contract_enterprise.menu_hr_payroll_configuration"
+            sequence="10"/>
+
+    <menuitem
+            id="hr_payroll.menu_hr_payslip_entry_type_view"
+            action="hr_payroll.action_view_hr_payslip_input_type"
+            parent="hr_work_entry_contract_enterprise.menu_hr_payroll_configuration"
+            name="Outros tipos de entrada"
+            sequence="40"/>
+    <menuitem
+            id="hr_work_entry_contract_enterprise.menu_hr_payroll_work_entries_root"
+            name="Work Entries"
+            parent="hr_work_entry_contract_enterprise.menu_hr_payroll_configuration"
+            sequence="70"
+            groups="hr_payroll.group_hr_payroll_manager" active="False"/>
+    <menuitem
+            id="hr_work_entry_contract_enterprise.menu_hr_work_entry_type_view"
+            action="hr_work_entry.hr_work_entry_type_action"
+            parent="hr_work_entry_contract_enterprise.menu_hr_payroll_configuration"
+            sequence="80"
+    />
+    <menuitem id="hr_payroll.menu_report_payroll"
+              name="Payroll"
+              action="hr_payroll.payroll_report_action"
+              sequence="80"
+              parent="hr_payroll.menu_hr_payroll_report"/>
+
+    <menuitem
+            id="hr_menu_all_contracts"
+            name="Todos os contratos"
+            action="hr_contract.action_hr_contract"
+            parent="hr.menu_hr_employee_payroll"
+            sequence="6"
+            groups="hr_contract.group_hr_contract_manager"/>
+
+    <menuitem name="Schedules" parent="hr.menu_human_resources_configuration"
+              action="resource.action_resource_calendar_form" id="menu_hr_configuration_schedule"/>
+
+</odoo>

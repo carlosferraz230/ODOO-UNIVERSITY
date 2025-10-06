@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- Deduction Rules -->
+	<data noupdate="1">
+
+
+		<record id="hr_salary_rule_disc_damage" model="hr.salary.rule">
+			<field name="code">DES_DAN</field>
+			<field eval="140" name="sequence" />
+			<field eval="1" name="appears_on_payslip" />
+			<field name="condition_select">python</field>
+			<field name="amount_select">code</field>
+			<field eval="1" name="active" />
+			<field name="name">Desconto por Danos</field>
+			<field name="condition_python">
+res=False
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_danos&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res=True
+result = res</field>
+			<field name="amount_python_compute">
+res=0.0
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_danos&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res += rem.amount
+result = res * -1</field>
+			<field name="category_id" ref="hr_salary_rule_category_deducoes" />
+			<field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base" />
+		</record>
+
+		<record id="hr_salary_rule_disc_other_loan" model="hr.salary.rule">
+			<field name="code">DES_LOAN</field>
+			<field eval="140" name="sequence" />
+			<field eval="1" name="appears_on_payslip" />
+			<field name="condition_select">python</field>
+			<field name="amount_select">code</field>
+			<field eval="1" name="active" />
+			<field name="name">Desconto por outros adiantamentos</field>
+			<field name="condition_python">
+res=False
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_loan&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res=True
+result = res</field>
+			<field name="amount_python_compute">
+res=0.0
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_loan&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res += rem.amount
+result = res * -1</field>
+			<field name="category_id" ref="hr_salary_rule_category_deducoes" />
+			<field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base" />
+		</record>
+
+		<record id="hr_salary_rule_disc_other_loan_classb" model="hr.salary.rule">
+			<field name="code">DES_LOAN</field>
+			<field eval="140" name="sequence" />
+			<field eval="1" name="appears_on_payslip" />
+			<field name="condition_select">python</field>
+			<field name="amount_select">code</field>
+			<field eval="1" name="active" />
+			<field name="name">Desconto por outros adiantamentos</field>
+			<field name="condition_python">
+res=False
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_loan&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res=True
+result = res</field>
+			<field name="amount_python_compute">
+res=0.0
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_loan&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res += rem.amount
+result = res * -1</field>
+			<field name="category_id" ref="hr_salary_rule_category_deducoes" />
+			<field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_class_b" />
+		</record>
+		<record id="hr_salary_rule_disc_adia_salary_classb" model="hr.salary.rule">
+			<field name="code">des_adia_salary</field>
+			<field eval="140" name="sequence" />
+			<field eval="1" name="appears_on_payslip" />
+			<field name="condition_select">python</field>
+			<field name="amount_select">code</field>
+			<field eval="1" name="active" />
+			<field name="name">Desconto Adiantamento Salário</field>
+			<field name="condition_python">
+res=False
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_adia_salario&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res=True
+result = res</field>
+			<field name="amount_python_compute">
+res=0.0
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_adia_salario&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res += rem.amount
+result = res * -1</field>
+			<field name="category_id" ref="hr_salary_rule_category_deducoes" />
+			<field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_class_b" />
+		</record>
+
+		<record id="hr_salary_rule_disc_other_other" model="hr.salary.rule">
+			<field name="code">DES_OTHER</field>
+			<field eval="140" name="sequence" />
+			<field eval="1" name="appears_on_payslip" />
+			<field name="condition_select">python</field>
+			<field name="amount_select">code</field>
+			<field eval="1" name="active" />
+			<field name="name">Desconto outros descontos</field>
+			<field name="condition_python">
+res=False
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_other&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res=True
+result = res</field>
+			<field name="amount_python_compute">
+res=0.0
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_other&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res += rem.amount
+result = res * -1</field>
+			<field name="category_id" ref="hr_salary_rule_category_deducoes" />
+			<field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base" />
+		</record>
+
+		<record id="hr_salary_rule_disc_other_other_classb" model="hr.salary.rule">
+			<field name="code">DES_OTHER</field>
+			<field eval="140" name="sequence" />
+			<field eval="1" name="appears_on_payslip" />
+			<field name="condition_select">python</field>
+			<field name="amount_select">code</field>
+			<field eval="1" name="active" />
+			<field name="name">Desconto outros descontos</field>
+			<field name="condition_python">
+res=False
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_other&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res=True
+result = res</field>
+			<field name="amount_python_compute">
+res=0.0
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_other&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res += rem.amount
+result = res * -1</field>
+			<field name="category_id" ref="hr_salary_rule_category_deducoes" />
+			<field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_class_b" />
+		</record>
+
+		<record id="hr_salary_rule_disc_ali" model="hr.salary.rule">
+			<field name="code">DES_ALI</field>
+			<field eval="141" name="sequence" />
+			<field eval="1" name="appears_on_payslip" />
+			<field name="condition_select">python</field>
+			<field name="amount_select">code</field>
+			<field eval="1" name="active" />
+			<field name="name">Desconto de Alimentação</field>
+			<field name="condition_python">
+res=False
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_ali&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res=True
+result = res</field>
+			<field name="amount_python_compute">
+res=0.0
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_ali&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res += rem.amount
+result = res * -1</field>
+			<field name="category_id" ref="hr_salary_rule_category_deducoes" />
+			<field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base" />
+		</record>
+
+		<record id="hr_salary_rule_dis_wage" model="hr.salary.rule">
+			<field name="code">DES_ADI</field>
+			<field eval="142" name="sequence" />
+			<field eval="1" name="appears_on_payslip" />
+			<field name="condition_select">python</field>
+			<field name="amount_select">code</field>
+			<field eval="1" name="active" />
+			<field name="name">Desconto Adiantamento Salarial</field>
+			<field name="condition_python">res=False
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_adiantamento_salarial&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res=True
+result = res
+</field>
+			<field name="amount_python_compute">res=0.0
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_adiantamento_salarial&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res += rem.amount
+result = res * -1
+</field>
+			<field name="category_id" ref="l10n_ao_hr_payroll.hr_salary_rule_category_deducoes" />
+			<field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base" />
+		</record>
+
+		<record id="hr_salary_rule_disc_sick_leave" model="hr.salary.rule">
+			<field name="code">des_baixa_medica</field>
+			<field eval="143" name="sequence" />
+			<field eval="1" name="appears_on_payslip" />
+			<field name="condition_select">python</field>
+			<field name="amount_select">code</field>
+			<field eval="1" name="active" />
+			<field name="name">Desconto por Baixa médica</field>
+			<field name="condition_python">
+res=False
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_baixa_medica&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res=True
+result = res</field>
+			<field name="amount_python_compute">
+res=0.0
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_baixa_medica&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res += rem.amount
+result = res * -1</field>
+			<field name="category_id" ref="hr_salary_rule_category_deducoes" />
+			<field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base" />
+		</record>
+
+		<record id="hr_salary_rule_disc_extravio_material" model="hr.salary.rule">
+			<field name="code">des_extravio_material</field>
+			<field eval="143" name="sequence" />
+			<field eval="1" name="appears_on_payslip" />
+			<field name="condition_select">python</field>
+			<field name="amount_select">code</field>
+			<field eval="1" name="active" />
+			<field name="name">Desconto por extravio de material</field>
+			<field name="condition_python">
+res=False
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_extravio_material&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res=True
+result = res</field>
+			<field name="amount_python_compute">
+res=0.0
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_extravio_material&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res += rem.amount
+result = res * -1</field>
+			<field name="category_id" ref="hr_salary_rule_category_deducoes" />
+			<field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base" />
+		</record>
+
+		<record id="hr_salary_rule_disc_assidu" model="hr.salary.rule">
+			<field name="code">des_assidu</field>
+			<field eval="143" name="sequence" />
+			<field eval="1" name="appears_on_payslip" />
+			<field name="condition_select">python</field>
+			<field name="amount_select">code</field>
+			<field eval="1" name="active" />
+			<field name="name">Descontos de Assiduidade</field>
+			<field name="condition_python">
+res=False
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_assidu&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res=True
+result = res</field>
+			<field name="amount_python_compute">
+res=0.0
+for rem in contract.remuneration_ids:
+    if rem.remunerationcode_id.code == &quot;des_assidu&quot; and rem.date_start &lt;= payslip.date_to:
+        if not rem.date_end or rem.date_end &gt;= payslip.date_to:
+            res += rem.amount
+result = res * -1</field>
+			<field name="category_id" ref="hr_salary_rule_category_deducoes" />
+			<field name="struct_id" ref="l10n_ao_hr_payroll.hr_salary_structure_base" />
+		</record>
+	</data>
+</odoo>

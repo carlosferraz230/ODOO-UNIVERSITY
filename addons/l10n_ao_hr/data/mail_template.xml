@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="contract_mail_template" model="mail.template">
+            <field name="name">Contract Expired: Send by email</field>
+            <field name="model_id" ref="l10n_ao_hr.model_hr_contract"/>
+            <field name="email_from">${(object.company_id.partner_id.email_formatted or company_id.email_formatted) | safe}</field>
+            <field name="email_to">${object.employee_id.work_email | safe}</field>
+            <field name="subject">Contracto quase a expirar: ${object.name} - ${object.employee_id.name}</field>
+            <field name="body_html" type="html">
+                <div>
+                    <p>
+                        Caro(a) funcionário(a) <b>${object.employee_id.name}</b>,
+                        <br/>
+                        O Presente email serve para informar que o seu contracto está prestes a expiar.
+                    </p>
+                    <p>
+                        Para regularizar está situação, dirija-se ao departamento de Recursos Humanos
+                    </p>
+                    <br/>
+                    <p>
+                        <b style="color:red">OBS: </b> O seu contracto expira na data, ${object.date_end}
+                    </p>
+                    <br/>
+                    <br/>
+                    Os melhores cumprimentos
+                    <br/>
+                    <b>${object.company_id.name}</b>
+                    <br/>
+                    <p>
+                        <img src="/logo.png?company=${object.company_id.id}" style="padding: 0px; margin: 0px; height: auto; width: 80px;" alt="${object.company_id.name}"/>
+                    </p>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

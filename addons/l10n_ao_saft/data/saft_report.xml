@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo><!-- <data> Ticblac Solution -->
+    <record id="action_saft_report" model="ir.actions.report">
+        <field name="name">saft</field>
+        <field name="model">saft.ao.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">l10n_ao_saft.saft_report</field>
+        <field name="report_file">l10n_ao_saft.saft_report</field>
+    </record>
+    <template id="l10n_ao_saft.saft_report_address">
+        <CompanyAddress>
+            <BuildingNumber>N/A</BuildingNumber>
+            <StreetName t-if="partner_address.street" t-esc="partner_address.street[:70]"/>
+            <AddressDetail t-if="partner_address.street2" t-esc="partner_address.street2[:70]"/>
+            <City t-esc="partner_address.city"/>
+            <PostalCode t-esc="partner_address.zip"/>
+            <Province t-esc="partner_address.city"/>
+            <Country t-if="partner_address.country_id" t-esc="partner_address.country_id.code"/>
+        </CompanyAddress>
+    </template>    <!--   Ship_Address for Customer     -->
+    <template id="l10n_ao_saft.saft_report_address">
+        <CompanyAddress>
+            <BuildingNumber>N/A</BuildingNumber>
+            <StreetName t-if="res_company.street" t-esc="res_company.street[:70]"/>
+            <AddressDetail t-if="res_company.street2" t-esc="res_company.street2[:70]"/>
+            <City t-esc="res_company.city"/>
+            <PostalCode t-esc="res_company.zip"/>
+            <Province t-esc="res_company.city"/>
+            <t t-if="res_company.country_id"  t-esc="res_company.country_id"/>
+            <Country t-if="res_company.country_id" t-esc="res_company.country_id"/>
+        </CompanyAddress>
+    </template>
+    <template id="l10n_ao_saft.saft_report_Ship_Address">
+        <ShipToAddress>
+            <BuildingNumber>N/A</BuildingNumber>
+            <StreetName>Desconhecido</StreetName>
+            <AddressDetail>Desconhecido
+                Desconhecido LDA
+                Angola
+            </AddressDetail>
+            <City>Desconhecido</City>
+            <PostalCode>Desconhecido</PostalCode>
+            <Province>Luanda</Province>
+            <Country>AO</Country>
+        </ShipToAddress>
+    </template>
+
+    <!-- Custumer Information -->
+    <template id="l10n_ao_saft.address">
+        <AddressDetail t-if="res_company.street2" t-esc="res_company.street2[:70]"/>
+        <City t-esc="res_company.city"/>
+        <PostalCode t-esc="res_company.zip"/>
+        <Country t-if="res_company.country_id" t-esc="partner_address.country_id"/>
+    </template>
+    <template id="l10n_ao_saft.addresses_contacts">
+        <!--<t t-set="partner_info" t-value="partner_detail_map[partner_id]"/>
+        <t t-set="partner" t-value="partner_info['partner']"/> <Name t-esc="partner.name[:70]"/>
+        <t t-if="partner_info['addresses']">-->
+        <!--  <BillingAddress>
+              <BuildingNumber>N/A</BuildingNumber>
+              <StreetName t-if="partner_address.street" t-esc="partner_address.street[:70]"/>
+              <AddressDetail t-if="partner_address.street2" t-esc="partner_address.street2[:70]"/>
+              <City t-esc="partner_address.city"/>
+              <PostalCode>244</PostalCode>
+              <Province t-if="partner_address.city" t-esc="partner_address.city"/>
+              <Country t-if="partner_address.country_id" t-esc="partner_address.country_id.code"/>
+          </BillingAddress>-->
+        <!-- <t t-else="">  </t>-->
+        <BillingAddress>
+            <BuildingNumber>N/A</BuildingNumber>
+            <StreetName>Luanda</StreetName>
+            <AddressDetail>Luanda</AddressDetail>
+            <City>Luanda</City>
+            <PostalCode>Desconhecido</PostalCode>
+            <Province>Luanda</Province>
+            <Country>AO</Country>
+        </BillingAddress>
+
+    </template>
+    <template id="l10n_ao_saft.saft_report_customer">
+        <Customer>
+            <CustomerID>CF</CustomerID>
+            <AccountID>Desconhecido</AccountID>
+            <CustomerTaxID>999999999</CustomerTaxID>
+            <CompanyName>Consumidor Final</CompanyName>
+            <t t-call="l10n_ao_saft.addresses_contacts"/>
+            <t t-call="l10n_ao_saft.saft_report_Ship_Address"/>
+            <Email>consumidor@email.com</Email>
+            <Website>www.consumidorfinal.co.ao</Website>
+            <SelfBillingIndicator>0</SelfBillingIndicator>
+        </Customer>
+    </template>
+
+    <template id="l10n_ao_saft.saft_report_addresses_contacts">
+        <ProductCompanyTaxID>
+            <t t-esc="res_company.product_company_tax_id"/>
+        </ProductCompanyTaxID>
+        <SoftwareValidationNumber>
+            <t t-esc="res_company.agt_cert_number"/>
+        </SoftwareValidationNumber>
+        <ProductiD>
+            <t t-esc="res_company.agt_product_name"/>
+        </ProductiD>
+        <ProductVersion>
+            <t t-esc="res_company.agt_product_version"/>
+        </ProductVersion>
+        <HeaderComment>false</HeaderComment>
+        <Telephone>
+            <t t-esc="res_company.phone"/>
+        </Telephone>
+        <Email>
+            <t t-esc="res_company.email"/>
+        </Email>
+        <Website>
+            <t t-esc="res_company.product_company_website"/>
+        </Website>
+    </template>
+    <!-- Generic template to fill details about the company.
+        To be called with 'company' set as a res.company record.	company_registry
+        -->
+
+    <template id="l10n_ao_saft.saft_report"><!-- <t t-foreach="docs" t-as="o"> -->
+        <AuditFile>
+            <Header>
+                <AuditFileVersion t-esc="res_company.audit_file_version"/>
+                <CompanyID t-esc="res_company.company_registry"/>
+                <TaxRegistrationNumber t-esc="res_company.vat"/>
+                <TaxAccountingBasis>F</TaxAccountingBasis>
+                <CompanyName t-if="res_company.name" t-esc="res_company.name"/>
+                <BusinessName t-esc="res_company.product_company_name"/>
+                <CompanyAddress>
+                    <BuildingNumber>N/A</BuildingNumber>
+                    <StreetName t-if="res_company.street" t-esc="res_company.street"/>
+                    <AddressDetail t-if="res_company.street" t-esc="res_company.street"/>
+                    <City t-if="res_company.city" t-esc="res_company.city"/>
+                    <PostalCode t-if="res_company.zip" t-esc="res_company.zip"/>
+                    <Province t-if="res_company.city" t-esc="res_company.city"/>
+                    <Country t-if="res_company.country_code" t-esc="res_company.country_code"/>
+                </CompanyAddress><!-- <FiscalYear t-esc="fiscal_year"/> -->
+                <FiscalYear t-esc="fiscal_year"/>
+                <StartDate t-esc="date_from"/>
+                <EndDate t-esc="date_to"/>
+                <CurrencyCode t-esc="res_company.currency_id.display_name"/>
+                <DateCreated t-esc="date_to"/>
+                <TaxEntity>Global</TaxEntity>
+                <ProductCompanyTaxID t-esc="res_company.product_company_tax_id"/>
+                <SoftwareValidationNumber t-esc="res_company.agt_cert_number"/>
+                <ProductiD>ODOO - CBS/HS/CENTRAL BUSINESS SOLUTIONS, LDA</ProductiD>
+                <ProductVersion>15.0</ProductVersion>
+                <HeaderComment>false</HeaderComment>
+                <Telephone t-esc="res_company.phone"/>
+                <Email t-esc="res_company.email"/>
+                <Website t-esc="res_company.product_company_website"/>
+            </Header>
+            <MasterFiles>
+                <t t-call="l10n_ao_saft.saft_report_customer"/>
+                <Product t-foreach="product_vals_list" t-as="product">
+                    <ProductType t-esc="product['product_type']"/>
+                    <ProductCode t-esc="product['product_code']"/>
+                    <ProductGroup t-esc="product['product_group']"/>
+                    <ProductDescription t-esc="product['product_description']"/>
+                    <ProductNumberCode t-esc="product['product_number_code']"/>
+                </Product>
+                <TaxTable t-if="tax_table">
+                    <TaxTableEntry t-foreach="tax_table" t-as="tax_vals">
+                        <TaxType t-esc="tax_vals['tax_type']"/>
+                        <TaxCountryRegion t-esc="tax_vals['tax_country_region']"/>
+                        <TaxCode t-esc="tax_vals['tax_code']"/>
+                        <Description t-esc="tax_vals['description']"/>
+                        <TaxPercentage t-esc="tax_vals['tax_percentage']"/>
+                    </TaxTableEntry>
+                </TaxTable>
+            </MasterFiles>
+            <SourceDocuments>
+                <SalesInvoices>
+                    <NumberOfEntries t-esc="sales_invoices['number_of_entries']"/>
+                    <TotalDebit t-esc="sales_invoices['total_debit']"/>
+                    <TotalCredit t-esc="sales_invoices['total_credit']"/>
+                    <Invoice t-foreach="sales_invoices['invoices']" t-as="move_vals">
+                        <InvoiceNo t-esc="move_vals['invoice_no']"/>
+                        <DocumentStatus>
+                            <InvoiceStatus t-esc="move_vals['document_status']['invoice_status']"/>
+                            <InvoiceStatusDate t-esc="move_vals['document_status']['invoice_status_date']"/>
+                            <Reason>0</Reason>
+                            <SourceID t-esc="move_vals['document_status']['source_id']"/>
+                            <SourceBilling t-esc="move_vals['document_status']['source_billing']"/>
+                        </DocumentStatus>
+                        <Hash t-esc="move_vals['hash']"/>
+                        <HashControl t-esc="move_vals['hash_control']"/>
+                        <Period t-esc="move_vals['period']"/>
+                        <InvoiceDate t-esc="move_vals['invoice_date']"/>
+                        <InvoiceType t-esc="move_vals['invoice_type']"/>
+                        <SpecialRegimes>
+                            <SelfBillingIndicator t-esc="move_vals['special_regimes']['self_billing_indicator']"/>
+                            <CashVATSchemeIndicator t-esc="move_vals['special_regimes']['cash_vat_scheme_indicator']"/>
+                            <ThirdPartiesBillingIndicator
+                                    t-esc="move_vals['special_regimes']['third_parties_billing_indicator']"/>
+                        </SpecialRegimes>
+                        <SourceID t-esc="move_vals['source_id']"/>
+                        <EACCode>00000</EACCode>
+                        <SystemEntryDate t-esc="move_vals['system_entry_date']"/>
+                        <CustomerID t-esc="move_vals['customer_id']"/>
+                        <Line t-foreach="move_vals['lines']" t-as="line_vals">
+                            <LineNumber t-esc="line_vals['line_Number']"/>
+                            <ProductCode t-esc="line_vals['product_code']"/>
+                            <ProductDescription t-esc="product['product_description']"/>
+                            <Quantity t-esc="line_vals['quantity']"/>
+                            <UnitOfMeasure t-esc="line_vals['unit_of_measure']"/>
+                            <UnitPrice t-esc="line_vals['unit_price']"/>
+                            <TaxPointDate t-esc="line_vals['tax_point_date']"/>
+                            <t t-if="move_vals['invoice_type']=='NC'">
+                              <References t-esc="move_vals['order_references']"/>
+                             </t>
+                            <Description t-esc="line_vals['description']"/>
+                            <t if="line_vals.get('credit_amount')">
+                                <CreditAmount t-esc="line_vals.get('credit_amount')"/>
+                            </t>
+                            <t if="line_vals.get('debit_amount')">
+                                <DebitAmount t-esc="line_vals.get('debit_amount')"/>
+                            </t>
+
+                            <Tax>
+                                <t t-foreach="line_vals['tax']" t-as="tax_vals">
+                                    <TaxType t-esc="tax_vals['tax_type']"/>
+                                    <TaxCountryRegion t-esc="tax_vals['tax_country_region']"/>
+                                    <TaxCode t-esc="tax_vals['tax_code']"/>
+                                    <!--<TaxPercentage t-esc="tax_vals['tax_percentage']"/>-->
+                                    <t t-if="tax_vals['tax_percentage'] == 6.50 ">
+                                        <TaxPercentage t-esc="0.0"/>
+                                    </t>
+                                    <t t-if="tax_vals['tax_percentage'] != 6.50 ">
+                                        <TaxPercentage t-esc="tax_vals['tax_percentage']"/>
+                                    </t>
+                                </t>
+                            </Tax>
+                            <t t-if="tax_vals['tax_percentage'] in [0, 6.50]  or tax_vals['tax_type'] == 'NS' ">
+                                <TaxExemptionReason>Isento nos termos da alínea l) do nº1 do artigo 12.º do CIVA
+                                </TaxExemptionReason>
+                                <TaxExemptionCode>M21</TaxExemptionCode>
+                            </t>
+                        </Line>
+                        <DocumentTotals>
+                          <TaxPayable t-esc="move_vals['document_totals']['tax_payable']"/>
+                            <NetTotal t-esc="move_vals['document_totals']['net_total']"/>
+                            <GrossTotal t-esc="move_vals['document_totals']['gross_total']"/>
+
+                            <!--<t t-if="tax_vals['tax_percentage'] == 6.50">
+                             <TaxPayable t-esc="move_vals['document_totals']['tax_payables']
+                               "/>
+                            </t>
+                            <t t-if="tax_vals['tax_percentage'] != 6.50 ">
+                                <TaxPayable t-esc="move_vals['document_totals']['tax_payable']"/>
+                            </t>
+                            <t t-if="tax_vals['tax_percentage'] == 6.50 ">
+                                <NetTotal t-esc="move_vals['document_totals']['net_total_w']"/>
+                            </t>
+                             <t t-if="tax_vals['tax_percentage'] != 6.50 ">
+                            <NetTotal t-esc="move_vals['document_totals']['net_total']"/>
+                            </t>
+                            <GrossTotal t-esc="move_vals['document_totals']['gross_total']"/>-->
+                        </DocumentTotals>
+                    </Invoice>
+                </SalesInvoices>
+
+                <WorkingDocuments>
+                    <NumberOfEntries t-esc="working_documents['number_of_entries']"/>
+                    <TotalDebit t-esc="working_documents['total_debit']"/>
+                    <TotalCredit t-esc="working_documents['total_credit']"/>
+                    <WorkDocument t-foreach="working_documents['work_documents']" t-as="work_document">
+                        <DocumentNumber t-esc="work_document['document_number']"/>
+                        <DocumentStatus>
+                            <WorkStatus t-esc="work_document['document_status']['work_status']"/>
+                            <WorkStatusDate t-esc="work_document['document_status']['work_status_date']"/>
+                            <SourceID t-esc="work_document['document_status']['source_id']"/>
+                            <SourceBilling t-esc="work_document['document_status']['source_billing']"/>
+                        </DocumentStatus>
+                        <Hash t-esc="work_document['hash']"/>
+                        <HashControl t-esc="work_document['hash_control']"/>
+                        <Period t-esc="work_document['period']"/>
+                        <WorkDate t-esc="work_document['work_date']"/>
+                        <WorkType t-esc="work_document['work_type']"/>
+                        <SourceID t-esc="work_document['source_id']"/>
+                        <SystemEntryDate t-esc="work_document['system_entry_date']"/>
+                        <CustomerID t-esc="work_document['customer_id']"/>
+                        <t t-esc="tax_super_payble" t-value="0.0"/>
+                        <Line t-foreach="work_document['lines']" t-as="line">
+                            <LineNumber t-esc="line['line_number']"/>
+                            <ProductCode t-esc="line['product_code']"/>
+                            <ProductDescription t-esc="line['product_description']"/>
+                            <Quantity t-esc="line['quantity']"/>
+                            <UnitOfMeasure t-esc="line['unit_of_measure']"/>
+                            <UnitPrice t-esc="line['unit_price']"/>
+                            <TaxPointDate t-esc="line['tax_point_date']"/>
+                            <Description t-esc="line['description']"/>
+                            <CreditAmount t-esc="format_float(line['credit_amount'])"/>
+                            <Tax>
+                                <TaxType t-esc="line['taxs'][0]['tax_type']"/>
+                                <TaxCountryRegion t-esc="line['taxs'][0]['tax_country_region']"/>
+                                <TaxCode t-esc="line['taxs'][0]['tax_code']"/>
+                                <t t-if="line['taxs'][0]['tax_percentage']==6.50">
+                                <TaxPercentage t-esc="0.0"/>
+                                </t>
+                                <t t-if="line['taxs'][0]['tax_percentage']!=6.50">
+                                  <TaxPercentage t-esc="line['taxs'][0]['tax_percentage']"/>
+                                </t>
+
+                            </Tax>
+                            <t t-if="line['taxs'][0]['tax_percentage']==0 or line['taxs'][0]['tax_percentage']==6.50">
+                                <TaxExemptionReason>Isento nos termos da alínea l) do nº1 do artigo 12.º do CIVA
+                                </TaxExemptionReason>
+                                <TaxExemptionCode>M21</TaxExemptionCode>
+                            </t>
+                        </Line>
+                        <DocumentTotals>
+                            <!-- <t t-if="line['taxs'][0]['tax_percentage == 6.50 ">
+                             <TaxPayable t-esc="work_document['document_totals']['tax_payables']"/>
+                            </t>
+                            <t t-if="line['taxs'][0]['tax_percentage != 6.50 ">
+                                <TaxPayable t-esc="work_document['document_totals']['tax_payable']"/>
+                            </t>
+                            <t t-if="line['taxs'][0]['tax_percentage == 6.50 ">
+                                <NetTotal t-esc="work_document['document_totals']['net_total_w']"/>
+                            </t>
+                             <t t-if="line['taxs'][0]['tax_percentage != 6.50 ">
+                            <NetTotal t-esc="work_document['document_totals']['net_total']"/>
+                            </t>-->
+                            <TaxPayable t-esc="work_document['document_totals']['tax_payable']"/>
+                            <NetTotal t-esc="work_document['document_totals']['net_total']"/>
+                            <GrossTotal t-esc="work_document['document_totals']['gross_total']"/>
+                        </DocumentTotals>
+                    </WorkDocument>
+                </WorkingDocuments>
+                <Payments>
+                    <NumberOfEntries t-esc="payments['number_of_entries']"/>
+                    <t t-set="total_credit" t-value="0"/>
+                    <t t-set="total_debit" t-value="0"/>
+                    <t t-foreach="payments['payment']" t-as="payment">
+                        <t t-foreach="payment['line']" t-as="line">
+                            <t t-set="total_credit" t-value="total_credit+line.get('credit_amount',0)"/>
+                            <t t-set="total_debit" t-value="total_debit+line.get('debit_amount',0)"/>
+                        </t>
+                    </t>
+                    <TotalDebit t-esc="format_float(total_debit)"/>
+                    <TotalCredit t-esc="format_float(total_credit)"/>
+                    <Payment t-foreach="payments['payment']" t-as="payment">
+                        <t t-set="net_total" t-value="0"/>
+                        <PaymentRefNo t-esc="payment['payment_ref_no']"/>
+                        <Period t-esc="payment['period']"/>
+                        <TransactionID t-esc="payment['transaction_id']"/>
+                        <TransactionDate t-esc="payment['transaction_date']"/>
+                        <PaymentType t-esc="payment['payment_type']"/>
+                        <Description t-esc="payment['description']"/>
+                        <SystemID t-esc="payment['system_id']"/>
+                        <DocumentStatus>
+                            <PaymentStatus t-esc="payment['document_status']['payment_status']"/>
+                            <PaymentStatusDate t-esc="payment['document_status']['payment_status_date']"/>
+                            <SourceID t-esc="payment['document_status']['source_id']"/>
+                            <SourcePayment t-esc="payment['document_status']['source_payment']"/>
+                        </DocumentStatus>
+                        <PaymentMethod>
+                            <PaymentMechanism t-esc="payment['payment_method']['payment_mechanism']"/>
+                            <PaymentAmount t-esc="payment['payment_method']['payment_amount']"/>
+                            <PaymentDate t-esc="payment['payment_method']['payment_date']"/>
+                        </PaymentMethod>
+                        <SourceID t-esc="payment['source_id']"/>
+                        <SystemEntryDate t-esc="payment['system_entry_date']"/>
+                        <CustomerID t-esc="payment['customer_id']"/>
+                        <t t-set="net_total" t-value="0.0"/>
+                        <Line t-foreach="payment['line']" t-as="line">
+                            <LineNumber t-esc="line['line_number']"/>
+                            <SourceDocumentID>
+                                <OriginatingON t-esc="line['source_document_id']['originating_on']"/>
+                                <InvoiceDate t-esc="line['source_document_id']['invoice_date']"/>
+                                <Description t-esc="line['source_document_id']['description']"/>
+                            </SourceDocumentID>
+                            <SettlementAmount t-esc="line['settlement_amount']"/>
+                            <t if="line.get('credit_amount')">
+                                <CreditAmount t-esc="line.get('credit_amount')"/>
+                            </t>
+                            <t if="line.get('debit_amount')">
+                                <DebitAmount t-esc="line.get('debit_amount')"/>
+                            </t>
+                            <!--<CreditAmount t-esc="line.get('credit_amount')"/>
+                            <DebitAmount t-esc="line.get('debit_amount')"/>-->
+                            <Tax>
+                                <TaxType t-esc="line['taxs'][0]['tax_type']"/>
+                                <TaxCountryRegion t-esc="line['taxs'][0]['tax_country_region']"/>
+                                <TaxCode t-esc="line['taxs'][0]['tax_code']"/>
+                                <t t-if="line['taxs'][0]['tax_percentage']==6.50">
+                                <TaxPercentage t-esc="0.0"/>
+                                </t>
+                                <t t-if="line['taxs'][0]['tax_percentage']!=6.50">
+                                  <TaxPercentage t-esc="line['taxs'][0]['tax_percentage']"/>
+                                </t>
+
+                            </Tax>
+                            <t t-if="line['taxs'][0]['tax_percentage']==0 or line['taxs'][0]['tax_percentage']==6.50">
+                                <TaxExemptionReason>Isento nos termos da alínea l) do nº1 do artigo 12.º do CIVA
+                                </TaxExemptionReason>
+                                <TaxExemptionCode>M21</TaxExemptionCode>
+                            </t>
+                            <t t-set="net_total" t-value="(net_total+line.get('credit_amount',0))"/>
+
+                        </Line>
+                        <DocumentTotals>
+                            <TaxPayable t-esc="payment['document_totals']['tax_payable']"/>
+                            <NetTotal t-esc="round(net_total,2)"/>
+                            <GrossTotal t-esc="payment['document_totals']['gross_total']"/>
+                            <Settlement>
+                                <SettlementAmount
+                                        t-esc="payment['document_totals']['settlement']['settlement_amount']"/>
+                            </Settlement>
+                        </DocumentTotals>
+                    </Payment>
+                </Payments>
+            </SourceDocuments>
+        </AuditFile>
+    </template>
+</odoo>

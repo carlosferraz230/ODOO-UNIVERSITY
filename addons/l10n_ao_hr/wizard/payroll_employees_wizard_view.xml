@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_hr_payslip_employees_form" model="ir.ui.view">
+            <field name="name">hr.payslip.employees.form</field>
+            <field name="model">hr.payslip.employees</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_by_employees"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[1]" position="after">
+                    <grou>
+                        <field name="struct_id" readonly="1" force_Save="1"
+                               options="{'no_create': True, 'no_open': True}"
+                               nolabel="1"/>
+                    </grou>
+                </xpath>
+                <xpath expr="//field[@name='employee_ids']" position="attributes">
+                    <attribute name="domain">[('struct_id','=',structure_type_id)]</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

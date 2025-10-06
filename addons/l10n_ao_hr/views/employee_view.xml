@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ao_employee_tree_view" model="ir.ui.view">
+        <field name="name">Ahr.employee.tree</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="employee_number"/>
+            </field>
+            <field name="parent_id" position="after" widget="badge">
+                <field name="age"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="ao_employee_form_view" model="ir.ui.view">
+        <field name="name">hr.employee.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="priority">1024</field>
+        <field name="arch" type="xml">
+
+            <!-- <field name="address_id" position="replace"/>-->
+            <field name="bank_account_id" position="replace"/>
+            <field name="category_ids" position="replace"/>
+            <xpath expr="//field[@name='work_email']" position="after">
+                <field name="category_ids" string="Categorias"  widget="many2many_tags"/>
+            </xpath>
+            <xpath expr="//div[hasclass('oe_title')]/h1" position="before">
+                <field name="employee_type" widget="radio" class="oe_edit_only" options="{'horizontal': true}"
+                       invisible="0"/>
+            </xpath>
+            <xpath expr="//div[hasclass('oe_title')]/h2" position="replace">
+                <h2>
+                    <field name="job_id" placeholder="Posição de Cargo"/>
+                </h2>
+            </xpath>
+            <xpath expr="//field[@name='mobile_phone']" position="before">
+                <field name="registration_number" string="Número" placeholder="Ex.: 001 0u 2025/001"/>
+            </xpath>
+            <xpath expr="//field[@name='contract_id']" position="after">
+                <field name="structure_type_id" invisible="0"
+                       options="{'no_create': True, 'no_open': True}"/>
+            </xpath>
+
+            <field name="birthday" position="replace">
+                <field name="birthday" required="1"/>
+            </field>
+            <field name="department_id" position="before">
+                <field name="admission_date" required="0" invisible="1"/>
+                <field name="last_work_date" required="0" invisible="1"/>
+            </field>
+            <field name="country_id" position="after">
+                <field name="is_foreign" widget="boolean_toggle"/>
+                <field name="location_province" domain="[('country_id','=',country_id)]"
+                       options="{'no_quick_create': True, 'no_create_edit' : True}"/>
+            </field>
+            <field name="passport_id" position="after">
+                <field name="fiscal_number"/>
+                <field name="social_security"/>
+            </field>
+            <xpath expr="//field[@name='contract_id']" position="after">
+                <field name="company_partner" string="Sócio"/>
+            </xpath>
+
+            <xpath expr="//page[@name='personal_information']/group/group" position="after">
+                <group string="Filiação" cols="2" name="parent_group">
+                    <field name="father" string="Pai"/>
+                    <field name="mother" string="Mãe"/>
+                </group>
+            </xpath>
+            <xpath expr="//page[@name='personal_information']/group/group[4]" position="before">
+                <group string="Dados da conta bancária">
+                    <field name="bank_bank" attrs="{'required':[('payment_method','=','bank')]}" string="Banco"
+                           options="{'no_quick_create': True, 'no_create_edit' : True}"/>
+                    <field name="bank_account" string="conta bancária"/>
+                    <field name="bank_iban" attrs="{'required':[('payment_method','=','bank')]}" string="IBAN"/>
+                    <field name="payment_method" groups="hr_payroll.group_hr_payroll_user" string="Metodo de pagamento"
+                           widget="radio"
+                           required="1"/>
+                </group>
+            </xpath>
+            <xpath expr="//page[@name='hr_settings']/group/group" position="replace">
+                <group string="Status" name="active_group">
+                    <field name="user_id" string="Related User" domain="[('share', '=', False)]"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

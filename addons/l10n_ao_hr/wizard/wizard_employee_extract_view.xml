@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="employee_extract_form_view" model="ir.ui.view">
+            <field name="name">wizard.employee.extract.form</field>
+            <field name="model">wizard.employee.extract</field>
+            <field name="arch" type="xml">
+                <form string="Extracto de Funcionário">
+                    <div class="oe_title">
+                        <label for="employee_id"/>
+                        <h1>
+                            <field name="employee_id" required="1" placeholder="Nome do funcionário."
+                                   options="{'no_quick_create': True, 'no_create_edit': True}"
+                            />
+                        </h1>
+                    </div>
+                    <group col="4">
+                        <field name="start_date" required="1"/>
+                        <field name="end_date" required="1"/>
+                    </group>
+                    <footer>
+                        <button name="print_report" string="Print Extract"
+                                type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel Wizard" special="cancel" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="employee_extract_act_window" model="ir.actions.act_window">
+            <field name="name">Extracto de Funcionario</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">wizard.employee.extract</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+       <menuitem name="Extracto de Funcionário" id="employee_extract_menu" parent="hr_payroll.menu_hr_payroll_report"
+              groups="hr_payroll.group_hr_payroll_user" sequence="9"
+              action="employee_extract_act_window"/>
+
+    </data>
+</odoo>

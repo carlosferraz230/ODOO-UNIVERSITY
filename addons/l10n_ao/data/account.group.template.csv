@@ -1,0 +1,420 @@
+"id","chart_template_id/id","code_prefix_start","code_prefix_end","name"
+account_group_chart11,l10n_ao.ao_chart_template,11,,Imobilizações corpóreas
+account_group_chart111,l10n_ao.ao_chart_template,111,,Terrenos e recursos naturais
+account_group_chart1114,l10n_ao.ao_chart_template,1114,,Terrenos com Edifícios
+account_group_chart112,l10n_ao.ao_chart_template,112,,Edifícios e Outras Construções
+account_group_chart1121,l10n_ao.ao_chart_template,1121,,Edifícios
+account_group_chart113,l10n_ao.ao_chart_template,113,,Equipamentos Básicos
+account_group_chart114,l10n_ao.ao_chart_template,114,,Equipamentos de carga e transporte
+account_group_chart115,l10n_ao.ao_chart_template,115,,Equipamento Administrativo
+account_group_chart116,l10n_ao.ao_chart_template,116,,Taras e vasilhames
+account_group_chart119,l10n_ao.ao_chart_template,119,,Outras Imobilizações Corpóreas
+account_group_chart12,l10n_ao.ao_chart_template,12,,Imobilizações Incorpóreas
+account_group_chart121,l10n_ao.ao_chart_template,121,,Trespasses
+account_group_chart122,l10n_ao.ao_chart_template,122,,Despesas de investigação e desenvolvimento
+account_group_chart123,l10n_ao.ao_chart_template,123,,Propriedade Industrial e outros direitos e contractos
+account_group_chart124,l10n_ao.ao_chart_template,124,,Despesas de Constituição
+account_group_chart129,l10n_ao.ao_chart_template,129,,Outras Imobilizações Incorpóreas
+account_group_chart13,l10n_ao.ao_chart_template,13,,Investimentos Financeiros
+account_group_chart131,l10n_ao.ao_chart_template,131,,Empresas Subsidiárias
+account_group_chart132,l10n_ao.ao_chart_template,132,,Empresas Associadas
+account_group_chart133,l10n_ao.ao_chart_template,133,,Outras Empresas
+account_group_chart134,l10n_ao.ao_chart_template,134,,Investimentos em Imóveis
+account_group_chart135,l10n_ao.ao_chart_template,135,,Fundos
+account_group_chart139,l10n_ao.ao_chart_template,139,,Outros Investimentos Financeiros
+account_group_chart14,l10n_ao.ao_chart_template,14,,Imobilizações em Curso
+account_group_chart141,l10n_ao.ao_chart_template,141,,Obra em Curso
+account_group_chart142,l10n_ao.ao_chart_template,142,,Obra em Curso
+account_group_chart147,l10n_ao.ao_chart_template,147,,Adiantamentos por conta de Imobilizado corpóreo
+account_group_chart148,l10n_ao.ao_chart_template,148,,Adiantamento por conta de Imobilizado Incorpóreo
+account_group_chart149,l10n_ao.ao_chart_template,149,,Adiantamentos por conta de Investimentos Financeiros
+account_group_chart15,l10n_ao.ao_chart_template,15,,...........................................................
+account_group_chart16,l10n_ao.ao_chart_template,16,,............................................................
+account_group_chart17,l10n_ao.ao_chart_template,17,,..................................................
+account_group_chart18,l10n_ao.ao_chart_template,18,,AMORTIZAÇÕES ACUMULADAS
+account_group_chart181,l10n_ao.ao_chart_template,181,,Imobilizações Corpóreas
+account_group_chart182,l10n_ao.ao_chart_template,182,,Imobilizações Incorpóreas
+account_group_chart183,l10n_ao.ao_chart_template,183,,Investimentos Financeiros em Imóveis
+account_group_chart19,l10n_ao.ao_chart_template,19,,PROVISÕES PARA INVESTIMENTOS FINANCEIROS
+account_group_chart191,l10n_ao.ao_chart_template,191,,Empresas Subsidiárias
+account_group_chart192,l10n_ao.ao_chart_template,192,,Empresas Associadas
+account_group_chart193,l10n_ao.ao_chart_template,193,,Outras Empresas
+account_group_chart194,l10n_ao.ao_chart_template,194,,Fundos
+account_group_chart199,l10n_ao.ao_chart_template,199,,Outros Investimentos Financeiros
+account_group_chart21,l10n_ao.ao_chart_template,21,,COMPRAS
+account_group_chart211,l10n_ao.ao_chart_template,211,,"Matérias-primas, subsidiárias e de Consumo"
+account_group_chart2111,l10n_ao.ao_chart_template,2111,,Matérias primas
+account_group_chart212,l10n_ao.ao_chart_template,212,,Mercadorias
+account_group_chart217,l10n_ao.ao_chart_template,217,,Devoluções de compras
+account_group_chart2171,l10n_ao.ao_chart_template,2171,,"Matérias-primas, subsidiárias e de consumo"
+account_group_chart218,l10n_ao.ao_chart_template,218,,Descontos e Abatimentos em Compras
+account_group_chart2181,l10n_ao.ao_chart_template,2181,,"Matérias primas, subsidiárias e de consumo"
+account_group_chart219,l10n_ao.ao_chart_template,219,,Descontos Diversos
+account_group_chart22,l10n_ao.ao_chart_template,22,,"Matérias Primas, Subsidiárias e de consumo"
+account_group_chart221,l10n_ao.ao_chart_template,221,,Matérias-primas
+account_group_chart222,l10n_ao.ao_chart_template,222,,Matérias Subsidiárias
+account_group_chart223,l10n_ao.ao_chart_template,223,,Materiais Diversos
+account_group_chart224,l10n_ao.ao_chart_template,224,,Embalagens de Consumo
+account_group_chart225,l10n_ao.ao_chart_template,225,,Outros materiais
+account_group_chart23,l10n_ao.ao_chart_template,23,,PRODUTOS E TRABALHOS EM CURSO
+account_group_chart231,l10n_ao.ao_chart_template,231,,Existências
+account_group_chart232,l10n_ao.ao_chart_template,232,,.........................................
+account_group_chart24,l10n_ao.ao_chart_template,24,,PRODUTOS ACABADOS E INTERMÉDIOS
+account_group_chart241,l10n_ao.ao_chart_template,241,,Produtos Acabados
+account_group_chart242,l10n_ao.ao_chart_template,242,,Produtos Intermédios
+account_group_chart249,l10n_ao.ao_chart_template,249,,Em poder de Terceiros
+account_group_chart25,l10n_ao.ao_chart_template,25,,"SUBPRODUTOS, DESPERDÍCIOS, RESÍDUOS E REFUGOS"
+account_group_chart251,l10n_ao.ao_chart_template,251,,SubProdutos
+account_group_chart252,l10n_ao.ao_chart_template,252,,"Desperdícios, Resíduos e Refugos"
+account_group_chart26,l10n_ao.ao_chart_template,26,,Mercadorias
+account_group_chart261,l10n_ao.ao_chart_template,261,,...........................
+account_group_chart262,l10n_ao.ao_chart_template,262,,...............................
+account_group_chart263,l10n_ao.ao_chart_template,263,,......................
+account_group_chart264,l10n_ao.ao_chart_template,264,,.......................
+account_group_chart269,l10n_ao.ao_chart_template,269,,Em poder de terceiros
+account_group_chart2691,l10n_ao.ao_chart_template,2691,,Mercadorias
+account_group_chart27,l10n_ao.ao_chart_template,27,,"Matérias-primas, mercadorias e outros materiais em trânsito"
+account_group_chart271,l10n_ao.ao_chart_template,271,,Matérias-primas
+account_group_chart272,l10n_ao.ao_chart_template,272,,Outros materiais
+account_group_chart273,l10n_ao.ao_chart_template,273,,Mercadorias
+account_group_chart28,l10n_ao.ao_chart_template,28,,ADIANTAMENTOS POR CONTA DE COMPRAS
+account_group_chart281,l10n_ao.ao_chart_template,281,,Matérias-primas e outros materias
+account_group_chart2812,l10n_ao.ao_chart_template,2812,,Mercado Estrangeiro
+account_group_chart282,l10n_ao.ao_chart_template,282,,Mercadorias
+account_group_chart29,l10n_ao.ao_chart_template,29,,PROVISÃO PARA DEPRECIAÇÃO DE EXISTÊNCIAS
+account_group_chart291,l10n_ao.ao_chart_template,291,,.....................................
+account_group_chart292,l10n_ao.ao_chart_template,292,,"Matérias-prima, Subsidiárias e de Consumo"
+account_group_chart293,l10n_ao.ao_chart_template,293,,Produtos e Trabalhos em Curso
+account_group_chart294,l10n_ao.ao_chart_template,294,,Produtos acabados e intermédios
+account_group_chart295,l10n_ao.ao_chart_template,295,,"Sub-produtos, desperdícios, resíduos e refugos"
+account_group_chart296,l10n_ao.ao_chart_template,296,,Mercadorias
+account_group_chart31,l10n_ao.ao_chart_template,31,,Clientes
+account_group_chart311,l10n_ao.ao_chart_template,311,,Clientes-Correntes
+account_group_chart3112,l10n_ao.ao_chart_template,3112,,Não Grupo
+account_group_chart31121,l10n_ao.ao_chart_template,31121,,Nacionais
+account_group_chart31122,l10n_ao.ao_chart_template,31122,,Estrangeiros
+account_group_chart312,l10n_ao.ao_chart_template,312,,Clientes - títulos a receber
+account_group_chart3121,l10n_ao.ao_chart_template,3121,,Grupo
+account_group_chart3122,l10n_ao.ao_chart_template,3122,,Não Grupo
+account_group_chart313,l10n_ao.ao_chart_template,313,,Clientes - títulos descontados
+account_group_chart3131,l10n_ao.ao_chart_template,3131,,Grupo
+account_group_chart3132,l10n_ao.ao_chart_template,3132,,Não Grupo
+account_group_chart317,l10n_ao.ao_chart_template,317,,Regularização de Imposto Industrial de Cliente
+account_group_chart318,l10n_ao.ao_chart_template,318,,Clientes de cobrança duvidosa
+account_group_chart319,l10n_ao.ao_chart_template,319,,Clientes - saldos credores
+account_group_chart32,l10n_ao.ao_chart_template,32,,Fornecedores
+account_group_chart321,l10n_ao.ao_chart_template,321,,Fornecedores - correntes
+account_group_chart3211,l10n_ao.ao_chart_template,3211,,Grupo
+account_group_chart3212,l10n_ao.ao_chart_template,3212,,Não Grupo
+account_group_chart322,l10n_ao.ao_chart_template,322,,Fornecedores - título a pagar
+account_group_chart3221,l10n_ao.ao_chart_template,3221,,Grupo
+account_group_chart3222,l10n_ao.ao_chart_template,3222,,Não Grupo
+account_group_chart327,l10n_ao.ao_chart_template,327,,Regularização de Imposto Industrial de Fornecedores
+account_group_chart328,l10n_ao.ao_chart_template,328,,Fornecedores - facturas em recepção e conferência
+account_group_chart329,l10n_ao.ao_chart_template,329,,Fornecedores - saldos devedores
+account_group_chart33,l10n_ao.ao_chart_template,33,,Empréstimos
+account_group_chart331,l10n_ao.ao_chart_template,331,,Empréstimos bancários
+account_group_chart3311,l10n_ao.ao_chart_template,3311,,Moeda Nacional
+account_group_chart3312,l10n_ao.ao_chart_template,3312,,Moeda estrangeira
+account_group_chart332,l10n_ao.ao_chart_template,332,,Empréstimos por Obrigações
+account_group_chart3321,l10n_ao.ao_chart_template,3321,,Convertíveis
+account_group_chart3322,l10n_ao.ao_chart_template,3322,,Não convertíveis
+account_group_chart333,l10n_ao.ao_chart_template,333,,Entidade
+account_group_chart339,l10n_ao.ao_chart_template,339,,Outros empréstimos obtidos
+account_group_chart3391,l10n_ao.ao_chart_template,3391,,Curto Prazo
+account_group_chart3392,l10n_ao.ao_chart_template,3392,,Médio e Longo Prazo
+account_group_chart3393,l10n_ao.ao_chart_template,3393,,Parte corrente de empréstimo de médio e longo prazo
+account_group_chart34,l10n_ao.ao_chart_template,34,,Estado
+account_group_chart341,l10n_ao.ao_chart_template,341,,Imposto sobre os lucros
+account_group_chart342,l10n_ao.ao_chart_template,342,,Imposto de produção e consumo
+account_group_chart343,l10n_ao.ao_chart_template,343,,Imposto de rendimento de trabalho
+account_group_chart344,l10n_ao.ao_chart_template,344,,Imposto de circulação
+account_group_chart345,l10n_ao.ao_chart_template,345,,IVA
+account_group_chart3451,l10n_ao.ao_chart_template,3451,,IVA suportado
+account_group_chart3452,l10n_ao.ao_chart_template,3452,,IVA dedutível
+account_group_chart3453,l10n_ao.ao_chart_template,3453,,IVA liquidado
+account_group_chart3454,l10n_ao.ao_chart_template,3454,,IVA regularizações
+account_group_chart3455,l10n_ao.ao_chart_template,3455,,IVA apuramento
+account_group_chart3456,l10n_ao.ao_chart_template,3456,,IVA a pagar
+account_group_chart3457,l10n_ao.ao_chart_template,3457,,IVA a recuperar
+account_group_chart3458,l10n_ao.ao_chart_template,3458,,IVA reembolsos pedidos
+account_group_chart346,l10n_ao.ao_chart_template,346,,Certificado de Crédito Fiscal a Compensar
+account_group_chart347,l10n_ao.ao_chart_template,347,,Imposto Selo
+account_group_chart349,l10n_ao.ao_chart_template,349,,Outros impostos
+account_group_chart3495,l10n_ao.ao_chart_template,3495,,Inst. Nac. Seg. Social
+account_group_chart35,l10n_ao.ao_chart_template,35,,Entidades participantes e participadas
+account_group_chart351,l10n_ao.ao_chart_template,351,,Entidades participantes
+account_group_chart3511,l10n_ao.ao_chart_template,3511,,Estado
+account_group_chart3512,l10n_ao.ao_chart_template,3512,,Empresas do grupo - subsidiárias
+account_group_chart3513,l10n_ao.ao_chart_template,3513,,Empresas do grupo - associadas
+account_group_chart3514,l10n_ao.ao_chart_template,3514,,Outros
+account_group_chart352,l10n_ao.ao_chart_template,352,,Entidades Participadas
+account_group_chart3521,l10n_ao.ao_chart_template,3521,,Estado
+account_group_chart3522,l10n_ao.ao_chart_template,3522,,Empresas do Grupo - Subsidiárias
+account_group_chart3523,l10n_ao.ao_chart_template,3523,,Empresas do Grupo Associadas
+account_group_chart3524,l10n_ao.ao_chart_template,3524,,Outros
+account_group_chart36,l10n_ao.ao_chart_template,36,,PESSOAL
+account_group_chart361,l10n_ao.ao_chart_template,361,,Pessoal - Remunerações
+account_group_chart3611,l10n_ao.ao_chart_template,3611,,Órgãos Sociais
+account_group_chart3612,l10n_ao.ao_chart_template,3612,,Empregados
+account_group_chart362,l10n_ao.ao_chart_template,362,,Pessoal - Participação nos Resultados
+account_group_chart3621,l10n_ao.ao_chart_template,3621,,Órgãos Sociais
+account_group_chart3622,l10n_ao.ao_chart_template,3622,,Empregados
+account_group_chart363,l10n_ao.ao_chart_template,363,,Pessoal - Adiantamentos
+account_group_chart369,l10n_ao.ao_chart_template,369,,Pessoal - Outros
+account_group_chart37,l10n_ao.ao_chart_template,37,,OUTROS VALORES A RECEBER E A PAGAR
+account_group_chart371,l10n_ao.ao_chart_template,371,,Compras de Imobilizado
+account_group_chart372,l10n_ao.ao_chart_template,372,,Vendas de Imobilizado
+account_group_chart373,l10n_ao.ao_chart_template,373,,Proveitos a facturar
+account_group_chart374,l10n_ao.ao_chart_template,374,,Encargos a repartir por períodos futuros
+account_group_chart375,l10n_ao.ao_chart_template,375,,Encargos a Pagar
+account_group_chart376,l10n_ao.ao_chart_template,376,,Proveitos a repartir por períodos futuros
+account_group_chart377,l10n_ao.ao_chart_template,377,,Contas Transitórias
+account_group_chart379,l10n_ao.ao_chart_template,379,,Outros valores a Receber e a Pagar
+account_group_chart38,l10n_ao.ao_chart_template,38,,PROVISÕES PARA COBRANÇAS DUVIDOSAS
+account_group_chart381,l10n_ao.ao_chart_template,381,,Provisões para Clientes
+account_group_chart3811,l10n_ao.ao_chart_template,3811,,Clientes - Correntes
+account_group_chart3812,l10n_ao.ao_chart_template,3812,,Clientes - Títulos a Receber
+account_group_chart3813,l10n_ao.ao_chart_template,3813,,Cliente - cobrança duvidosa
+account_group_chart382,l10n_ao.ao_chart_template,382,,Previsões para saldos devedores de fornecedores
+account_group_chart383,l10n_ao.ao_chart_template,383,,Provisões p/ participante e participadas
+account_group_chart384,l10n_ao.ao_chart_template,384,,Previsões p/dívidas do pessoal
+account_group_chart389,l10n_ao.ao_chart_template,389,,Previsões para outros saldos a receber
+account_group_chart39,l10n_ao.ao_chart_template,39,,Previsões para outros riscos e encargos
+account_group_chart391,l10n_ao.ao_chart_template,391,,Provisões para pensões
+account_group_chart392,l10n_ao.ao_chart_template,392,,Provisões para processos judiciais em curso
+account_group_chart393,l10n_ao.ao_chart_template,393,,Provisões para acidentes de trabalho
+account_group_chart394,l10n_ao.ao_chart_template,394,,Provisões para garantias dadas a clientes
+account_group_chart399,l10n_ao.ao_chart_template,399,,Provisões para outros riscos e encargos
+account_group_chart41,l10n_ao.ao_chart_template,41,,Títulos negociáveis
+account_group_chart411,l10n_ao.ao_chart_template,411,,Ações
+account_group_chart412,l10n_ao.ao_chart_template,412,,Obrigações
+account_group_chart413,l10n_ao.ao_chart_template,413,,Títulos da Dívida Pública
+account_group_chart42,l10n_ao.ao_chart_template,42,,DEPÓSITOS A PRAZO
+account_group_chart421,l10n_ao.ao_chart_template,421,,Moeda nacional
+account_group_chart422,l10n_ao.ao_chart_template,422,,Moeda estrangeira
+account_group_chart43,l10n_ao.ao_chart_template,43,,Depósitos à ordem
+account_group_chart431,l10n_ao.ao_chart_template,431,,Moeda nacional
+account_group_chart432,l10n_ao.ao_chart_template,432,,Moeda Estrangeira
+account_group_chart44,l10n_ao.ao_chart_template,44,,OUTROS DEPÓSITOS
+account_group_chart441,l10n_ao.ao_chart_template,441,,Moeda Nacional
+account_group_chart442,l10n_ao.ao_chart_template,442,,Moeda Estrangeira
+account_group_chart45,l10n_ao.ao_chart_template,45,,CAIXA
+account_group_chart451,l10n_ao.ao_chart_template,451,,Fundo fixo
+account_group_chart452,l10n_ao.ao_chart_template,452,,Valores para Depositar
+account_group_chart453,l10n_ao.ao_chart_template,453,,Valores Destinados a Pagamentos Específicos
+account_group_chart46,l10n_ao.ao_chart_template,46,,46...............
+account_group_chart461,l10n_ao.ao_chart_template,461,,....................
+account_group_chart47,l10n_ao.ao_chart_template,47,,....................
+account_group_chart471,l10n_ao.ao_chart_template,471,,....................
+account_group_chart48,l10n_ao.ao_chart_template,48,,CONTAS TRANSITÓRIAS
+account_group_chart481,l10n_ao.ao_chart_template,481,,Banco
+account_group_chart482,l10n_ao.ao_chart_template,482,,Caixa / Banco
+account_group_chart49,l10n_ao.ao_chart_template,49,,PROVISÕES PARA APLICAÇÕES DE TESOURARIA
+account_group_chart491,l10n_ao.ao_chart_template,491,,Títulos negociáveis
+account_group_chart492,l10n_ao.ao_chart_template,492,,Outras aplicações de tesouraria
+account_group_chart51,l10n_ao.ao_chart_template,51,,Capital
+account_group_chart511,l10n_ao.ao_chart_template,511,,Capital Social
+account_group_chart52,l10n_ao.ao_chart_template,52,,Ações/quotas próprias
+account_group_chart521,l10n_ao.ao_chart_template,521,,Valor nominal
+account_group_chart522,l10n_ao.ao_chart_template,522,,Descontos
+account_group_chart523,l10n_ao.ao_chart_template,523,,Prêmios
+account_group_chart53,l10n_ao.ao_chart_template,53,,Prêmios de emissão
+account_group_chart531,l10n_ao.ao_chart_template,531,,Prêmios de Emissão
+account_group_chart54,l10n_ao.ao_chart_template,54,,Prestações suplementares
+account_group_chart541,l10n_ao.ao_chart_template,541,,Prestações Suplementares
+account_group_chart55,l10n_ao.ao_chart_template,55,,Reservas legais
+account_group_chart551,l10n_ao.ao_chart_template,551,,Reservas Legais
+account_group_chart56,l10n_ao.ao_chart_template,56,,Reservas de reavaliação
+account_group_chart561,l10n_ao.ao_chart_template,561,,Legais
+account_group_chart562,l10n_ao.ao_chart_template,562,,Autónomas
+account_group_chart57,l10n_ao.ao_chart_template,57,,Reservas com fins especiais
+account_group_chart571,l10n_ao.ao_chart_template,571,,Reservas com Fins Especiais
+account_group_chart58,l10n_ao.ao_chart_template,58,,Reservas livres
+account_group_chart581,l10n_ao.ao_chart_template,581,,Reservas Livres
+account_group_chart59,l10n_ao.ao_chart_template,59,,-------------------------
+account_group_chart61,l10n_ao.ao_chart_template,61,,VENDAS
+account_group_chart611,l10n_ao.ao_chart_template,611,,Produtos Acabados e Intermédios
+account_group_chart6111,l10n_ao.ao_chart_template,6111,,Mercado Nacional
+account_group_chart6112,l10n_ao.ao_chart_template,6112,,Mercado Estrangeiro
+account_group_chart612,l10n_ao.ao_chart_template,612,,"SubProdutos, Desperdícios, Resíduos e Refugos"
+account_group_chart613,l10n_ao.ao_chart_template,613,,Mercadorias
+account_group_chart614,l10n_ao.ao_chart_template,614,,Embalagens de Consumo
+account_group_chart615,l10n_ao.ao_chart_template,615,,Subsídios a preços
+account_group_chart617,l10n_ao.ao_chart_template,617,,Devoluções
+account_group_chart618,l10n_ao.ao_chart_template,618,,Descontos e abatimentos
+account_group_chart62,l10n_ao.ao_chart_template,62,,PRESTAÇÕES DE SERVIÇO
+account_group_chart621,l10n_ao.ao_chart_template,621,,Serviços principais
+account_group_chart622,l10n_ao.ao_chart_template,622,,Serviços secundários
+account_group_chart628,l10n_ao.ao_chart_template,628,,Descontos e abatimentos
+account_group_chart629,l10n_ao.ao_chart_template,629,,Transferência para Resultados Operacionais
+account_group_chart63,l10n_ao.ao_chart_template,63,,OUTROS PROVEITOS OPERACIONAIS
+account_group_chart631,l10n_ao.ao_chart_template,631,,Serviços suplementares
+account_group_chart632,l10n_ao.ao_chart_template,632,,Royalties
+account_group_chart633,l10n_ao.ao_chart_template,633,,Subsídios à Exploração
+account_group_chart634,l10n_ao.ao_chart_template,634,,Subsídios a investimento
+account_group_chart638,l10n_ao.ao_chart_template,638,,Outros Proveitos e Ganhos Operacionais
+account_group_chart639,l10n_ao.ao_chart_template,639,,Transferência para Resultados Operacionais
+account_group_chart64,l10n_ao.ao_chart_template,64,,VARIAÇÃO NOS INVENTÁRIOS DE PRODUTOS ACABADOS E DE PRODUÇÃO EM CURSO
+account_group_chart641,l10n_ao.ao_chart_template,641,,Produtos e Trabalhos em Curso
+account_group_chart642,l10n_ao.ao_chart_template,642,,Produtos acabados
+account_group_chart643,l10n_ao.ao_chart_template,643,,Produtos intermédios
+account_group_chart649,l10n_ao.ao_chart_template,649,,Transferência para Resultados Operacionais
+account_group_chart65,l10n_ao.ao_chart_template,65,,TRABALHOS PARA PRÓPRIA EMPRESA
+account_group_chart651,l10n_ao.ao_chart_template,651,,Para Imobilizado
+account_group_chart652,l10n_ao.ao_chart_template,652,,Para encargos a repartir por exercícios futuros
+account_group_chart659,l10n_ao.ao_chart_template,659,,Transferência para resultados operacionais
+account_group_chart66,l10n_ao.ao_chart_template,66,,PROVEITOS E GANHOS FINANCEIROS GERAIS
+account_group_chart661,l10n_ao.ao_chart_template,661,,Juros
+account_group_chart6611,l10n_ao.ao_chart_template,6611,,Investimentos Financeiros
+account_group_chart6612,l10n_ao.ao_chart_template,6612,,De mora relativos a dívida de terceiros
+account_group_chart662,l10n_ao.ao_chart_template,662,,Diferenças de câmbio favoráveis
+account_group_chart663,l10n_ao.ao_chart_template,663,,Descontos de prontos pagamento obtidos
+account_group_chart664,l10n_ao.ao_chart_template,664,,Rendimentos de investimentos em imóveis
+account_group_chart665,l10n_ao.ao_chart_template,665,,Rendimento de Participações de capital
+account_group_chart666,l10n_ao.ao_chart_template,666,,Ganhos na Alienação de Aplicações Financeiras
+account_group_chart6661,l10n_ao.ao_chart_template,6661,,Investimentos Financeiros
+account_group_chart667,l10n_ao.ao_chart_template,667,,Reposição de provisões
+account_group_chart6671,l10n_ao.ao_chart_template,6671,,Investimentos financeiros
+account_group_chart6672,l10n_ao.ao_chart_template,6672,,Aplicações de tesouraria
+account_group_chart67,l10n_ao.ao_chart_template,67,,Proveitos e ganhos financeiros em filiais e associadas
+account_group_chart671,l10n_ao.ao_chart_template,671,,Rendimentos de participações de capital
+account_group_chart679,l10n_ao.ao_chart_template,679,,Transferência para resultados em filiais e associadas
+account_group_chart68,l10n_ao.ao_chart_template,68,,Outros proveitos e ganhos não operacionais
+account_group_chart681,l10n_ao.ao_chart_template,681,,Reposição de provisões
+account_group_chart6811,l10n_ao.ao_chart_template,6811,,Existência
+account_group_chart6812,l10n_ao.ao_chart_template,6812,,Cobranças duvidosas
+account_group_chart6813,l10n_ao.ao_chart_template,6813,,Riscos e encargos
+account_group_chart682,l10n_ao.ao_chart_template,682,,Anulação de amortizações extraordinárias
+account_group_chart683,l10n_ao.ao_chart_template,683,,Ganhos em imobilizações
+account_group_chart684,l10n_ao.ao_chart_template,684,,Ganhos em existências
+account_group_chart685,l10n_ao.ao_chart_template,685,,Recuperação de dívidas
+account_group_chart686,l10n_ao.ao_chart_template,686,,Benefícios de penalidade contratuais
+account_group_chart687,l10n_ao.ao_chart_template,687,,....................
+account_group_chart688,l10n_ao.ao_chart_template,688,,Descontinuidade de operações
+account_group_chart689,l10n_ao.ao_chart_template,689,,Alterações de políticas contabilísticas
+account_group_chart69,l10n_ao.ao_chart_template,69,,Proveitos e ganhos extraordinários
+account_group_chart691,l10n_ao.ao_chart_template,691,,Ganhos resultantes de catástrofes naturais
+account_group_chart692,l10n_ao.ao_chart_template,692,,Ganhos resultantes de convulsões políticas
+account_group_chart693,l10n_ao.ao_chart_template,693,,Ganhos resultantes de expropriações
+account_group_chart694,l10n_ao.ao_chart_template,694,,Ganhos resultantes de sinistros
+account_group_chart695,l10n_ao.ao_chart_template,695,,Subsídios
+account_group_chart696,l10n_ao.ao_chart_template,696,,Anulação de passivos não exigíveis
+account_group_chart699,l10n_ao.ao_chart_template,699,,Transferências para resultados extraordinários
+account_group_chart71,l10n_ao.ao_chart_template,71,,Custos das mercadorias vendidas e das matérias consumidas
+account_group_chart711,l10n_ao.ao_chart_template,711,,Matérias-primas
+account_group_chart712,l10n_ao.ao_chart_template,712,,Matérias subsidiárias
+account_group_chart713,l10n_ao.ao_chart_template,713,,Materiais diversos
+account_group_chart714,l10n_ao.ao_chart_template,714,,Embalagens de consumo
+account_group_chart715,l10n_ao.ao_chart_template,715,,Outros materiais
+account_group_chart716,l10n_ao.ao_chart_template,716,,Outras Mercadorias
+account_group_chart719,l10n_ao.ao_chart_template,719,,Transferência para Resultados Operacionais
+account_group_chart72,l10n_ao.ao_chart_template,72,,CUSTOS COM PESSOAL
+account_group_chart721,l10n_ao.ao_chart_template,721,,Remunerações - Órgãos sociais
+account_group_chart722,l10n_ao.ao_chart_template,722,,Remunerações - Pessoal
+account_group_chart723,l10n_ao.ao_chart_template,723,,Pensões
+account_group_chart724,l10n_ao.ao_chart_template,724,,Prêmios para pensões
+account_group_chart725,l10n_ao.ao_chart_template,725,,Encargos sobre remunerações
+account_group_chart726,l10n_ao.ao_chart_template,726,,Seguros de acidentes de trabalho e doença profissionais
+account_group_chart727,l10n_ao.ao_chart_template,727,,Formação
+account_group_chart728,l10n_ao.ao_chart_template,728,,Outras despesas com o pessoal
+account_group_chart729,l10n_ao.ao_chart_template,729,,Transferência para Resultados Operacionais
+account_group_chart73,l10n_ao.ao_chart_template,73,,Amortizações de exercício
+account_group_chart731,l10n_ao.ao_chart_template,731,,Imobilizações corpóreas
+account_group_chart732,l10n_ao.ao_chart_template,732,,Imobilizações incorpóreas
+account_group_chart739,l10n_ao.ao_chart_template,739,,Transferência para resultados operacionais
+account_group_chart75,l10n_ao.ao_chart_template,75,,Outros custos e perdas operacionais
+account_group_chart751,l10n_ao.ao_chart_template,751,,Sub-contratos
+account_group_chart752,l10n_ao.ao_chart_template,752,,Fornecimentos e serviços de terceiros
+account_group_chart7521,l10n_ao.ao_chart_template,7521,,................................
+account_group_chart75219,l10n_ao.ao_chart_template,75219,,Outros fornecimentos
+account_group_chart7522,l10n_ao.ao_chart_template,7522,,Comunicação
+account_group_chart7523,l10n_ao.ao_chart_template,7523,,Contencioso e Notariado
+account_group_chart75232,l10n_ao.ao_chart_template,75232,,Assistência técnica
+account_group_chart75239,l10n_ao.ao_chart_template,75239,,Outros Serviços
+account_group_chart753,l10n_ao.ao_chart_template,753,,Impostos
+account_group_chart7531,l10n_ao.ao_chart_template,7531,,Indiretos
+account_group_chart7532,l10n_ao.ao_chart_template,7532,,Diretos
+account_group_chart754,l10n_ao.ao_chart_template,754,,Despesas confidenciais
+account_group_chart755,l10n_ao.ao_chart_template,755,,Quotizações
+account_group_chart756,l10n_ao.ao_chart_template,756,,Ofertas e amostras de existências
+account_group_chart758,l10n_ao.ao_chart_template,758,,Outros custos e perdas operacionais
+account_group_chart759,l10n_ao.ao_chart_template,759,,Transferência para Resultados Operacionais
+account_group_chart76,l10n_ao.ao_chart_template,76,,CUSTOS E PERDAS FINANCEIRAS GERAIS
+account_group_chart761,l10n_ao.ao_chart_template,761,,Juros
+account_group_chart7611,l10n_ao.ao_chart_template,7611,,De empréstimos
+account_group_chart762,l10n_ao.ao_chart_template,762,,Diferença de câmbio desfavoráveis
+account_group_chart763,l10n_ao.ao_chart_template,763,,Descontos de pronto pagamentos concedidos
+account_group_chart764,l10n_ao.ao_chart_template,764,,Amortizações de investimentos em imóveis
+account_group_chart765,l10n_ao.ao_chart_template,765,,Provisões para aplicações financeiras
+account_group_chart7651,l10n_ao.ao_chart_template,7651,,Investimentos financeiros
+account_group_chart7652,l10n_ao.ao_chart_template,7652,,Aplicações de tesouraria
+account_group_chart766,l10n_ao.ao_chart_template,766,,Perdas na alienação de aplicações financeiras
+account_group_chart7661,l10n_ao.ao_chart_template,7661,,Investimentos financeiros
+account_group_chart767,l10n_ao.ao_chart_template,767,,Serviços bancários
+account_group_chart769,l10n_ao.ao_chart_template,769,,Transferência para resultado financeiro
+account_group_chart77,l10n_ao.ao_chart_template,77,,Custos e perdas financeiros em filiais e associadas
+account_group_chart779,l10n_ao.ao_chart_template,779,,Transferência para Resultados Financeiros
+account_group_chart78,l10n_ao.ao_chart_template,78,,OUTROS CUSTOS E PERDAS NÃO OPERACIONAIS
+account_group_chart781,l10n_ao.ao_chart_template,781,,Provisões do exercício
+account_group_chart7811,l10n_ao.ao_chart_template,7811,,Existências
+account_group_chart7812,l10n_ao.ao_chart_template,7812,,Cobranças duvidosas
+account_group_chart7813,l10n_ao.ao_chart_template,7813,,Riscos e encargos
+account_group_chart782,l10n_ao.ao_chart_template,782,,Amortizações extraordinárias
+account_group_chart783,l10n_ao.ao_chart_template,783,,Perdas em imobilizações
+account_group_chart784,l10n_ao.ao_chart_template,784,,Perdas em existências
+account_group_chart785,l10n_ao.ao_chart_template,785,,Dívidas incobráveis
+account_group_chart786,l10n_ao.ao_chart_template,786,,Multas e penalidades contratuais
+account_group_chart787,l10n_ao.ao_chart_template,787,,Custos de reestruturação
+account_group_chart788,l10n_ao.ao_chart_template,788,,Descontinuidade de operações
+account_group_chart789,l10n_ao.ao_chart_template,789,,Alterações de políticas contabilísticas
+account_group_chart79,l10n_ao.ao_chart_template,79,,Custos e perdas extraordinárias
+account_group_chart791,l10n_ao.ao_chart_template,791,,Perdas resultantes de catástrofes não operacionais
+account_group_chart792,l10n_ao.ao_chart_template,792,,Perdas resultantes de convulsões políticas
+account_group_chart793,l10n_ao.ao_chart_template,793,,Perdas resultantes de expropriações
+account_group_chart794,l10n_ao.ao_chart_template,794,,Perdas resultantes de sinistros
+account_group_chart799,l10n_ao.ao_chart_template,799,,Transferência para resultados extraordinários
+account_group_chart81,l10n_ao.ao_chart_template,81,,Resultados transitados
+account_group_chart811,l10n_ao.ao_chart_template,811,,Ano ---
+account_group_chart812,l10n_ao.ao_chart_template,812,,Ano__
+account_group_chart82,l10n_ao.ao_chart_template,82,,Resultados operacionais
+account_group_chart821,l10n_ao.ao_chart_template,821,,Vendas
+account_group_chart822,l10n_ao.ao_chart_template,822,,Prestações de serviços
+account_group_chart823,l10n_ao.ao_chart_template,823,,Outros proveitos operacionais
+account_group_chart824,l10n_ao.ao_chart_template,824,,Variação nos inventários de produtos acabados e produtos em vias de fabrico
+account_group_chart825,l10n_ao.ao_chart_template,825,,Trabalho para a própria empresa
+account_group_chart826,l10n_ao.ao_chart_template,826,,Custos das mercadorias vendidas e das matérias consumidas
+account_group_chart827,l10n_ao.ao_chart_template,827,,Custos com o pessoal
+account_group_chart828,l10n_ao.ao_chart_template,828,,Amortizações do exercício
+account_group_chart829,l10n_ao.ao_chart_template,829,,Outros custos operacionais
+account_group_chart83,l10n_ao.ao_chart_template,83,,Resultados financeiros
+account_group_chart831,l10n_ao.ao_chart_template,831,,Proveitos e ganhos financeiros gerais
+account_group_chart832,l10n_ao.ao_chart_template,832,,Custos e perdas financeiros gerais
+account_group_chart839,l10n_ao.ao_chart_template,839,,Transferência para resultados líquidos
+account_group_chart84,l10n_ao.ao_chart_template,84,,Resultados financeiros em filiais e associadas
+account_group_chart841,l10n_ao.ao_chart_template,841,,Proveitos e ganhos em filiais e associadas
+account_group_chart842,l10n_ao.ao_chart_template,842,,Custos e perdas em filiais e associadas
+account_group_chart849,l10n_ao.ao_chart_template,849,,Transferência para resultados líquidos
+account_group_chart85,l10n_ao.ao_chart_template,85,,Resultados não operacionais
+account_group_chart851,l10n_ao.ao_chart_template,851,,Proveitos e ganhos não operacionais
+account_group_chart852,l10n_ao.ao_chart_template,852,,Custos e perdas não operacionais
+account_group_chart859,l10n_ao.ao_chart_template,859,,Transferência para resultados líquidos
+account_group_chart86,l10n_ao.ao_chart_template,86,,Resultados extraordinários
+account_group_chart861,l10n_ao.ao_chart_template,861,,Proveitos e ganhos extraordinários
+account_group_chart862,l10n_ao.ao_chart_template,862,,Custos e perdas extraordinários
+account_group_chart869,l10n_ao.ao_chart_template,869,,Transferência para resultados líquidos
+account_group_chart87,l10n_ao.ao_chart_template,87,,Impostos sobre os lucros
+account_group_chart871,l10n_ao.ao_chart_template,871,,Imposto sobre os resultados correntes
+account_group_chart872,l10n_ao.ao_chart_template,872,,Imposto sobre os resultados extraordinários
+account_group_chart879,l10n_ao.ao_chart_template,879,,Transferência para resultados líquidos
+account_group_chart88,l10n_ao.ao_chart_template,88,,Resultados líquidos do exercício
+account_group_chart881,l10n_ao.ao_chart_template,881,,Resultados Operacionais
+account_group_chart882,l10n_ao.ao_chart_template,882,,Resultados Financeiros Gerais
+account_group_chart883,l10n_ao.ao_chart_template,883,,Resultados em Filiais e Associadas
+account_group_chart884,l10n_ao.ao_chart_template,884,,Resultados não Operacionais
+account_group_chart885,l10n_ao.ao_chart_template,885,,Imposto sobre os Resultados Correntes
+account_group_chart886,l10n_ao.ao_chart_template,886,,Resultados Extraordinários
+account_group_chart887,l10n_ao.ao_chart_template,887,,Imposto sobre Resultados Extraordinários
+account_group_chart889,l10n_ao.ao_chart_template,889,,Transferência para Resultados Transitados
+account_group_chart89,l10n_ao.ao_chart_template,89,,DIVIDENDOS ANTECIPADOS
+account_group_chart899,l10n_ao.ao_chart_template,899,,Transferência para Resultados Transitados

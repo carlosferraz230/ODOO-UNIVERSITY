@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="hr_work_entry_type_atrasos" model="hr.work.entry.type">
+            <field name="name">Atrasos</field>
+            <field name="sequence">25</field>
+            <field name="code">ATRA</field>
+            <field name="leave_type_ids"
+                   eval="[(6,0,[
+                   ref('l10n_ao_hr_payroll.hr_leave_type_delays'),
+
+                   ])]"/>
+            <field name="is_leave" eval="True"/>
+            <field name="unpaid_structure_ids"
+                   eval="[(6,0,[
+                   ref('l10n_ao_hr_payroll.hr_salary_structure_class_b'),
+
+                   ])]"/>
+        </record>
+
+        <record id="hr_work_entry_type_fjnr" model="hr.work.entry.type">
+            <field name="name">Falta Justificada Não Remunerada</field>
+            <field name="sequence">25</field>
+            <field name="code">FJNR</field>
+            <field name="leave_type_ids"
+                   eval="[(6,0,[
+                   ref('l10n_ao_hr_payroll.hr_leave_type_fjnr'),
+
+                   ])]"/>
+            <field name="is_leave" eval="True"/>
+            <field name="unpaid_structure_ids"
+                   eval="[(6,0,[
+                   ref('l10n_ao_hr_payroll.hr_salary_structure_class_b'),
+
+                   ])]"/>
+        </record>
+
+        <record id="hr_work_entry_type_fjr" model="hr.work.entry.type">
+            <field name="name">Falta Justificada Remunerada</field>
+            <field name="sequence">25</field>
+            <field name="code">FJR</field>
+
+            <field name="leave_type_ids"
+                   eval="[(6,0,[
+                   ref('l10n_ao_hr_payroll.hr_leave_type_fjr'),
+
+                   ])]"/>
+            <field name="is_leave" eval="True"/>
+            <field name="unpaid_structure_ids"
+                   eval="[(6,0,[
+                   ref('l10n_ao_hr_payroll.hr_salary_structure_class_b'),
+
+                   ])]"/>
+        </record>
+
+        <record id="hr_work_entry_type_fi" model="hr.work.entry.type">
+            <field name="name">Falta Injustificada</field>
+            <field name="sequence">25</field>
+            <field name="code">FI</field>
+
+            <field name="leave_type_ids"
+                   eval="[(6,0,[
+                   ref('l10n_ao_hr_payroll.hr_leave_type_fi'),
+
+                   ])]"/>
+            <field name="unpaid_structure_ids"
+                   eval="[(6,0,[
+                   ref('l10n_ao_hr_payroll.hr_salary_structure_class_b'),
+
+                   ])]"/>
+            <field name="is_leave" eval="True"/>
+
+        </record>
+
+        <record id="hr_work_entry_type_allowance" model="hr.work.entry.type">
+            <field name="name">Férias</field>
+            <field name="sequence">25</field>
+            <field name="code">SF</field>
+
+            <field name="leave_type_ids"
+                   eval="[(6,0,[
+                   ref('l10n_ao_hr_payroll.hr_leave_type_holiday_allowance'),
+
+                   ])]"/>
+            <field name="unpaid_structure_ids"
+                   eval="[(6,0,[
+                   ref('l10n_ao_hr_payroll.hr_salary_structure_class_b'),
+
+                   ])]"/>
+            <field name="is_leave" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

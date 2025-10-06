@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="bn_ao" model="res.country.state">
+            <field name="country_id" ref="base.ao"/>
+            <field name="code">BEN</field>
+            <field name="name">Bengo</field>
+        </record>
+        <record id="beg_ao" model="res.country.state">
+            <field name="country_id" ref="base.ao"/>
+            <field name="code">BEG</field>
+            <field name="name">Benguela</field>
+        </record>
+        <record id="bie_ao" model="res.country.state">
+            <field name="country_id" ref="base.ao"/>
+            <field name="code">BIE</field>
+            <field name="name">Bié</field>
+        </record>
+        <record id="cab_ao" model="res.country.state">
+            <field name="country_id" ref="base.ao"/>
+            <field name="code">CAB</field>
+            <field name="name">Cabinda</field>
+        </record>
+        <record id="kua_ao" model="res.country.state">
+            <field name="country_id" ref="base.ao"/>
+            <field name="code">KUA</field>
+            <field name="name">Cuando-Cubango</field>
+        </record>
+        <record id="cun_ao" model="res.country.state">
+            <field name="country_id" ref="base.ao"/>
+            <field name="code">CUN</field>
+            <field name="name">Cunene</field>
+        </record>
+        <record id="hua_ao" model="res.country.state">
+            <field name="country_id" ref="base.ao"/>
+            <field name="code">HUA</field>
+            <field name="name">Huambo</field>
+        </record>
+        <record id="hui_ao" model="res.country.state">
+            <field name="country_id" ref="base.ao"/>
+            <field name="code">HUI</field>
+            <field name="name">Huíla</field>
+        </record>
+        <record id="kwn_ao" model="res.country.state">
+            <field name="country_id" ref="base.ao"/>
+            <field name="code">KWN</field>
+            <field name="name">Kwanza-Norte</field>
+        </record>
+        <record id="kws_ao" model="res.country.state">
+            <field name="country_id" ref="base.ao"/>
+            <field name="code">KWS</field>
+            <field name="name">Kwanza-Sul</field>
+        </record>
+        <record id="lda_ao" model="res.country.state">
+            <field name="country_id" ref="base.ao"/>
+            <field name="code">LDA</field>
+            <field name="name">Luanda</field>
+        </record>
+        <record id="ldn_ao" model="res.country.state">
+            <field name="country_id" ref="base.ao"/>
+            <field name="code">LDN</field>
+            <field name="name">Lunda-Norte</field>
+        </record>
+        <record id="lds_ao" model="res.country.state">
+            <field name="country_id" ref="base.ao"/>
+            <field name="code">LDS</field>
+            <field name="name">Lunda-Sul</field>
+        </record>
+        <record id="mal_ao" model="res.country.state">
+            <field name="country_id" ref="base.ao"/>
+            <field name="code">MAL</field>
+            <field name="name">Malanje</field>
+
+        </record>
+        <record id="mox_ao" model="res.country.state">
+            <field name="country_id" ref="base.ao"/>
+            <field name="code">MOX</field>
+            <field name="name">Moxico</field>
+        </record>
+        <record id="nam_ao" model="res.country.state">
+            <field name="country_id" ref="base.ao"/>
+            <field name="code">NAM</field>
+            <field name="name">Namibe</field>
+        </record>
+        <record id="uig_ao" model="res.country.state">
+            <field name="country_id" ref="base.ao"/>
+            <field name="code">UIG</field>
+            <field name="name">Uíge</field>
+
+        </record>
+        <record id="zai_ao" model="res.country.state">
+            <field name="country_id" ref="base.ao"/>
+            <field name="code">ZAI</field>
+            <field name="name">Zaire</field>
+        </record>
+    </data>
+</odoo>

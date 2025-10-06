@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="public_holiday_view_form" model="ir.ui.view">
+        <field name="name">Calendar Is public Holiday</field>
+        <field name="model">calendar.event</field>
+        <field name="priority" eval="70"/>
+        <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+        <field name="arch" type="xml">
+           <field name="allday" position="after">
+               <field name="is_public_holiday" />
+           </field>
+        </field>
+    </record>
+</odoo>

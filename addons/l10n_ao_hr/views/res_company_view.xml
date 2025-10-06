@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="view_es_hr_res_company_form" model="ir.ui.view">
+            <field name="name">hr.es.res.company.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <field name="company_registry" position="after">
+                    <field name="ss"/>
+                </field>
+                <xpath expr="//notebook/page[1]/group" position="inside">
+                    <group name="hr" string="Human Resource">
+                        <field name="hr_mobile" string="Mobile"/>
+                        <field name="hr_phone" string="Phone"/>
+                        <field name="hr_manager" string="Mobile"/>
+                        <field name="hr_general_manager" string="Phone"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

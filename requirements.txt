@@ -1,0 +1,9 @@
+Babel
+decorator
+Werkzeug
+psycopg2-binary
+PyPDF2
+XlsxWriter
+pycryptodome
+pandas
+dicttoxml2

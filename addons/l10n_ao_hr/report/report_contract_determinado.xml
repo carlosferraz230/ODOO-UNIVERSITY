@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_contract_determinado_pdf">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <style type="text/css">
+                        * {padding-bottom: 0 !important;
+                        padding-top: 0 !important;
+                        margin-bottom: 0 !important;margin-top:0 !important; }
+                    </style>
+                    <div class="page" style="font-family:Calibri; font-size: 13px;">
+                        <div class="text-center">
+                            <h5>
+                                <b>CONTRATO DE TRABALHO Nº <span t-field="o.name"/> <br/>
+                            CONTRATO DE TRABALHO POR TEMPO DETERMINADO A TERMO CERTO
+  </b>
+                            </h5>
+                        </div>
+                        <div class="text-justify">
+                            <br/>
+                            <br/>
+                            ENTRE
+                            <br/>
+                            <br/>
+                            <br/>
+                            <b><span t-field="res_company.name"/> </b>, organização não governamental internacional,  com sede em Luanda,
+na Avenida Pedro de Castro Van -Dúnem Loy, Rua dos Generais, nº 1 A, Morro Bento,
+contribuinte fiscal nº. 7403008758, registada na Conservatória do Registo Comercial
+de  Luanda  sob  o  nº  18/98,  neste  acto  devidamente  representada  pela  Sra.  <b>Anna
+                            Fedorova</b>, na qualidade de Representante residente, adiante designado por
+doravante designada por <b>Primeira Outorgante</b> ou Empregadora
+                            <br/>
+                            <br/>
+                            E
+                            <br/>
+                            <br/>
+                            <b><span t-field="o.employee_id"/></b>,  <span t-field="o.employee_id.marital"/>  natural  de  <span t-field="o.employee_id.place_of_birth"/>,  titular  do  Bilhete  de  Identidade  nº <span t-field="o.employee_id.identification_id"/>
+emitido em  pela Direcção Nacional de Identificação, com o NIF <span t-field="o.employee_id.fiscal_number"/>  e INSS
+<span t-field="o.employee_id.social_security"/> , residente na Rua XX Casa Nº XX Zona XX Bairro XXX, doravante designado
+por <b>Segundo Outorgante </b> ou <b>Trabalhador</b>.
+                            <br/>
+                            <br/>
+                            Quando em conjunto, Primeira e Segundo Outorgantes serão doravante
+abreviadamente designadas por <b>Partes</b>.
+                            <br/>
+                            <br/>
+                            É,  livremente  e  de  boa-fé,  celebrado  e  reciprocamente  aceite  entre  as  <b>Partes</b>,  o
+presente  <b>Contrato  de  Trabalho  por  Tempo  Determinado </b> que  se  rege  pelas
+cláusulas seguintes:
+                            <br/>
+                            <br/>
+                            <p class="text-center">
+                                <b>Cláusula Primeira
+                                <br/>
+                                    (Funções e Mobilidade Funcional)
+                                </b>
+                            </p>
+                            <br/>
+                            <ol>
+                                <li>Pelo presente Contrato, a Empregadora admite ao seu serviço o Trabalhador, que
+concorda,  sob  direcção  e  controlo  da  primeira,  exercer  as  funções  inerentes  ao
+                                    cargo de <b><span t-field="o.job_id"/> </b>, com a categoria ocupacional
+de Gerente, em regime de tempo integral e em exclusividade.
+                                </li>
+                                <li>
+                                    O Trabalhador deverá, acessoriamente, realizar quaisquer outras tarefas que lhe
+sejam indicadas pela Empregadora, para as quais tenha qualificação ou
+capacidade bastantes e que tenham afinidade funcional com as que
+habitualmente  correspondem  às  suas  funções  normais,  sem  qualquer  prejuízo
+para a sua posição na empresa.
+                                </li>
+                                <li>
+                                    A  Empregadora  poderá  encarregar,  temporariamente,  o  Trabalhador  de  outras
+tarefas  e  funções  diferentes  das  previstas  anteriormente,  desde  que  tal  não
+implique uma alteração substancial do cargo e categoria para que foi contratada.
+                                </li>
+                            </ol>
+
+
+                            <br/>
+                            <br/>
+                            <p class="text-center">
+                                <b>Cláusula Segunda
+                                <br/>
+                                    (Início e Termo do Contrato)
+                                </b>
+                            </p>
+                            <br/>
+                            <ol>
+                                <li>O  Contrato  de  Trabalho  é  celebrado  por  tempo  determinado,  pelo  prazo  de
+(<span t-field="o.contract_duration"/>) meses, com início no dia <span t-field="o.date_start"/> e término em <span t-field="o.date_end"/>
+                                </li>
+                                <li>
+                                    O Contrato renovar-se-á automaticamente, nos mesmos termos e condições, por
+iguais  e  sucessivos  períodos  de  tempo,  desde  que  nenhuma  das  Partes  o
+denuncie,  por  escrito,  com  a  antecedência  mínima  de  quinze  (15)  dias  úteis
+relativamente ao seu termo inicial ou de qualquer uma das suas renovações.
+                                </li>
+                                <li>
+                                    A renovação do Contrato por período diferente do período inicial será efectuada
+por acordo das Partes e por forma escrita
+                                </li>
+
+                            </ol>
+
+                            <br/>
+                            <br/>
+                            <p class="text-center">
+                                <b>Cláusula Terceira
+                                <br/>
+                                    (Período Experimental)
+                                </b>
+                            </p>
+                            <br/>
+                            <ol>
+                                <li>
+                                    O trabalhador fica sujeito a um período experimental de trinta (30) dias.
+                                </li>
+                                <li>
+                                    Durante o período de experiência, qualquer uma das Partes poderá fazer cessar
+o presente Contrato, sem obrigação de pré-aviso, indemnização ou apresentação
+de  qualquer  justificação,  devendo  o  empregador  efectuar  o  pagamento  da
+remuneração devida pelo trabalho prestado.
+                                </li>
+                            </ol>
+                            <br/>
+                            <br/>
+                            <p class="text-center">
+                                <b>Cláusula Quarta
+                                <br/>
+                                    (Local de trabalho e mobilidade geográfica)
+                                </b>
+                            </p>
+                            <br/>
+                            <ol>
+                                <li>
+                                    O Trabalhador desempenhará as suas funções nas instalações da Empregadora
+na província de XXX.
+                                </li>
+                                <li>
+                                    O Trabalhador aceita, que a Empregadora a possa transferir para qualquer outro
+centro de trabalho, bem como que tenha que efectuar as deslocações de serviço
+necessárias  ou  convenientes  ao  bom  desempenho  das  suas  funções  e  da
+actividade da Empregadora.
+                                </li>
+                                <li>
+                                    Em  caso de deslocação  de  serviço para fora  do  centro  de  trabalho  habitual,  os
+custos inerentes à deslocação serão assumidos pela Empregadora.
+                                </li>
+                            </ol>
+
+                            <br/>
+                            <br/>
+                            <p class="text-center">
+                                <b>Cláusula Quinta
+                                <br/>
+                                    (Remuneração mensal e gratificações anuais)
+                                </b>
+                            </p>
+                            <br/>
+                            <ol>
+                                <li>
+                                   Como contrapartida da prestação do trabalho, a Empregadora, pagará ao
+trabalhador,  a  remuneração mensal base  de  AOA  XXXXXX  (XXXXXXXXX  XXX
+Kwanzas),  sujeita  aos  descontos  legais,  nomeadamente,  o  Imposto  sobre  o
+Rendimento de Trabalho e as Contribuições para a Segurança Social.
+                                </li>
+                                <li>
+                                    A  Empregadora  pagará  ainda  as  gratificações  anuais,  a  título  de  Subsídio  de
+Férias e de Subsídio de Natal, correspondentes a 50% (cinquenta por cento) da
+remuneração mensal base.
+                                </li>
+                            </ol>
+
+                            <br/>
+                            <br/>
+                            <p class="text-center">
+                                <b>Cláusula Sexta
+                                <br/>
+                                    (Período normal de trabalho)
+                                </b>
+                            </p>
+                            <br/>
+                            <ol>
+                                <li>
+                                   O período normal de trabalho a prestar pela Trabalhadora é de 40 horas semanais,
+distribuídas  por  5  dias  da  semana,  de  segunda  a  sexta-feira  e  com  o  seguinte
+horário: início às 7H30 e termo às 16H30, com intervalo para o almoço de uma
+hora compreendido entre as 12H00 e as 14H00 horas.
+                                </li>
+                                <li>
+                                    O horário de trabalho estabelecido no número um da presente Cláusula pode ser,
+pontualmente, alterado, de acordo com as necessidades objectivas de
+funcionamento dos serviços da Empregadora, mas sempre respeitando os limites
+legais.
+                                </li>
+                                <li>
+                                    No  momento  da  celebração  do  presente  contrato,  o  Trabalhador  declara  ter
+tomado conhecimento do horário de trabalho praticado no centro de trabalho.
+                                </li>
+                            </ol>
+
+                             <br/>
+                            <br/>
+                            <p class="text-center">
+                                <b>Cláusula Sétima
+                                <br/>
+                                    (Regime de Férias)
+                                </b>
+                            </p>
+                            <br/>
+                            <ol>
+                                <li>
+                                   O Segundo Outorgante tem direito a um período de férias retribuídas em cada ano
+civil  e  ao  pagamento  da  gratificação,  a  título  de  Subsídio  de  Férias,  conforme
+previsto no número 2 da Cláusula Quinta.
+                                </li>
+                                <li>
+                                    O direito a férias adquire-se com a celebração do contrato e vence-se no dia 1 de
+Janeiro de cada ano civil.
+                                </li>
+                                <li>
+                                    O período de férias é de dois dias úteis por cada mês completo de trabalho.
+                                </li>
+                                <li>
+                                    No caso de o Trabalhador, no momento do pagamento da gratificação referida no
+número  um  desta  Cláusula,  não  ter  prestado  um  ano  de  serviço  efectivo,  em
+virtude da data de admissão ao trabalho, da suspensão ou cessação da relação
+jurídico-laboral,  terá  direito  a  receber  a  referida  gratificação  calculada  em  valor
+proporcional aos meses completos de trabalho.
+                                </li>
+                            </ol>
+                            <br/>
+                            <br/>
+                            <p class="text-center">
+                                <b>Cláusula Oitava
+                                <br/>
+                                    (Subsídio de Natal)
+                                </b>
+                            </p>
+                            <br/>
+                            <ol>
+                                <li>
+                                   O  Trabalhador  beneficiará,  por  cada  ano  de  serviço  efectivo,  da  gratificação,  a
+título de subsídio de Natal, conforme previsto no número 2 da Cláusula Quinta.
+                                </li>
+                                <li>
+                                    No caso do Trabalhador, no momento do pagamento desta gratificação, não ter
+prestado um ano de serviço efectivo, em virtude da data de admissão ao trabalho,
+de suspensão ou da cessação da relação jurídico-laboral, terá direito a receber a
+gratificação calculada em valor proporcional aos meses completos de trabalho.
+                                </li>
+                            </ol>
+                            <br/>
+                            <br/>
+                            <p class="text-center">
+                                <b>Cláusula Nona
+                                <br/>
+                                    (Deveres do Trabalhador)
+                                </b>
+                            </p>
+
+                            O Trabalhador fica especialmente obrigada, além do cumprimento de todos os demais
+deveres, a:
+                            <br/>
+                            <ol type="a">
+                                <li>
+                                   Comparecer  ao  serviço  com  pontualidade  e  assiduidade  e  guardar  lealdade  à
+entidade empregadora
+                                </li>
+                                <li>
+                                    Prestar o seu trabalho, em regime de exclusividade, ficando, portanto, impedida
+de exercer qualquer outra actividade profissional, por conta de outrem ou por sua
+conta;
+                                </li>
+                                 <li>
+                                    Cumprir e respeitar todos os regulamentos, directivas, planos de trabalho, ordens
+e  instruções,  escritas ou  verbais,  emanadas  da  Administração  da Empregadora
+ou proveniente dos seus superiores hierárquicos, perante os quais responde;
+                                </li>
+                                <li>
+                                    Respeitar os  procedimentos e  as regras de funcionamento em prática na
+Empregadora, desde logo, as regras e procedimentos técnicos e de segurança e
+higiene  no  trabalho,  bem  como,  aqueles  que  digam  directamente  respeito  à
+conduta  a  observar  nas  instalações,  nomeadamente,  mas  não  se  limitando,
+quanto à utilização de instrumentos de trabalho e manuseamento de
+equipamentos e de outros mecanismos;
+                                </li>
+                                <li>
+                                    Desempenhar as suas funções com total zelo e diligência, responsabilizando-se
+pela adequada utilização e conservação de todos os bens e valores que, lhe sejam
+entregues,    alocados  u,  por  qualquer  outra  forma,  se  encontrem  à  sua  guarda,
+responsabilizando-se, nos termos gerais, pelo ressarcimento de quaisquer
+prejuízos que venha a causar à Empregadora, directa ou indirectamente, por um
+negligente desempenho  de  funções, nomeadamente,  referente a eventual
+extravio dos referidos bens e valores ou danificação dos mesmos, sem prejuízo
+do respectivo  procedimento disciplinar;
+                                </li>
+                                <li>
+                                    Manter confidencialidade e não divulgar, directa ou indirectamente segredos e /
+ou informações que digam respeito a projectos, produção, técnicas de trabalho e
+/ ou qualquer outra informação relacionada com a actividade da Empregadora ou
+que o Trabalhador atenha tomado conhecimento no exercício das suas
+actividades  laborais,  durante  a  vigência  do  presente  contrato,  bem  como  das
+sucessivas  renovações  e  em  caso  de  rescisão do  mesmo,  sob  pena de  lhe  ser
+imputada responsabilidade disciplinar, civil e / ou criminal.
+                                </li>
+
+                            </ol>
+                            <br/>
+                            <br/>
+                            <p class="text-center">
+                                <b>Cláusula Décima
+                                <br/>
+                                    (Deveres da Empregadora)
+                                </b>
+                            </p>
+                            A Empregadora, pelo presente contrato, obriga-se a:
+                            <br/>
+                            <ol type="a">
+                                <li>
+                                   Tratar com consideração e respeito o Trabalhador;
+                                </li>
+                                <li>
+                                    Pagar, com regularidade e pontualidade, a remuneração do Trabalhador;
+                                </li>
+                                <li>
+                                    Promover boas relações de trabalho dentro da empresa e contribuir para a criação
+e manutenção de condições de harmonia e motivação no trabalho;
+                                </li>
+                                <li>
+                                    Garantir  a  ocupação  efectiva  do  Trabalhador  e  permitir  que  a  mesmo  goze
+efectivamente os descansos diários, semanais e anuais garantidos por lei.
+                                </li>
+                            </ol>
+                            <br/>
+                            <br/>
+                            <p class="text-center">
+                                <b>Cláusula Décima Primeira
+                                <br/>
+                                    (Apólice de Seguro e Exames Médicos)
+                                </b>
+                            </p>
+                            <br/>
+                            <ol>
+                                <li>
+                                   O Trabalhador será, nos termos da lei, abrangida por um seguro contra acidentes
+de trabalho e doenças profissionais.
+                                </li>
+                                <li>
+                                    Ao vincular-se ao contrato de trabalho, o Trabalhador concorda em ser submetida
+a  exames  médicos  quando  e  sempre  que  necessário,  conforme  seja  solicitado
+pela Empregadora.
+                                </li>
+
+                            </ol>
+                            <br/>
+                            <br/>
+                            <p class="text-center">
+                                <b>Cláusula Décima Segunda
+                                <br/>
+                                    (Rescisão unilateral do Contrato)
+                                </b>
+                            </p>
+                            <br/>
+                            <ol>
+                                <li>
+                                   Sem prejuízo das disposições legais aplicáveis, constitui justa causa que
+possibilita  à  Empregadora  despedir  o  Trabalhador,  mas  não  está  limitado  a,
+designadamente, a violação pelo Trabalhador dos deveres previstos a Cláusula
+Décima do presente contrato, bem como a negligência repetida no cumprimento
+das obrigações inerentes à sua função ou aos seus deveres.
+                                </li>
+                                <li>
+                                    Em caso de rescisão, o Trabalhador deverá dar aviso prévio à Empregadora de
+trinta (30) dias.
+                                </li>
+
+                            </ol>
+
+                            <br/>
+                            <br/>
+                            <p class="text-center">
+                                <b>Cláusula Décima Terceira
+                                <br/>
+                                    (Deveres das partes em virtude da cessação contratual)
+                                </b>
+                            </p>
+                            <br/>
+                            <ol>
+                                <li>
+                                   Findo o contrato de trabalho, seja qual for o motivo e a forma, o Trabalhador deve
+devolver, imediatamente, à Empregadora os instrumentos de trabalho e quaisquer
+outros objectos que sejam pertença desta, sob pena de incorrer em
+responsabilidade civil pelos danos causados.
+                                </li>
+                                <li>
+                                    A Empregadora é obrigada a entregar ao Segundo um certificado de trabalho.
+                                </li>
+
+                            </ol>
+
+                            <br/>
+                            <br/>
+                            <p class="text-center">
+                                <b>Cláusula Décima Quarta
+                                <br/>
+                                    (Acordo Integral e alterações)
+                                </b>
+                            </p>
+                            <br/>
+                            O presente contrato traduz e constitui o integral acordo celebrado entre as  <b>Partes</b> e
+apenas poderá ser alterado, por documento escrito e assinado por ambas as Partes.
+
+                            <br/>
+                            <br/>
+                            <p class="text-center">
+                                <b>Cláusula Décima Quinta
+                                <br/>
+                                    (Foro competente)
+                                </b>
+                            </p>
+                            <br/>
+                            Para  a  resolução  de  toda  e  qualquer  questão  emergente  do  presente  contrato,  é
+competente  a  Sala  de  Trabalho  do  Tribunal  Provincial  de  Luanda,  com  renúncia
+expressa de qualquer outro foro.
+
+                            <br/>
+                            <br/>
+                            <p class="text-center">
+                                <b>Cláusula Décima Sexta
+                                <br/>
+                                    (Lei aplicável)
+                                </b>
+                            </p>
+                            <br/>
+                            No que não estiver expressamente previsto, aplicar-se-ão as disposições constantes
+da  Lei  Geral  do  Trabalho,  aprovada  pela  Lei  n.º  7/15,  de  15 de  Junho  e  respectiva
+legislação complementar.
+                            <br/><br/>
+                            O presente contrato  é feito em triplicado, ficando um exemplar na  posse da
+Empregadora,  um  exemplar  na  posse  do  Trabalhador  e  um  exemplar  na  posse  do
+MAPTESS.
+                            <br/>
+                            <br/>
+                            Luanda, XXX de XXXX de 2021.
+                            <br/>
+                        </div>
+                        <div class="text-justify">
+                            <br/>
+                            <br/>
+                            Pela Directora de Recursos Humanos
+                            <br/>
+                            <br/>
+                            _______________________________________________
+                            <br/>
+                            <b>Carla Barcelos</b>
+                            <br/>
+                            <br/>
+                            A empregadora
+                            <br/>
+                            <br/>
+                            _______________________________________________
+                            <br/>
+                            <b>Anna Fedorova</b>
+
+                            <br/>
+                            <br/>
+                            O trabalhador
+                            <br/>
+                            <br/>
+                            _______________________________________________
+                            <br/>
+                            <b><span t-field="o.employee_id"/></b>
+
+                                </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

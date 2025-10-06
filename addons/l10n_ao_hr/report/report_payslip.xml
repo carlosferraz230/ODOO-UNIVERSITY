@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_payslip">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <style type="text/css">
+                            .container2 {
+                            height: 8cm;
+                            /* Width and count aren't respected, but you
+                            have to give at least some dummy value (??). */
+                            /* This is the strange way to define the number of columns:
+                            50% = 2 columns, 33% = 3 columns 25% = 4 columns */
+                            -webkit-columns: 0 0; width: 25%;
+                            /* Gap and rule do work. */
+                            -webkit-column-gap: 1em;
+                            text-align: justify;
+                            }
+                            .text-center {text-align:center;}
+                            .text-left {text-align:left;}
+                            .text-right {text-align:right;}
+                            .conteudo
+                            {
+                            border-collapse: collapse;
+                            width:100%; font-size:12px;
+                            min-height:900px;
+                            }
+                            .conteudo > tr > th, td, th { min-width:12px; border: 1px solid #000;
+                            line-height: 1
+                            vertical-align: top;
+                            padding: 4px !important;
+                            margin: 4px !important;;
+                            }
+                            hr{border:solid 1px #000;}
+                            .name{width:250px;}
+                            .borda{
+                            border-bottom: solid 1px #000;
+                            border-collapse: separate;
+                            }
+                            .borda_completa{border: solid 1px #000;}
+                            .title{font-weight: bold;}
+                            .no_border{border:none;}
+                            .rep{width:500px;padding-bottom:0;}
+                            .details{width:600px;}
+                            .right{float:right;}
+                            .inf{width:100%;
+                            min-width:30px;
+                            }
+                            .inf tr{line-height:0.5;}
+                            .inf td{border:none;}
+                            .font_12{font-size:12px;}
+                            .font_14{font-size:12px;}
+                            .font_10{font-size:10px;}
+                            .horizontal_line{
+                            border-bottom: 3px solid black;
+                            }
+                        </style>
+                        <table class="table table-borderless" style="font-size:12px;">
+                            <tr>
+                                <t t-foreach="[1]" t-as="recibo">
+                                    <td>
+                                        <div class="col-xs-12">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <t t-if="recibo==1">
+                                                        <p>
+                                                            <b style="font-size: 18px !important;">
+                                                                <font color="blue">ORIGINAL</font>
+                                                            </b>
+                                                        </p>
+                                                    </t>
+                                                    <t t-if="recibo==2">
+                                                        <p>
+                                                            <b style="font-size: 18px !important;">
+                                                                <font color="red">DUPLICADO</font>
+                                                            </b>
+                                                        </p>
+                                                    </t>
+                                                    <b style="font-size: 18px !important;">
+                                                        Recibo de Salário de
+                                                        <span t-field="o.payslip_period"/>
+                                                    </b>
+                                                </div>
+                                            </div>
+                                            <hr style="border-top: 2px solid black;"/>
+
+                                            <table class="table table-condensed table-borderless">
+                                                <tr>
+                                                    <th>
+                                                        <strong>Period</strong>
+                                                    </th>
+                                                    <td>
+                                                        <span t-field="o.payslip_period"/>
+                                                    </td>
+                                                    <th>
+                                                        <strong>Name</strong>
+                                                    </th>
+                                                    <td>
+                                                        <span t-field="o.employee_id"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <strong>Categoria</strong>
+                                                    </th>
+                                                    <td>
+                                                        <span t-esc="o.employee_id.category_ids[0].name"/>
+                                                    </td>
+                                                    <th>
+                                                        <strong>Local de Trab.</strong>
+                                                    </th>
+                                                    <td>
+                                                        <span t-field="o.employee_id.work_location_id"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        Data de Fecho
+                                                    </th>
+                                                    <td>
+                                                        <span t-field="o.date_to"/>
+                                                    </td>
+                                                    <th>
+                                                        <strong>N.º Func.</strong>
+                                                    </th>
+                                                    <td>
+                                                        <span t-esc="o.employee_id.employee_number and o.employee_id.employee_number.zfill(4) or ''"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <strong>Venc. / Hora</strong>
+                                                    </th>
+                                                    <td t-if="o.contract_id.structure_type_id.wage_type == 'monthly'">
+                                                        <span t-field="o.contract_id.wage_hour"/>
+                                                    </td>
+                                                    <td t-if="o.contract_id.structure_type_id.wage_type == 'hourly'">
+                                                        <span t-field="o.contract_id.hourly_wage"/>
+                                                    </td>
+                                                    <th>
+                                                        <strong>Função</strong>
+                                                    </th>
+                                                    <td>
+                                                        <span t-field="o.employee_id.job_id"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <strong>Dias Trabalhado</strong>
+                                                    </th>
+                                                    <td>
+                                                        <span t-field="o.period_working_days"/>
+                                                    </td>
+                                                    <th t-if="o.contract_id.structure_type_id.wage_type == 'hourly'">
+                                                        <strong>Horas Trabalhadas</strong>
+                                                    </th>
+                                                    <td t-if="o.contract_id.structure_type_id.wage_type == 'hourly'">
+                                                        <span t-field="o.sum_worked_hours"/>
+                                                    </td>
+                                                    <th>
+                                                        <strong>Nº INSS</strong>
+                                                    </th>
+                                                    <td>
+                                                        <span t-field="o.employee_id.social_security"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <strong>Forma de Pagamento</strong>
+                                                    </th>
+                                                    <td>
+                                                        <span t-field="o.employee_id.payment_method"/>
+                                                    </td>
+                                                    <th>
+                                                        <strong>NIF</strong>
+                                                    </th>
+                                                    <td>
+                                                        <span t-field="o.employee_id.fiscal_number"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <table class="table table-condensed">
+                                                <thead>
+                                                    <tr style="border-bottom: 2px solid black">
+                                                        <th>
+                                                            <strong>Descrição</strong>
+                                                        </th>
+                                                        <th class="text-right">
+                                                            <strong>Remunerações</strong>
+                                                        </th>
+                                                        <th class="text-right">
+                                                            <strong>Descontos</strong>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <t t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip)"
+                                                       t-as="line">
+                                                        <t t-if="line.code not in  ['ss_collect', 'ILIQUID', 'LIQUID']">
+                                                            <tr>
+                                                                <td>
+                                                                    <span t-if="line.code != 'ss_collect'"
+                                                                          t-field="line.name"/>
+                                                                </td>
+                                                                <td class="text-right">
+                                                                    <span t-if="line.remuneration != 0.0"
+                                                                          t-field="line.remuneration"/>
+                                                                </td>
+                                                                <td class="text-right">
+                                                                    <span t-if="line.deduction != 0.0 and line.code != 'ss_collect'"
+                                                                          t-field="line.deduction"/>
+                                                                </td>
+                                                            </tr>
+                                                        </t>
+                                                    </t>
+                                                    <tr>
+                                                        <td>
+
+                                                        </td>
+                                                        <td>
+
+                                                        </td>
+                                                        <td>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="text-right" style="border-top: 2px solid black">
+                                                            Totals
+                                                        </th>
+                                                        <th class="text-right" style="border-top: 2px solid black">
+                                                            <span t-field="o.total_remunerations"/>
+                                                        </th>
+                                                        <th class="text-right" style="border-top: 2px solid black">
+                                                            <span t-field="o.total_deductions"/>
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="border-top: 2px solid black;">
+
+                                                        </td>
+                                                        <td class="text-right"
+                                                            style="border-bottom: 2px solid black;border-top: 2px solid black">
+                                                            <strong>Total Pago (AKZ)</strong>
+                                                        </td>
+                                                        <td class="text-right"
+                                                            style="border-bottom: 2px solid black;border-top: 2px solid black">
+                                                            <strong t-field="o.total_paid"/>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <table border="1">
+                                                <tr>
+                                                    <td style="width: 400px;">
+                                                        <i>Declaro que recebi o valor mencionado neste recibo,</i>
+                                                    </td>
+                                                    <td style="width: 50px;"></td>
+                                                </tr>
+                                                <tr style="height: 80px;">
+                                                    <td style="padding-top: 30px; vertical-align: top;">
+                                                        _____________________________________________
+                                                    </td>
+                                                    <td>
+
+                                                    </td>
+                                                    <td style="vertical-align: top;">
+                                                        <span t-field="o.note"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <p>Gerado por Odoo</p>
+                                        </div>
+                                    </td>
+                                </t>
+                            </tr>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

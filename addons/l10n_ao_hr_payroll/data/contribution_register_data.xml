@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Contribution Registers -->
+    <data noupdate="1">
+        <record id="hr_contribution_register_base" model="hr.contribution.register">
+            <field name="note">Remuneração Base</field>
+            <field name="name">BASE</field>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+        <record id="hr_contribution_register_inss" model="hr.contribution.register">
+            <field name="note">Instituto Nacional de Segurança Social</field>
+            <field name="name">INSS</field>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+        <record id="hr_contribution_register_irt" model="hr.contribution.register">
+            <field name="note">Imposto de Rendimento Sobre o Trabalho</field>
+            <field name="name">IRT</field>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+    </data>
+</odoo>

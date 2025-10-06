@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_saf_ao_wizard,saft.ao.export.wizard,model_saft_ao_export_wizard,,1,1,1,1
+access_saft_ao_file_export,saft.ao.file.export,model_saft_ao_file_export,,1,1,1,1

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="l10n_ao.account_note_1" model="account.note">
+            <field name="name">Imobilizações Corpóreas</field>
+            <field name="code">4</field>
+        </record>
+
+        <record id="l10n_ao.account_note_2" model="account.note">
+            <field name="name">Imobilizações Incorpóreas</field>
+            <field name="code">5</field>
+        </record>
+
+        <record id="l10n_ao.account_note_3" model="account.note">
+            <field name="name">Investimentos em subsidiários e associados</field>
+            <field name="code">6</field>
+        </record>
+
+        <record id="l10n_ao.account_note_4" model="account.note">
+            <field name="name">Outros activos Financeiros</field>
+            <field name="code">7</field>
+        </record>
+
+        <record id="l10n_ao.account_note_5" model="account.note">
+            <field name="name">Existências</field>
+            <field name="code">8</field>
+        </record>
+
+        <record id="l10n_ao.account_note_6" model="account.note">
+            <field name="name">Contas a receber</field>
+            <field name="code">9</field>
+        </record>
+
+        <record id="l10n_ao.account_note_7" model="account.note">
+            <field name="name">Outros activos não correntes</field>
+            <field name="code">9</field>
+        </record>
+
+        <record id="l10n_ao.account_note_8" model="account.note">
+            <field name="name">Disponibilidades</field>
+            <field name="code">10</field>
+        </record>
+
+        <record id="l10n_ao.account_note_9" model="account.note">
+            <field name="name">Outros activos correntes</field>
+            <field name="code">11</field>
+        </record>
+
+        <record id="l10n_ao.account_note_10" model="account.note">
+            <field name="name">Capital</field>
+            <field name="code">12</field>
+        </record>
+
+        <record id="l10n_ao.account_note_11" model="account.note">
+            <field name="name">Reservas</field>
+            <field name="code">13</field>
+        </record>
+
+        <record id="l10n_ao.account_note_12" model="account.note">
+            <field name="name">Resultados Transitados</field>
+            <field name="code">14</field>
+        </record>
+
+        <record id="l10n_ao.account_note_13" model="account.note">
+            <field name="name">Empréstimos de médio e Longo Prazo</field>
+            <field name="code">15</field>
+        </record>
+
+        <record id="l10n_ao.account_note_14" model="account.note">
+            <field name="name">Parte cor. dos emp. a médio e Longo Prazo</field>
+            <field name="code">15</field>
+        </record>
+
+        <record id="l10n_ao.account_note_15" model="account.note">
+            <field name="name">Impostos Diferidos</field>
+            <field name="code">16</field>
+        </record>
+
+        <record id="l10n_ao.account_note_16" model="account.note">
+            <field name="name">Provisões para pensões</field>
+            <field name="code">17</field>
+        </record>
+
+        <record id="l10n_ao.account_note_17" model="account.note">
+            <field name="name">Provisões para outros riscos e encargos</field>
+            <field name="code">18</field>
+        </record>
+
+        <record id="l10n_ao.account_note_18" model="account.note">
+            <field name="name">Outros passivos não corrente</field>
+            <field name="code">19</field>
+        </record>
+
+        <record id="l10n_ao.account_note_19" model="account.note">
+            <field name="name">Contas a pagar</field>
+            <field name="code">20</field>
+        </record>
+
+        <record id="l10n_ao.account_note_20" model="account.note">
+            <field name="name">Outros passivos correntes</field>
+            <field name="code">21</field>
+        </record>
+
+        <record id="l10n_ao.account_note_21" model="account.note">
+            <field name="name">Vendas</field>
+            <field name="code">22</field>
+        </record>
+
+        <record id="l10n_ao.account_note_22" model="account.note">
+            <field name="name">Prestações de Serviços</field>
+            <field name="code">23</field>
+        </record>
+
+        <record id="l10n_ao.account_note_23" model="account.note">
+            <field name="name">Outros proveitos operacionais</field>
+            <field name="code">24</field>
+        </record>
+
+        <record id="l10n_ao.account_note_24" model="account.note">
+            <field name="name">Variação nos produtos acabados e produtos em vias de fabrico</field>
+            <field name="code">25</field>
+        </record>
+
+        <record id="l10n_ao.account_note_25" model="account.note">
+            <field name="name">Trabalhos para a própria empresa</field>
+            <field name="code">26</field>
+        </record>
+
+        <record id="l10n_ao.account_note_26" model="account.note">
+            <field name="name">Custos das mercadorias vendidas e das matérias consumidas</field>
+            <field name="code">27</field>
+        </record>
+
+        <record id="l10n_ao.account_note_27" model="account.note">
+            <field name="name">Custos com pessoal</field>
+            <field name="code">28</field>
+        </record>
+
+        <record id="l10n_ao.account_note_28" model="account.note">
+            <field name="name">Amortizações</field>
+            <field name="code">29</field>
+        </record>
+
+        <record id="l10n_ao.account_note_29" model="account.note">
+            <field name="name">Outros custos e perdas operacionais</field>
+            <field name="code">30</field>
+        </record>
+
+        <record id="l10n_ao.account_note_30" model="account.note">
+            <field name="name">Resultados financeiros</field>
+            <field name="code">31</field>
+        </record>
+
+        <record id="l10n_ao.account_note_31" model="account.note">
+            <field name="name">Resultados de filiais e associados</field>
+            <field name="code">32</field>
+        </record>
+
+        <record id="l10n_ao.account_note_32" model="account.note">
+            <field name="name">Resultados não operacionais</field>
+            <field name="code">33</field>
+        </record>
+
+        <record id="l10n_ao.account_note_33" model="account.note">
+            <field name="name">Resultados extraordinários</field>
+            <field name="code">34</field>
+        </record>
+
+        <record id="l10n_ao.account_note_34" model="account.note">
+            <field name="name">Impostos sobre o rendimento</field>
+            <field name="code">35</field>
+        </record>
+
+        <record id="l10n_ao.account_note_35" model="account.note">
+            <field name="name">Responsabilidades assumidas e não reflectidas no passivo</field>
+            <field name="code">36</field>
+        </record>
+
+        <record id="l10n_ao.account_note_36" model="account.note">
+            <field name="name">Contingências</field>
+            <field name="code">37</field>
+        </record>
+
+        <record id="l10n_ao.account_note_37" model="account.note">
+            <field name="name">Acontecimentos ocorridos após a data do Balanço</field>
+            <field name="code">38</field>
+        </record>
+
+        <record id="l10n_ao.account_note_38" model="account.note">
+            <field name="name">Auxílios de Governo e outras entidades</field>
+            <field name="code">39</field>
+        </record>
+
+        <record id="l10n_ao.account_note_39" model="account.note">
+            <field name="name">Transacções co empresa do grupo</field>
+            <field name="code">40</field>
+        </record>
+
+        <record id="l10n_ao.account_note_40" model="account.note">
+            <field name="name">Informações exigidas por diplomas legais</field>
+            <field name="code">41</field>
+        </record>
+
+        <record id="l10n_ao.account_note_41" model="account.note">
+            <field name="name">Outras informações consideradas relevantes</field>
+            <field name="code">42</field>
+        </record>
+
+        <record id="l10n_ao.account_note_42" model="account.note">
+            <field name="name">Politicas adoptadas</field>
+            <field name="code">43</field>
+        </record>
+
+        <record id="l10n_ao.account_note_43" model="account.note">
+            <field name="name">Alterações nas políticas</field>
+            <field name="code">44</field>
+        </record>
+
+        <record id="l10n_ao.account_note_44" model="account.note">
+            <field name="name">Alineações de filiais e associadas</field>
+            <field name="code">45</field>
+        </record>
+
+        <record id="l10n_ao.account_note_45" model="account.note">
+            <field name="name">Aquisição de filiais e associadas</field>
+            <field name="code">46</field>
+        </record>
+
+        <record id="l10n_ao.account_note_46" model="account.note">
+            <field name="name">Caixas e equivalentes de eaixa</field>
+            <field name="code">47</field>
+        </record>
+
+        <record id="l10n_ao.account_note_47" model="account.note">
+            <field name="name">Operações não efectuadas por caixa e seus equivalentes</field>
+            <field name="code">48</field>
+        </record>
+
+        <record id="l10n_ao.account_note_48" model="account.note">
+            <field name="name">Outras informações necessárias à compreensão da demonstração do fluxo de caixa</field>
+            <field name="code">49</field>
+        </record>
+
+
+    </data>
+</odoo>

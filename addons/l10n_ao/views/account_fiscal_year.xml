@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="fiscal_year_form_view" model="ir.ui.view">
+            <field name="name">account.fiscal.year.inherit.form</field>
+            <field name="model">account.fiscal.year</field>
+            <field name="inherit_id" ref="account_accountant.action_account_fiscal_year_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="before">
+                    <header>
+                        <button name="button_close" string="Fechar e Apurar" class="oe_highlight" states="open"
+                                type="object"/>
+                        <field name="state" widget="statusbar" statusbar_colors="{'open':'danger'}"/>
+                    </header>
+                </xpath>
+                <xpath expr="//sheet/group" position="replace">
+                    <div class="oe_title mb24">
+                        <h1>
+                            <field name="name" placeholder="Ano Fiscal 2025"/>
+                        </h1>
+                        <div class="o_row">
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </div>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                            <field name="clearance_move_id" invisible="1"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                    <separator string="Períodos" colspan="2"/>
+                    <field colspan="2" name="periods" domain="[('year', '=', id)]" nolabel="1"
+                           options="{'no_open': True, 'no_create': True}"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="fiscal_period_form_view" model="ir.ui.view">
+            <field name="name">account_fiscal_period.form</field>
+            <field name="model">account.fiscal.period</field>
+            <field name="arch" type="xml">
+                <form string="Account Fiscal Period">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="company_id" required="1"
+                                       readonly="1"
+                                       groups="base.group_multi_company"/>
+                                <field name="name"/>
+                                <field name="period"/>
+                                <field name="year" domain="[('company_id', '=', company_id)]"
+                                       options="{'no_open': True, 'no_create': True}"/>
+                            </group>
+                            <group>
+                                <field name="start_date" required="1"/>
+                                <field name="end_date" required="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="fiscal_period_search_view" model="ir.ui.view">
+            <field name="name">account.fiscal.period.search</field>
+            <field name="model">account.fiscal.period</field>
+            <field name="arch" type="xml">
+                <search string="Periods">
+                    <field name="name"/>
+                    <field name="year"/>
+                    <field name="period"/>
+                    <group expand="1" string="Group By">
+                        <filter string="Ano Fiscal" name="all_year" context="{'group_by': 'year'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="fiscal_period_tree_view" model="ir.ui.view">
+            <field name="name">account_fiscal_period.tree</field>
+            <field name="model">account.fiscal.period</field>
+            <field name="arch" type="xml">
+                <tree string="Account Fiscal Period" expand="1">
+                    <field name="period"/>
+                    <field name="year"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="company_id"
+                           groups="base.group_multi_company"/>
+                </tree>
+            </field>
+        </record>
+        <record id="fiscal_period_act_window" model="ir.actions.act_window">
+            <field name="name">Período Fiscal</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.fiscal.period</field>
+            <field name="context">{'search_default_all_year': 1}</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Clique aqui para criar um novo Período Fiscal
+                </p>
+            </field>
+        </record>
+
+        <record id="financial_year_form" model="ir.ui.view">
+            <field name="name">account.financial.year.op.setup.wizard.form.inherit</field>
+            <field name="model">account.financial.year.op</field>
+            <field name="inherit_id" ref="account.setup_financial_year_opening_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='opening_date']" position="before">
+                    <field name="company_id" invisible="1"/>
+                    <field name="year" domain="[('company_id', '=', company_id)]"
+                           required="1" options="{'no_open': True, 'no_create': True}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!--  <menuitem name="Fiscal Year" id="account_fiscal_year_menu_root"
+                    sequence="1"
+                    parent="account.menu_finance_configuration"/>
+          <menuitem id="menu_account_fiscal_year" parent="ht_account_ao.account_fiscal_year_menu_root"
+                    action="account_accountant.actions_account_fiscal_year"
+                    groups="account.group_account_manager" sequence="1"/>-->
+
+        <menuitem id="fiscal_year_menu" name="Ano Fiscal" parent="account.menu_finance_configuration" sequence="1"
+                  groups="account_accountant.group_fiscal_year"/>
+
+        <menuitem name="Períodos" id="period_menu" parent="fiscal_year_menu"
+                  groups="account_accountant.group_fiscal_year"
+                  action="fiscal_period_act_window" sequence="2"/>
+
+        <menuitem id="account_accountant.menu_account_fiscal_year" parent="fiscal_year_menu" sequence="1"
+                  action="account_accountant.actions_account_fiscal_year"
+                  groups="account_accountant.group_fiscal_year"/>
+
+    </data>
+</odoo>

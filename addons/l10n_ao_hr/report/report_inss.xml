@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_inss">
+        <t t-call="web.html_container">
+            <t t-call="web.basic_layout">
+                <div class="header">
+                    <div class="row b_color">
+                        <div class="col-8">
+                            <b><span class="text-left" t-field="res_company.name"/></b>
+                        </div>
+                        <div class="col-4">
+                            <ul class="list-inline text-right">
+                                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                                |
+                                Pag. <span class="page"/>/<span class="topage"/>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr style="display: block; height: 1px;
+                            border: 0; border-top: 3px solid;
+                            margin: 0; padding: 0;"/>
+                    <div class="row mt16">
+                        <div class="col-6">
+                            <div align="left">
+                                <b class="b_color" style="font-size: 12px">
+                                    Folha do INSS a vigorar a partir de
+                                    <span t-esc="period"/>
+                                </b>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div align="right"><b>Valores Expresso em <span
+                                    t-esc="res_company.currency_id.symbol"/></b></div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="page">
+                    <style>
+                        * {padding-bottom: 0 !important;
+                        padding-top: 0 !important;
+                        margin-bottom: 0 !important;margin-top:0 !important; }
+                        hr {
+                        display: block; height: 1px;
+                        border: 0; border-top: 1px solid #0B74CE;
+                        margin: 0; padding: 0;
+                        }
+                        .b_color{
+                        color: #0B74CE;
+                        }
+                        .border_bottom {border-bottom: solid black 1px !important;}
+
+                        table {
+                        border-spacing: 3px;
+                        border-top: 3px solid black;
+                        border-collapse:collapse;
+                        font-size:11px;
+                        }
+
+                        td {
+                        border-bottom:0 !important;
+                        border-top: 1px solid #B2BABB !important;
+                        }
+
+                        th {
+                        border-top:0 !important;
+                        border-bottom: 1px solid #B2BABB !important;
+                        }
+
+                        table, tr, th, td {
+                        border-collapse: separate;
+                        padding:0px !important;
+                        }
+
+                        .border_top_th{
+                        border-top: 1px solid black !important;
+                        }
+                    </style>
+                    <div class="row">
+                        <div class="col-5">
+                            <table class="table table-sm o_main_table" style="border-top: 0px;">
+                                <tr>
+                                    <th class="text-center" style="border: 0 !important">
+                                        <img t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)"
+                                             style="min-height: 50px; max-height: 50px; "/>
+                                        <p class="m-0" style="font-size:16px;">
+                                            REPÚBLICA DE ANGOLA
+                                            <BR/>
+                                            INSTITUTO NACIONAL DE SEGURANÇA SOCIAL
+                                        </p>
+                                    </th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-6">
+                            <table class="table table-sm o_main_table" style="border-top: 0px;">
+                                <tr>
+                                    <td style="border:0px !important;">Nº C0NTRIB. S.SOCIAL</td>
+                                    <td style="border:0px !important;"><span t-field="res_company.ss"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="border:0px !important;">NAME</td>
+                                    <td style="border:0px !important;"><span t-field="res_company.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="border:0px !important;">MORADA</td>
+                                    <td style="border:0px !important;">
+                                        <span t-field="res_company.street"/>
+                                        <span t-if="res_company.street and res_company.street2"
+                                              t-esc="', '"/>
+                                        <span t-field="res_company.street2"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border:0px !important;">LOCALIDADE</td>
+                                    <td style="border:0px !important;"><span t-field="res_company.city"/></td>
+                                </tr>
+                                <tr>
+                                    <td style="border:0px !important;">TELEFONE</td>
+                                    <td style="border:0px !important;">
+                                        <span t-esc="res_company.hr_mobile"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border:0px !important;">Nº DE IDENTIF. DE PESSOA COLECTIVA</td>
+                                    <td style="border:0px !important;">
+                                        <span t-field="res_company.vat"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-1"></div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <div name="table_inss_line" class="row">
+                        <div class="col-12">
+                            <t t-set="total_base" t-value="0"/>
+                            <t t-set="total_iliquido" t-value="0"/>
+                            <t t-set="total_extra" t-value="0"/>
+                            <t t-set="total_iliquido3" t-value="0"/>
+                            <t t-set="total_iliquido8" t-value="0"/>
+                            <table class="table table-sm o_main_table">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2" class="text-left"><b>Nº</b></th>
+                                        <th rowspan="2" class="text-left"><b>Nomes Completos</b></th>
+                                        <th rowspan="2" class="text-left"><b>Categoria</b></th>
+                                        <th rowspan="2" class="text-right"><b>Salário Base</b></th>
+                                        <th rowspan="2" class="text-right"><b>Outras Remunerações</b></th>
+                                        <th rowspan="2" class="text-right"><b>Salário Ilíquido</b></th>
+                                        <th class="text-right" style="border-bottom:1px solid black !important;">
+                                            <b>3%</b>
+                                        </th>
+                                        <th class="text-right" style="border-bottom:1px solid black !important;">
+                                            <b>8%</b>
+                                        </th>
+                                        <th rowspan="2" class="text-right"><b>Nº Beneficiario</b></th>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-right"><b>Sobre Ilíquido</b></th>
+                                        <th class="text-right"><b>Sobre Ilíquido</b></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="docs" t-as="payslip">
+                                        <tr t-if="payslip.contract_id.exempt_ss">
+                                            <td class="text-left">
+                                                <span t-field="payslip.employee_id.employee_number"/>
+                                            </td>
+                                            <td class="text-left name">
+                                                <span t-field="payslip.employee_id"/>
+                                            </td>
+                                            <td class="text-left">
+                                                <t t-if="payslip.employee_id.category_ids">
+                                                    <span t-esc="payslip.employee_id.category_ids[0].name"/>
+                                                </t>
+                                            </td>
+                                            <td name="base_amount" class="text-right">
+                                                <span t-esc="formatLang(env,(payslip.remuneration - (payslip.misses * -1)))"/>
+                                            </td>
+                                            <td name="allowance_amount" class="text-right">
+                                                <span t-esc="formatLang(env,(payslip.allowance + payslip.contract_id.abo_fam_ss()))"/>
+                                            </td>
+                                            <td name="gross_amount" class="text-right">
+                                                <span t-esc="formatLang(env,(payslip.remuneration - (payslip.misses * -1))+(payslip.allowance + payslip.contract_id.abo_fam_ss()))"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="formatLang(env,(payslip.amount_inss * -1))"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="formatLang(env,((payslip.remuneration + payslip.allowance + payslip.contract_id.abo_fam_ss()) - (payslip.misses * -1)) * 0.08)"/>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="payslip.employee_id.social_security"/>
+                                            </td>
+                                            <t t-set="total_base"
+                                               t-value="total_base + (payslip.remuneration - (payslip.misses * -1))"/>
+                                            <t t-set="total_iliquido"
+                                               t-value="total_iliquido + (payslip.total_remunerations - (payslip.misses * -1))"/>
+                                            <t t-set="total_extra"
+                                               t-value="total_extra + payslip.allowance + payslip.contract_id.abo_fam_ss()"/>
+                                            <t t-set="total_iliquido3"
+                                               t-value="total_iliquido3 + (payslip.amount_inss * -1)"/>
+                                            <t t-set="total_iliquido8"
+                                               t-value="total_iliquido8 + (payslip.remuneration + payslip.allowance + payslip.contract_id.abo_fam_ss() - (payslip.misses * -1)) * 0.08"/>
+                                        </tr>
+                                    </t>
+                                    <tr style="font-weight:bold;">
+                                        <td colspan="3" class="text-right">Totais</td>
+                                        <td class="text-right">
+                                            <span t-esc="formatLang(env,abs(total_base))"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="formatLang(env,abs(total_extra))"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="formatLang(env,abs(total_iliquido))"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="formatLang(env,abs(total_iliquido3))"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="formatLang(env,abs(total_iliquido8))"/>
+                                        </td>
+                                        <td class="text-right"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <br/>
+                    <div name="resume_ss_percent" class="row">
+                        <div name="ss_percents" class="col-4">
+                            <table class="table table-sm o_main_table" style="border:none !important;">
+                                <tr>
+                                    <td class="text-left" style="border:none !important;">
+                                        <p class="m-0">Total dos Salários Ilíquidos</p>
+                                        <p class="m-0">8% Sobre o Salário Ilíquido/Empresa</p>
+                                        <p class="m-0">3% Sobre o Salário Ilíquido/Trabalhadores</p>
+                                        <p class="m-0"><b>11% Total a Depositar</b></p>
+
+                                    </td>
+                                    <td class="text-right" style="border:none !important;">
+                                        <p class="m-0" t-esc="formatLang(env,abs(total_iliquido))"/>
+                                        <p class="m-0" t-esc="formatLang(env,abs(total_iliquido8))"/>
+                                        <p class="m-0" t-esc="formatLang(env,abs(total_iliquido3))"/>
+                                        <b t-esc="formatLang(env,abs(total_iliquido3 + total_iliquido8))"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-2" style="font-size:12px !important;">
+                            <p align="center">Processado por</p>
+                            <p align="center">_______________________________</p>
+                            <p align="center" class="mt-3">
+                                <span t-field="slip_run.create_uid"/>
+                            </p>
+                        </div>
+                        <div class="col-4" style="font-size:12px !important;">
+                            <p align="center">O(A) Responsável do RH</p>
+                            <p align="center">_______________________________</p>
+                            <p align="center" class="mt-3">
+                                <span t-field="res_company.hr_manager"/>
+                            </p>
+                        </div>
+                        <div class="col-2" style="font-size:12px !important;">
+                            <p align="center">O(A) Director(a) Geral</p>
+                            <p align="center">_______________________________</p>
+                            <p align="center" class="mt-3">
+                                <span t-field="res_company.hr_general_manager"/>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="text-right" style="font-size:10px">
+                        <b>© TICBLAC</b>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+
+</odoo>

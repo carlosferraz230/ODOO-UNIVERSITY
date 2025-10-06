@@ -1,0 +1,549 @@
+reconcile,id,user_type_id/id,chart_template_id/id,code,name
+True,account_chart_1111,account.data_account_type_fixed_assets,l10n_ao.ao_chart_template,1111,Terrenos em bruto
+True,account_chart_1112,account.data_account_type_fixed_assets,l10n_ao.ao_chart_template,1112,Terrenos com Arranjos
+True,account_chart_1113,account.data_account_type_fixed_assets,l10n_ao.ao_chart_template,1113,Subsolo
+True,account_chart_11141,account.data_account_type_fixed_assets,l10n_ao.ao_chart_template,11141,Relativos a Edifícios Industriais
+True,account_chart_11142,account.data_account_type_fixed_assets,l10n_ao.ao_chart_template,11142,Relativos a Edifícios Administrativos e Comerciais
+True,account_chart_11143,account.data_account_type_fixed_assets,l10n_ao.ao_chart_template,11143,Relativos a outros Edifícios
+True,account_chart_11211,account.data_account_type_fixed_assets,l10n_ao.ao_chart_template,11211,Integrados em Conjuntos Industriais
+True,account_chart_11212,account.data_account_type_fixed_assets,l10n_ao.ao_chart_template,11212,Integrados em Conjuntos Administrativos e Comerciais
+True,account_chart_11213,account.data_account_type_fixed_assets,l10n_ao.ao_chart_template,11213,Outros Conjuntos Industriais
+True,account_chart_11214,account.data_account_type_fixed_assets,l10n_ao.ao_chart_template,11214,Implatados em Propriedade Alheia
+True,account_chart_1122,account.data_account_type_fixed_assets,l10n_ao.ao_chart_template,1122,Outras construções
+True,account_chart_1123,account.data_account_type_fixed_assets,l10n_ao.ao_chart_template,1123,Instalações
+True,account_chart_1131,account.data_account_type_fixed_assets,l10n_ao.ao_chart_template,1131,Materiais Industriais
+True,account_chart_1132,account.data_account_type_fixed_assets,l10n_ao.ao_chart_template,1132,Ferramentas Industriais
+True,account_chart_1133,account.data_account_type_fixed_assets,l10n_ao.ao_chart_template,1133,Melhoramentos em equipamentos básicos
+True,account_chart_1141,account.data_account_type_fixed_assets,l10n_ao.ao_chart_template,1141,................
+True,account_chart_1151,account.data_account_type_fixed_assets,l10n_ao.ao_chart_template,1151,Equipamento informático
+True,account_chart_1152,account.data_account_type_fixed_assets,l10n_ao.ao_chart_template,1152,Mobiliário
+True,account_chart_1161,account.data_account_type_fixed_assets,l10n_ao.ao_chart_template,1161,Embalagens retomáveis
+True,account_chart_1211,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1211,..............................
+True,account_chart_1221,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1221,.....................
+True,account_chart_1231,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1231,..............................
+True,account_chart_1241,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1241,...................................
+True,account_chart_1291,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1291,.....................................
+True,account_chart_1311,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1311,Partes de Capital
+True,account_chart_1312,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1312,Obrigações e Título de Participação
+True,account_chart_1313,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1313,Empréstimos
+True,account_chart_1321,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1321,Partes de Capital
+True,account_chart_1322,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,1322,Obrigações e Título de Participação
+True,account_chart_1323,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1323,Empréstimos
+True,account_chart_1331,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1331,Partes de Capital
+True,account_chart_1332,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1332,Obrigações e Títulos de Participação
+True,account_chart_1333,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1333,Empréstimos
+True,account_chart_1341,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1341,...................................
+True,account_chart_1351,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1351,..............
+True,account_chart_1391,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1391,Diamantes
+True,account_chart_1392,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1392,Ouro
+True,account_chart_1393,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1393,Depósitos Bancários
+True,account_chart_1471,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1471,...............................
+True,account_chart_1481,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1481,.............................
+True,account_chart_1491,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1491,...........................
+True,account_chart_1811,account.data_account_type_depreciation,l10n_ao.ao_chart_template,1811,Terrenos e Recursos Naturais
+True,account_chart_1812,account.data_account_type_depreciation,l10n_ao.ao_chart_template,1812,Edifícios e outras construções
+True,account_chart_1813,account.data_account_type_depreciation,l10n_ao.ao_chart_template,1813,Equipamento basico
+True,account_chart_1814,account.data_account_type_depreciation,l10n_ao.ao_chart_template,1814,Equipamento de carga e transporte
+True,account_chart_1815,account.data_account_type_depreciation,l10n_ao.ao_chart_template,1815,Equipamento Administrativo
+True,account_chart_1816,account.data_account_type_depreciation,l10n_ao.ao_chart_template,1816,Taras e vasilhame
+True,account_chart_1819,account.data_account_type_depreciation,l10n_ao.ao_chart_template,1819,Outras Imobilizações Corpóreas
+True,account_chart_1821,account.data_account_type_depreciation,l10n_ao.ao_chart_template,1821,Trespasses
+True,account_chart_1822,account.data_account_type_depreciation,l10n_ao.ao_chart_template,1822,Despesas de investigação e desenvolvimento
+True,account_chart_1823,account.data_account_type_depreciation,l10n_ao.ao_chart_template,1823,Propriedade Industrial e outros direitos e contratos
+True,account_chart_1824,account.data_account_type_depreciation,l10n_ao.ao_chart_template,1824,Despesas de Constituição
+True,account_chart_1829,account.data_account_type_depreciation,l10n_ao.ao_chart_template,1829,Outras Imobilizações Incorpóreas
+True,account_chart_1831,account.data_account_type_depreciation,l10n_ao.ao_chart_template,1831,Terrenos e Recursos Naturais
+True,account_chart_1832,account.data_account_type_depreciation,l10n_ao.ao_chart_template,1832,Edifícios e outras construções
+False,account_chart_1911,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1911,Partes de Capital
+False,account_chart_1912,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1912,Obrigações e Títulos de Participação
+False,account_chart_1913,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1913,Empréstimos
+False,account_chart_1921,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1921,Partes de Capital
+False,account_chart_1922,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1922,Obrigações e Títulos de Participação
+False,account_chart_1923,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1923,Empréstimos
+False,account_chart_1931,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1931,Partes de Capital
+False,account_chart_1932,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1932,Obrigações e Títulos de Participação
+False,account_chart_1933,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1933,Empréstimos
+False,account_chart_1941,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1941,Partes de Capital
+False,account_chart_1991,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1991,Diamantes
+False,account_chart_1992,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1992,Ouro
+False,account_chart_1993,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,1993,Depósitos Bancários
+False,account_chart_21112,account.data_account_type_direct_costs,l10n_ao.ao_chart_template,21112,Mercado Estrangeiro
+False,account_chart_2112,account.data_account_type_direct_costs,l10n_ao.ao_chart_template,2112,Matériais subsidiárias
+True,account_chart_2121,account.data_account_type_direct_costs,l10n_ao.ao_chart_template,2121,Mercadorias
+True,account_chart_21712,account.data_account_type_direct_costs,l10n_ao.ao_chart_template,21712,Matérias subsidiárias
+True,account_chart_21811,account.data_account_type_direct_costs,l10n_ao.ao_chart_template,21811,Matérias primas
+True,account_chart_21812,account.data_account_type_direct_costs,l10n_ao.ao_chart_template,21812,Matérias subsidiárias
+True,account_chart_21813,account.data_account_type_direct_costs,l10n_ao.ao_chart_template,21813,Materiais diversos
+False,account_chart_2191,account.data_account_type_direct_costs,l10n_ao.ao_chart_template,2191,.....................
+True,account_chart_2211,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2211,Existênciais
+True,account_chart_2212,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2212,"Custo existênciais, venda e consumo"
+True,account_chart_2221,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2221,Existênciais
+True,account_chart_2222,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2222,"Custo existênciais, venda e consumo"
+True,account_chart_2231,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2231,Existências
+True,account_chart_2232,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2232,"Custo existênciais, venda e consumo"
+True,account_chart_2241,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2241,Existências
+True,account_chart_2242,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2242,"Custo existênciais, venda e consumo"
+True,account_chart_2251,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2251,Existênciais
+True,account_chart_2252,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2252,"Custo existênciais, venda e consumo"
+True,account_chart_2411,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2411,..........................................
+False,account_chart_2421,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2421,...................................
+True,account_chart_2491,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2491,...............................s
+True,account_chart_2511,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2511,.....................................
+True,account_chart_2521,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2521,..............................
+True,account_chart_2611,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2611,Existências
+True,account_chart_2612,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2612,"Custo existênciais, venda e consumo"
+False,account_chart_2631,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2631,"Existências, Avalição de stock"
+True,account_chart_2641,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2641,Existências
+True,account_chart_2642,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2642,"Custo existênciais, venda e consumo"
+True,account_chart_26911,account.data_account_type_current_assets,l10n_ao.ao_chart_template,26911,Existências
+True,account_chart_2711,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2711,Mercado Nacional
+True,account_chart_2712,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2712,Mercado Africano
+True,account_chart_2713,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2713,Outros Mercados
+True,account_chart_2721,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2721,Mercado Nacional
+True,account_chart_2722,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2722,Mercado Africano
+True,account_chart_2723,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2723,Outros Mercados
+True,account_chart_2731,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2731,Mercado Nacional
+True,account_chart_2732,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2732,Mercado Africano
+True,account_chart_2733,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2733,Outros Mercados
+True,account_chart_2811,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2811,Mercado Nacional
+True,account_chart_28121,account.data_account_type_current_assets,l10n_ao.ao_chart_template,28121,Mercado Africano
+True,account_chart_28122,account.data_account_type_current_assets,l10n_ao.ao_chart_template,28122,Outros Mercados
+True,account_chart_2821,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2821,Mercado Nacional
+True,account_chart_2822,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2822,Mercado Africano
+True,account_chart_2823,account.data_account_type_current_assets,l10n_ao.ao_chart_template,2823,Outros Mercados
+True,account_chart_2921,account.data_account_type_depreciation,l10n_ao.ao_chart_template,2921,"Matérias-prima, Subsidiárias e de Consumo"
+True,account_chart_2931,account.data_account_type_depreciation,l10n_ao.ao_chart_template,2931,Produtos e Trabalhos em Curso
+True,account_chart_2941,account.data_account_type_depreciation,l10n_ao.ao_chart_template,2941,Produtos Acabados e Intermédios
+True,account_chart_2951,account.data_account_type_depreciation,l10n_ao.ao_chart_template,2951,"SubProdutos, desperdicios, Resíduos e refungos"
+True,account_chart_2961,account.data_account_type_depreciation,l10n_ao.ao_chart_template,2961,...................
+True,account_chart_3111,account.data_account_type_receivable,l10n_ao.ao_chart_template,3111,Grupo
+True,account_chart_311211,account.data_account_type_receivable,l10n_ao.ao_chart_template,311211,Cliente Nacionais
+True,account_chart_311221,account.data_account_type_receivable,l10n_ao.ao_chart_template,311221,Clientes Estrageiro
+True,account_chart_31211,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,31211,Subsidiárias
+True,account_chart_31212,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,31212,Associadas
+True,account_chart_31221,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,31221,Nacionais
+True,account_chart_31222,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,31222,Estrageiros
+True,account_chart_31311,account.data_account_type_receivable,l10n_ao.ao_chart_template,31311,Subsidiárias
+True,account_chart_31312,account.data_account_type_receivable,l10n_ao.ao_chart_template,31312,Associadas
+True,account_chart_31321,account.data_account_type_receivable,l10n_ao.ao_chart_template,31321,Nacionais
+True,account_chart_31322,account.data_account_type_receivable,l10n_ao.ao_chart_template,31322,Estrageiros
+True,account_chart_3181,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,3181,Clientes - Correntes
+True,account_chart_3182,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,3182,Clientes - Títulos
+True,account_chart_3191,account.data_account_type_payable,l10n_ao.ao_chart_template,3191,Adiantamentos
+True,account_chart_3192,account.data_account_type_payable,l10n_ao.ao_chart_template,3192,Embalagens a devolver
+True,account_chart_3193,account.data_account_type_payable,l10n_ao.ao_chart_template,3193,Material à consignação
+True,account_chart_3194,account.data_account_type_payable,l10n_ao.ao_chart_template,3194,Notas de Crédito
+True,account_chart_32111,account.data_account_type_payable,l10n_ao.ao_chart_template,32111,Subsidiárias
+True,account_chart_32112,account.data_account_type_payable,l10n_ao.ao_chart_template,32112,Associadas
+True,account_chart_32121,account.data_account_type_payable,l10n_ao.ao_chart_template,32121,Fornecedores Nacionais
+True,account_chart_32122,account.data_account_type_payable,l10n_ao.ao_chart_template,32122,Estrangeiros
+True,account_chart_32211,account.data_account_type_payable,l10n_ao.ao_chart_template,32211,Subsidiárias
+True,account_chart_32212,account.data_account_type_payable,l10n_ao.ao_chart_template,32212,Associadas
+True,account_chart_32221,account.data_account_type_payable,l10n_ao.ao_chart_template,32221,Nacionais
+True,account_chart_32222,account.data_account_type_payable,l10n_ao.ao_chart_template,32222,Estrageiros
+True,account_chart_3281,account.data_account_type_payable,l10n_ao.ao_chart_template,3281,Fornecedores - Facturas em Recepção e Conferência
+True,account_chart_3291,account.data_account_type_receivable,l10n_ao.ao_chart_template,3291,Adiantamentos
+True,account_chart_3292,account.data_account_type_receivable,l10n_ao.ao_chart_template,3292,Embalagens a devolver
+True,account_chart_3293,account.data_account_type_receivable,l10n_ao.ao_chart_template,3293,Material à consignação
+True,account_chart_33111,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,33111,Banco Nacional
+True,account_chart_33121,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,33121,Banco Estrangeiro
+True,account_chart_33211,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,33211,Entidade Grupo
+True,account_chart_33212,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,33212,Entidade Não Grupo
+True,account_chart_33221,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,33221,Entidade Grupo
+True,account_chart_33222,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,33222,Entidade Não Grupo
+True,account_chart_3331,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,3331,Entidade Grupo
+True,account_chart_3332,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,3332,Entidade Não Grupo
+True,account_chart_33911,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,33911,Entidade Grupo
+True,account_chart_33912,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,33912,Entidade Não Grupo
+True,account_chart_33921,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,33921,Entidade Grupo
+True,account_chart_33922,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,33922,Entidade Não Grupo
+True,account_chart_33931,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,33931,Entidade Grupo
+True,account_chart_33932,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,33932,Entidade Não Grupo
+False,account_chart_3411,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,3411,Imposto Corrente
+True,account_chart_3412,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,3412,Pagamentos por conta
+True,account_chart_3413,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,3413,Retenção na fonte
+True,account_chart_3414,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,3414,Imposto Industrial - Adiantamento
+True,account_chart_3415,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,3415,Apuramento
+True,account_chart_3416,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,3416,Retenção Pagar e DAR Enviado
+True,account_chart_3417,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,3417,Retenção Feita e DAR Recebido
+True,account_chart_34131,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,3418,Juros bancários
+True,account_chart_3421,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,3421,IPC
+True,account_chart_3422,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,3422,IPC Recebido de facturas
+True,account_chart_3431,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,3431,IRT Dependente
+True,account_chart_3432,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,3432,IRT Independente
+True,account_chart_3441,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,3441,Taxa de Circulação
+False,account_chart_34511,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34511,Existências
+False,account_chart_34512,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34512,Meios fixos e investimentos
+False,account_chart_34513,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34513,Outros bens e serviços
+False,account_chart_34521,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34521,Existências
+False,account_chart_34522,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34522,Meios fixos e investimentos
+False,account_chart_34523,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34523,Outros bens e serviços
+False,account_chart_34531,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34531,Operações Gerais
+False,account_chart_34532,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34532,Operações abrangidas pelo regime de IVA de caixa
+False,account_chart_34533,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34533,Autoconsumo e operações gratuitas
+False,account_chart_34534,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34534,Operações especiais
+False,account_chart_34541,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34541,Mensais a favor do sujeito passivo
+False,account_chart_34542,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34542,Mensais a favor do Estado
+False,account_chart_34543,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34543,Anual por cálculo do pró rata definitivo
+False,account_chart_34544,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34544,Outras regularizações anuais
+False,account_chart_34551,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34551,Apuramento do regime de Iva normal
+False,account_chart_34552,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34552,Apuramento do regime de IVA de caixa
+False,account_chart_34561,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34561,IVA a pagar de apuramento
+False,account_chart_34562,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34562,IVA a pagar de cativo
+False,account_chart_34563,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34563,IVA a pagar de liquidações oficiosas
+False,account_chart_34571,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34571,IVA a recuperar de apuramentos
+False,account_chart_34572,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34572,IVA a recuperar de cativo
+False,account_chart_34581,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34581,Reembolsos pedidos
+False,account_chart_34582,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34582,Reembolso deferidos
+False,account_chart_34583,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34583,Reembolso indeferidos
+False,account_chart_34584,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34584,"Reembolso reclamados, recorridos ou impugnados"
+False,account_chart_3459,account.data_account_type_current_assets,l10n_ao.ao_chart_template,3459,IVA liquidações oficiosas
+False,account_chart_3471,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,3471,Imposto Selo - Recibo de Quitação
+True,account_chart_3494,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,3494,Imposto Predial Urbano
+True,account_chart_34951,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,34951,I.N.S.S. - ..........
+True,account_chart_35111,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35111,C/ Subscrição
+True,account_chart_35112,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35112,C/adiatamentos sobre lucro
+True,account_chart_35113,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35113,C/ Lucros
+True,account_chart_35114,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35114,Empréstimos
+True,account_chart_35121,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35121,C/ Subscrição
+True,account_chart_35122,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35122,C/Adiantamentos Sobre Lucro
+True,account_chart_35123,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35123,C/ Lucro
+True,account_chart_35124,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35124,C/ Empréstimo
+True,account_chart_35131,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35131,C/ Subscrição
+True,account_chart_35132,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35132,C/Adiantamentos Sobre Lucros
+True,account_chart_35133,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35133,C/ Lucros
+True,account_chart_35134,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35134,Empréstimos
+True,account_chart_35141,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35141,C/ Subscrição
+True,account_chart_35142,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35142,C/adiatamentos sobre lucro
+True,account_chart_35143,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35143,C/ Lucros
+True,account_chart_35144,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35144,Empréstimos
+True,account_chart_35211,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35211,C/ Subscrição
+True,account_chart_35212,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35212,C/adiatamentos sobre lucro
+True,account_chart_35213,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35213,C/ Lucros
+True,account_chart_35214,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35214,C/ Lucros
+True,account_chart_35221,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35221,C/ Subscrição
+True,account_chart_35222,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35222,C/Adiantamentos Sobre Lucros
+True,account_chart_35223,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35223,C/ Lucros
+True,account_chart_35224,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35224,Empréstimos
+True,account_chart_35231,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35231,C/subscriçao
+True,account_chart_35232,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35232,C/Adiantamentos Sobre Lucro
+True,account_chart_35233,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35233,C/ Lucro
+True,account_chart_35234,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35234,Empréstimos
+True,account_chart_35241,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35241,C/ Subscrição
+True,account_chart_35242,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35242,C/ Adiantamentos Sobre Lucro
+True,account_chart_35243,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35243,C/ Lucro
+True,account_chart_35244,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,35244,Empréstimos
+True,account_chart_36111,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,36111,................
+True,account_chart_36121,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,36121,....................
+True,account_chart_36211,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,36211,...................
+True,account_chart_36221,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,36221,....................
+True,account_chart_3631,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,3631,Órgãos Sociais
+True,account_chart_3632,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,3632,Empregados
+True,account_chart_3691,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,3691,..............
+True,account_chart_3711,account.data_account_type_current_assets,l10n_ao.ao_chart_template,3711,Corpóreo
+True,account_chart_3712,account.data_account_type_current_assets,l10n_ao.ao_chart_template,3712,Incorpóreo
+True,account_chart_3713,account.data_account_type_current_assets,l10n_ao.ao_chart_template,3713,Financeiro
+True,account_chart_3721,account.data_account_type_receivable,l10n_ao.ao_chart_template,3721,Corpóreo
+True,account_chart_3722,account.data_account_type_receivable,l10n_ao.ao_chart_template,3722,Incorpóreo
+True,account_chart_3723,account.data_account_type_receivable,l10n_ao.ao_chart_template,3723,Financeiro
+True,account_chart_3731,account.data_account_type_current_assets,l10n_ao.ao_chart_template,3731,Vendas
+True,account_chart_3732,account.data_account_type_current_assets,l10n_ao.ao_chart_template,3732,Prestações de Serviços
+True,account_chart_3733,account.data_account_type_current_assets,l10n_ao.ao_chart_template,3733,Juros
+True,account_chart_3741,account.data_account_type_current_assets,l10n_ao.ao_chart_template,3741,Descontos de Emissão de Obrigaçõess
+True,account_chart_3742,account.data_account_type_current_assets,l10n_ao.ao_chart_template,3742,Descontos de Emissão de Títulos de ParticipaçãoObrigaçõess
+True,account_chart_3751,account.data_account_type_payable,l10n_ao.ao_chart_template,3751,Remunerações
+True,account_chart_3752,account.data_account_type_payable,l10n_ao.ao_chart_template,3752,Juros
+True,account_chart_3753,account.data_account_type_payable,l10n_ao.ao_chart_template,3753,Desconto de segurança Social
+True,account_chart_3754,account.data_account_type_payable,l10n_ao.ao_chart_template,3754,Desconto de IRT
+True,account_chart_3761,account.data_account_type_receivable,l10n_ao.ao_chart_template,3761,Prémios de Emissão de Obrigações
+True,account_chart_3762,account.data_account_type_receivable,l10n_ao.ao_chart_template,3762,Prémios de Emissão de Títulos de Participação
+True,account_chart_3763,account.data_account_type_receivable,l10n_ao.ao_chart_template,3763,Subsídios para investimento
+True,account_chart_3764,account.data_account_type_receivable,l10n_ao.ao_chart_template,3764,Diferenças de Câmbio favoráveis reversíveis
+True,account_chart_3771,account.data_account_type_current_assets,l10n_ao.ao_chart_template,3771,Transacções entre a sede e as dependências da Empresa
+True,account_chart_3791,account.data_account_type_receivable,l10n_ao.ao_chart_template,3791,...................
+True,account_chart_3792,account.data_account_type_receivable,l10n_ao.ao_chart_template,3792,Dívidas ao senhorio
+True,account_chart_38111,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,38111,Grupo
+True,account_chart_38112,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,38112,Não Grupo
+True,account_chart_38121,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,38121,Grupo
+True,account_chart_38122,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,38122,Não Grupo
+True,account_chart_38131,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,38131,Grupo
+True,account_chart_38132,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,38132,Não Grupo
+True,account_chart_3821,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,3821,.........................
+True,account_chart_3831,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,3831,Participantes
+True,account_chart_3832,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,3832,Participadas
+True,account_chart_3841,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,3841,.......................
+True,account_chart_3891,account.data_account_type_non_current_assets,l10n_ao.ao_chart_template,3891,Vendas Imobilizado
+True,account_chart_3911,account.data_account_type_current_assets,l10n_ao.ao_chart_template,3911,Provisões para pensões
+True,account_chart_3921,account.data_account_type_current_assets,l10n_ao.ao_chart_template,3921,Provisões para processos Judiciais em Curso
+True,account_chart_3931,account.data_account_type_current_assets,l10n_ao.ao_chart_template,3931,Provisões para Acidentes de Trabalho
+True,account_chart_3941,account.data_account_type_current_assets,l10n_ao.ao_chart_template,3941,Provisões para garantias dadas a Clientes
+True,account_chart_3991,account.data_account_type_current_assets,l10n_ao.ao_chart_template,3991,Provisões para outros Riscos e Encargos
+True,account_chart_4111,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4111,Empresas do Grupo
+True,account_chart_4112,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4112,Associadas
+True,account_chart_4113,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4113,Outras Empresas
+True,account_chart_4121,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4121,Empresas do Grupo
+True,account_chart_4122,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4122,Associados
+True,account_chart_4123,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4123,Outras Empresas
+True,account_chart_4131,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4131,.......................
+True,account_chart_4211,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4211,Banco
+True,account_chart_4212,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4212,Banco
+True,account_chart_4221,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4221,Banco
+True,account_chart_4222,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4222,Banco
+True,account_chart_4311,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4311,Banco
+True,account_chart_4312,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4312,Banco
+True,account_chart_4321,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4321,Banco
+True,account_chart_4322,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4322,Banco
+True,account_chart_4411,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4411,Banco
+True,account_chart_4412,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4412,Banco
+True,account_chart_4421,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4421,Banco
+True,account_chart_4422,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4422,Banco
+True,account_chart_4511,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4511,Caixa
+True,account_chart_4512,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4512,Caixa
+True,account_chart_4521,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4521,..................
+True,account_chart_4531,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4531,Salários
+True,account_chart_4819,account.data_account_type_current_assets,l10n_ao.ao_chart_template,4819,Contas de transferência
+True,account_chart_4821,account.data_account_type_current_assets,l10n_ao.ao_chart_template,4821,Conta Transitória
+True,account_chart_4911,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4911,Acções
+True,account_chart_4912,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4912,Obrigações
+True,account_chart_4913,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4913,Títulos da Dívida Pública
+True,account_chart_4921,account.data_account_type_liquidity,l10n_ao.ao_chart_template,4921,.................
+True,account_chart_5211,account.data_account_type_equity,l10n_ao.ao_chart_template,5211,...........................
+True,account_chart_5221,account.data_account_type_equity,l10n_ao.ao_chart_template,5221,...................
+True,account_chart_5231,account.data_account_type_equity,l10n_ao.ao_chart_template,5231,...................
+True,account_chart_5611,account.data_account_type_equity,l10n_ao.ao_chart_template,5611,Decreto-Lei nº
+True,account_chart_5612,account.data_account_type_equity,l10n_ao.ao_chart_template,5612,Decreto-Lei nº
+True,account_chart_5621,account.data_account_type_equity,l10n_ao.ao_chart_template,5621,Avaliações
+True,account_chart_5622,account.data_account_type_equity,l10n_ao.ao_chart_template,5622,Realização
+True,account_chart_61111,account.data_account_type_revenue,l10n_ao.ao_chart_template,61111,Mercado Nacional Padrão
+True,account_chart_61121,account.data_account_type_revenue,l10n_ao.ao_chart_template,61121,Mercado Estrangeiro Padrão
+True,account_chart_6121,account.data_account_type_revenue,l10n_ao.ao_chart_template,6121,Mercado Nacional
+True,account_chart_6122,account.data_account_type_revenue,l10n_ao.ao_chart_template,6122,Mercado Estrangeiro
+True,account_chart_6131,account.data_account_type_revenue,l10n_ao.ao_chart_template,6131,Mercado Nacional
+True,account_chart_6132,account.data_account_type_revenue,l10n_ao.ao_chart_template,6132,Mercado Estrangeiro
+True,account_chart_6141,account.data_account_type_revenue,l10n_ao.ao_chart_template,6141,Mercado Nacional
+True,account_chart_6142,account.data_account_type_revenue,l10n_ao.ao_chart_template,6142,Mercado Estrangeiro
+True,account_chart_6151,account.data_account_type_revenue,l10n_ao.ao_chart_template,6151,.......................
+True,account_chart_6171,account.data_account_type_revenue,l10n_ao.ao_chart_template,6171,Mercado Nacional
+True,account_chart_6172,account.data_account_type_revenue,l10n_ao.ao_chart_template,6172,Mercado Estrangeiro
+True,account_chart_6181,account.data_account_type_revenue,l10n_ao.ao_chart_template,6181,Mercado Nacional
+True,account_chart_6182,account.data_account_type_revenue,l10n_ao.ao_chart_template,6182,Mercado Estrangeiro
+True,account_chart_6211,account.data_account_type_revenue,l10n_ao.ao_chart_template,6211,Mercado Nacional
+True,account_chart_6212,account.data_account_type_revenue,l10n_ao.ao_chart_template,6212,Mercado Estrangeiro
+True,account_chart_6221,account.data_account_type_revenue,l10n_ao.ao_chart_template,6221,Mercado Nacional
+True,account_chart_6222,account.data_account_type_revenue,l10n_ao.ao_chart_template,6222,Mercado Estrangeiro
+True,account_chart_6281,account.data_account_type_revenue,l10n_ao.ao_chart_template,6281,Mercado Nacional
+True,account_chart_6282,account.data_account_type_revenue,l10n_ao.ao_chart_template,6282,Mercado Estrangeiro
+True,account_chart_6311,account.data_account_type_other_income,l10n_ao.ao_chart_template,6311,Aluger de equipamento
+True,account_chart_6312,account.data_account_type_other_income,l10n_ao.ao_chart_template,6312,Cedência de Pessoal
+True,account_chart_6313,account.data_account_type_other_income,l10n_ao.ao_chart_template,6313,Cedência de energia
+True,account_chart_6314,account.data_account_type_other_income,l10n_ao.ao_chart_template,6314,"Estudos, projectos e assistência Técnica"
+True,account_chart_6381,account.data_account_type_other_income,l10n_ao.ao_chart_template,6381,...............
+True,account_chart_6411,account.data_account_type_other_income,l10n_ao.ao_chart_template,6411,.............
+True,account_chart_6421,account.data_account_type_other_income,l10n_ao.ao_chart_template,6421,..............
+True,account_chart_6431,account.data_account_type_other_income,l10n_ao.ao_chart_template,6431,....................
+True,account_chart_6511,account.data_account_type_other_income,l10n_ao.ao_chart_template,6511,Corpóreo
+True,account_chart_6512,account.data_account_type_other_income,l10n_ao.ao_chart_template,6512,Incorpóreo
+True,account_chart_6513,account.data_account_type_other_income,l10n_ao.ao_chart_template,6513,Financeiro
+True,account_chart_6514,account.data_account_type_other_income,l10n_ao.ao_chart_template,6514,Em Curso
+True,account_chart_6521,account.data_account_type_other_income,l10n_ao.ao_chart_template,6521,Para Encargos a repartir por Exercícios futuros
+True,account_chart_6591,account.data_account_type_other_income,l10n_ao.ao_chart_template,6591,Transferência para Resultados Operacionais
+True,account_chart_66111,account.data_account_type_other_income,l10n_ao.ao_chart_template,66111,Obrigações
+True,account_chart_66113,account.data_account_type_other_income,l10n_ao.ao_chart_template,66113,Títulos de Participação
+True,account_chart_66114,account.data_account_type_other_income,l10n_ao.ao_chart_template,66114,Empréstimos
+True,account_chart_66119,account.data_account_type_other_income,l10n_ao.ao_chart_template,66119,Outros
+True,account_chart_66121,account.data_account_type_other_income,l10n_ao.ao_chart_template,66121,Dívidas recebidas a prestações
+True,account_chart_66122,account.data_account_type_other_income,l10n_ao.ao_chart_template,66122,De empréstimos a Terceiros
+True,account_chart_6614,account.data_account_type_other_income,l10n_ao.ao_chart_template,6614,De Aplicações de Tesouraria
+True,account_chart_6615,account.data_account_type_other_income,l10n_ao.ao_chart_template,6615,Descontos de Títulos
+True,account_chart_6621,account.data_account_type_other_income,l10n_ao.ao_chart_template,6621,Realizadas
+True,account_chart_6622,account.data_account_type_other_income,l10n_ao.ao_chart_template,6622,Não realizadas
+True,account_chart_6631,account.data_account_type_other_income,l10n_ao.ao_chart_template,6631,...........................
+True,account_chart_6641,account.data_account_type_other_income,l10n_ao.ao_chart_template,6641,.............................
+True,account_chart_6651,account.data_account_type_other_income,l10n_ao.ao_chart_template,6651,"Acções, quotas em outras Empresa"
+True,account_chart_6652,account.data_account_type_other_income,l10n_ao.ao_chart_template,6652,"Acções, quotas incluídas nos fundos"
+True,account_chart_6653,account.data_account_type_other_income,l10n_ao.ao_chart_template,6653,"Acções, quotas incluídas nos Títulos Negociáveis fundos"
+True,account_chart_66611,account.data_account_type_other_income,l10n_ao.ao_chart_template,66611,Subsidiárias
+True,account_chart_66612,account.data_account_type_other_income,l10n_ao.ao_chart_template,66612,Associadas
+True,account_chart_66613,account.data_account_type_other_income,l10n_ao.ao_chart_template,66613,Outras Empresas
+True,account_chart_66615,account.data_account_type_other_income,l10n_ao.ao_chart_template,66615,Fundos
+True,account_chart_66619,account.data_account_type_other_income,l10n_ao.ao_chart_template,66619,Outros Investimentos
+True,account_chart_6662,account.data_account_type_other_income,l10n_ao.ao_chart_template,6662,Títulos Negociáveis
+True,account_chart_66711,account.data_account_type_other_income,l10n_ao.ao_chart_template,66711,Subsidiárias
+True,account_chart_66712,account.data_account_type_other_income,l10n_ao.ao_chart_template,66712,Associadas
+True,account_chart_66713,account.data_account_type_other_income,l10n_ao.ao_chart_template,66713,Outras Empresas
+True,account_chart_66714,account.data_account_type_other_income,l10n_ao.ao_chart_template,66714,Fundos
+True,account_chart_66719,account.data_account_type_other_income,l10n_ao.ao_chart_template,66719,Outros Investimentos
+True,account_chart_66721,account.data_account_type_other_income,l10n_ao.ao_chart_template,66721,Títulos Negociáveis
+True,account_chart_66722,account.data_account_type_other_income,l10n_ao.ao_chart_template,66722,Depósitos a Prazo
+True,account_chart_66723,account.data_account_type_other_income,l10n_ao.ao_chart_template,66723,Outros Depósitos
+True,account_chart_66729,account.data_account_type_other_income,l10n_ao.ao_chart_template,66729,Outros Investimentos
+True,account_chart_6711,account.data_account_type_other_income,l10n_ao.ao_chart_template,6711,Subsidiárias
+True,account_chart_6712,account.data_account_type_other_income,l10n_ao.ao_chart_template,6712,Associadas
+True,account_chart_68111,account.data_account_type_other_income,l10n_ao.ao_chart_template,68111,Matérias-primas subsídiarias e de consumo
+True,account_chart_68112,account.data_account_type_other_income,l10n_ao.ao_chart_template,68112,Produtos e tralhos em Curso
+True,account_chart_68113,account.data_account_type_other_income,l10n_ao.ao_chart_template,68113,Produtos Acabados e Intermédios
+True,account_chart_68114,account.data_account_type_other_income,l10n_ao.ao_chart_template,68114,"SubProdutos, Desperdícios, Resíduos e Refugos."
+True,account_chart_68115,account.data_account_type_other_income,l10n_ao.ao_chart_template,68115,Mercadorias
+True,account_chart_68121,account.data_account_type_other_income,l10n_ao.ao_chart_template,68121,Clientes
+True,account_chart_68122,account.data_account_type_other_income,l10n_ao.ao_chart_template,68122,Clientes-Títulos a Receber
+True,account_chart_68123,account.data_account_type_other_income,l10n_ao.ao_chart_template,68123,Clientes-Cobranças Duvidosa
+True,account_chart_68124,account.data_account_type_other_income,l10n_ao.ao_chart_template,68124,Saldos Devedores de Fornecedores
+True,account_chart_68125,account.data_account_type_other_income,l10n_ao.ao_chart_template,68125,Participantes e Participadas
+True,account_chart_68126,account.data_account_type_other_income,l10n_ao.ao_chart_template,68126,Dídidas do Pessoal
+True,account_chart_68129,account.data_account_type_other_income,l10n_ao.ao_chart_template,68129,Outros Saldos a Receber
+True,account_chart_68131,account.data_account_type_other_income,l10n_ao.ao_chart_template,68131,Pensões
+True,account_chart_68132,account.data_account_type_other_income,l10n_ao.ao_chart_template,68132,Processos Judiciais em Curso
+True,account_chart_68133,account.data_account_type_other_income,l10n_ao.ao_chart_template,68133,Acidentes de Trabalho
+True,account_chart_68134,account.data_account_type_other_income,l10n_ao.ao_chart_template,68134,Garantias dadas a Clientes
+True,account_chart_68139,account.data_account_type_other_income,l10n_ao.ao_chart_template,68139,Outros Riscos e Encargos
+False,account_chart_6819,account.data_account_type_other_income,l10n_ao.ao_chart_template,6819,Transferência para resultados não operacionais
+True,account_chart_6821,account.data_account_type_other_income,l10n_ao.ao_chart_template,6821,Imobilizações Corpóreas
+True,account_chart_6822,account.data_account_type_other_income,l10n_ao.ao_chart_template,6822,Imobilizações Incorpóreas
+True,account_chart_6831,account.data_account_type_other_income,l10n_ao.ao_chart_template,6831,Venda de Imobilizações Corpóreas
+True,account_chart_6832,account.data_account_type_other_income,l10n_ao.ao_chart_template,6832,Venda de Imobilizações Incorpóreas
+True,account_chart_6841,account.data_account_type_other_income,l10n_ao.ao_chart_template,6841,Sobras
+True,account_chart_6851,account.data_account_type_other_income,l10n_ao.ao_chart_template,6851,...................
+True,account_chart_6861,account.data_account_type_other_income,l10n_ao.ao_chart_template,6861,..........................
+True,account_chart_6911,account.data_account_type_other_income,l10n_ao.ao_chart_template,6911,............................
+True,account_chart_6921,account.data_account_type_other_income,l10n_ao.ao_chart_template,6921,............................
+True,account_chart_6931,account.data_account_type_other_income,l10n_ao.ao_chart_template,6931,...........................
+True,account_chart_6941,account.data_account_type_other_income,l10n_ao.ao_chart_template,6941,............................
+True,account_chart_6951,account.data_account_type_other_income,l10n_ao.ao_chart_template,6951,.............
+True,account_chart_6961,account.data_account_type_other_income,l10n_ao.ao_chart_template,6961,.............................
+False,account_chart_7111,account.data_account_type_expenses,l10n_ao.ao_chart_template,7111,.....................
+False,account_chart_7121,account.data_account_type_expenses,l10n_ao.ao_chart_template,7121,............................
+False,account_chart_7131,account.data_account_type_expenses,l10n_ao.ao_chart_template,7131,.......................
+False,account_chart_7141,account.data_account_type_expenses,l10n_ao.ao_chart_template,7141,.........................
+False,account_chart_7151,account.data_account_type_equity,l10n_ao.ao_chart_template,7151,......................
+False,account_chart_7161,account.data_account_type_expenses,l10n_ao.ao_chart_template,7161,Mercadorias
+False,account_chart_7211,account.data_account_type_expenses,l10n_ao.ao_chart_template,7211,Remunerações - Órgãos sociais
+False,account_chart_7221,account.data_account_type_expenses,l10n_ao.ao_chart_template,7221,Ordenados - Pessoal
+False,account_chart_7231,account.data_account_type_expenses,l10n_ao.ao_chart_template,7231,Órgãos sociais
+False,account_chart_7232,account.data_account_type_expenses,l10n_ao.ao_chart_template,7232,Pessoal
+False,account_chart_7241,account.data_account_type_expenses,l10n_ao.ao_chart_template,7241,Órgãos sociais
+False,account_chart_7242,account.data_account_type_expenses,l10n_ao.ao_chart_template,7242,Pessoal
+False,account_chart_7251,account.data_account_type_expenses,l10n_ao.ao_chart_template,7251,Órgãos sociais
+False,account_chart_7252,account.data_account_type_expenses,l10n_ao.ao_chart_template,7252,Pessoal
+False,account_chart_7261,account.data_account_type_expenses,l10n_ao.ao_chart_template,7261,Órgãos sociais
+False,account_chart_7262,account.data_account_type_expenses,l10n_ao.ao_chart_template,7262,Pessoal
+False,account_chart_7271,account.data_account_type_expenses,l10n_ao.ao_chart_template,7271,Órgãos sociais
+False,account_chart_7272,account.data_account_type_expenses,l10n_ao.ao_chart_template,7272,Pessoal
+False,account_chart_7281,account.data_account_type_expenses,l10n_ao.ao_chart_template,7281,Órgãos socias
+False,account_chart_7282,account.data_account_type_expenses,l10n_ao.ao_chart_template,7282,Pessoal
+False,account_chart_7312,account.data_account_type_depreciation,l10n_ao.ao_chart_template,7312,Edifícios e outras construções
+False,account_chart_7313,account.data_account_type_depreciation,l10n_ao.ao_chart_template,7313,Equipamento básico
+False,account_chart_7314,account.data_account_type_depreciation,l10n_ao.ao_chart_template,7314,Equipamento de carga e transporte
+False,account_chart_7315,account.data_account_type_depreciation,l10n_ao.ao_chart_template,7315,Equipamento Administrativo
+False,account_chart_7316,account.data_account_type_depreciation,l10n_ao.ao_chart_template,7316,Taras e vasilhame
+False,account_chart_7319,account.data_account_type_depreciation,l10n_ao.ao_chart_template,7319,Outras Imobilizações Corpóreas
+False,account_chart_7321,account.data_account_type_depreciation,l10n_ao.ao_chart_template,7321,Trespasses
+False,account_chart_7322,account.data_account_type_depreciation,l10n_ao.ao_chart_template,7322,Despesas de investigação e desenvolvimento
+False,account_chart_7323,account.data_account_type_depreciation,l10n_ao.ao_chart_template,7323,Propriedade Industrial e outros direitos e contratos
+False,account_chart_7324,account.data_account_type_depreciation,l10n_ao.ao_chart_template,7324,Despesas de Constituição
+False,account_chart_7329,account.data_account_type_depreciation,l10n_ao.ao_chart_template,7329,Outras Imobilizações Incorpóreas
+False,account_chart_7391,account.data_account_type_depreciation,l10n_ao.ao_chart_template,7391,Transferência para Resultados Operacionais
+False,account_chart_7511,account.data_account_type_expenses,l10n_ao.ao_chart_template,7511,Subcontratos
+False,account_chart_75211,account.data_account_type_expenses,l10n_ao.ao_chart_template,75211,Água
+False,account_chart_75212,account.data_account_type_expenses,l10n_ao.ao_chart_template,75212,Electricidade
+False,account_chart_75213,account.data_account_type_expenses,l10n_ao.ao_chart_template,75213,Combustíveis e outros fluídos
+False,account_chart_75214,account.data_account_type_expenses,l10n_ao.ao_chart_template,75214,Conservação e Reparação
+False,account_chart_75215,account.data_account_type_expenses,l10n_ao.ao_chart_template,75215,"Material de Protecção, Segurança e Conforto"
+False,account_chart_75216,account.data_account_type_expenses,l10n_ao.ao_chart_template,75216,Ferramentas e Utensílios de desgastes rápido
+False,account_chart_75217,account.data_account_type_expenses,l10n_ao.ao_chart_template,75217,Material de Escritório
+False,account_chart_75218,account.data_account_type_expenses,l10n_ao.ao_chart_template,75218,Livros e Documentação Técnica
+False,account_chart_752191,account.data_account_type_expenses,l10n_ao.ao_chart_template,752191,.......................
+False,account_chart_75221,account.data_account_type_expenses,l10n_ao.ao_chart_template,75221,Rendas e Alugueres
+False,account_chart_75222,account.data_account_type_expenses,l10n_ao.ao_chart_template,75222,Seguros
+False,account_chart_75223,account.data_account_type_expenses,l10n_ao.ao_chart_template,75223,Deslocações e Estadas
+False,account_chart_75224,account.data_account_type_expenses,l10n_ao.ao_chart_template,75224,Despesas de Representação
+False,account_chart_75226,account.data_account_type_expenses,l10n_ao.ao_chart_template,75226,Conservação e Reparação
+False,account_chart_75227,account.data_account_type_expenses,l10n_ao.ao_chart_template,75227,Vigilância e Segurança
+False,account_chart_75228,account.data_account_type_expenses,l10n_ao.ao_chart_template,75228,"Limpeza, Higiene e Conforto"
+False,account_chart_75229,account.data_account_type_expenses,l10n_ao.ao_chart_template,75229,Publicidade e Propaganda
+False,account_chart_75231,account.data_account_type_expenses,l10n_ao.ao_chart_template,75231,Comissões a Intermediários
+False,account_chart_752321,account.data_account_type_expenses,l10n_ao.ao_chart_template,752321,Estrangeira
+False,account_chart_752322,account.data_account_type_expenses,l10n_ao.ao_chart_template,752322,Nacional
+False,account_chart_75233,account.data_account_type_expenses,l10n_ao.ao_chart_template,75233,Trabalhos Executados no Exterior
+False,account_chart_75234,account.data_account_type_expenses,l10n_ao.ao_chart_template,75234,Honorários e Avenças
+False,account_chart_75235,account.data_account_type_expenses,l10n_ao.ao_chart_template,75235,Royalties
+False,account_chart_752391,account.data_account_type_expenses,l10n_ao.ao_chart_template,752391,.......................
+False,account_chart_75311,account.data_account_type_expenses,l10n_ao.ao_chart_template,75311,Imposto de selo
+False,account_chart_75319,account.data_account_type_expenses,l10n_ao.ao_chart_template,75319,Outros Impostos
+False,account_chart_75321,account.data_account_type_expenses,l10n_ao.ao_chart_template,75321,Impostos de capitais
+False,account_chart_75322,account.data_account_type_expenses,l10n_ao.ao_chart_template,75322,Contribuições predial
+False,account_chart_75329,account.data_account_type_expenses,l10n_ao.ao_chart_template,75329,Outros Impostos
+False,account_chart_7541,account.data_account_type_expenses,l10n_ao.ao_chart_template,7541,Despesas confidenciais
+False,account_chart_7551,account.data_account_type_expenses,l10n_ao.ao_chart_template,7551,Quotizações
+False,account_chart_7561,account.data_account_type_expenses,l10n_ao.ao_chart_template,7561,Ofertas e amostras de Existências
+False,account_chart_7581,account.data_account_type_expenses,l10n_ao.ao_chart_template,7581,Outros Custos e Perdas Operacionais
+False,account_chart_76111,account.data_account_type_expenses,l10n_ao.ao_chart_template,76111,Bancários
+False,account_chart_76112,account.data_account_type_expenses,l10n_ao.ao_chart_template,76112,Obrigações
+False,account_chart_76113,account.data_account_type_expenses,l10n_ao.ao_chart_template,76113,Títulos de Participação
+False,account_chart_7612,account.data_account_type_expenses,l10n_ao.ao_chart_template,7612,De descobertos Bancários
+False,account_chart_7613,account.data_account_type_expenses,l10n_ao.ao_chart_template,7613,De mora Relativos a Dívidas a Terceiros
+False,account_chart_7614,account.data_account_type_expenses,l10n_ao.ao_chart_template,7614,De desconto de Títulos
+False,account_chart_7621,account.data_account_type_expenses,l10n_ao.ao_chart_template,7621,Realizadas
+False,account_chart_7622,account.data_account_type_expenses,l10n_ao.ao_chart_template,7622,Não realizadas
+False,account_chart_7631,account.data_account_type_expenses,l10n_ao.ao_chart_template,7631,...........................
+False,account_chart_7641,account.data_account_type_expenses,l10n_ao.ao_chart_template,7641,............................
+False,account_chart_76511,account.data_account_type_expenses,l10n_ao.ao_chart_template,76511,Subsidiárias
+False,account_chart_76512,account.data_account_type_expenses,l10n_ao.ao_chart_template,76512,Associadas
+False,account_chart_76513,account.data_account_type_expenses,l10n_ao.ao_chart_template,76513,Outras Empresas
+False,account_chart_76514,account.data_account_type_expenses,l10n_ao.ao_chart_template,76514,Fundos
+False,account_chart_76519,account.data_account_type_expenses,l10n_ao.ao_chart_template,76519,Outros Investimentos
+False,account_chart_76521,account.data_account_type_expenses,l10n_ao.ao_chart_template,76521,Títulos Negociáveis
+False,account_chart_76522,account.data_account_type_expenses,l10n_ao.ao_chart_template,76522,Depósitos a Prazo
+False,account_chart_76523,account.data_account_type_expenses,l10n_ao.ao_chart_template,76523,Outros Depósitos
+False,account_chart_76529,account.data_account_type_expenses,l10n_ao.ao_chart_template,76529,Outros
+False,account_chart_76611,account.data_account_type_expenses,l10n_ao.ao_chart_template,76611,Subsidiárias
+False,account_chart_76612,account.data_account_type_expenses,l10n_ao.ao_chart_template,76612,Associadas
+False,account_chart_76613,account.data_account_type_expenses,l10n_ao.ao_chart_template,76613,Outras Empresas
+False,account_chart_76614,account.data_account_type_expenses,l10n_ao.ao_chart_template,76614,Fundos
+False,account_chart_76619,account.data_account_type_expenses,l10n_ao.ao_chart_template,76619,Outros Investimentos
+False,account_chart_7662,account.data_account_type_expenses,l10n_ao.ao_chart_template,7662,Aplicações de Títulos Negociáveis
+False,account_chart_7671,account.data_account_type_expenses,l10n_ao.ao_chart_template,7671,Serviços Bancários
+False,account_chart_7691,account.data_account_type_expenses,l10n_ao.ao_chart_template,7691,Transferência para Resultados Financeiros
+False,account_chart_7791,account.data_account_type_expenses,l10n_ao.ao_chart_template,7791,Transferência para Resultados Financeiros
+False,account_chart_78111,account.data_account_type_expenses,l10n_ao.ao_chart_template,78111,Matérias-primas subsidiárias e de consumo
+False,account_chart_78112,account.data_account_type_expenses,l10n_ao.ao_chart_template,78112,Produtos e trabalhos em curso
+False,account_chart_78113,account.data_account_type_expenses,l10n_ao.ao_chart_template,78113,Produtos acabados e intermédios
+False,account_chart_78114,account.data_account_type_expenses,l10n_ao.ao_chart_template,78114,"SubProdutos, Desperdícios, Resíduos e Refugos"
+False,account_chart_78115,account.data_account_type_expenses,l10n_ao.ao_chart_template,78115,Mercadorias
+False,account_chart_78121,account.data_account_type_expenses,l10n_ao.ao_chart_template,78121,Clientes
+False,account_chart_78122,account.data_account_type_expenses,l10n_ao.ao_chart_template,78122,Clientes-Títulos a Receber
+False,account_chart_78123,account.data_account_type_expenses,l10n_ao.ao_chart_template,78123,Clientes-Cobranças Duvidosa
+False,account_chart_78124,account.data_account_type_expenses,l10n_ao.ao_chart_template,78124,Saldos Devedores de Fornecedores
+False,account_chart_78125,account.data_account_type_expenses,l10n_ao.ao_chart_template,78125,Participantes e Participadas
+False,account_chart_78126,account.data_account_type_expenses,l10n_ao.ao_chart_template,78126,Dívidas do Pessoal
+False,account_chart_78129,account.data_account_type_expenses,l10n_ao.ao_chart_template,78129,Outros Saldos a Receber
+False,account_chart_78131,account.data_account_type_expenses,l10n_ao.ao_chart_template,78131,Pensões
+False,account_chart_78132,account.data_account_type_expenses,l10n_ao.ao_chart_template,78132,Processos Judiciais em Curso
+False,account_chart_78133,account.data_account_type_expenses,l10n_ao.ao_chart_template,78133,Acidentes de Trabalho
+False,account_chart_78134,account.data_account_type_expenses,l10n_ao.ao_chart_template,78134,Garantias dadas a Clientes
+False,account_chart_78139,account.data_account_type_expenses,l10n_ao.ao_chart_template,78139,Outros Riscos e Encargos
+False,account_chart_7819,account.data_account_type_depreciation,l10n_ao.ao_chart_template,7819,Transferência para resultados não operacionais
+False,account_chart_7821,account.data_account_type_expenses,l10n_ao.ao_chart_template,7821,Imobilizações Corpóreas
+False,account_chart_7822,account.data_account_type_expenses,l10n_ao.ao_chart_template,7822,Imobilizações Incorpóreas
+False,account_chart_7831,account.data_account_type_expenses,l10n_ao.ao_chart_template,7831,Vendas de Imobilizações Corpóreas
+False,account_chart_7832,account.data_account_type_expenses,l10n_ao.ao_chart_template,7832,Vendas de Imobilizações Incorpóreas
+False,account_chart_7833,account.data_account_type_expenses,l10n_ao.ao_chart_template,7833,Abates
+False,account_chart_7839,account.data_account_type_expenses,l10n_ao.ao_chart_template,7839,Outras
+False,account_chart_7841,account.data_account_type_expenses,l10n_ao.ao_chart_template,7841,Quebras
+False,account_chart_7861,account.data_account_type_expenses,l10n_ao.ao_chart_template,7861,Fiscais
+False,account_chart_7862,account.data_account_type_expenses,l10n_ao.ao_chart_template,7862,Não Fiscais
+False,account_chart_7863,account.data_account_type_expenses,l10n_ao.ao_chart_template,7863,Penalidades Contratuais
+False,account_chart_7911,account.data_account_type_expenses,l10n_ao.ao_chart_template,7911,..................................
+False,account_chart_7921,account.data_account_type_expenses,l10n_ao.ao_chart_template,7921,............................
+False,account_chart_7931,account.data_account_type_expenses,l10n_ao.ao_chart_template,7931,...............................
+False,account_chart_7941,account.data_account_type_expenses,l10n_ao.ao_chart_template,7941,Perdas Resultantes de sinistros
+True,account_chart_8111,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,8111,Resultado do Ano
+True,account_chart_8112,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,8112,Aplicação de Resultados
+True,account_chart_8113,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,8113,"Corecções de Erros Fundamentais, no Exercício Seguinte"
+True,account_chart_8114,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,8114,Efeito das Alterações de Políticas Contabilísticas
+True,account_chart_8115,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,8115,Imposto Relativo a Correções de Erros Fundamentais e Alterações de Políticas Contabilísticas
+True,account_chart_8121,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,8121,Resultado do Ano
+True,account_chart_8122,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,8122,Aplicação de Resultados
+True,account_chart_8123,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,8123,"Correcções de Erros Fundamentais, no Exercício Seguinte"
+True,account_chart_8124,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,8124,Efeito das Alterações de Políticas Contabilísticas
+True,account_chart_8125,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,8125,Imposto Relativo a Correcções de Erros Fundamentais e Alterações
+False,account_chart_8219,account.data_account_type_current_liabilities,l10n_ao.ao_chart_template,8219,Transferência para Resultados Líquidos

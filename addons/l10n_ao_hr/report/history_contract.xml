@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <report
+                id="report_history_contract"
+                model="hr.contract.history"
+                string="Formulário de transferência de função"
+                name="l10n_ao_hr.report_history_contract_view"
+                file="l10n_ao_hr.report_hr_contract"
+                report_type="qweb-pdf"/>
+
+        <template id="report_history_contract_view">
+            <t t-call="web.html_container">
+
+                <t t-call="web.basic_layout">
+                    <div class="header" style="color: #0B74CE">
+                        <div class="row b_color">
+                            <div class="col-8">
+                                <b>
+                                    <span class="text-left" t-field="res_company.name"/>
+                                </b>
+                            </div>
+                            <div class="col-4">
+                                <ul class="list-inline text-right">
+                                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                                    |
+                                    Pag.<span class="page"/>/
+                                    <span class="topage"/>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <t t-foreach="docs" t-as="doc">
+                        <div class="page">
+                            <style>
+                                * {padding-bottom: 0 !important;
+                                padding-top: 0 !important;
+                                margin-bottom: 0 !important;margin-top:0 !important; }
+                                hr {
+                                display: block; height: 1px;
+                                border: 0; border-top: 1px solid #0B74CE;
+                                margin: 0; padding: 0;
+                                }
+                                .b_color{
+                                color: #0B74CE;
+                                }
+                                .border_bottom {border-bottom: solid black 1px;}
+
+                                table {
+                                border-spacing: 3px;
+                                border-top: 3px solid black;
+                                border-collapse:collapse;
+                                font-size:10px;
+                                }
+
+                                td {
+                                border-bottom:0 !important;
+                                border-top: 1px solid #B2BABB !important;
+                                }
+
+                                th {
+                                border-top:0 !important;
+                                border-bottom: 1px solid #B2BABB !important;
+                                }
+
+                                table, tr, th, td {
+                                border-collapse: separate;
+                                padding:0px !important;
+                                }
+
+                                .border_top_th{
+                                border-top: 1px solid black !important;
+                                }
+                            </style>
+                            <div class="row">
+                                <div class="col-6">
+                                    <table class="table table-sm o_main_table" style="border-top: 0px;">
+                                        <tr>
+                                            <th style="border: 0 !important">
+                                                <img t-att-src="'data:image/png;base64,%s' % to_text(res_company.logo)"
+                                                     style="max-height: 60px;"/>
+
+                                                <p>
+                                                    <span t-field="res_company.name"/>
+                                                </p>
+                                                <p>
+                                                    <span t-field="res_company.street"/>,
+                                                    <br/>
+                                                    <span t-field="res_company.city"/>-
+                                                    <span t-field="res_company.country_id"/>
+                                                </p>
+                                                <p>
+                                                    Contibuinte Fiscal nº
+                                                    <span t-field="res_company.vat"/>
+                                                </p>
+                                                <p>
+                                                    <span t-field="res_company.hr_phone"/>
+                                                </p>
+                                            </th>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <h6 style="text-align:center;color:#0B74CE;text-transform:uppercase">
+                                Formulário de transferência de função
+                                (Transferências ,aumento salarial,Mudança contratual
+                            </h6>
+                            <table id="table2" class="table table-sm o_main_table">
+                                <tr>
+                                    <th colspan="3" class="text-center" style="border:none !important;">
+                                        <div class="border_bottom">
+                                            <span>
+                                                <strong>DESCRIÇÕES</strong>
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <th colspan="5" class="text-center title"
+                                        style="border:none !important;text-transform:uppercase">
+                                        <div class="border_bottom">
+                                            <strong>
+                                                SITUAÇÃO NOVA
+                                            </strong>
+                                        </div>
+                                    </th>
+                                    <th colspan="5" class=" text-center title"
+                                        style="border:none !important;text-transform:uppercase">
+                                        <div class="border_bottom">
+                                            <strong>
+                                                SITUAÇÃO ACTUAL
+
+                                            </strong>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr style="font-weight: bold;">
+
+                                    <td style="text-transform:uppercase" colspan="3"
+                                        class="text-center title">Nome
+                                    </td>
+                                    <td style="text-transform:uppercase" colspan="5"
+                                        class="text-center title">
+                                        <span t-esc="doc.employee_id.name"/>
+
+                                    </td>
+                                    <td style="text-transform:uppercase" colspan="5"
+                                        class="text-center title">
+                                        <span t-esc="doc.employee_id.name"/>
+
+                                    </td>
+                                </tr>
+                                <tr style="font-weight: bold;">
+
+                                    <td style="text-transform:uppercase" colspan="3"
+                                        class="text-center title">Função
+                                    </td>
+                                    <td style="text-transform:uppercase" colspan="5"
+                                        class="text-center title">
+                                        <span t-esc="doc.job_id.name"/>
+
+                                    </td>
+                                    <td style="text-transform:uppercase" colspan="5"
+                                        class="text-center title">
+                                        <t t-if="doc.contract_ids">
+                                            <span t-esc="doc.contract_ids[0].job_id.name"/>
+                                        </t>
+                                    </td>
+                                </tr>
+                                <tr style="font-weight: bold;">
+
+                                    <td style="text-transform:uppercase" colspan="3"
+                                        class="text-center title">DIRECÇÃO
+                                    </td>
+                                    <td style="text-transform:uppercase" colspan="5"
+                                        class="text-center title">
+                                        <span t-esc="doc.department_id.name"/>
+
+                                    </td>
+                                    <td style="text-transform:uppercase" colspan="5"
+                                        class="text-center title">
+                                        <t t-if="doc.contract_ids">
+                                            <span t-esc="doc.contract_ids[0].department_id.name"/>
+                                        </t>
+                                    </td>
+                                </tr>
+                                <tr style="font-weight: bold;">
+                                    <t t-set="wage" t-value="0"/>
+
+                                    <td style="text-transform:uppercase" colspan="3"
+                                        class="text-center title">SALÁRIO
+                                    </td>
+                                    <td style="text-transform:uppercase" colspan="5"
+                                        class="text-center title">
+                                        <span t-esc="doc.wage"/>
+
+                                    </td>
+                                    <td style="text-transform:uppercase" colspan="5"
+                                        class="text-center title">
+                                        <t t-if="doc.contract_ids">
+                                            <span t-esc="doc.contract_ids[0].wage"/>
+                                        </t>
+                                    </td>
+                                </tr>
+                                <t t-set="perc" t-value="doc.percentage_value()"/>
+                                <tr style="font-weight: bold;">
+
+                                    <td style="text-transform:uppercase" colspan="3"
+                                        class="text-center title">% DO AUMENTO
+                                    </td>
+                                    <td style="text-transform:uppercase" colspan="5"
+                                        class="text-center title">
+
+
+                                    </td>
+                                    <td style="text-transform:uppercase" colspan="5"
+                                        class="text-center title">
+                                        <t t-esc="perc"/>
+                                    </td>
+                                </tr>
+                                <tr style="font-weight: bold;">
+
+                                    <td style="text-transform:uppercase" colspan="3"
+                                        class="text-center title">TIPO DO CONTRATO
+                                    </td>
+                                    <td style="text-transform:uppercase" colspan="5"
+                                        class="text-center title">
+                                        <t t-esc="doc.contract_id.contract_type_id.name"/>
+
+
+                                    </td>
+                                    <td style="text-transform:uppercase" colspan="5"
+                                        class="text-center title">
+                                        <t t-if="doc.contract_ids">
+                                            <span t-esc="doc.contract_ids[0].contract_type_id.name"/>
+                                        </t>
+
+                                    </td>
+                                </tr>
+                                <tr style="font-weight: bold;">
+
+                                    <td style="text-transform:uppercase" colspan="3"
+                                        class="text-center title">DATA DA MUDANÇA
+                                    </td>
+                                    <td style="text-transform:uppercase" colspan="5"
+                                        class="text-center title">
+                                        <t t-esc="doc.contract_id.date_start"/>
+
+
+                                    </td>
+                                    <td style="text-transform:uppercase" colspan="5"
+                                        class="text-center title">
+                                        <t t-if="doc.contract_ids">
+                                            <span t-esc="doc.contract_ids[0].date_start"/>
+                                        </t>
+                                    </td>
+                                </tr>
+                                <tr style="font-weight: bold;">
+
+                                    <td style="text-transform:uppercase" colspan="3"
+                                        class="text-center title">MOTIVO DO AUMENTO SALARIAL E DA MUDANÇA DE POSIÇÃO :
+                                    </td>
+                                    <td style="text-transform:uppercase" colspan="10"
+                                        class="text-center title">
+                                        <t t-esc="doc.contract_id.description_alter_wage"/>
+                                    </td>
+
+                                </tr>
+                            </table>
+                            <br/>
+                            <br/>
+                            <h6 style="text-align:center;color:#0B74CE;text-transform:uppercase">
+                                BENEFÍCIOS
+                            </h6>
+                            <table id="table2" class="table table-sm o_main_table">
+                                <tr>
+                                    <th colspan="3" class="text-center" style="border:none !important;">
+                                        <div class="border_bottom">
+                                            <span>
+                                                <strong>DESCRIÇÕES</strong>
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <th colspan="5" class="text-center title"
+                                        style="border:none !important;text-transform:uppercase">
+                                        <div class="border_bottom">
+                                            <strong>
+                                                SITUAÇÃO ACTUAL
+                                            </strong>
+                                        </div>
+                                    </th>
+                                    <th colspan="5" class=" text-center title"
+                                        style="border:none !important;text-transform:uppercase">
+                                        <div class="border_bottom">
+                                            <strong>
+                                                SITUAÇÃO NOVA
+                                            </strong>
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-center" style="border:none !important;">
+                                        <div class="border_bottom">
+                                            <span>
+                                                CARRO
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td colspan="5" class="text-center title"
+                                        style="border:none !important;text-transform:uppercase">
+                                        <div class="border_bottom">
+
+                                            <t t-if="doc.contract_id.car">
+                                                SIM
+                                            </t>
+                                            <t t-if="not doc.contract_id.car">
+                                                Não
+                                            </t>
+
+                                        </div>
+                                    </td>
+                                    <td colspan="5" class=" text-center title"
+                                        style="border:none !important;text-transform:uppercase">
+                                        <div class="border_bottom">
+
+                                            <t t-if="doc.contract_ids">
+                                                <t t-if="doc.contract_ids[0].car">
+                                                    SIM
+                                                </t>
+                                                <t t-if="not doc.contract_ids[0].car">
+                                                    Não
+                                                </t>
+
+                                            </t>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-center" style="border:none !important;">
+                                        <div class="border_bottom">
+                                            <span>
+                                                TELEMOVEL
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td colspan="5" class="text-center title"
+                                        style="border:none !important;text-transform:uppercase">
+                                        <div class="border_bottom">
+
+                                            <t t-if="doc.contract_id.phone">
+                                                SIM
+                                            </t>
+                                            <t t-if="not doc.contract_id.phone">
+                                                Não
+                                            </t>
+
+                                        </div>
+                                    </td>
+                                    <td colspan="5" class=" text-center title"
+                                        style="border:none !important;text-transform:uppercase">
+                                        <div class="border_bottom">
+
+                                            <t t-if="doc.contract_ids">
+                                                <t t-if="doc.contract_ids[0].phone">
+                                                    SIM
+                                                </t>
+                                                <t t-if="not doc.contract_ids[0].phone">
+                                                    Não
+                                                </t>
+
+                                            </t>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-center" style="border:none !important;">
+                                        <div class="border_bottom">
+                                            <span>
+                                                RECARGAS TELEFONICAS
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td colspan="5" class="text-center title"
+                                        style="border:none !important;text-transform:uppercase">
+                                        <div class="border_bottom">
+
+                                            <t t-if="doc.contract_id.chang">
+                                                SIM
+                                            </t>
+                                            <t t-if="not doc.contract_id.chang">
+                                                Não
+                                            </t>
+
+                                        </div>
+                                    </td>
+                                    <td colspan="5" class=" text-center title"
+                                        style="border:none !important;text-transform:uppercase">
+                                        <div class="border_bottom">
+
+                                            <t t-if="doc.contract_ids">
+                                                <t t-if="doc.contract_ids[0].chang">
+                                                    SIM
+                                                </t>
+                                                <t t-if="not doc.contract_ids[0].chang">
+                                                    Não
+                                                </t>
+
+                                            </t>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3" class="text-center" style="border:none !important;">
+                                        <div class="border_bottom">
+                                            <span>
+                                                CASA
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td colspan="5" class="text-center title"
+                                        style="border:none !important;text-transform:uppercase">
+                                        <div class="border_bottom">
+
+                                            <t t-if="doc.contract_id.home">
+                                                SIM
+                                            </t>
+                                            <t t-if="not doc.contract_id.home">
+                                                Não
+                                            </t>
+
+                                        </div>
+                                    </td>
+                                    <td colspan="5" class=" text-center title"
+                                        style="border:none !important;text-transform:uppercase">
+                                        <div class="border_bottom">
+
+                                            <t t-if="doc.contract_ids">
+                                                <t t-if="doc.contract_ids[0].home">
+                                                    SIM
+                                                </t>
+                                                <t t-if="not doc.contract_ids[0].home">
+                                                    Não
+                                                </t>
+
+                                            </t>
+
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+                            </table>
+
+                            <br/>
+                            <h6 style="text-align:center;color:#0B74CE;text-transform:uppercase">
+                                OUTROS BENEFÍCIOS
+                            </h6>
+                            <table id="table2" class="table table-sm o_main_table">
+                                <tr>
+                                    <th colspan="3" class="text-center" style="border:none !important;">
+                                        <div class="border_bottom">
+                                            <span>
+                                                <strong>DESCRIÇÕES</strong>
+                                            </span>
+                                        </div>
+                                    </th>
+                                    <th colspan="5" class="text-center title"
+                                        style="border:none !important;text-transform:uppercase">
+                                        <div class="border_bottom">
+                                            <strong>
+                                                Data
+                                            </strong>
+                                        </div>
+                                    </th>
+                                    <th colspan="5" class=" text-center title"
+                                        style="border:none !important;text-transform:uppercase">
+                                        <div class="border_bottom">
+                                            <strong>
+                                                Valor
+                                            </strong>
+                                        </div>
+                                    </th>
+                                </tr>
+
+
+                                <tr t-foreach="doc.contract_id.remuneration_ids" t-as="r">
+                                    <t t-if="r.rem_type == 'remuneration'">
+                                        <th colspan="3" class="text-center" style="border:none !important;">
+                                            <div class="border_bottom">
+                                                <span t-esc="r.remunerationcode_id.name"/>
+                                            </div>
+                                        </th>
+                                        <th colspan="5" class="text-center title"
+                                            style="border:none !important;text-transform:uppercase">
+                                            <div class="border_bottom">
+                                                <strong>
+
+                                                    <span t-esc="r.date_start"/>
+                                                    -
+                                                    <span t-esc="r.date_end"/>
+                                                </strong>
+                                            </div>
+                                        </th>
+                                        <th colspan="5" class=" text-center title"
+                                            style="border:none !important;text-transform:uppercase">
+                                            <div class="border_bottom">
+                                                <strong>
+                                                    <span t-esc="r.amount"/>
+                                                    kz
+                                                </strong>
+                                            </div>
+                                        </th>
+                                    </t>
+                                </tr>
+                            </table>
+                            <br/>
+                            <br/>
+                            <p style="font-size:14px;font-weight:bold;color:red;">PRIVADO E CONFIDENCIAL</p>
+                            <p>Sr .
+                                <span t-esc="doc.employee_id.name"/>
+                            </p>
+                            <p>
+                                <b>Assunto :
+                                    Situação Atual do Contrato
+                                </b>
+                            </p>
+                            <br/>
+
+                            <table id="table2" class="table table-sm o_main_table">
+                                <tr>
+
+                                    <td style="font-size:14px;">Vimos pela presente informar que o seu salário será
+                                        alterado de
+                                        <!--                                        <span t-esc="r['n1']"/>-->
+                                        <b>(AKZ<span t-field="doc.contract_ids[0].wage"/>)
+                                        </b>
+                                        para
+                                        <!--                                        <span t-esc="r['n2']"/>-->
+                                        <b>(AKZ<span t-field="doc.wage"/>)
+                                        </b>
+                                        , com efeito apartir do
+                                        dia
+                                        <span t-esc="time.strftime('%d de %B de  %Y')"/>
+                                        .
+                                        <t t-if="doc.job_id.name==doc.contract_ids[0].job_id.name">
+                                            Informamos também que a sua posição/função não foi
+                                            alterada,
+                                            mantendo-se a <span t-esc="doc.job_id.name"/>.
+
+                                        </t>
+                                        <t t-if="doc.job_id.name!=doc.contract_ids[0].job_id.name">
+                                            Informamos também que a sua Função foi
+                                            alterada,
+                                            de
+                                            <span t-esc="doc.contract_ids[0].job_id.name"/>
+                                            para
+                                            <span t-esc="doc.job_id.name"/>
+                                        </t>
+
+                                        <t t-if="doc.department_id.name!=doc.contract_ids[0].department_id.name">
+                                            e sua posição de
+                                            <span t-esc="doc.contract_ids[0].department_id.name"/>
+                                            para
+                                            <span t-esc="doc.department_id.name"/>
+                                        </t>
+                                        Este mudança salarial deve-se a uma reestruturação
+                                        nos
+                                        planos de trabalho da
+                                        <span t-field="res_company.name"/>
+                                        .
+                                        Fique com os nossos estimados cumprimentos pela sua
+                                        projeção
+                                        profissional e mantenha a mesma dedicação no desempenho das suas tarefas.
+                                        Desejamos sinceramente que continue a sua caminhada de
+                                        sucesso junto da
+                                        <span t-field="res_company.name"/>
+                                        Angola.
+                                        <br/>
+                                        Luanda, aos
+                                        <span t-esc="time.strftime('%d de %B de  %Y')"/>
+                                        Atentamente,
+                                        Directora de Recursos Humanos
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <br/>
+                        <br/>
+                        <br/>
+
+
+                        <div name="assign_name" class="row">
+
+                            <div class="col-3" style="font-size:12px !important;">
+                                <p align="center">Assinatura do Titular:</p>
+                                <p align="center" class="mt-2">___________________________________</p>
+                                <p align="center" class="mt-3">
+                                    <span t-field="res_company.hr_manager"/>
+                                </p>
+                            </div>
+                            <div class="col-3" style="font-size:12px !important;">
+                                <p align="center">O(A) Supervidor(a)</p>
+                                <p align="center" class="mt-2">___________________________________</p>
+                                <p align="center" class="mt-3">
+                                    <span t-field="res_company.hr_general_manager"/>
+                                </p>
+                            </div>
+                            <div class="col-3" style="font-size:12px !important;">
+                                <p align="center">O(A) Responsável do RH</p>
+                                <p align="center" class="mt-2">___________________________________</p>
+                                <p align="center" class="mt-3">
+                                    <span t-field="res_company.hr_manager"/>
+                                </p>
+                            </div>
+                            <div class="col-3" style="font-size:12px !important;">
+                                <p align="center">O(A) Director(a) Geral</p>
+                                <p align="center" class="mt-2">___________________________________</p>
+                                <p align="center" class="mt-3">
+                                    <span t-field="res_company.hr_general_manager"/>
+                                </p>
+                            </div>
+
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

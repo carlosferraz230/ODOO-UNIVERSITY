@@ -1,0 +1,73 @@
+<odoo>
+
+    <!-- FORM VIEW -->
+    <record id="view_fleet_vehicle_location_form" model="ir.ui.view">
+        <field name="name">fleet.vehicle.location.form</field>
+        <field name="model">fleet.vehicle.location</field>
+
+        <field name="arch" type="xml">
+            <form string="Fleet GPS Tracking">
+
+                <sheet>
+
+                    <group>
+                        <group>
+                            <field name="vehicle_id"/>
+                            <field name="driver_id"/>
+                            <field name="latitude"/>
+                            <field name="longitude"/>
+                        </group>
+
+                        <group>
+                            <field name="speed"/>
+                            <field name="gps_time"/>
+                            <field name="date"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+
+                        <page string="Mapa GPS em Tempo Real">
+
+                            <!-- MAPA RENDERIZADO PELO JS -->
+                            <div id="fleet_map"
+                                 style="height:500px;width:100%;">
+                            </div>
+
+                        </page>
+
+                    </notebook>
+
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+
+    <!-- TREE VIEW -->
+    <record id="view_fleet_vehicle_location_tree" model="ir.ui.view">
+        <field name="name">fleet.vehicle.location.tree</field>
+        <field name="model">fleet.vehicle.location</field>
+
+        <field name="arch" type="xml">
+            <tree>
+                <field name="vehicle_id"/>
+                <field name="driver_id"/>
+                <field name="latitude"/>
+                <field name="longitude"/>
+                <field name="speed"/>
+                <field name="gps_time"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- ACTION -->
+    <record id="action_fleet_vehicle_location" model="ir.actions.act_window">
+        <field name="name">Vehicle Locations</field>
+        <field name="res_model">fleet.vehicle.location</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>

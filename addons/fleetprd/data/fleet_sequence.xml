@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Sequência para Contratos -->
+        <record id="seq_fleet_contract" model="ir.sequence">
+            <field name="name">Contrato de Frota</field>
+            <field name="code">fleet.contract</field>
+            <field name="prefix">CTR/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequência para Serviços -->
+        <record id="seq_fleet_service" model="ir.sequence">
+            <field name="name">Serviço de Frota</field>
+            <field name="code">fleet.service</field>
+            <field name="prefix">SRV/%(year)s/</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

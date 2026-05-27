@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- =========================================================
+                        FORM HERDADA
+    ========================================================== -->
+    <record id="view_fleet_vehicle_form_inherit_custom" model="ir.ui.view">
+        <field name="name">fleet.vehicle.form.inherit.custom</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+
+            <!-- BOTAO MANUTENCAO -->
+            <xpath expr="//header" position="inside">
+                <button
+                        name="action_request_maintenance"
+                        type="object"
+                        string="Solicitar Manutencao"
+                        class="btn-primary"
+                />
+            </xpath>
+
+            <!-- BOTAO DE RELATORIO NO HEADER -->
+            <xpath expr="//header" position="inside">
+                <button
+                        name="action_print_report"
+                        type="object"
+                        string="Imprimir PDF"
+                        class="btn-secondary"
+                />
+            </xpath>
+
+            <xpath expr="//div[@name='button_box']" position="inside">
+
+                <!-- SERVIÇOS -->
+                <button
+                        name="action_open_services"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-wrench"
+                        help="Mostrar serviços deste veículo">
+
+                    <field
+                            name="service_count"
+                            widget="statinfo"
+                            string="Serviços"/>
+                </button>
+
+                <!-- CONTRATOS -->
+                <button
+                        name="action_open_contracts"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-file-text-o"
+                        help="Mostrar contratos deste Veículo">
+
+                    <field
+                            name="contract_count"
+                            widget="statinfo"
+                            string="Contratos"/>
+                </button>
+
+            </xpath>
+
+            <!-- CAMPOS APOS VIN -->
+            <xpath expr="//field[@name='vin_sn']" position="after">
+                <field name="total_km_traveled"/>
+                <field name="cost_per_km" widget="float"/>
+            </xpath>
+
+            <!-- NOVAS ABAS -->
+            <xpath expr="//notebook" position="inside">
+                <!-- INFORMATION -->
+                <page string="Informações Extras" name="information">
+
+                    <group>
+                        <group string="Modelo">
+
+                            <field name="seats"/>
+                            <field name="doors"/>
+                            <field name="color"/>
+                            <field name="model_year" string="Ano do Modelo"/>
+                            <!--<field name="trailer_hook"/>-->
+
+                        </group>
+
+                       <!-- <group string="Informações do Veículo">
+
+                            <field name="electric_assistance"/>
+
+                        </group>-->
+                    </group>
+
+                    <group string="Informações do Motor">
+
+                        <group>
+
+                            <field name="default_fuel_type"/>
+
+                            <label for="default_co2"/>
+
+                            <div class="o_row">
+                                <field name="default_co2"/>
+                                <span>g/km</span>
+                            </div>
+
+                            <field name="co2_standard"/>
+                            <field name="transmission"/>
+
+                        </group>
+
+                        <group>
+
+                            <label for="power"/>
+
+                            <div class="o_row">
+                                <field name="power"/>
+                                <span>kW</span>
+                            </div>
+
+                            <field name="horsepower"/>
+                            <field name="horsepower_tax"/>
+
+                        </group>
+
+                    </group>
+
+                </page>
+
+                <!-- VENDORS -->
+                <page string="Fornecedores" name="vendors">
+
+                    <field name="vendors">
+
+                        <kanban quick_create="false" create="true">
+
+                            <field name="name"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+
+                            <templates>
+
+                                <t t-name="kanban-box">
+
+                                    <div style="position: relative"
+                                         class="oe_kanban_global_click">
+
+                                        <div>
+
+                                            <div class="o_kanban_record_title">
+
+                                                <field name="name"/>
+
+                                                <div class="o_kanban_details float-right">
+
+                                                    <span class="text-muted">
+
+                                                        <t t-if="record.phone.raw_value">
+                                                            <field name="phone"/>
+                                                            <br/>
+                                                        </t>
+
+                                                        <t t-if="record.email.raw_value">
+                                                            <field name="email"/>
+                                                        </t>
+
+                                                    </span>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </t>
+
+                            </templates>
+
+                        </kanban>
+
+                    </field>
+
+                </page>
+
+                <!-- ESTATISTICAS -->
+               <!-- <page string="Estatisticas">
+                    <group string="Indicadores de Desempenho">
+                        <group>
+                            <field name="last_service_date"/>
+                            <field name="next_service_km"/>
+                            <field name="total_km_traveled"/>
+                            <label for="cost_per_km" string="Custo por KM Percorrido:"/>
+                            <field name="cost_per_km" widget="float"/>
+                            <field name="efficiency_rating" widget="badge"/>
+                            <field name="total_service_cost" widget="monetary"/>
+                        </group>
+                    </group>
+                </page> -->
+                <!-- NOVAS ABAS -->
+                <page string="Servicos">
+                    <field name="service_ids">
+                        <tree string="Servicos">
+                            <field name="name"/>
+                            <field name="service_date"/>
+                            <field name="service_type"/>
+                            <field name="amount" widget="monetary"/>
+                        </tree>
+                    </field>
+                </page> <!-- CONTRATOS -->
+                <page string="Contratos">
+                    <field name="contract_ids">
+                        <tree string="Contratos">
+                            <field name="name"/>
+                            <field name="contract_type"/>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <field name="monthly_cost" widget="monetary"/>
+                        </tree>
+                    </field>
+                </page>
+
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- =========================================================
+                        TREE HERDADA
+    ========================================================== -->
+    <record id="view_fleet_vehicle_tree_inherit_custom" model="ir.ui.view">
+        <field name="name">fleet.vehicle.tree.inherit.custom</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_tree"/>
+        <field name="arch" type="xml">
+
+            <!-- adiciona campos depois do driver -->
+            <xpath expr="//field[@name='driver_id']" position="after">
+                <field name="total_service_cost" widget="monetary" sum="Total de Custos"/>
+                <field name="cost_per_km" widget="float" sum="Media"/>
+                <field name="efficiency_rating" widget="badge"/>
+            </xpath>
+
+            <!-- adiciona o campo na view -->
+            <xpath expr="//tree" position="inside">
+                <field name="color_state" string="Estado"/>
+            </xpath>
+
+            <xpath expr="//tree" position="attributes">
+                <attribute name="decoration-info">color_state == 'blue'</attribute>
+                <attribute name="decoration-success">color_state == 'green'</attribute>
+                <attribute name="decoration-warning">color_state == 'orange'</attribute>
+                <attribute name="decoration-danger">color_state == 'red'</attribute>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

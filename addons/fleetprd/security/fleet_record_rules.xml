@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- REGRAS PARA MODELO fleet.contract -->
+
+        <!-- Regra: Utilizador só vê seus próprios contratos ou contratos públicos -->
+        <record id="fleet_contract_user_rule" model="ir.rule">
+            <field name="name">Fleet Contract: User sees own or public</field>
+            <field name="model_id" ref="model_fleet_contract"/>
+            <field name="groups" eval="[(4, ref('fleetprd.group_fleet_user'))]"/>
+            <field name="global" eval="False"/>
+            <field name="domain_force">[('is_public','=',True)]</field>
+        </record>
+
+        <!-- Regra: Gestor vê todos os contratos -->
+        <record id="fleet_contract_manager_rule" model="ir.rule">
+            <field name="name">Fleet Contract: Manager sees all</field>
+            <field name="model_id" ref="model_fleet_contract"/>
+            <field name="groups" eval="[(4, ref('fleetprd.group_fleet_manager'))]"/>
+            <field name="global" eval="False"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+        </record>
+
+        <!-- NOTA: As regras para fleet.driver foram removidas porque o modelo ainda não existe -->
+        <!-- O acesso ao modelo fleet.driver é controlado apenas pelo CSV -->
+
+    </data>
+</odoo>

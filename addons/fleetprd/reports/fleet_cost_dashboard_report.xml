@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+        id="report_fleet_cost_dashboard"
+        model="fleet.cost.analysis"
+        string="Dashboard de Custos da Frota"
+        report_type="qweb-pdf"
+        name="fleetprd.report_fleet_cost_dashboard_document"
+        file="fleetprd.report_fleet_cost_dashboard_document"
+        attachment_use="False"
+    />
+</odoo>

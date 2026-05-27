@@ -1,0 +1,26 @@
+/* ===== Customizações do Backend ===== */
+
+/* Cor de fundo da barra superior */
+.o_main_navbar {
+    background-color: #2980b9 !important;
+}
+
+/* Botões principais (Confirmar, Salvar etc.) */
+.btn-primary {
+    background-color: #27ae60 !important;
+    border-color: #27ae60 !important;
+    color: #fff !important;
+}
+
+/* List view - cabeçalho da tabela */
+.o_list_view thead th {
+    background-color:#2980b9;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Form view - labels */
+.o_form_label {
+    font-weight: bold;
+    color: #2c3e50;
+}

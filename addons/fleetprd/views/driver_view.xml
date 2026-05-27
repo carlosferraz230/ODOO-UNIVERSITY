@@ -1,0 +1,66 @@
+<odoo>
+    <record id="view_res_partner_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Inserir métricas de forma mais estruturada -->
+            <xpath expr="//field[@name='vat']" position="after">
+                <field
+                        name="vehicle_id"
+                        widget="many2many_tags"
+                        options="{'no_create': True, 'no_create_edit': True}"
+                />
+            </xpath>
+
+            <xpath expr="//notebook" position="inside">
+                <page string="Carta de Condução">
+                    <group string="Informações da Carta">
+                        <group string="Número | Tipo">
+                            <field name="license"/>
+                            <field name="license_type"/>
+                        </group>
+                        <group string="Data">
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="license_status" widget="badge"
+                                   decoration-success="license_status == 'valid'"
+                                   decoration-warning="license_status == 'expiring'"
+                                   decoration-danger="license_status == 'expired'"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+    <record id="view_res_partner_tree_inherit" model="ir.ui.view">
+        <field name="name">res.partner.tree.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='country_id']" position="after">
+                <field name="license_status"
+                       widget="badge"
+                       decoration-success="license_status == 'valid'"
+                       decoration-warning="license_status == 'expiring'"
+                       decoration-danger="license_status == 'expired'"/>
+            </xpath>
+        </field>
+    </record>
+   <!-- <record id="view_res_partner_kanban_inhrit" model="ir.ui.view">
+        <field name="name">res.partner.kanban.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.module_view_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='city']" position="before">
+                <field name="license_status"
+                       widget="badge"
+                       decoration-success="license_status == 'valid'"
+                       decoration-warning="license_status == 'expiring'"
+                       decoration-danger="license_status == 'expired'"/>
+            </xpath>
+        </field>
+    </record> -->
+</odoo>

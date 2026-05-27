@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+        id="report_fleet_contract"
+        model="fleet.contract"
+        string="Relatório de Contrato"
+        report_type="qweb-pdf"
+        name="fleetprd.report_fleet_contract_document"
+        file="fleetprd.report_fleet_contract_document"
+        attachment_use="False"
+    />
+</odoo>

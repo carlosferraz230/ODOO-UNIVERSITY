@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_fleet_vehicle_document">
+
+        <t t-call="web.html_container">
+
+            <t t-foreach="docs" t-as="doc">
+
+                <t t-call="web.external_layout">
+
+                    <style>
+                        .fleet-report {
+                        font-family: 'DejaVu Sans', sans-serif;
+                        color: #1f2937;
+                        font-size: 12px;
+                        line-height: 1.5;
+                        }
+
+                        /* ==========================================================
+                        HEADER
+                        ========================================================== */
+
+                        .fleet-header {
+                        background: linear-gradient(135deg, #005f73 0%, #0a9396 100%);
+                        color: white;
+                        border-radius: 14px;
+                        padding: 28px;
+                        margin-bottom: 24px;
+                        position: relative;
+                        overflow: hidden;
+                        }
+
+                        .fleet-header:before {
+                        content: '';
+                        position: absolute;
+                        top: -40px;
+                        right: -40px;
+                        width: 180px;
+                        height: 180px;
+                        background: rgba(255,255,255,0.08);
+                        border-radius: 50%;
+                        }
+
+                        /* ===================== AJUSTE TITULO ===================== */
+                        .fleet-title {
+                        font-size: 28px;
+                        font-weight: bold;
+                        letter-spacing: 1px;
+                        margin: 0;
+                        text-transform: uppercase;
+
+                        text-align: center;
+                        color: #0b1f2a; /* NÃO branco */
+                        }
+
+                        /* ===================== AJUSTE SUBTITULO ===================== */
+                        .fleet-subtitle {
+                        font-size: 13px;
+                        margin-top: 6px;
+
+                        text-align: center;
+                        color: #334155; /* cor diferente do título */
+                        }
+
+                        .fleet-meta {
+                        margin-top: 20px;
+                        display: flex;
+                        justify-content: space-between;
+                        font-size: 11px;
+                        }
+
+                        /* ==========================================================
+                        KPI CARDS
+                        ========================================================== */
+
+                        .kpi-wrapper {
+                        width: 100%;
+                        margin-bottom: 24px;
+                        }
+
+                        .kpi-table {
+                        width: 100%;
+                        border-spacing: 10px 0;
+                        border-collapse: separate;
+                        }
+
+                        .kpi-card {
+                        background: #ffffff;
+                        border: 1px solid #dbeafe;
+                        border-left: 5px solid #0a9396;
+                        border-radius: 12px;
+                        padding: 18px;
+                        text-align: center;
+                        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+                        }
+
+                        .kpi-value {
+                        font-size: 20px;
+                        font-weight: bold;
+                        color: #005f73;
+                        margin-bottom: 6px;
+                        }
+
+                        .kpi-label {
+                        font-size: 11px;
+                        color: #64748b;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                        }
+
+                        /* ==========================================================
+                        SECTION
+                        ========================================================== */
+
+                        .section-card {
+                        background: #ffffff;
+                        border: 1px solid #e5e7eb;
+                        border-radius: 14px;
+                        margin-bottom: 22px;
+                        overflow: hidden;
+                        box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+                        }
+
+                        .section-header {
+                        background: #f0f9ff;
+                        border-bottom: 1px solid #dbeafe;
+                        padding: 14px 20px;
+                        }
+
+                        .section-title {
+                        margin: 0;
+                        color: #005f73;
+                        font-size: 15px;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        letter-spacing: 0.5px;
+                        }
+
+                        .section-body {
+                        padding: 18px 20px;
+                        }
+
+                        /* ==========================================================
+                        INFO GRID
+                        ========================================================== */
+
+                        .info-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        }
+
+                        .info-table td {
+                        padding: 10px 0;
+                        border-bottom: 1px solid #f1f5f9;
+                        vertical-align: top;
+                        }
+
+                        .info-label {
+                        width: 38%;
+                        color: #64748b;
+                        font-weight: 600;
+                        }
+
+                        .info-value {
+                        color: #111827;
+                        font-weight: 500;
+                        }
+
+                        /* ==========================================================
+                        DATA TABLE
+                        ========================================================== */
+
+                        .data-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        }
+
+                        .data-table thead {
+                        background: #005f73;
+                        color: white;
+                        }
+
+                        .data-table th {
+                        padding: 12px;
+                        font-size: 11px;
+                        text-transform: uppercase;
+                        letter-spacing: 0.4px;
+                        text-align: left;
+                        }
+
+                        .data-table td {
+                        padding: 11px 12px;
+                        border-bottom: 1px solid #e5e7eb;
+                        }
+
+                        .data-table tbody tr:nth-child(even) {
+                        background: #f8fafc;
+                        }
+
+                        .data-table tbody tr:hover {
+                        background: #ecfeff;
+                        }
+
+                        /* ==========================================================
+                        BADGES
+                        ========================================================== */
+
+                        .badge {
+                        display: inline-block;
+                        padding: 5px 10px;
+                        border-radius: 30px;
+                        font-size: 10px;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        }
+
+                        .badge-success {
+                        background: #dcfce7;
+                        color: #166534;
+                        }
+
+                        .badge-warning {
+                        background: #fef3c7;
+                        color: #92400e;
+                        }
+
+                        .badge-danger {
+                        background: #fee2e2;
+                        color: #991b1b;
+                        }
+
+                        /* ==========================================================
+                        FOOTER
+                        ========================================================== */
+
+                        .fleet-footer {
+                        margin-top: 30px;
+                        text-align: center;
+                        color: #64748b;
+                        font-size: 10px;
+                        border-top: 1px solid #e5e7eb;
+                        padding-top: 12px;
+                        }
+
+                    </style>
+
+                    <div class="fleet-report">
+
+                        <!-- ======================================================
+                                            HEADER
+                        ======================================================= -->
+
+                        <div class="fleet-header">
+
+                            <h1 class="fleet-title">
+                                Relatório do Veículo
+                            </h1>
+
+                            <div class="fleet-subtitle">
+                                Ficha Técnica Completa e Análise Operacional
+                            </div>
+
+                            <div class="fleet-meta">
+                                <div>
+                                    <strong>Veículo:</strong>
+                                    <span t-field="doc.name"/>
+                                </div>
+
+                                <div>
+                                    <strong>Matrícula:</strong>
+                                    <span t-field="doc.license_plate"/>
+                                </div>
+
+                                <div>
+                                    <strong>Gerado em:</strong>
+                                    <span t-field="doc.write_date"/>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- ======================================================
+                                            KPI CARDS
+                        ======================================================= -->
+
+                        <div class="kpi-wrapper">
+
+                            <table class="kpi-table">
+                                <tr>
+
+                                    <td width="25%">
+                                        <div class="kpi-card">
+                                            <div class="kpi-value">
+                                                <span t-field="doc.total_km_traveled"/>
+                                                KM
+                                            </div>
+                                            <div class="kpi-label">
+                                                Quilometragem Total
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td width="25%">
+                                        <div class="kpi-card">
+                                            <div class="kpi-value">
+                                                <span t-field="doc.total_service_cost"
+                                                      t-field-options='{"widget": "monetary"}'/>
+                                            </div>
+                                            <div class="kpi-label">
+                                                Custo Total
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td width="25%">
+                                        <div class="kpi-card">
+                                            <div class="kpi-value">
+                                                <span t-field="doc.cost_per_km"/>
+                                                KZ/KM
+                                            </div>
+                                            <div class="kpi-label">
+                                                Custo por KM
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td width="25%">
+                                        <div class="kpi-card">
+                                            <div class="kpi-value">
+                                                <span t-field="doc.efficiency_rating"/>
+                                            </div>
+                                            <div class="kpi-label">
+                                                Nível de Eficiencia
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            </table>
+
+                        </div>
+
+                        <!-- ======================================================
+                                    INFORMACOES GERAIS + GESTAO
+                        ======================================================= -->
+
+                        <table width="100%" style="border-collapse: separate; border-spacing: 12px 0;">
+                            <tr>
+
+                                <!-- INFORMACOES GERAIS -->
+
+                                <td width="50%" valign="top">
+
+                                    <div class="section-card">
+
+                                        <div class="section-header">
+                                            <h3 class="section-title">
+                                                Informacões Gerais
+                                            </h3>
+                                        </div>
+
+                                        <div class="section-body">
+
+                                            <table class="info-table">
+
+                                                <tr>
+                                                    <td class="info-label">Veículo</td>
+                                                    <td class="info-value">
+                                                        <span t-field="doc.name"/>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="info-label">Matrícula</td>
+                                                    <td class="info-value">
+                                                        <span t-field="doc.license_plate"/>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="info-label">VIN/SN</td>
+                                                    <td class="info-value">
+                                                        <span t-field="doc.vin_sn"/>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="info-label">Marca</td>
+                                                    <td class="info-value">
+                                                        <span t-field="doc.brand_id"/>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="info-label">Modelo</td>
+                                                    <td class="info-value">
+                                                        <span t-field="doc.model_id"/>
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                                <!-- GESTAO -->
+
+                                <td width="50%" valign="top">
+
+                                    <div class="section-card">
+
+                                        <div class="section-header">
+                                            <h3 class="section-title">
+                                                Gestão e Operação
+                                            </h3>
+                                        </div>
+
+                                        <div class="section-body">
+
+                                            <table class="info-table">
+
+                                                <tr>
+                                                    <td class="info-label">Motorista</td>
+                                                    <td class="info-value">
+                                                        <span t-field="doc.driver_id"/>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="info-label">Gestor</td>
+                                                    <td class="info-value">
+                                                        <span t-field="doc.manager_id"/>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="info-label">Valor do Veículo</td>
+                                                    <td class="info-value">
+                                                        <span t-field="doc.car_value"
+                                                              t-field-options='{"widget": "monetary"}'/>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="info-label">Km Atual</td>
+                                                    <td class="info-value">
+                                                        <span t-field="doc.odometer"/>
+                                                        KM
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+                        </table>
+
+                        <!-- ======================================================
+                                            SERVICOS
+                        ======================================================= -->
+
+                        <div class="section-card">
+
+                            <div class="section-header">
+                                <h3 class="section-title">
+                                    Histórico de Serviços
+                                </h3>
+                            </div>
+
+                            <div class="section-body">
+
+                                <table class="data-table">
+
+                                    <thead>
+                                        <tr>
+                                            <th>Data</th>
+                                            <th>Descrição</th>
+                                            <th>Tipo</th>
+                                            <th>Valor</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        <tr t-foreach="doc.service_ids" t-as="service">
+
+                                            <td>
+                                                <span t-field="service.service_date"/>
+                                            </td>
+
+                                            <td>
+                                                <span t-field="service.name"/>
+                                            </td>
+
+                                            <td>
+                                                <span t-field="service.service_type"/>
+                                            </td>
+
+                                            <td>
+                                                <span t-field="service.amount"
+                                                      t-field-options='{"widget": "monetary"}'/>
+                                            </td>
+
+                                        </tr>
+
+                                        <tr t-if="not doc.service_ids">
+                                            <td colspan="4" style="text-align:center; padding:18px;">
+                                                Nenhum Serviço registrado
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </div>
+
+                        <!-- ======================================================
+                                            CONTRATOS
+                        ======================================================= -->
+
+                        <div class="section-card">
+
+                            <div class="section-header">
+                                <h3 class="section-title">
+                                    Historico de Contratos
+                                </h3>
+                            </div>
+
+                            <div class="section-body">
+
+                                <table class="data-table">
+
+                                    <thead>
+                                        <tr>
+                                            <th>Referência</th>
+                                            <th>Tipo</th>
+                                            <th>Período</th>
+                                            <th>Valor Mensal</th>
+                                            <th>Estado</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        <tr t-foreach="doc.contract_ids" t-as="contract">
+
+                                            <td>
+                                                <span t-field="contract.name"/>
+                                            </td>
+
+                                            <td>
+                                                <span t-field="contract.contract_type"/>
+                                            </td>
+
+                                            <td>
+                                                <span t-field="contract.date_start"/>
+                                                -
+                                                <span t-field="contract.date_end"/>
+                                            </td>
+
+                                            <td>
+                                                <span t-field="contract.monthly_cost"
+                                                      t-field-options='{"widget": "monetary"}'/>
+                                            </td>
+
+                                            <td>
+
+                                                <span t-if="contract.state == 'active'"
+                                                      class="badge badge-success">
+                                                    Ativo
+                                                </span>
+
+                                                <span t-if="contract.state == 'draft'"
+                                                      class="badge badge-warning">
+                                                    Rascunho
+                                                </span>
+
+                                                <span t-if="contract.state == 'expired'"
+                                                      class="badge badge-danger">
+                                                    Expirado
+                                                </span>
+
+                                                <span t-if="contract.state == 'cancelled'"
+                                                      class="badge badge-danger">
+                                                    Cancelado
+                                                </span>
+
+                                            </td>
+
+                                        </tr>
+
+                                        <tr t-if="not doc.contract_ids">
+                                            <td colspan="5" style="text-align:center; padding:18px;">
+                                                Nenhum Contrato registrado
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </div>
+
+                        <!-- ======================================================
+                                            FOOTER
+                        ======================================================= -->
+
+                        <div class="fleet-footer">
+
+                            Documento gerado automaticamente pelo sistema de Gestao de Frota |
+                            Ultima atualização:
+                            <span t-field="doc.write_date"/>
+
+                        </div>
+
+                    </div>
+
+                </t>
+
+            </t>
+
+        </t>
+
+    </template>
+
+</odoo>

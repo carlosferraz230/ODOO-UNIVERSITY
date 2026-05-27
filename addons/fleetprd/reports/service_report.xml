@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+        id="report_fleet_service"
+        model="fleet.service"
+        string="Relatorio de Servico"
+        report_type="qweb-pdf"
+        name="fleetprd.report_fleet_service_document"
+        file="fleetprd.report_fleet_service_document"
+        attachment_use="False"
+    />
+</odoo>

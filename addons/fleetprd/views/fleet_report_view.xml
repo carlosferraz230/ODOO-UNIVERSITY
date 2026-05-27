@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ==========================================================
+                            SEARCH VIEW
+    ========================================================== -->
+    <record id="view_fleet_cost_analysis_search" model="ir.ui.view">
+        <field name="name">fleet.cost.analysis.search</field>
+        <field name="model">fleet.cost.analysis</field>
+        <field name="arch" type="xml">
+
+            <search string="Análise de Custos">
+
+                <!-- CAMPOS -->
+                <field name="vehicle_id"/>
+                <field name="driver_id"/>
+                <field name="cost_type"/>
+                <field name="date"/>
+
+                <!-- FILTRO TEMPORAL NATIVO -->
+                <filter string="Data"
+                        name="filter_date"
+                        date="date"/>
+
+                <!-- FILTROS -->
+                <filter name="services"
+                        string="Serviços"
+                        domain="[('cost_type','=','service')]"/>
+
+                <filter name="contracts"
+                        string="Contratos"
+                        domain="[('cost_type','=','contract')]"/>
+
+                <!-- AGRUPAMENTOS -->
+                <group expand="0" string="Agrupar Por">
+
+                    <filter name="group_vehicle"
+                            string="Veículo"
+                            context="{'group_by':'vehicle_id'}"/>
+
+                    <filter name="group_driver"
+                            string="Motorista"
+                            context="{'group_by':'driver_id'}"/>
+
+                    <filter name="group_type"
+                            string="Tipo"
+                            context="{'group_by':'cost_type'}"/>
+
+                    <filter name="group_month"
+                            string="Mês"
+                            context="{'group_by':'date:month'}"/>
+
+                    <filter name="group_year"
+                            string="Ano"
+                            context="{'group_by':'date:year'}"/>
+
+                </group>
+
+            </search>
+
+        </field>
+    </record>
+
+
+    <!-- ==========================================================
+                            TREE VIEW
+    ========================================================== -->
+    <record id="view_fleet_cost_analysis_tree" model="ir.ui.view">
+        <field name="name">fleet.cost.analysis.tree</field>
+        <field name="model">fleet.cost.analysis</field>
+        <field name="arch" type="xml">
+
+            <tree string="Custos da Frota">
+
+                <field name="date"/>
+                <field name="vehicle_id"/>
+                <field name="driver_id"/>
+                <field name="cost_type"/>
+                <field name="service_type"/>
+
+                <field name="cost"
+                       widget="monetary"
+                       sum="Total"/>
+
+            </tree>
+
+        </field>
+    </record>
+
+
+    <!-- ==========================================================
+                            GRAPH VIEW
+    ========================================================== -->
+    <record id="view_fleet_cost_analysis_graph" model="ir.ui.view">
+        <field name="name">fleet.cost.analysis.graph</field>
+        <field name="model">fleet.cost.analysis</field>
+        <field name="arch" type="xml">
+
+            <graph string="Custos da Frota"
+                   type="line">
+
+                <field name="date"
+                       interval="month"
+                       type="row"/>
+
+                <field name="cost"
+                       type="measure"/>
+
+            </graph>
+
+        </field>
+    </record>
+
+
+    <!-- ==========================================================
+                            PIVOT VIEW
+    ========================================================== -->
+    <record id="view_fleet_cost_analysis_pivot" model="ir.ui.view">
+        <field name="name">fleet.cost.analysis.pivot</field>
+        <field name="model">fleet.cost.analysis</field>
+        <field name="arch" type="xml">
+
+            <pivot string="Análise de Custos">
+
+                <field name="vehicle_id" type="row"/>
+
+                <field name="date"
+                       interval="month"
+                       type="col"/>
+
+                <field name="cost_type" type="col"/>
+
+                <field name="cost"
+                       type="measure"/>
+
+            </pivot>
+
+        </field>
+    </record>
+
+
+    <!-- ==========================================================
+                            DASHBOARD COM BOTÃO DE EXPORTAÇÃO
+    ========================================================== -->
+    <record id="view_fleet_cost_analysis_dashboard" model="ir.ui.view">
+        <field name="name">fleet.cost.analysis.dashboard</field>
+        <field name="model">fleet.cost.analysis</field>
+        <field name="arch" type="xml">
+
+            <dashboard sample="1">
+
+                <!-- BOTÃO DE EXPORTAÇÃO -->
+                <div class="o_dashboard_buttons">
+                    <button name="action_export_dashboard_excel"
+                            type="object"
+                            string="Exportar Dashboard (Excel)"
+                            class="btn-primary o_force_save"
+                            icon="fa-file-excel-o"
+                            groups="base.group_user"/>
+                </div>
+
+                <!-- GRAPH -->
+                <view type="graph"
+                      ref="view_fleet_cost_analysis_graph"/>
+
+                <!-- RESUMO -->
+                <group>
+
+                    <group>
+                        <group>
+
+                            <aggregate name="service_cost"
+                                       string="Custo Total dos Serviços"
+                                       field="cost"
+                                       group_operator="sum"
+                                       domain="[('cost_type', '=', 'service')]"
+                                       widget="monetary"/>
+
+                            <aggregate name="contract_cost"
+                                       string="Custo Total dos Contratos"
+                                       field="cost"
+                                       group_operator="sum"
+                                       domain="[('cost_type', '=', 'contract')]"
+                                       widget="monetary"/>
+
+                            <aggregate name="total_cost"
+                                       string="Total Geral"
+                                       field="cost"
+                                       group_operator="sum"
+                                       widget="monetary"/>
+
+                        </group>
+                    </group>
+
+                    <!-- PIE CHART -->
+                    <group col="1">
+
+                        <widget name="pie_chart"
+                                title="Custos por Tipo"
+                                attrs="{'groupby': 'cost_type', 'measure': 'cost'}"/>
+
+                    </group>
+
+                </group>
+
+                <!-- PIVOT -->
+                <view type="pivot"
+                      ref="view_fleet_cost_analysis_pivot"/>
+
+            </dashboard>
+
+        </field>
+    </record>
+
+
+    <!-- ==========================================================
+                            FORM VIEW COM BOTÃO DE EXPORTAÇÃO
+    ========================================================== -->
+    <record id="view_fleet_cost_analysis_form" model="ir.ui.view">
+        <field name="name">fleet.cost.analysis.form</field>
+        <field name="model">fleet.cost.analysis</field>
+        <field name="arch" type="xml">
+
+            <form string="Análise de Custos">
+                <header>
+                    <button name="action_export_dashboard_excel"
+                            string="Exportar Dashboard (Excel)"
+                            type="object"
+                            class="btn-primary"
+                            icon="fa-file-excel-o"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Dashboard de Custos da Frota</h1>
+                    </div>
+                    <group>
+                        <field name="date"/>
+                        <field name="cost_type"/>
+                        <field name="service_type"/>
+                        <field name="vehicle_id"/>
+                        <field name="driver_id"/>
+                        <field name="cost" widget="monetary"/>
+                    </group>
+                    <div class="alert alert-info mt-3">
+                        <i class="fa fa-info-circle"/>
+                        Clique no botão "Exportar Dashboard (Excel)" para gerar um relatório completo com todos os dados e gráficos.
+                    </div>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+
+    <!-- ==========================================================
+                            ACTION
+    ========================================================== -->
+    <record id="action_fleet_cost_analysis" model="ir.actions.act_window">
+
+        <field name="name">Análise de Custos</field>
+
+        <field name="res_model">fleet.cost.analysis</field>
+
+        <field name="view_mode">dashboard,graph,pivot,tree,form</field>
+
+        <field name="search_view_id"
+               ref="view_fleet_cost_analysis_search"/>
+
+        <!-- CONTEXTO PARA COMPARAÇÃO AUTOMÁTICA -->
+        <field name="context">
+            {
+                'search_default_filter_date': 1
+            }
+        </field>
+
+    </record>
+
+</odoo>

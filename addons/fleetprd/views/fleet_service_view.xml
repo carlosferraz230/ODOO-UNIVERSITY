@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================= SEARCH VIEW ================= -->
+    <record id="fleet_service_search_view" model="ir.ui.view">
+        <field name="name">fleet.service.search.view</field>
+        <field name="model">fleet.service</field>
+        <field name="arch" type="xml">
+
+            <search string="Serviços">
+
+                <field name="name"/>
+                <field name="vehicle_id"/>
+                <field name="driver_id"/>
+
+                <separator/>
+
+                <!-- TIPOS -->
+                <filter name="travel" string="Viagens" domain="[('service_type', '=', 'travel')]"/>
+                <filter name="maintenance" string="Manutenção" domain="[('service_type', '=', 'maintenance')]"/>
+                <filter name="fuel" string="Abastecimento" domain="[('service_type', '=', 'fuel')]"/>
+                <filter name="toll" string="Portagem" domain="[('service_type', '=', 'toll')]"/>
+
+                <separator/>
+
+                <!-- ESTADOS -->
+                <filter name="draft" string="Rascunho" domain="[('state', '=', 'draft')]"/>
+                <filter name="in_progress" string="Em execução" domain="[('state', '=', 'in_progress')]"/>
+                <filter name="completed" string="Concluído" domain="[('state', '=', 'completed')]"/>
+                <filter name="cancelled" string="Cancelado" domain="[('state', '=', 'cancelled')]"/>
+
+                <separator/>
+
+                <!-- AGRUPAMENTO -->
+                <group expand="0" string="Agrupar por">
+
+                    <filter name="group_vehicle" string="Veículo" context="{'group_by': 'vehicle_id'}"/>
+                    <filter name="group_driver" string="Motorista" context="{'group_by': 'driver_id'}"/>
+                    <filter name="group_type" string="Tipo" context="{'group_by': 'service_type'}"/>
+                    <filter name="group_state" string="Estado" context="{'group_by': 'state'}"/>
+                    <filter name="group_month" string="Mês" context="{'group_by': 'service_date:month'}"/>
+
+                </group>
+
+            </search>
+
+        </field>
+    </record>
+
+    <!-- ================= TREE VIEW ================= -->
+    <record id="fleet_service_tree_view" model="ir.ui.view">
+        <field name="name">fleet.service.tree.view</field>
+        <field name="model">fleet.service</field>
+        <field name="arch" type="xml">
+
+            <tree string="Serviços"
+                  decoration-success="state == 'completed'"
+                  decoration-warning="state == 'in_progress'"
+                  decoration-danger="state == 'cancelled'"
+                  class="o_fleet_service_tree">
+
+                <field name="name"/>
+                <field name="service_date"/>
+                <field name="service_type"/>
+                <field name="vehicle_id"/>
+                <field name="driver_id"/>
+                <field name="odometer_start"/>
+                <field name="odometer_end"/>
+                <field name="distance_km" sum="Total KM"/>
+                <field name="amount" widget="monetary" sum="Total"/>
+                <field name="state" widget="badge"/>
+
+            </tree>
+
+        </field>
+    </record>
+
+    <!-- ================= FORM VIEW ================= -->
+    <record id="fleet_service_form_view" model="ir.ui.view">
+        <field name="name">fleet.service.form.view</field>
+        <field name="model">fleet.service</field>
+        <field name="arch" type="xml">
+
+            <form string="Serviço">
+
+                <header>
+
+                    <button name="action_start_service"
+                            type="object"
+                            string="Iniciar"
+                            class="btn-primary"
+                            states="draft"/>
+
+                    <button name="action_complete_service"
+                            type="object"
+                            string="Concluir"
+                            states="in_progress"/>
+
+                    <button name="action_cancel_service"
+                            type="object"
+                            string="Cancelar"
+                            states="draft,in_progress"/>
+
+                    <button name="action_create_invoice"
+                            type="object"
+                            string="Criar Fatura"
+                            states="completed"/>
+
+                    <button name="action_print_report"
+                            type="object"
+                            string="Imprimir PDF"
+                            class="btn-secondary"
+                            states="draft,in_progress,completed,cancelled"/>
+
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,in_progress,completed"/>
+
+                </header>
+
+                <sheet>
+
+                    <!-- ================= INFO PRINCIPAL ================= -->
+                    <group>
+
+                        <group>
+                            <field name="name" placeholder="Ex: Viagem Luanda - Samba"/>
+                            <field name="service_date"/>
+                            <field name="service_type"/>
+                        </group>
+
+                        <group>
+                            <field name="vehicle_id" options="{'no_create': True}"/>
+                            <field name="driver_id" options="{'no_create': True}"/>
+                        </group>
+
+                    </group>
+
+                    <!-- ================= ODOMETRO ================= -->
+                    <group string="Quilometragem">
+
+                        <group>
+                            <field name="odometer_start"/>
+                            <field name="odometer_end"/>
+                            <field name="distance_km" readonly="1"/>
+                        </group>
+
+                    </group>
+
+                    <!-- ================= CUSTOS ================= -->
+                    <group string="Custos">
+
+                        <group>
+                            <field name="amount"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+
+                    </group>
+
+                    <!-- ================= NOTAS ================= -->
+                    <field name="maintenance_notes"
+                           attrs="{'invisible': [('service_type', '!=', 'maintenance')]}"
+                           placeholder="Descreva a manutenção realizada"
+                           nolabel="1"/>
+
+                </sheet>
+
+            </form>
+
+        </field>
+    </record>
+
+    <!-- ================= ACTION ================= -->
+    <record id="action_fleet_service" model="ir.actions.act_window">
+        <field name="name">Serviços</field>
+        <field name="res_model">fleet.service</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="search_view_id" ref="fleet_service_search_view"/>
+
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Adicione o seu primeiro serviço
+            </p>
+            <p>
+                Registe viagens, manutenções, abastecimentos e serviços da frota.
+            </p>
+        </field>
+
+    </record>
+
+</odoo>

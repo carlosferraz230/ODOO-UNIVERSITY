@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View - Lista de Motoristas -->
+    <record id="fleet_driver_tree_view" model="ir.ui.view">
+        <field name="name">fleet.driver.tree.view</field>
+        <field name="model">fleet.driver</field>
+        <field name="arch" type="xml">
+            <tree string="Motoristas" decoration-success="status == 'active' and is_available"
+                  decoration-warning="status == 'active' and not is_available"
+                  decoration-danger="status == 'inactive' or status == 'terminated'"
+                  decoration-info="status == 'on_leave' or status == 'sick'">
+                <field name="name"/>
+                <field name="driver_license_number"/>
+                <field name="driver_license_expiry" widget="date"/>
+                <field name="current_vehicle_id"/>
+                <field name="total_trips" sum="Total"/>
+                <field name="efficiency_score" widget="progressbar"/>
+                <field name="is_available" widget="boolean"/>
+                <field name="status" widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View - Detalhe do Motorista -->
+    <record id="fleet_driver_form_view" model="ir.ui.view">
+        <field name="name">fleet.driver.form.view</field>
+        <field name="model">fleet.driver</field>
+        <field name="arch" type="xml">
+            <form string="Motorista">
+                <header>
+                   <button name="action_mark_active" type="object" string="Ativo" class="btn-primary" states="on_leave,sick,inactive"/>
+                    <button name="action_mark_on_leave" type="object" string="De Férias" states="active"/>
+                    <button name="action_mark_sick" type="object" string="Doente" states="active"/>
+                    <button name="action_terminate" type="object" string="Desligar" states="active" confirm="Tem certeza que deseja desligar este motorista?"/>
+                    <!--<button name="action_send_license_alert" type="object" string="Enviar Alerta" class="btn-warning"/-->
+                    <field name="status" widget="statusbar" statusbar_visible="active,on_leave,sick,inactive,terminated"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_services" type="object" class="oe_stat_button" icon="fa-car">
+                            <div class="o_stat_info">
+                                <field name="total_trips" widget="statinfo" string="Viagens"/>
+                            </div>
+                        </button>
+                        <button name="action_view_fines" type="object" class="oe_stat_button" icon="fa-gavel">
+                            <div class="o_stat_info">
+                                <field name="fine_count" widget="statinfo" string="Multas"/>
+                            </div>
+                        </button>
+                    </div>
+
+                    <group name="personal_info">
+                        <group string="Dados Pessoais">
+                            <field name="name"/>
+                            <field name="employee_id"/>
+                            <field name="partner_id"/>
+                            <field name="identification_number"/>
+                            <field name="tax_number"/>
+                            <field name="employee_number"/>
+                        </group>
+                        <group string="Contacto">
+                            <field name="phone"/>
+                            <field name="mobile"/>
+                            <field name="email" widget="email"/>
+                            <field name="emergency_contact"/>
+                            <field name="emergency_phone"/>
+                        </group>
+                    </group>
+
+                    <group name="driving_info">
+                        <group string="Carta de Condução">
+                            <field name="driver_license_number"/>
+                            <field name="driver_license_category"/>
+                            <field name="driver_license_expiry" widget="date"/>
+                            <field name="driver_license_issuer"/>
+                        </group>
+                        <group string="Dados Profissionais">
+                            <field name="hire_date"/>
+                            <field name="departure_date" attrs="{'invisible': [('status', '!=', 'terminated')]}"/>
+                            <field name="years_of_experience"/>
+                            <field name="efficiency_score" widget="progressbar"/>
+                            <field name="is_available" widget="boolean"/>
+                            <field name="availability_notes"/>
+                        </group>
+                    </group>
+
+                    <group name="address_info">
+                        <field name="address" placeholder="Morada completa"/>
+                        <field name="city"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Veículo Atual">
+                            <group>
+                                <field name="current_vehicle_id" options="{'no_create': True}"/>
+                                <field name="current_vehicle_odometer"/>
+                            </group>
+                        </page>
+
+                        <page string="Histórico de Serviços">
+                            <field name="service_ids">
+                                <tree string="Serviços Realizados">
+                                    <field name="name"/>
+                                    <field name="service_date"/>
+                                    <field name="service_type"/>
+                                    <field name="vehicle_id"/>
+                                    <field name="distance_km" sum="Total KM"/>
+                                    <field name="amount" widget="monetary" sum="Total"/>
+                                    <field name="state" widget="badge"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="Histórico de Veículos">
+                           <!-- <field name="vehicle_history_ids" widget="many2many_tags" options="{'no_create': True}"/>-->
+                        </page>
+
+                        <page string="Certificações">
+                            <field name="certification_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="certification_type"/>
+                                    <field name="issue_date"/>
+                                    <field name="expiry_date"/>
+                                    <field name="issuing_body"/>
+                                    <field name="state" widget="badge"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="Estatísticas" name="statistics">
+                            <group string="Desempenho">
+                                <group>
+                                    <field name="total_distance_km" widget="float"/>
+                                    <field name="total_service_cost" widget="monetary"/>
+                                </group>
+                            </group>
+                            <group string="Multas e Infrações">
+                                <group>
+                                    <field name="fine_count"/>
+                                    <field name="total_fine_amount" widget="monetary"/>
+                                    <field name="accident_count"/>
+                                </group>
+                            </group>
+                            <group string="Formação">
+                                <group>
+                                    <field name="last_training_date"/>
+                                    <field name="next_training_due"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Observações">
+                            <field name="notes" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="fleet_driver_search_view" model="ir.ui.view">
+        <field name="name">fleet.driver.search.view</field>
+        <field name="model">fleet.driver</field>
+        <field name="arch" type="xml">
+            <search string="Pesquisar Motoristas">
+                <field name="name"/>
+                <field name="driver_license_number"/>
+                <field name="identification_number"/>
+                <field name="mobile"/>
+                <field name="email"/>
+
+
+
+                <group expand="0" string="Agrupar por">
+                    <filter name="group_by_status" string="Estado" context="{'group_by': 'status'}"/>
+                    <filter name="group_by_category" string="Categoria da Carta" context="{'group_by': 'driver_license_category'}"/>
+                    <filter name="group_by_vehicle" string="Veículo Atual" context="{'group_by': 'current_vehicle_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_fleet_driver" model="ir.actions.act_window">
+        <field name="name">Motoristas</field>
+        <field name="res_model">fleet.driver</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="fleet_driver_search_view"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Adicione o seu primeiro motorista
+            </p>
+            <p>
+                Gerencie os motoristas da sua frota, acompanhe certificações,
+                multas e avalie o desempenho individual.
+            </p>
+        </field>
+    </record>
+</odoo>

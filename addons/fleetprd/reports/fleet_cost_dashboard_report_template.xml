@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_fleet_cost_dashboard_document">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-set="service_docs" t-value="docs.filtered(lambda item: item.cost_type == 'service')"/>
+                <t t-set="contract_docs" t-value="docs.filtered(lambda item: item.cost_type == 'contract')"/>
+                <t t-set="service_total" t-value="sum(service_docs.mapped('cost'))"/>
+                <t t-set="contract_total" t-value="sum(contract_docs.mapped('cost'))"/>
+                <t t-set="total_cost" t-value="sum(docs.mapped('cost'))"/>
+
+                <style>
+                    .dashboard-report {
+                        font-family: 'DejaVu Sans', sans-serif;
+                        color: #1f2937;
+                        font-size: 12px;
+                    }
+                    .dashboard-title {
+                        color: #005f73;
+                        font-size: 26px;
+                        font-weight: bold;
+                        margin-bottom: 4px;
+                        text-align: center;
+                        text-transform: uppercase;
+                    }
+                    .dashboard-subtitle {
+                        color: #64748b;
+                        font-size: 12px;
+                        margin-bottom: 22px;
+                        text-align: center;
+                    }
+                    .kpi-table {
+                        border-collapse: separate;
+                        border-spacing: 8px;
+                        margin-bottom: 20px;
+                        width: 100%;
+                    }
+                    .kpi-card {
+                        border: 1px solid #dbeafe;
+                        border-left: 4px solid #0a9396;
+                        padding: 12px;
+                        text-align: center;
+                        width: 33%;
+                    }
+                    .kpi-value {
+                        color: #005f73;
+                        font-size: 18px;
+                        font-weight: bold;
+                    }
+                    .kpi-label {
+                        color: #64748b;
+                        font-size: 10px;
+                        margin-top: 4px;
+                        text-transform: uppercase;
+                    }
+                    .cost-table {
+                        border-collapse: collapse;
+                        width: 100%;
+                    }
+                    .cost-table th {
+                        background: #005f73;
+                        color: #ffffff;
+                        font-size: 11px;
+                        padding: 8px;
+                        text-align: left;
+                    }
+                    .cost-table td {
+                        border-bottom: 1px solid #e5e7eb;
+                        padding: 7px;
+                    }
+                    .text-right {
+                        text-align: right;
+                    }
+                </style>
+
+                <div class="dashboard-report">
+                    <h1 class="dashboard-title">Dashboard de Custos da Frota</h1>
+                    <p class="dashboard-subtitle">
+                        Relatório gerado a partir da análise de custos da Frota
+                    </p>
+
+                    <table class="kpi-table">
+                        <tr>
+                            <td class="kpi-card">
+                                <div class="kpi-value">
+                                    <span t-esc="'{:,.2f}'.format(service_total)"/>
+                                </div>
+                                <div class="kpi-label">Custo Total dos Serviços</div>
+                            </td>
+                            <td class="kpi-card">
+                                <div class="kpi-value">
+                                    <span t-esc="'{:,.2f}'.format(contract_total)"/>
+                                </div>
+                                <div class="kpi-label">Custo Total dos Contratos</div>
+                            </td>
+                            <td class="kpi-card">
+                                <div class="kpi-value">
+                                    <span t-esc="'{:,.2f}'.format(total_cost)"/>
+                                </div>
+                                <div class="kpi-label">Total Geral</div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="cost-table">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Veículo</th>
+                                <th>Motorista</th>
+                                <th>Tipo</th>
+                                <th>Descrição</th>
+                                <th class="text-right">Custo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-if="not docs">
+                                <td colspan="6">Nenhum Custo encontrado.</td>
+                            </tr>
+                            <tr t-foreach="docs" t-as="doc">
+                                <td>
+                                    <span t-field="doc.date"/>
+                                </td>
+                                <td>
+                                    <span t-field="doc.vehicle_id"/>
+                                </td>
+                                <td>
+                                    <span t-field="doc.driver_id"/>
+                                </td>
+                                <td>
+                                    <span t-field="doc.cost_type"/>
+                                </td>
+                                <td>
+                                    <span t-field="doc.service_type"/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-esc="'{:,.2f}'.format(doc.cost or 0.0)"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

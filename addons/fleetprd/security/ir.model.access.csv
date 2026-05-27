@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_fleet_contract_public,fleet.contract.public,model_fleet_contract,,1,0,0,0
+access_fleet_service_public,fleet.service.public,model_fleet_service,,1,0,0,0
+
+access_fleet_contract_user,fleet.contract.user,model_fleet_contract,group_fleet_user,1,1,1,1
+access_fleet_service_user,fleet.service.user,model_fleet_service,group_fleet_user,1,1,1,1
+access_fleet_cost_analysis_user,fleet.cost.analysis.user,model_fleet_cost_analysis,group_fleet_user,1,1,1,1
+
+access_fleet_contract_manager,fleet.contract.manager,model_fleet_contract,group_fleet_manager,1,1,1,1
+access_fleet_service_manager,fleet.service.manager,model_fleet_service,group_fleet_manager,1,1,1,1
+access_fleet_cost_analysis_manager,fleet.cost.analysis.manager,model_fleet_cost_analysis,group_fleet_manager,1,1,1,1

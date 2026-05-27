@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ================= TREE VIEW ================= -->
+    <record id="fleet_contract_tree_view" model="ir.ui.view">
+        <field name="name">fleet.contract.tree.view</field>
+        <field name="model">fleet.contract</field>
+        <field name="arch" type="xml">
+
+            <tree string="Contratos"
+                  decoration-success="state == 'active'"
+                  decoration-warning="state == 'expired'"
+                  decoration-danger="state == 'cancelled'"
+                  class="o_fleet_contract_tree">
+
+                <field name="name"/>
+                <field name="vehicle_id"/>
+                <field name="driver_id"/>
+                <field name="contract_type"/>
+                <field name="provider_id"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="monthly_cost" widget="monetary"/>
+                <field name="total_contract_value" widget="monetary" sum="Total"/>
+                <field name="state" widget="badge"/>
+
+            </tree>
+
+        </field>
+    </record>
+
+    <!-- ================= FORM VIEW ================= -->
+    <record id="fleet_contract_form_view" model="ir.ui.view">
+        <field name="name">fleet.contract.form.view</field>
+        <field name="model">fleet.contract</field>
+        <field name="arch" type="xml">
+
+            <form string="Contrato">
+
+                <header>
+                    <button name="action_activate" type="object" string="Ativar" class="btn-primary" states="draft"/>
+                    <button name="action_expire" type="object" string="Expirar" states="active"/>
+                    <button name="action_cancel" type="object" string="Cancelar" states="draft,active"/>
+                    <button name="action_print_report" type="object" string="Imprimir PDF"
+                            class="btn-secondary"
+                            states="draft,active,expired,cancelled"/>
+
+                    <field name="state" widget="statusbar"/>
+                </header>
+
+                <sheet>
+
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="driver_id"/>
+                            <field name="vehicle_id"/>
+                            <field name="contract_type"/>
+                            <field name="provider_id"/>
+                        </group>
+
+                        <group>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <field name="monthly_cost" widget="monetary"/>
+                            <field name="total_contract_value" widget="monetary"/>
+                        </group>
+                    </group>
+
+                    <field name="notes"/>
+
+                </sheet>
+
+            </form>
+
+        </field>
+    </record>
+
+    <!-- ================= KANBAN VIEW (NOVO) ================= -->
+    <record id="fleet_contract_kanban_view" model="ir.ui.view">
+        <field name="name">fleet.contract.kanban.view</field>
+        <field name="model">fleet.contract</field>
+        <field name="arch" type="xml">
+
+            <kanban class="o_kanban_dashboard o_fleet_contract_kanban" sample="1">
+
+                <field name="name"/>
+                <field name="vehicle_id"/>
+                <field name="driver_id"/>
+                <field name="provider_id"/>
+                <field name="contract_type"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="monthly_cost"/>
+                <field name="total_contract_value"/>
+                <field name="state"/>
+
+                <templates>
+
+                    <t t-name="kanban-box">
+
+                        <div class="oe_kanban_card oe_kanban_global_click shadow-sm rounded p-3">
+
+                            <!-- HEADER -->
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+
+                                <div>
+                                    <div class="fw-bold text-dark">
+                                        <field name="name"/>
+                                    </div>
+
+                                    <small class="text-muted">
+                                        <field name="vehicle_id"/>
+                                    </small>
+                                </div>
+
+                                <!-- STATE BADGE -->
+                                <div>
+                                    <t t-if="record.state.raw_value == 'active'">
+                                        <span class="badge bg-success">Ativo</span>
+                                    </t>
+                                    <t t-elif="record.state.raw_value == 'expired'">
+                                        <span class="badge bg-warning text-dark">Expirado</span>
+                                    </t>
+                                    <t t-elif="record.state.raw_value == 'cancelled'">
+                                        <span class="badge bg-danger">Cancelado</span>
+                                    </t>
+                                    <t t-else="">
+                                        <span class="badge bg-secondary">Rascunho</span>
+                                    </t>
+                                </div>
+
+                            </div>
+
+                            <!-- BODY -->
+                            <div class="mb-2">
+
+                                <div class="text-muted small">
+                                    <field name="driver_id"/>
+                                </div>
+
+                                <div class="text-muted small">
+                                    <field name="provider_id"/>
+                                </div>
+
+                                <div class="text-muted small">
+                                    <field name="contract_type"/>
+                                </div>
+
+                            </div>
+
+                            <!-- DATES -->
+                            <div class="d-flex justify-content-between border-top pt-2">
+
+                                <div>
+                                    <small class="text-muted">Início</small><br/>
+                                    <span class="fw-semibold">
+                                        <field name="date_start"/>
+                                    </span>
+                                </div>
+
+                                <div>
+                                    <small class="text-muted">Fim</small><br/>
+                                    <span class="fw-semibold">
+                                        <field name="date_end"/>
+                                    </span>
+                                </div>
+
+                            </div>
+
+                            <!-- VALUES -->
+                            <div class="d-flex justify-content-between mt-2">
+
+                                <div>
+                                    <small class="text-muted">Mensal</small><br/>
+                                    <span class="fw-bold text-primary">
+                                        <field name="monthly_cost"/>
+                                    </span>
+                                </div>
+
+                                <div>
+                                    <small class="text-muted">Total</small><br/>
+                                    <span class="fw-bold text-success">
+                                        <field name="total_contract_value"/>
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </t>
+
+                </templates>
+
+            </kanban>
+
+        </field>
+    </record>
+
+    <!-- ================= ACTION ================= -->
+    <record id="action_fleet_contract" model="ir.actions.act_window">
+        <field name="name">Contratos</field>
+        <field name="res_model">fleet.contract</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+
+</odoo>

@@ -7,10 +7,70 @@ from . import utils
 from odoo.tools import float_is_zero, float_compare, date_utils, DEFAULT_SERVER_DATE_FORMAT
 from collections import defaultdict
 from odoo.tools.misc import formatLang
+from odoo.addons.l10n_ao.models import amount_to_text_pt
 
 
 class SAFTAccountMove(models.Model):
     _inherit = 'account.move'
+
+    def _check_customer_invoice_required_fields(self):
+        for move in self:
+            if move.move_type not in ('out_invoice', 'out_refund', 'out_receipt'):
+                continue
+            if not move.partner_id:
+                raise ValidationError(_('Por favor, adicione um Cliente.'))
+            if not move.invoice_date:
+                raise ValidationError(_('Por favor, adicione uma Data à factura.'))
+            lines = move.invoice_line_ids.filtered(lambda line: not line.display_type)
+            if not lines:
+                raise ValidationError(_('Por favor, adicione um produto.'))
+            if any(not line.product_id for line in lines):
+                raise ValidationError(_('Por favor, adicione um produto em cada linha da factura.'))
+            if any(not line.tax_ids for line in lines):
+                raise ValidationError(_('Por favor, adicione IVA em cada linha da factura.'))
+
+    def action_post(self):
+        for move in self:
+            if move.move_type in ('out_invoice', 'out_refund', 'out_receipt'):
+                move._check_customer_invoice_required_fields()
+        return super().action_post()
+
+    @api.model
+    def default_get(self, fields_list):
+        values = super().default_get(fields_list)
+        if (
+            'partner_id' in fields_list
+            and not self.env.context.get('default_partner_id')
+            and (values.get('move_type') or self.env.context.get('default_move_type')) in ('out_invoice', 'out_refund', 'out_receipt')
+        ):
+            values['partner_id'] = self.env['res.partner'].get_final_consumer(
+                values.get('company_id') or self.env.company.id
+            ).id
+        return values
+
+    @api.model
+    def create(self, vals):
+        move_type = vals.get('move_type') or self.env.context.get('default_move_type')
+        if move_type in ('out_invoice', 'out_refund', 'out_receipt') and not vals.get('partner_id') and not self.env.context.get('default_partner_id'):
+            vals['partner_id'] = self.env['res.partner'].get_final_consumer(
+                vals.get('company_id') or self.env.company.id
+            ).id
+        return super().create(vals)
+
+    def ticket_print_datetime(self):
+        self.ensure_one()
+        return fields.Datetime.context_timestamp(self, fields.Datetime.now()).strftime('%Y-%m-%d %H:%M:%S')
+
+    def ticket_amount_in_words(self):
+        self.ensure_one()
+        currency_names = {
+            'AOA': 'Kwanzas',
+            'EUR': 'Euros',
+            'USD': 'Dólares Americanos',
+        }
+        return amount_to_text_pt.amount_to_text(
+            self.amount_total, currency_names.get(self.currency_id.name, self.currency_id.name)
+        )
 
     settlement_discount = fields.Char(string="Settlement Discount")
     settlement_amount = fields.Float(string="Settlement Amount")

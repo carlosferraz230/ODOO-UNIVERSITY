@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="paperformat_invoice_ticket" model="report.paperformat">
+            <field name="name">Factura Ticket 72 mm</field>
+            <field name="default" eval="False"/>
+            <field name="format">custom</field>
+            <field name="page_height">250</field>
+            <field name="page_width">72</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">3</field>
+            <field name="margin_bottom">3</field>
+            <field name="margin_left">3</field>
+            <field name="margin_right">3</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="action_report_invoice_ticket" model="ir.actions.report">
+            <field name="name">Ticket</field>
+            <field name="model">account.move</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">l10n_ao_saft.report_invoice_ticket</field>
+            <field name="report_file">l10n_ao_saft.report_invoice_ticket</field>
+            <field name="paperformat_id" ref="paperformat_invoice_ticket"/>
+            <field name="print_report_name">(object.name or 'Factura').replace('/', '_') + '_ticket'</field>
+            <field name="binding_model_id" ref="account.model_account_move"/>
+            <field name="binding_type">report</field>
+            <field name="binding_view_types">form</field>
+            <field name="groups_id" eval="[(5, 0, 0)]"/>
+        </record>
+
+        <record id="action_report_sale_invoice_ticket" model="ir.actions.report">
+            <field name="name">Ticket</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">l10n_ao_saft.report_sale_invoice_ticket</field>
+            <field name="report_file">l10n_ao_saft.report_sale_invoice_ticket</field>
+            <field name="paperformat_id" ref="paperformat_invoice_ticket"/>
+            <field name="print_report_name">(object.name or 'Factura').replace('/', '_') + '_ticket'</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="binding_view_types">form</field>
+            <field name="groups_id" eval="[(5, 0, 0)]"/>
+        </record>
+
+        <template id="report_invoice_ticket">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-set="copy_label" t-value="'ORIGINAL'"/>
+                    <t t-call="l10n_ao_saft.report_invoice_ticket_document_layout"/>
+                    <t t-set="copy_label" t-value="'DUPLICADO'"/>
+                    <t t-call="l10n_ao_saft.report_invoice_ticket_document_layout"/>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_sale_invoice_ticket">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="order">
+                    <t t-set="invoices" t-value="order.sudo().invoice_ids.filtered(lambda invoice: invoice.move_type in ('out_invoice', 'out_refund'))"/>
+                    <t t-if="order.type in ('PP', 'OR') or not invoices">
+                        <t t-set="order" t-value="order.sudo()"/>
+                        <t t-set="copy_label" t-value="'ORIGINAL'"/>
+                        <t t-call="l10n_ao_saft.report_sale_order_ticket_document"/>
+                        <t t-set="copy_label" t-value="'DUPLICADO'"/>
+                        <t t-call="l10n_ao_saft.report_sale_order_ticket_document"/>
+                    </t>
+                    <t t-else="">
+                        <t t-foreach="invoices" t-as="o">
+                            <t t-set="copy_label" t-value="'ORIGINAL'"/>
+                            <t t-call="l10n_ao_saft.report_invoice_ticket_document_layout"/>
+                            <t t-set="copy_label" t-value="'DUPLICADO'"/>
+                            <t t-call="l10n_ao_saft.report_invoice_ticket_document_layout"/>
+                        </t>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <template id="report_invoice_ticket_document">
+            <t t-set="lang" t-value="o.partner_id.lang"/>
+            <t t-set="o" t-value="o.with_context(lang=lang)"/>
+            <t t-set="company" t-value="o.company_id"/>
+            <t t-set="forced_vat" t-value="o.fiscal_position_id.foreign_vat"/>
+            <t t-set="address">
+                <strong>Cliente</strong>
+                <address t-field="o.partner_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                <div t-if="o.partner_id.vat">
+                    <t t-if="o.company_id.account_fiscal_country_id.vat_label" t-out="o.company_id.account_fiscal_country_id.vat_label"/>
+                    <t t-else="">NIF</t>: <span t-field="o.partner_id.vat"/>
+                </div>
+            </t>
+            <div class="article" t-att-data-oe-model="o._name" t-att-data-oe-id="o.id" t-att-data-oe-lang="lang">
+                <div class="page ticket-page" style="font-family: monospace; font-size: 9px; line-height: 1.25; width: 100%; color: #111;">
+                    <style>
+                        .ticket-page { page-break-inside: auto; }
+                        .ticket-company { text-align: center; margin-bottom: 4px; }
+                        .ticket-company img { display: block; max-height: 20mm; max-width: 64mm; margin: 0 auto 12px; }
+                        .ticket-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+                        .ticket-table th, .ticket-table td { padding: 2px 1px; border: 0; vertical-align: top; overflow-wrap: anywhere; }
+                        .ticket-table tr { page-break-inside: avoid; }
+                        .ticket-rule { border: 0; border-top: 1px dashed #333; margin: 4px 0; }
+                    </style>
+                    <div class="text-center" style="font-weight: bold; margin-bottom: 4px;" t-out="copy_label or 'ORIGINAL'"/>
+                    <div class="ticket-company" style="text-align: center;">
+                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logótipo"/>
+                        <div style="font-size: 12px; font-weight: bold;" t-field="company.name"/>
+                        <div t-if="company.vat">NIF: <span t-field="company.vat"/></div>
+                        <div t-if="company.street"><span t-field="company.street"/></div>
+                        <div t-if="company.street2"><span t-field="company.street2"/></div>
+                        <div t-if="company.city"><span t-field="company.city"/></div>
+                        <div t-if="company.country_id"><span t-field="company.country_id.name"/></div>
+                        <div t-if="company.phone">Tel.: <span t-field="company.phone"/></div>
+                    </div>
+                    <hr class="ticket-rule"/>
+                    <strong>CLIENTE:</strong>
+                    <div>Nome: <span t-field="o.partner_id.name"/></div>
+                    <div t-if="o.partner_id.contact_address">Endereço: <span t-field="o.partner_id.contact_address"/></div>
+                    <div t-if="o.partner_id.vat">
+                        <t t-if="o.company_id.account_fiscal_country_id.vat_label" t-out="o.company_id.account_fiscal_country_id.vat_label"/>
+                        <t t-else="">NIF</t>: <span t-field="o.partner_id.vat"/>
+                    </div>
+                    <hr class="ticket-rule"/>
+                    <div style="font-size: 11px; font-weight: bold; text-align: left;">
+                        <div class="text-center" t-if="o.state == 'posted' and o.move_type in ('out_invoice', 'out_refund')" style="font-size: 9px;">ORIGINAL</div>
+                        <div class="text-center" t-if="o.state == 'draft'" style="font-size: 9px;">RASCUNHO</div>
+                        <div class="text-center" t-if="o.state == 'cancel'" style="font-size: 9px;">ANULADA</div>
+                        <div t-if="o.name != '/'">
+                            <span t-if="o.move_type in ('out_invoice', 'in_invoice')">Factura</span>
+                            <span t-elif="o.move_type in ('out_refund', 'in_refund')">Nota de Crédito</span>
+                            <span t-else="">Documento</span>: <span t-field="o.name"/>
+                        </div>
+                    </div>
+                    <hr class="ticket-rule"/>
+                    <table class="ticket-table">
+                        <tr><td>Data de emissão</td><td class="text-right"><span t-field="o.invoice_date"/></td></tr>
+                        <tr t-if="o.invoice_date_due"><td>Data de vencimento</td><td class="text-right"><span t-field="o.invoice_date_due"/></td></tr>
+                        <tr t-if="o.invoice_payment_term_id"><td>Condição de pagamento</td><td class="text-right"><span t-field="o.invoice_payment_term_id.name"/></td></tr>
+                        <tr t-if="o.invoice_origin"><td>Origem</td><td class="text-right"><span t-field="o.invoice_origin"/></td></tr>
+                        <tr><td>Moeda / Câmbio</td><td class="text-right"><span t-field="o.currency_id.name"/> / <span t-out="o.get_exchange_rate('USD')" t-options='{"widget": "float", "precision": 2}'/></td></tr>
+                        <tr t-if="o.ref"><td>Referência</td><td class="text-right"><span t-field="o.ref"/></td></tr>
+                    </table>
+                    <hr class="ticket-rule"/>
+                    <table class="ticket-table" style="font-weight: bold; border-bottom: 1px solid #777;">
+                        <tr><td style="width: 10%;">Art.</td><td style="width: 46%;">Descrição</td><td style="width: 18%;">Qtd × Pr.</td><td class="text-right" style="width: 26%;">Total</td></tr>
+                    </table>
+                    <t t-foreach="o.invoice_line_ids" t-as="line">
+                        <div t-if="line.display_type == 'line_section'" style="font-weight: bold; margin-top: 4px;"><span t-field="line.name"/></div>
+                        <div t-elif="line.display_type == 'line_note'" style="font-style: italic;"><span t-field="line.name"/></div>
+                        <div t-else="" style="margin-top: 3px;">
+                            <table class="ticket-table">
+                                <tr>
+                                    <td style="width: 10%;"><span t-field="line.product_id.default_code" t-if="line.product_id.default_code"/></td>
+                                    <td style="width: 46%; font-weight: bold;"><span t-field="line.product_id.name" t-if="line.product_id"/><span t-if="not line.product_id" t-field="line.name"/></td>
+                                    <td class="text-right" style="width: 18%;"><span t-field="line.quantity"/></td>
+                                    <td class="text-right" style="width: 26%;"><span t-field="line.price_subtotal"/></td>
+                                </tr>
+                            </table>
+                            <div class="text-right" style="font-size: 8px; padding-right: 2px;">Pr. Unit: <span t-field="line.price_unit"/> | Taxa: <span t-out="', '.join(map(lambda tax: str(tax.amount) + '%', line.tax_ids))"/></div>
+                            <div t-if="line.product_id and line.name != line.product_id.name"><span t-field="line.name"/></div>
+                            <div t-if="line.discount" class="text-right" style="font-size: 8px;">Desconto: <span t-field="line.discount"/>%</div>
+                        </div>
+                    </t>
+                    <hr class="ticket-rule"/>
+                    <strong>Quadro resumo de impostos</strong>
+                    <table class="ticket-table">
+                        <tr style="font-weight: bold; border-bottom: 1px solid #777;"><td>Descrição</td><td class="text-right">Base Trib.</td><td class="text-right">Imposto</td></tr>
+                        <tr t-foreach="o.tax_of_invoice()" t-as="tax_id" t-if="tax_id.tax_exigibility == 'on_invoice'">
+                            <td><span t-out="tax_id.name or tax_id.code"/> (<span t-out="o.amount_format(tax_id.amount)"/>%)</td>
+                            <td class="text-right">
+                                <t t-set="tax_base" t-value="sum([group['base_amount'] for group in o.get_tax_line_details() if group['tax'] == tax_id])"/>
+                                <span t-out="o.amount_format(tax_base)"/>
+                            </td>
+                            <td class="text-right">
+                                <t t-set="tax_amount" t-value="sum([group['tax_amount'] for group in o.get_tax_line_details() if group['tax'] == tax_id])"/>
+                                <span t-out="o.amount_format(tax_amount)"/>
+                            </td>
+                        </tr>
+                        <tr t-if="not [tax for tax in o.tax_of_invoice() if tax.tax_exigibility == 'on_invoice']"><td>Sem impostos</td><td class="text-right"><span t-field="o.amount_untaxed"/></td><td class="text-right">0,00</td></tr>
+                    </table>
+                    <t t-if="[tax for tax in o.tax_of_invoice() if tax.tax_exigibility == 'withholding']">
+                        <strong>Quadro de retenção</strong>
+                        <table class="ticket-table">
+                            <tr t-foreach="o.tax_of_invoice()" t-as="tax_id" t-if="tax_id.tax_exigibility == 'withholding'">
+                                <td><span t-field="tax_id.name"/></td>
+                                <td class="text-right">
+                                    <t t-set="tax_amount" t-value="sum([group['tax_amount'] for group in o.get_tax_line_details() if group['tax'] == tax_id])"/>
+                                    <span t-out="o.amount_format(tax_amount)"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </t>
+                    <hr class="ticket-rule"/>
+                    <table class="ticket-table">
+                        <tr><td>Total Ilíquido:</td><td class="text-right"><span t-field="o.amount_untaxed"/> <span t-field="o.currency_id.symbol"/></td></tr>
+                        <tr><td>Descontos Comerciais:</td><td class="text-right">0,00 <span t-field="o.currency_id.symbol"/></td></tr>
+                        <tr><td>Desconto Financeiro:</td><td class="text-right"><span t-field="o.settlement_amount"/> <span t-field="o.currency_id.symbol"/></td></tr>
+                        <tr><td>Outros Serviços:</td><td class="text-right">0,00 <span t-field="o.currency_id.symbol"/></td></tr>
+                        <tr><td>Adiantamento:</td><td class="text-right">0,00 <span t-field="o.currency_id.symbol"/></td></tr>
+                        <tr><td>Total Imposto:</td><td class="text-right"><span t-field="o.amount_tax"/> <span t-field="o.currency_id.symbol"/></td></tr>
+                        <tr style="font-size: 11px; font-weight: bold; border-top: 1px dashed #333;"><td>TOTAL A PAGAR:</td><td class="text-right"><span t-field="o.amount_total"/> <span t-field="o.currency_id.symbol"/></td></tr>
+                        <tr t-if="o.amount_total_wth"><td>Total c/ retenção</td><td class="text-right"><span t-field="o.amount_total_wth"/></td></tr>
+                    </table>
+                    <div t-if="o.payment_reference" style="margin-top: 4px;">Referência de pagamento: <span t-field="o.payment_reference"/></div>
+                    <t t-if="o.company_id.partner_id.bank_ids.filtered(lambda bank: bank.show_doc)">
+                        <hr class="ticket-rule"/>
+                        <strong>Coordenadas bancárias</strong>
+                        <div t-foreach="o.company_id.partner_id.bank_ids.filtered(lambda bank: bank.show_doc)" t-as="bank">
+                            <span t-field="bank.bank_id.code"/> · <span t-field="bank.acc_number"/>
+                            <div t-if="bank.iban_number">IBAN: <span t-field="bank.iban_number"/></div>
+                        </div>
+                    </t>
+                    <div t-if="not is_html_empty(o.narration)" style="margin-top: 4px;"><strong>Observação:</strong> <span t-field="o.narration"/></div>
+                    <hr class="ticket-rule"/>
+                    <div t-if="o.hash" class="text-center" style="font-size: 8px; word-break: break-all; font-weight: bold;">Hash: <span t-field="o.hash"/></div>
+                    <div class="text-center" style="font-size: 8px; margin-top: 4px;">ABPZ Processado por programa validado Nº 379/AGT/2022/Odoo-Tecnoide</div>
+                    <hr class="ticket-rule"/>
+                    <div class="text-center" style="font-size: 8px; margin-top: 4px;">Os bens ou serviços foram colocados à disposição do adquirente na data de emissão e no local do documento.</div>
+                    <div class="text-center" style="font-weight: bold; margin-top: 4px;">Obrigado pela sua preferência!</div>
+                </div>
+            </div>
+        </template>
+
+        <template id="report_sale_order_ticket_document">
+            <t t-set="company" t-value="order.company_id"/>
+            <div class="article" t-att-data-oe-model="order._name" t-att-data-oe-id="order.id">
+                <div class="page ticket-page" style="font-family: monospace; font-size: 9px; line-height: 1.25; width: 100%; color: #111;">
+                    <style>
+                        .ticket-page { page-break-inside: auto; }
+                        .ticket-company { text-align: center; margin-bottom: 4px; }
+                        .ticket-company img { display: block; max-height: 20mm; max-width: 64mm; margin: 0 auto 12px; }
+                        .ticket-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+                        .ticket-table th, .ticket-table td { padding: 2px 1px; border: 0; vertical-align: top; overflow-wrap: anywhere; }
+                        .ticket-table tr { page-break-inside: avoid; }
+                        .ticket-rule { border: 0; border-top: 1px dashed #333; margin: 4px 0; }
+                    </style>
+                    <div class="text-center" style="font-weight: bold; margin-bottom: 4px;" t-out="copy_label or 'ORIGINAL'"/>
+                    <div class="ticket-company" style="text-align: center;">
+                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logótipo"/>
+                        <div style="font-size: 12px; font-weight: bold;" t-field="company.name"/>
+                        <div t-if="company.vat">NIF: <span t-field="company.vat"/></div>
+                        <div t-if="company.street"><span t-field="company.street"/></div>
+                        <div t-if="company.city"><span t-field="company.city"/></div>
+                        <div t-if="company.phone">Tel.: <span t-field="company.phone"/></div>
+                    </div>
+                    <hr class="ticket-rule"/>
+                    <strong>CLIENTE:</strong>
+                    <div>Nome: <span t-field="order.partner_id.name"/></div>
+                    <div t-if="order.partner_id.contact_address">Endereço: <span t-field="order.partner_id.contact_address"/></div>
+                    <div t-if="order.partner_id.vat">NIF: <span t-field="order.partner_id.vat"/></div>
+                    <hr class="ticket-rule"/>
+                    <div style="font-size: 11px; font-weight: bold; text-align: left;">
+                        <div t-if="order.type == 'PP'">Factura Pró-Forma: <span t-field="order.name"/></div>
+                        <div t-elif="order.type == 'OR'">Orçamento: <span t-field="order.name"/></div>
+                        <div t-else="">Cotação: <span t-field="order.name"/></div>
+                    </div>
+                    <div class="text-center" style="font-size: 9px; font-weight: bold;">
+                        <div>Este documento não serve de factura</div>
+                    </div>
+                    <hr class="ticket-rule"/>
+                    <table class="ticket-table">
+                        <tr><td>Data de emissão</td><td class="text-right"><span t-field="order.date_order" t-options='{"widget": "date"}'/></td></tr>
+                        <tr t-if="order.validity_date"><td>Data de validade</td><td class="text-right"><span t-field="order.validity_date"/></td></tr>
+                        <tr t-if="order.payment_term_id"><td>Condição de pagamento</td><td class="text-right"><span t-field="order.payment_term_id.name"/></td></tr>
+                        <tr t-if="order.origin"><td>Origem</td><td class="text-right"><span t-field="order.origin"/></td></tr>
+                        <tr t-if="order.user_id"><td>Responsável</td><td class="text-right"><span t-field="order.user_id.name"/></td></tr>
+                        <tr><td>Moeda / Câmbio</td><td class="text-right"><span t-field="order.currency_id.name"/> / <span t-out="order.get_exchange_rate('USD')" t-options='{"widget": "float", "precision": 2}'/></td></tr>
+                    </table>
+                    <hr class="ticket-rule"/>
+                    <table class="ticket-table" style="font-weight: bold; border-bottom: 1px solid #777;">
+                        <tr><td style="width: 10%;">Art.</td><td style="width: 46%;">Descrição</td><td style="width: 18%;">Qtd × Pr.</td><td class="text-right" style="width: 26%;">Total</td></tr>
+                    </table>
+                    <t t-foreach="order.order_line" t-as="line">
+                        <div t-if="line.display_type == 'line_section'" style="font-weight: bold; margin-top: 4px;"><span t-field="line.name"/></div>
+                        <div t-elif="line.display_type == 'line_note'" style="font-style: italic;"><span t-field="line.name"/></div>
+                        <div t-else="" style="margin-top: 3px;">
+                            <table class="ticket-table">
+                                <tr>
+                                    <td style="width: 10%;"><span t-field="line.product_id.default_code" t-if="line.product_id.default_code"/></td>
+                                    <td style="width: 46%; font-weight: bold;"><span t-field="line.product_id.name" t-if="line.product_id"/><span t-if="not line.product_id" t-field="line.name"/></td>
+                                    <td class="text-right" style="width: 18%;"><span t-field="line.product_uom_qty"/></td>
+                                    <td class="text-right" style="width: 26%;"><span t-field="line.price_subtotal"/></td>
+                                </tr>
+                            </table>
+                            <div class="text-right" style="font-size: 8px; padding-right: 2px;">Pr. Unit: <span t-field="line.price_unit"/> | Taxa: <span t-out="', '.join(map(lambda tax: str(tax.amount) + '%', line.tax_id))"/></div>
+                            <div t-if="line.product_id and line.name != line.product_id.name"><span t-field="line.name"/></div>
+                            <div t-if="line.discount" class="text-right" style="font-size: 8px;">Desconto: <span t-field="line.discount"/>%</div>
+                        </div>
+                    </t>
+                    <hr class="ticket-rule"/>
+                    <strong>Quadro resumo de impostos</strong>
+                    <table class="ticket-table">
+                        <tr style="font-weight: bold; border-bottom: 1px solid #777;"><td>Descrição</td><td class="text-right">Base Trib.</td><td class="text-right">Imposto</td></tr>
+                        <tr t-foreach="order.tax_of_invoice()" t-as="tax_id" t-if="tax_id.tax_exigibility == 'on_invoice'">
+                            <td><span t-out="tax_id.name or tax_id.code"/> (<span t-out="order.amount_format(tax_id.amount)"/>%)</td>
+                            <td class="text-right">
+                                <t t-set="tax_base" t-value="sum([group['base_amount'] for group in order.get_tax_line_details() if group['tax'] == tax_id])"/>
+                                <span t-out="order.amount_format(tax_base)"/>
+                            </td>
+                            <td class="text-right">
+                                <t t-set="tax_amount" t-value="sum([group['tax_amount'] for group in order.get_tax_line_details() if group['tax'] == tax_id])"/>
+                                <span t-out="order.amount_format(tax_amount)"/>
+                            </td>
+                        </tr>
+                        <tr t-if="not [tax for tax in order.tax_of_invoice() if tax.tax_exigibility == 'on_invoice']"><td>Sem impostos</td><td class="text-right"><span t-field="order.amount_untaxed"/></td><td class="text-right">0,00</td></tr>
+                    </table>
+                    <hr class="ticket-rule"/>
+                    <table class="ticket-table">
+                        <tr><td>Total Ilíquido:</td><td class="text-right"><span t-field="order.amount_untaxed"/> <span t-field="order.currency_id.symbol"/></td></tr>
+                        <tr><td>Descontos Comerciais:</td><td class="text-right"><span t-field="order.ks_amount_discount" t-if="'ks_amount_discount' in order._fields"/> <span t-if="'ks_amount_discount' not in order._fields">0,00</span> <span t-field="order.currency_id.symbol"/></td></tr>
+                        <tr><td>Desconto Financeiro:</td><td class="text-right">0,00 <span t-field="order.currency_id.symbol"/></td></tr>
+                        <tr><td>Outros Serviços:</td><td class="text-right">0,00 <span t-field="order.currency_id.symbol"/></td></tr>
+                        <tr><td>Adiantamento:</td><td class="text-right">0,00 <span t-field="order.currency_id.symbol"/></td></tr>
+                        <tr><td>Total Imposto:</td><td class="text-right"><span t-field="order.amount_tax"/> <span t-field="order.currency_id.symbol"/></td></tr>
+                        <tr style="font-size: 11px; font-weight: bold; border-top: 1px dashed #333;"><td>TOTAL A PAGAR:</td><td class="text-right"><span t-field="order.amount_total"/> <span t-field="order.currency_id.symbol"/></td></tr>
+                    </table>
+                    <div t-if="not is_html_empty(order.note)" style="margin-top: 4px;"><strong>Observação:</strong> <span t-field="order.note"/></div>
+                    <hr class="ticket-rule"/>
+                    <div class="text-center" style="font-size: 8px;">Processado por programa validado Nº 379/AGT/2022/Odoo-Tecnoide</div>
+                    <hr class="ticket-rule"/>
+                    <div class="text-center" style="font-size: 8px; margin-top: 4px;">Este documento não serve de factura. Os bens ou serviços serão colocados à disposição do adquirente após confirmação.</div>
+                    <div class="text-center" style="font-weight: bold; margin-top: 4px;">Obrigado pela sua preferência!</div>
+                </div>
+            </div>
+        </template>
+        <template id="report_invoice_ticket_document_layout">
+            <t t-set="lang" t-value="o.partner_id.lang"/>
+            <t t-set="o" t-value="o.with_context(lang=lang)"/>
+            <t t-set="company" t-value="o.company_id"/>
+            <div class="article" t-att-data-oe-model="o._name" t-att-data-oe-id="o.id" t-att-data-oe-lang="lang">
+                <div class="page ticket-page" style="font-family: monospace; font-size: 9px; line-height: 1.25; width: 100%; color: #111;">
+                    <style>
+                        .ticket-company { text-align: center; margin-bottom: 6px; }
+                        .ticket-company img { display: block; max-height: 20mm; max-width: 64mm; margin: 0 auto 12px; }
+                        .ticket-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+                        .ticket-table th, .ticket-table td { padding: 2px 1px; border: 0; vertical-align: top; overflow-wrap: anywhere; }
+                        .ticket-table tr { page-break-inside: avoid; }
+                        .ticket-rule { border: 0; border-top: 1px solid #111; margin: 4px 0; }
+                    </style>
+                    <div class="text-center" style="font-weight: bold; margin-bottom: 4px;" t-out="copy_label or 'ORIGINAL'"/>
+                    <div class="ticket-company">
+                        <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" alt="Logótipo"/>
+                        <div style="font-size: 12px; font-weight: bold;" t-field="company.name"/>
+                        <div t-if="company.vat">NIF: <span t-field="company.vat"/></div>
+                        <div t-if="company.phone">Telefone: <span t-field="company.phone"/></div>
+                        <div t-if="company.street">Endereço:</div>
+                        <div t-if="company.street"><span t-field="company.street"/></div>
+                        <div t-if="company.street2"><span t-field="company.street2"/></div>
+                        <div t-if="company.city"><span t-field="company.city"/></div>
+                        <div t-if="company.country_id"><span t-field="company.country_id.name"/></div>
+                    </div>
+                    <hr class="ticket-rule"/>
+                    <div style="font-weight: bold; margin: 5px 0;">
+                        <span t-if="o.move_type in ('out_invoice', 'in_invoice')">FACTURA Nº: </span>
+                        <span t-elif="o.move_type in ('out_refund', 'in_refund')">NOTA DE CRÉDITO Nº: </span>
+                        <span t-else="">DOCUMENTO Nº: </span><span t-field="o.name"/>
+                    </div>
+                    <div>
+                        <div>Exmo(a). Sr(a)</div>
+                        <div style="font-weight: bold;" t-field="o.partner_id.name"/>
+                        <div t-if="o.partner_id.city" t-field="o.partner_id.city"/>
+                        <div t-if="o.partner_id.vat">V/Contribuinte: <span t-field="o.partner_id.vat"/></div>
+                    </div>
+                    <hr class="ticket-rule"/>
+                    <strong>Dados do Pagamento</strong>
+                    <table class="ticket-table">
+                        <tr><td>Impressão:</td><td class="text-right"><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M:%S')"/></td></tr>
+                        <tr><td>Estado:</td><td class="text-right"><span t-if="o.state == 'draft'">Rascunho</span><span t-elif="o.state == 'cancel'">Anulado</span><span t-elif="o.payment_state == 'paid'">Pago</span><span t-elif="o.payment_state == 'partial'">Parcialmente Pago</span><span t-else="">Por Pagar</span></td></tr>
+                        <tr><td>Data da Factura:</td><td class="text-right"><span t-field="o.invoice_date"/></td></tr>
+                    </table>
+                    <hr class="ticket-rule"/>
+                    <table class="ticket-table" style="font-weight: bold;">
+                        <tr><td style="width: 8%;">Nº.</td><td style="width: 18%;">Qtd.</td><td style="width: 20%;">P. Un.</td><td style="width: 15%;">Taxa</td><td style="width: 13%;">Desc.</td><td class="text-right" style="width: 26%;">Total</td></tr>
+                    </table>
+                    <t t-set="ticket_lines" t-value="o.invoice_line_ids.filtered(lambda line: not line.display_type)"/>
+                    <t t-foreach="ticket_lines" t-as="line">
+                        <div style="margin-top: 3px;">
+                            <div style="font-weight: bold; text-align: center;"><span t-if="line.product_id" t-field="line.product_id.name"/><span t-if="not line.product_id" t-field="line.name"/></div>
+                            <div t-if="line.product_id and line.name != line.product_id.name" class="text-center"><span t-field="line.name"/></div>
+                            <table class="ticket-table"><tr>
+                                <td style="width: 8%;"><span t-out="line_index + 1"/></td>
+                                <td style="width: 18%;"><span t-field="line.quantity"/><div t-if="line.product_uom_id" t-field="line.product_uom_id.name"/></td>
+                                <td style="width: 20%;"><span t-field="line.price_unit"/></td>
+                                <td style="width: 15%;"><span t-out="', '.join(map(lambda tax: str(tax.amount), line.tax_ids))"/></td>
+                                <td style="width: 13%;"><span t-field="line.discount"/></td>
+                                <td class="text-right" style="width: 26%;"><span t-field="line.price_subtotal"/></td>
+                            </tr></table>
+                        </div>
+                    </t>
+                    <hr class="ticket-rule"/>
+                    <div><strong>Total Ilíquido</strong><span style="float: right;" t-field="o.amount_untaxed"/></div>
+                    <div><strong>Total Imposto</strong><span style="float: right;" t-field="o.amount_tax"/></div>
+                    <div style="border-top: 1px solid #111; padding-top: 3px; font-weight: bold; font-size: 11px; clear: both;"><span>Total a Pagar</span><span style="float: right;"><span t-field="o.amount_total"/> <span t-field="o.currency_id.symbol"/></span></div>
+                    <div style="clear: both; margin-top: 5px;"><strong>Valor por extenso:</strong> <span t-esc="o.currency_id.amount_to_text(o.amount_total)"/></div>
+                    <div style="margin-top: 5px;">Os bens ou serviços foram colocados à disposição do adquirente na data de emissão e no local do documento.</div>
+                    <div style="margin-top: 5px;"><span t-if="o.hash" t-field="o.hash"/> Processado por programa validado Nº 379/AGT/2022 / Odoo-Tecnoide</div>
+                    <hr class="ticket-rule"/>
+                    <strong>Quadro Resumo de Impostos</strong>
+                    <table class="ticket-table">
+                        <tr style="font-weight: bold;"><td style="width: 42%;">Descrição</td><td class="text-right" style="width: 32%;">Base Tributável</td><td class="text-right" style="width: 26%;">Imposto</td></tr>
+                        <tr t-foreach="o.tax_of_invoice()" t-as="tax_id" t-if="tax_id.tax_exigibility == 'on_invoice'">
+                            <td><span t-out="tax_id.name or tax_id.code"/></td>
+                            <td class="text-right"><t t-set="tax_base" t-value="sum([group['base_amount'] for group in o.get_tax_line_details() if group['tax'] == tax_id])"/><span t-out="o.amount_format(tax_base)"/></td>
+                            <td class="text-right"><t t-set="tax_amount" t-value="sum([group['tax_amount'] for group in o.get_tax_line_details() if group['tax'] == tax_id])"/><span t-out="o.amount_format(tax_amount)"/></td>
+                        </tr>
+                        <tr t-if="not [tax for tax in o.tax_of_invoice() if tax.tax_exigibility == 'on_invoice']"><td>Sem impostos</td><td class="text-right"><span t-field="o.amount_untaxed"/></td><td class="text-right">0,00</td></tr>
+                    </table>
+                    <t t-set="ticket_banks" t-value="o.company_id.partner_id.bank_ids.filtered(lambda bank: bank.show_doc)"/>
+                    <div t-if="ticket_banks" style="margin-top: 4px;">
+                        <strong>Coordenadas Bancárias</strong>
+                        <table class="ticket-table">
+                            <tr style="font-weight: bold;"><td>Banco</td><td>Conta</td><td>IBAN</td></tr>
+                            <tr t-foreach="ticket_banks" t-as="bank"><td><span t-field="bank.bank_id.code"/></td><td><span t-field="bank.acc_number"/></td><td><span t-field="bank.iban_number"/></td></tr>
+                        </table>
+                    </div>
+                    <div style="margin-top: 8px;">Operador(a): <span t-out="user.name"/></div>
+                </div>
+            </div>
+        </template>
+    </data>
+</odoo>

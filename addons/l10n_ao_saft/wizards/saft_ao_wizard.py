@@ -4,7 +4,7 @@ from dicttoxml2 import dicttoxml
 from xml.dom.minidom import parseString
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-from odoo.exceptions import ValidationError, UserError
+from odoo.exceptions import AccessError, ValidationError, UserError
 from decimal import Decimal
 
 # Ticblac Solution
@@ -131,6 +131,12 @@ class L10nAOSaftWizard(models.TransientModel):
     date_from = fields.Date("Date Start", default=fields.Date.today().replace(day=1))
     comments = fields.Char("Comment")
 
+    @api.constrains('company_id')
+    def _check_company_access(self):
+        for wizard in self:
+            if wizard.company_id not in self.env.companies:
+                raise AccessError("Não tem acesso para exportar o SAFT desta empresa.")
+
     @api.constrains('date_to', 'date_from')
     def check_dates(self):
         if self.date_from > self.date_to:
@@ -162,6 +168,9 @@ class L10nAOSaftWizard(models.TransientModel):
             return "TaxTable"
 
     def get_saft_xml(self):
+
+        if self.env.company != self.company_id:
+            return self.with_company(self.company_id).get_saft_xml()
 
         if not self.company_id.vat:
             raise ValidationError(_("Não é possível gerar dados SAFT sem o NIF da empresa!"))
@@ -234,7 +243,8 @@ class L10nAOSaftWizard(models.TransientModel):
         products = self.env["product.product"]
 
         invoices = self.env["account.move"].search(
-            [("invoice_date", ">=", fields.Date.to_string(self.date_from)),
+            [("company_id", "=", self.company_id.id),
+             ("invoice_date", ">=", fields.Date.to_string(self.date_from)),
              ("invoice_date", "<=", fields.Date.to_string(self.date_to)),
              # ("system_entry_date", "!=", None),
              ("state", "in", ["posted"])
@@ -247,12 +257,15 @@ class L10nAOSaftWizard(models.TransientModel):
 
         if self.type in ["A"]:
             invoices = self.env["account.move"].search(
-                [("invoice_date", ">=", fields.Date.to_string(self.date_from)),
+                [("company_id", "=", self.company_id.id),
+                 ("invoice_date", ">=", fields.Date.to_string(self.date_from)),
                  ("invoice_date", "<=", fields.Date.to_string(self.date_to)),
                  ("system_entry_date", "!=", None),
                  ("move_type", "in", ["in_invoice"])
                  ], order="system_entry_date asc")
-            accounts = self.env["account.account"].search([])
+            accounts = self.env["account.account"].search([
+                ("company_id", "=", self.company_id.id),
+            ])
             account_account = accounts.with_context(date_from=self.date_from,
                                                     date_to=self.date_to)
             partners |= invoices.mapped("partner_id")
@@ -360,7 +373,9 @@ class L10nAOSaftWizard(models.TransientModel):
                 master_files.pop("Supplier")
 
         if self.type in ["C", "I"]:
-            accounts = self.env["account.account"].search([])
+            accounts = self.env["account.account"].search([
+                ("company_id", "=", self.company_id.id),
+            ])
             account_account = accounts.with_context(date_from=self.date_from,
                                                     date_to=self.date_to)
 

@@ -6,6 +6,29 @@ from collections import OrderedDict
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
+    @api.model
+    def get_final_consumer(self, company_id=False):
+        """Return the company-specific generic customer used for cash sales."""
+        company = self.env['res.company'].browse(company_id).exists() if company_id else self.env.company
+        if not company:
+            company = self.env.company
+
+        partners = self.sudo().with_company(company)
+        partner = partners.search([
+            ('company_id', '=', company.id),
+            ('name', '=', 'CONSUMIDOR FINAL'),
+            ('vat', '=', '999999999'),
+        ], limit=1)
+        if not partner:
+            partner = partners.create({
+                'name': 'CONSUMIDOR FINAL',
+                'vat': '999999999',
+                'company_id': company.id,
+                'customer_rank': 1,
+                'type': 'contact',
+            })
+        return partner
+
     def get_saft_data(self):
         """
         Gera dados SAF-T para clientes e fornecedores, com tratamento para partner=None.
@@ -40,7 +63,7 @@ class ResPartner(models.Model):
         result["Customer"].append(OrderedDict([
             ("CustomerID", "CF"),
             ("AccountID", "31121"),
-            ("CustomerTaxID", "XXXXXXXXX"),
+            ("CustomerTaxID", "999999999"),
             ("CompanyName", "CONSUMIDOR FINAL"),
             ("BillingAddress", build_address()),
             ("ShipToAddress", build_address()),
@@ -52,6 +75,9 @@ class ResPartner(models.Model):
 
         # Processar parceiros reais
         for partner in self:
+            # The generic consumer is already represented by the CF entry above.
+            if partner.name == "CONSUMIDOR FINAL" and partner.vat == "999999999":
+                continue
             # Validações para parceiros com VAT
             if partner.vat:
                 if not partner.country_id:

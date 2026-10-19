@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="rule_partner_company_only" model="ir.rule">
+            <field name="name">Contacts: allowed companies only</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <!-- Explicit company ownership wins. Legacy unassigned contacts remain
+                 visible only to the company of the user who created them. -->
+            <field name="domain_force">['|', ('partner_share', '=', False), '|', ('company_id', 'in', company_ids), '&amp;', ('company_id', '=', False), ('create_uid.company_id', 'in', company_ids)]</field>
+            <field name="global" eval="False"/>
+            <field name="groups" eval="[Command.link(ref('base.group_user'))]"/>
+        </record>
+        <record id="rule_product_template_company_only" model="ir.rule">
+            <field name="name">Product templates: allowed companies only</field>
+            <field name="model_id" ref="product.model_product_template"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="global" eval="False"/>
+            <field name="groups" eval="[Command.link(ref('base.group_user'))]"/>
+        </record>
+        <record id="rule_product_company_only" model="ir.rule">
+            <field name="name">Products: allowed companies only</field>
+            <field name="model_id" ref="product.model_product_product"/>
+            <!-- Variants do not have their own company_id: scope them through
+                 their template, where Odoo stores the owning company. -->
+            <field name="domain_force">[('product_tmpl_id.company_id', 'in', company_ids)]</field>
+            <field name="global" eval="False"/>
+            <field name="groups" eval="[Command.link(ref('base.group_user'))]"/>
+        </record>
+        <record id="rule_saft_export_company_only" model="ir.rule">
+            <field name="name">SAFT exports: allowed companies only</field>
+            <field name="model_id" ref="model_saft_ao_file_export"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="global" eval="False"/>
+            <field name="groups" eval="[Command.link(ref('base.group_user'))]"/>
+        </record>
+        <record id="rule_saft_wizard_company_only" model="ir.rule">
+            <field name="name">SAFT wizard: allowed companies only</field>
+            <field name="model_id" ref="model_saft_ao_export_wizard"/>
+            <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+            <field name="global" eval="False"/>
+            <field name="groups" eval="[Command.link(ref('base.group_user'))]"/>
+        </record>
+
+        <record id="rule_partner_company_admin_all" model="ir.rule">
+            <field name="name">Contacts: all companies for administrators</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[Command.link(ref('base.group_system'))]"/>
+        </record>
+        <record id="rule_product_template_company_admin_all" model="ir.rule">
+            <field name="name">Product templates: all companies for administrators</field>
+            <field name="model_id" ref="product.model_product_template"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[Command.link(ref('base.group_system'))]"/>
+        </record>
+        <record id="rule_product_company_admin_all" model="ir.rule">
+            <field name="name">Products: all companies for administrators</field>
+            <field name="model_id" ref="product.model_product_product"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[Command.link(ref('base.group_system'))]"/>
+        </record>
+        <record id="rule_saft_export_company_admin_all" model="ir.rule">
+            <field name="name">SAFT exports: all companies for administrators</field>
+            <field name="model_id" ref="model_saft_ao_file_export"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[Command.link(ref('base.group_system'))]"/>
+        </record>
+        <record id="rule_saft_wizard_company_admin_all" model="ir.rule">
+            <field name="name">SAFT wizard: all companies for administrators</field>
+            <field name="model_id" ref="model_saft_ao_export_wizard"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[Command.link(ref('base.group_system'))]"/>
+        </record>
+    </data>
+</odoo>

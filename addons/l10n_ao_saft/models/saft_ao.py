@@ -2,7 +2,7 @@ import xml.etree.ElementTree as ET
 from datetime import datetime
 from odoo import models, fields, api
 from . import valid_xml
-from odoo.exceptions import ValidationError
+from odoo.exceptions import AccessError, ValidationError
 import  os
 
 def dict_clean_up(value, var):
@@ -68,6 +68,12 @@ class SaftExport(models.Model):
     product_version = fields.Char(string="Product Version", size=30, required=True, readonly=True,
                                   help="Deve ser indicada a versão da aplicação produtora do ficheiro.")
     header_comment = fields.Char(string="Header Comment", size=255, help="Comentários Adicionais")
+
+    @api.constrains('company_id')
+    def _check_company_access(self):
+        for record in self:
+            if record.company_id not in self.env.companies:
+                raise AccessError("Não tem acesso aos ficheiros SAFT desta empresa.")
 
     def action_validate(self):
         module_path = os.path.dirname(os.path.abspath(__file__))

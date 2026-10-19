@@ -7,6 +7,41 @@ from datetime import datetime
 class SAFTSaleOrder(models.Model):
     _inherit = 'sale.order'
 
+    def _check_sale_required_fields(self):
+        for order in self:
+            if not order.date_order:
+                raise ValidationError(_('Por favor, adicione uma Data à venda.'))
+            if not order.partner_id:
+                raise ValidationError(_('Por favor, adicione um Cliente.'))
+            lines = order.order_line.filtered(lambda line: not line.display_type)
+            if not lines:
+                raise ValidationError(_('Por favor, adicione um produto.'))
+            if any(not line.product_id for line in lines):
+                raise ValidationError(_('Por favor, adicione um produto em cada linha.'))
+            if any(not line.tax_id for line in lines):
+                raise ValidationError(_('Por favor, adicione IVA em cada linha.'))
+
+    def action_confirm(self):
+        self._check_sale_required_fields()
+        return super().action_confirm()
+
+    @api.model
+    def default_get(self, fields_list):
+        values = super().default_get(fields_list)
+        if 'partner_id' in fields_list and not self.env.context.get('default_partner_id'):
+            values['partner_id'] = self.env['res.partner'].get_final_consumer(
+                values.get('company_id') or self.env.company.id
+            ).id
+        return values
+
+    @api.model
+    def create(self, vals):
+        if not vals.get('partner_id') and not self.env.context.get('default_partner_id'):
+            vals['partner_id'] = self.env['res.partner'].get_final_consumer(
+                vals.get('company_id') or self.env.company.id
+            ).id
+        return super().create(vals)
+
     def get_saft_data(self):
         result = {
             "WorkingDocuments": {

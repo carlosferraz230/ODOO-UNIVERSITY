@@ -9,5 +9,5 @@ COPY ./addons /mnt/extra-addons
 
 USER odoo
 
-# Força a migração do módulo account e a atualização do modelo res_company
-CMD ["odoo", "-d", "ferranexus_db_9lxd", "-u", "account,web_enterprise", "--without-demo=all", "--addons-path=/mnt/extra-addons,/usr/lib/python3/dist-packages/odoo/addons"]
+# Força o update dos módulos account e web para criar colunas e assets em falta
+CMD ["odoo", "-d", "ferranexus_db_9lxd", "-u", "account,web,web_enterprise", "--without-demo=all", "--addons-path=/mnt/extra-addons,/usr/lib/python3/dist-packages/odoo/addons"]

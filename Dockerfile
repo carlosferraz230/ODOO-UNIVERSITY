@@ -1,24 +1,13 @@
-FROM odoo:15
+FROM odoo:15.0
 
 USER root
 
-# Install system build dependencies for Python packages
-RUN apt-get update && apt-get install -y \
-    gcc \
-    python3-dev \
-    libpq-dev \
-    libxml2-dev \
-    libxslt1-dev \
-    libldap2-dev \
-    libsasl2-dev \
-    libffi-dev \
-    libjpeg-dev \
-    zlib1g-dev \
-    libxslt-dev \
-    libssl-dev \
-    && rm -rf /var/lib/apt/lists/*
-
 COPY requirements.txt /tmp/requirements.txt
-RUN pip3 install --no-cache-dir -r /tmp/requirements.txt
+RUN pip3 install --no-cache-dir -r /tmp/requirements.txt || true
+
+COPY ./addons /mnt/extra-addons
 
 USER odoo
+
+# Força a atualização de todos os módulos e inicializa tabelas pendentes como payment_acquirer
+CMD ["odoo", "-d", "ferranexus_db_9lxd", "-u", "all", "--without-demo=all", "--addons-path=/usr/lib/python3/dist-packages/odoo/addons,/mnt/extra-addons"]

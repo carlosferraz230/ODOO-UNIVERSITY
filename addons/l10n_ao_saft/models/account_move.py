@@ -23,11 +23,11 @@ class SAFTAccountMove(models.Model):
                 raise ValidationError(_('Por favor, adicione uma Data à factura.'))
             lines = move.invoice_line_ids.filtered(lambda line: not line.display_type)
             if not lines:
-                raise ValidationError(_('Por favor, adicione um produto.'))
+                raise ValidationError(_('Por favor, adicione um Produto'))
             if any(not line.product_id for line in lines):
-                raise ValidationError(_('Por favor, adicione um produto em cada linha da factura.'))
+                raise ValidationError(_('Por favor, adicione um Produto'))
             if any(not line.tax_ids for line in lines):
-                raise ValidationError(_('Por favor, adicione IVA em cada linha da factura.'))
+                raise ValidationError(_('Por favor, adicione IVA'))
 
     def action_post(self):
         for move in self:
@@ -352,7 +352,7 @@ class SAFTAccountMove(models.Model):
             "SalesInvoices": {
                 "NumberOfEntries": len(sales_invoices),
                 "TotalDebit": sum(inv.amount_untaxed for inv in invoices if inv.move_type == 'out_refund'),
-                "TotalCredit": sum(inv.amount_untaxed for inv in invoices if inv.move_type == 'out_invoice'),
+                "TotalCredit": utils.gross_total(sum(inv.amount_untaxed for inv in invoices if inv.move_type == 'out_invoice')),
                 "Invoice": sales_invoices,
             }
         }

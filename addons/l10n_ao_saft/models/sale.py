@@ -15,11 +15,11 @@ class SAFTSaleOrder(models.Model):
                 raise ValidationError(_('Por favor, adicione um Cliente.'))
             lines = order.order_line.filtered(lambda line: not line.display_type)
             if not lines:
-                raise ValidationError(_('Por favor, adicione um produto.'))
+                raise ValidationError(_('Por favor, adicione um Produto'))
             if any(not line.product_id for line in lines):
-                raise ValidationError(_('Por favor, adicione um produto em cada linha.'))
+                raise ValidationError(_('Por favor, adicione um Produto'))
             if any(not line.tax_id for line in lines):
-                raise ValidationError(_('Por favor, adicione IVA em cada linha.'))
+                raise ValidationError(_('Por favor, adicione IVA'))
 
     def action_confirm(self):
         self._check_sale_required_fields()

@@ -6,6 +6,9 @@ from collections import OrderedDict
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
+    # Angola uses NIF as the label for the standard Odoo VAT field.
+    vat = fields.Char(string="NIF")
+
     @api.model
     def get_final_consumer(self, company_id=False):
         """Return the company-specific generic customer used for cash sales."""

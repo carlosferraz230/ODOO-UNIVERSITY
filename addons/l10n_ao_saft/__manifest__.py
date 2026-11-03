@@ -16,10 +16,13 @@
     'depends': [
         'sale',
         'account',
+        'account_accountant',
         'stock',
+        'l10n_ao',
     ],
     'data': [
         'security/ir.model.access.csv',
+        'security/company_rules.xml',
         # 'data/parameter.xml',
         # 'data/saft_report.xml',
         # 'data/saft_report_purchase.xml',
@@ -28,10 +31,12 @@
         'views/res_company_view.xml',
         'views/account_tax_view.xml',
         'views/product_view.xml',
+        'views/account_move_partner_company_view.xml',
 
         'wizards/saft_ao_wizard_view.xml',
 
         'reports/report_invoice_ao.xml',
+        'reports/report_invoice_ticket.xml',
         'reports/report_sale_ao.xml',
     ],
     'installable': True,

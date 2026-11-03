@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sale_order_partner_company_domain" model="ir.ui.view">
+            <field name="name">sale.order.partner.company.domain</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="priority" eval="99"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id'][@widget='res_partner_many2one']" position="attributes">
+                    <attribute name="domain">[('type', '!=', 'private'), '|', ('company_id', '=', company_id), '&amp;', ('company_id', '=', False), ('create_uid.company_id', '=', company_id)]</attribute>
+                    <attribute name="string">Cliente</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']//field[@name='product_id']" position="attributes">
+                    <attribute name="string">Produto</attribute>
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']//field[@name='tax_id']" position="attributes">
+                    <attribute name="string">IVA</attribute>
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="attributes">
+                    <attribute name="string">Produto</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='tax_id']" position="attributes">
+                    <attribute name="string">IVA</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/control/create[@name='add_product_control']" position="attributes">
+                    <attribute name="string">Adicionar um produto</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record id="account_move_partner_company_domain" model="ir.ui.view">
+            <field name="name">account.move.partner.company.domain</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="l10n_ao.account_move_ts_form_inherit"/>
+            <field name="priority" eval="99"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id'][@widget='res_partner_many2one']" position="attributes">
+                    <attribute name="domain">[('type', '!=', 'private'), '|', ('company_id', '=', company_id), '&amp;', ('company_id', '=', False), ('create_uid.company_id', '=', company_id)]</attribute>
+                    <attribute name="string">Cliente</attribute>
+                </xpath>
+                <xpath expr="//field[@name='invoice_date']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='product_id']" position="attributes">
+                    <attribute name="string">Produto</attribute>
+                    <attribute name="required">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='tax_ids']" position="attributes">
+                    <attribute name="string">IVA</attribute>
+                    <attribute name="required">1</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

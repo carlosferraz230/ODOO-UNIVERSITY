@@ -2,6 +2,17 @@ from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
 
+class SAFTProductTemplateCompany(models.Model):
+    _inherit = "product.template"
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if not vals.get("company_id") and not self.env.user.has_group("base.group_system"):
+                vals["company_id"] = self.env.company.id
+        return super().create(vals_list)
+
+
 class SAFTProductTemplate(models.Model):
     _inherit = "product.product"
 

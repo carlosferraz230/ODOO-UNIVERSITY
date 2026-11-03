@@ -29,6 +29,12 @@ class ResPartner(models.Model):
 
     @api.model_create_multi
     def create(self, values):
+        # Company users create contacts for their own company by default.
+        # System administrators may still create intentionally shared contacts.
+        if not self.env.user.has_group('base.group_system'):
+            for vals in values:
+                if not vals.get('company_id'):
+                    vals['company_id'] = self.env.company.id
         result = super(ResPartner, self).create(values)
         if self.env.user.company_id.automatic_partner_account:
             self._automatic_partner_account(result)

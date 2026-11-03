@@ -146,7 +146,7 @@
                             <thead>
                                 <tr>
                                     <th name="th_product" class="text-left">
-                                        <span>Artigo</span>
+                                        <span>Produto</span>
                                     </th>
                                     <th name="th_description" class="text-left">
                                         <span>Descrição</span>

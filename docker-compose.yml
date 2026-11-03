@@ -1,23 +1,20 @@
 services:
   db:
-    image: postgres:13
+    image: postgres:15
     environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=odoo
-      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_DB=university_db
+      - POSTGRES_USER=university_admin
+      - POSTGRES_PASSWORD=carloS@925192810
     volumes:
       - db_data:/var/lib/postgresql/data
     restart: unless-stopped
 
   odoo:
     image: odoo:15
-    #build:
-    #  context: .
-    #  dockerfile: Dockerfile
     depends_on:
       - db
     ports:
-      - "8069:8069"
+      - "8088:8069"
     volumes:
       - odoo_data:/var/lib/odoo
       - ./etc:/etc/odoo

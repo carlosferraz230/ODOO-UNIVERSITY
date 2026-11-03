@@ -2,15 +2,13 @@
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/addons-custom/ODOO-UNIVERSITY" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
     </content>
-    <orderEntry type="jdk" jdkName="~/Área de Trabalho/OLUALINET-BACKEND/kudima-erp-odoo/.venv" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="~/.pyenv/versions/3.10.14/bin/python3" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
-  <component name="PackageRequirementsSettings" />
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />
   </component>
-  <component name="ReSTService" />
-  <component name="TestRunnerService" />
 </module>
